@@ -1,0 +1,8 @@
+.DS_Store
+
+application/cache/
+application/config/database.php
+application/config/config.php
+application/config/constants.php
+
+assets/lampiran/
