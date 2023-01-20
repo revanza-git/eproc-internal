@@ -9,6 +9,8 @@ class Pemaketan_model extends MY_Model{
 	}
 	
 	function getData($year){
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+
 		$admin = $this->session->userdata('admin');
 		if ($admin['id_role'] != in_array(7,8,9)) {
 			if ($admin['id_role'] == 6) {
@@ -23,14 +25,11 @@ class Pemaketan_model extends MY_Model{
 				        ms_fppbj.is_approved = 3 AND 
 				        ms_fppbj.is_reject = 0 AND 
 				        ms_fppbj.is_writeoff = 0 AND 
-				        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000) AND 
-				        (ms_fppbj.metode_pengadaan = 4 OR 
-				        ms_fppbj.metode_pengadaan = 2 OR 
-				        ms_fppbj.metode_pengadaan = 1)) AND ms_fppbj.del = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%"';
+				        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000)) AND ms_fppbj.del = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%"';
 			} if ($admin['id_role'] == 8) {
-				$get = 'WHERE ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
+				$get = 'WHERE ms_fppbj.del = 0 AND ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) ';
 			} if ($admin['id_role'] == 9) {
-				$get = 'WHERE ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
+				$get = 'WHERE ms_fppbj.del = 0 AND ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 ';
 			}
 		$query = "	SELECT  name,
 							count(*) AS total,
@@ -95,6 +94,8 @@ class Pemaketan_model extends MY_Model{
 	}
 
 	function getDataDivision($form=array(), $id_division="",$id_fppbj="0",$year = ""){
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+
 		$admin = $this->session->userdata('admin');
 		if ($admin['id_role'] != in_array(7,8,9)) {
 
@@ -112,18 +113,16 @@ class Pemaketan_model extends MY_Model{
 					
 			$where = "ms_fppbj.id_division = ".$id_division." $year_anggaran  AND	ms_fppbj.del=0 ".$pic;
 		}if ($admin['id_role'] == 7) {
-			$where = 'ms_fppbj.is_status = 0 AND 
+			$where = 'ms_fppbj.del = 0 AND
+					ms_fppbj.is_status = 0 AND 
 			        ms_fppbj.is_approved = 3 AND 
 			        ms_fppbj.is_reject = 0 AND 
 			        ms_fppbj.is_writeoff = 0 AND 
-			        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000) AND 
-			        (ms_fppbj.metode_pengadaan = 4 OR 
-			        ms_fppbj.metode_pengadaan = 2 OR 
-			        ms_fppbj.metode_pengadaan = 1)) AND ms_fppbj.del = 0';
+			        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000)) AND ms_fppbj.del = 0';
 		} if ($admin['id_role'] == 8) {
-			$where = 'ms_fppbj.is_status = 0 AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
+			$where = 'ms_fppbj.del = 0 AND ms_fppbj.is_status = 0 AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) ';
 		} if ($admin['id_role'] == 9) {
-			$where = 'ms_fppbj.is_status = 0 AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
+			$where = 'ms_fppbj.del = 0 AND ms_fppbj.is_status = 0 AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 ';
 		} 
 		if ($id_fppbj == '0' || $id_fppbj == '') {
 			$id_fppbj = '';

@@ -6,6 +6,7 @@ class Pengadaan_model extends CI_Model {
 
 	public function getData()
 	{
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
 		$query = "	SELECT  nama_pengadaan AS name,
 							count(*) AS total,
 							year_anggaran AS year,
@@ -54,6 +55,8 @@ class Pengadaan_model extends CI_Model {
 
 	public function getDataFP3()
 	{
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+
 		$query = "	SELECT  nama_pengadaan AS name,
 							count(*) AS total,
 							year_anggaran AS year,

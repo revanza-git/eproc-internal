@@ -779,7 +779,7 @@ class MY_Controller extends CI_Controller
 		$this->email->to($to);
 		//'ayu@nusantararegas.com','amathul@nusantararegas.com','haryo.priantomo@nusantararegas.com'amathul@nusantararegas.com,haryo.priantomo@nusantararegas.com
 		if ($type == 'fkpbj') {
-			$this->email->cc('cecilia@nusantararegas.com,ayu@nusantararegas.com,amathul@nusantararegas.com,haryo.priantomo@nusantararegas.com');
+			// $this->email->cc('cecilia@nusantararegas.com,ayu@nusantararegas.com,amathul@nusantararegas.com,haryo.priantomo@nusantararegas.com');
 			// $this->email->cc('arinal.dzikrul@dekodr.co.id');
 		}
 		$this->email->bcc('kiri12saki@gmail.com'); //'fadlimp@gmail.com',

@@ -161,6 +161,8 @@ class Main extends CI_Controller
 
 	function get_dpt_csms($csms)
 	{
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+
 		$data = $this->eproc_db->select('ms_vendor.name vendor, ms_vendor.id id_vendor, tb_csms_limit.end_score score, tb_csms_limit.value csms')
 			->where('ms_csms.id_csms_limit', $csms)
 			->where('ms_vendor.vendor_status', 2)
@@ -197,6 +199,8 @@ class Main extends CI_Controller
 
 	public function get_dpt_type($jenis, $id_pengadaan)
 	{
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+
 		// echo "string ".$jenis;
 		if ($jenis == 'jasa_konstruksi') {
 			$q = 'AND c.id = 4';
@@ -223,6 +227,7 @@ class Main extends CI_Controller
 		}
 
 		// print_r($dpt);die;
+		$this->eproc_db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
 
 		$query = "	SELECT 
 					    a.no, 

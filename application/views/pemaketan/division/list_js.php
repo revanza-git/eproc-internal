@@ -2021,7 +2021,7 @@ $(function(){
 				}
 
 				//approve <= 100 juta && (metode_pengadaan == 'Penunjukan Langsung')
-				else if (is_status == 1 && is_approve == 3 && is_reject == 0 && idr_anggaran < 100000000 ) {
+				else if (is_status == 1 && is_approve == 3 && is_reject == 0 && idr_anggaran <= 100000000 ) {
 					status = 'FP3 (telah disetujui Kadept.Procurement)';
 					badge = 'success';
 				}

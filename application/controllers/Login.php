@@ -25,8 +25,8 @@ class Login extends CI_Controller
                 redirect('dashboard');
             }
         } else {
-            // header("Location:https://eproc.nusantararegas.com/eproc_nusantararegas");
-            $this->load->view('template/layout-login-nr');
+            header("Location: ".URL_TO_LOGIN);
+            // $this->load->view('template/layout-login-nr');
         }
     }
 

@@ -365,6 +365,8 @@ class Dashboard_model extends MY_Model
 
 	function rekap_department_fp3($year = null, $type = 1)
 	{
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+
 		$id_division = $this->session->userdata('admin')['id_division'];
 		if ($id_division != 1 && $id_division != 5) {
 			$divisi = "b.id_division = " . $id_division . " AND ";

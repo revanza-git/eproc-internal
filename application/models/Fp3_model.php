@@ -52,6 +52,8 @@ class Fp3_model extends MY_Model
 
 	function getData($id_division = "", $id_fppbj = "", $year = "")
 	{
+		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+
 		$admin = $this->session->userdata('admin');
 
 		if ($year != '') {

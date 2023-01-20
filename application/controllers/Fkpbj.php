@@ -330,12 +330,14 @@ class Fkpbj extends MY_Controller {
 			$jwpp_start = $fppbj['jwpp_start'];
 			$jwpp_end = $fppbj['jwpp_end'];
 			$kak_lampiran = $fppbj['kak_lampiran'];
+			$pr_lampiran = $fppbj['pr_lampiran'];
 		} else {
 			$nama_pengadaan = $fp3['nama_pengadaan'];
 			$metode_pengadaan = $fp3['metode_pengadaan'];
 			$jwpp_start = $fp3['jwpp_start'];
 			$jwpp_end = $fp3['jwpp_end'];
 			$kak_lampiran = $fp3['kak_lampiran'];
+			$pr_lampiran = $fp3['pr_lampiran'];
 		}
 
 		$file_name = $_FILES['kak_lampiran']['name'];
@@ -399,7 +401,7 @@ class Fkpbj extends MY_Controller {
 			$save_fkpbj['id_fppbj'] 		= $id_fppbj;
 			$save_fkpbj['no_pr'] 	    	= $save['no_pr'];
 			$save_fkpbj['tipe_pr'] 	    	= $save['tipe_pr'];
-			$save_fkpbj['pr_lampiran'] 	    = ($file_name_pr == '') ? $fppbj['pr_lampiran'] :$file_name_pr;
+			$save_fkpbj['pr_lampiran'] 	    = ($file_name_pr == '') ? $pr_lampiran :$file_name_pr;
 			$save_fkpbj['jenis_pengadaan'] 	= $save['jenis_pengadaan'];
 			$save_fkpbj['id_division'] 	    = $fppbj['id_division'];
 			$save_fkpbj['nama_pengadaan']   = $nama_pengadaan;
@@ -480,6 +482,12 @@ class Fkpbj extends MY_Controller {
 			$desc_pengadaan = $data['desc_dokumen'];
 
 			$getKAKLampiran = $this->getKAKLampiran($data['kak_lampiran']);
+			
+			$getPRLampiran = $this->getPRLampiran($data['pr_lampiran']);
+
+			$val_metode_pengadaan= $data['metode_pengadaan'];
+			
+			$status_metode = $this->getStatusMetode($data['metode_pengadaan']);
 
 			$jwpp 	= $data['jwpp_start'];
 			// $jwp  	= $data['jwp_start'];
@@ -523,6 +531,12 @@ class Fkpbj extends MY_Controller {
 			$desc_pengadaan = $dataFP3['desc'];
 
 			$getKAKLampiran = $this->getKAKLampiran($dataFP3['kak_lampiran']);
+
+			$getPRLampiran = $this->getPRLampiran($dataFP3['pr_lampiran']);
+
+			$val_metode_pengadaan = $dataFP3['metode_pengadaan'];
+
+			$status_metode = $this->getStatusMetode($dataFP3['metode_pengadaan']);
 
 			$jwpp 	= $dataFP3['jwpp_start'];
 			// $jwp  	= $dataFP3['jwp_start'];
@@ -571,10 +585,8 @@ class Fkpbj extends MY_Controller {
 		$val_tipe_pr 		 = $data['tipe_pr'];
 		$val_tipe_pengadaan  = $data['tipe_pengadaan'];
 		$val_jenis_pengadaan = $data['jenis_pengadaan'];
-		$val_metode_pengadaan= $dataFP3['metode_pengadaan'];
 
-  		$getPRLampiran  		 		= $this->getPRLampiran($dataFP3['pr_lampiran']);
-		$status_metode 	 		 		= $this->getStatusMetode($dataFP3['metode_pengadaan']);
+  		$getPRLampiran  		 		= $getPRLampiran;
 		$radio_ 				 		= $this->getHps($data['hps']);
 		$option_tipe_pr 		 		= $this->getTipePR($val_tipe_pr);
 		$option_tipe_pengadaan  	 	= $this->getTipePengadaan($val_tipe_pr,$val_tipe_pengadaan);
