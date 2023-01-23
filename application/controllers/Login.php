@@ -17,10 +17,10 @@ class Login extends CI_Controller
     public function index()
     {
         if ($this->session->userdata('user')) {
-            // header("Location: http://10.10.10.4/eproc_pengadaan/dashboard");
+            // header("Location: http://10.10.10.3/eproc_pengadaan/dashboard");
         } elseif ($this->session->userdata('admin')) {
             if ($this->session->userdata('admin')['app_type'] == 1) {
-                // header("Location: http://10.10.10.4/eproc_pengadaan/admin");
+                // header("Location: http://10.10.10.3/eproc_pengadaan/admin");
             } else {
                 redirect('dashboard');
             }

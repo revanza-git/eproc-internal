@@ -331,7 +331,7 @@
 
     </section>
 
-  <script type="text/javascript" src="../source/js/vendors/jquery-3.3.1.js">
+  <script type="text/javascript" src="../source/js/vendors/jquery-3.6.3.min.js">
   </script>
   <script type="text/javascript" src="../source/js/vendors/jquery-ui.js">
   </script>

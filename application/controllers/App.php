@@ -33,7 +33,7 @@ class App extends MY_Controller
 		$division	= $admin['division'];
 		$id_division= $admin['id_division'];
 
-		header("Location:http://10.10.10.4/eproc_pengadaan/main/login_admin/".$name."/".$id_user."/".$id_role."/".$role_name."/".$type."/".$app."/".$division."/".$id_division."/".$id_sbu."/".$sbu_name);
+		header("Location:http://10.10.10.3/eproc_pengadaan/main/login_admin/".$name."/".$id_user."/".$id_role."/".$role_name."/".$type."/".$app."/".$division."/".$id_division."/".$id_sbu."/".$sbu_name);
 	}
 
 	public function getUsers()

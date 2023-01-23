@@ -19,34 +19,16 @@ class Main extends CI_Controller
 
 	public function index()
 	{
-
-		/*
-		| -------------------------------------------------------------------
-		|  Authentication users login
-		| -------------------------------------------------------------------
-		| These function prevented visitor to open restricted page.
-		|
-		| Prototype:
-		|
-		|	if($this->session->userdata('user')){
-		|		redirect(site_url('dashboard'));
-		|	}else{
-		|		$this->login();
-		|	}
-		|
-		*/
-		// print_r($this->session->userdata());
 		if ($this->session->userdata('user')) {
-			header("Location: http://10.10.10.4/eproc_pengadaan/dashboard");
+			header("Location: http://10.10.10.3/eproc_pengadaan/dashboard");
 		} elseif ($this->session->userdata('admin')) {
 			if ($this->session->userdata('admin')['app_type'] == 1) {
-				header("Location: http://10.10.10.4/eproc_pengadaan/admin");
+				header("Location: http://10.10.10.3/eproc_pengadaan/admin");
 			} else {
 				redirect('dashboard');
 			}
 		} else {
-			header("Location:https://eproc.nusantararegas.com/eproc_nusantararegas");
-			//$this->load->view('template/layout-login-nr');
+			header("Location:https://deveproc.nusantararegas.com/eproc_nusantararegas");
 		}
 	}
 
@@ -62,56 +44,52 @@ class Main extends CI_Controller
 		$this->db->insert('tr_log_activity', $activity);
 
 		$this->session->sess_destroy();
-		// header('Location: http://10.10.10.4/eproc_pengadaan/main/logout');
-		//redirect(site_url());
 		header("Location: " . URL_TO_EPROC);
 	}
 
 	public function check()
 	{
 		if ($this->input->post('username') && $this->input->post('password')) {
-			$is_logged = $this->mm->cek_login();
-
-			if ($is_logged) {
-
-				if ($this->session->userdata('user')) {
-
-					$user = $this->session->userdata('user');
-					// $this->to_app($user);
-					$name 			= $user['name'];
-					$id_user 		= $user['id_user'];
-					$id_sbu			= $user['id_sbu'];
-					$vendor_status	= $user['vendor_status'];
-					$is_active		= $user['is_active'];
-					$type 			= 'user';
-					$app 			= $user['app'];
-
-					header("Location:https://eproc.nusantararegas.com/eproc_pengadaan/main/login_user/" . $name . "/" . $id_user . "/" . $id_sbu . "/" . $vendor_status . "/" . $is_active . "/" . $type . "/" . $app);
-				} else if ($this->session->userdata('admin')) {
-					if ($this->session->userdata('admin')['app_type'] == 1) {
-
-						$admin = $this->session->userdata('admin');
-						// print_r($admin);die;
-						$name 			= $admin['name'];
-						$id_sbu 		= $admin['id_sbu'];
-						$id_user 		= $admin['id_user'];
-						$id_role 		= $admin['id_role'];
-						$role_name 		= $admin['role_name'];
-						$sbu_name 		= $admin['sbu_name'];
-						$app 			= $admin['app'];
-						$type 			= 'admin';
-
-						header("Location:http://10.10.10.4/eproc_pengadaan/main/login_admin/" . $id_user . "/" . $name . "/" . $id_role . "/" . $role_name . "/" . $type . "/" . $app . "/" . $id_sbu . "/" . $sbu_name);
-					} else {
-						redirect('dashboard');
-					}
-				}
-			} else {
-				$message = "Username atau Password salah";
-
+			if($this->session->tempdata('penalty')){
+				$message = "Akun telah terkunci, harap tunggu beberapa menit lagi untuk login";
 				echo "<script type='text/javascript'>alert('$message');</script>";
-
 				$this->load->view('template/layout-login-nr');
+			}else{
+				$is_logged = $this->mm->cek_login();
+				if ($is_logged) {
+					if ($this->session->userdata('user')) {
+						$user = $this->session->userdata('user');
+						$name 			= $user['name'];
+						$id_user 		= $user['id_user'];
+						$id_sbu			= $user['id_sbu'];
+						$vendor_status	= $user['vendor_status'];
+						$is_active		= $user['is_active'];
+						$type 			= 'user';
+						$app 			= $user['app'];
+	
+						header("Location:https://eproc.nusantararegas.com/eproc_pengadaan/main/login_user/" . $name . "/" . $id_user . "/" . $id_sbu . "/" . $vendor_status . "/" . $is_active . "/" . $type . "/" . $app);
+					} else if ($this->session->userdata('admin')) {
+						if ($this->session->userdata('admin')['app_type'] == 1) {
+							$admin = $this->session->userdata('admin');
+							$name 			= $admin['name'];
+							$id_sbu 		= $admin['id_sbu'];
+							$id_user 		= $admin['id_user'];
+							$id_role 		= $admin['id_role'];
+							$role_name 		= $admin['role_name'];
+							$sbu_name 		= $admin['sbu_name'];
+							$app 			= $admin['app'];
+							$type 			= 'admin';
+	
+							header("Location:http://10.10.10.3/eproc_pengadaan/main/login_admin/" . $id_user . "/" . $name . "/" . $id_role . "/" . $role_name . "/" . $type . "/" . $app . "/" . $id_sbu . "/" . $sbu_name);
+						} else {
+							redirect('dashboard');
+						}
+					}
+				} else {
+					$message = "Username atau Password salah";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					$this->load->view('template/layout-login-nr');
+				}
 			}
 		}
 	}

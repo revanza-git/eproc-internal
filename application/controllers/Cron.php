@@ -27,7 +27,7 @@ class Cron extends MY_Controller
 					$subject = 'Masa waktu FKPBJ hampir habis';
 				}
 
-				$message = "Masa waktu pengadaan ".$value['nama_pengadaan']." hampir habis silahkan cek di website http://10.10.10.4/eproc_perencanaan , <br> Terimakasih";
+				$message = "Masa waktu pengadaan ".$value['nama_pengadaan']." hampir habis silahkan cek di website http://10.10.10.3/eproc_perencanaan , <br> Terimakasih";
 
 
 				$yellow = date('Y-m-d', strtotime('-26 days', strtotime($yellow)));
@@ -47,7 +47,7 @@ class Cron extends MY_Controller
 
 				$subject_1 = 'Masa waktu FP3 hampir habis (Warning 1)';
 				$subject_2 = 'Masa waktu FP3 hampir habis (Warning 2)';
-				$message = "Masa waktu pengadaan ".$value['nama_pengadaan']." hampir habis silahkan cek di website http://10.10.10.4/eproc_perencanaan , <br> Terimakasih";
+				$message = "Masa waktu pengadaan ".$value['nama_pengadaan']." hampir habis silahkan cek di website http://10.10.10.3/eproc_perencanaan , <br> Terimakasih";
 
 				$yellow = date('Y-m-d', strtotime('-26 days', strtotime($yellow__)));
 				$yellow_ = date('Y-m-d', strtotime('-12 days', strtotime($yellow__)));

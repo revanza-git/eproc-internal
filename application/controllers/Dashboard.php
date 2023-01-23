@@ -1,15 +1,13 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends MY_Controller
-{
+class Dashboard extends MY_Controller {
 
 	public $admin;
 
-	public function __construct()
-	{
+	public function __construct(){
 		parent::__construct();
-
+		
 		$this->admin = $this->session->userdata('admin');
 		$this->load->model('Main_model', 'mm');
 		$this->load->model('fkpbj_model', 'fk');
@@ -17,8 +15,7 @@ class Dashboard extends MY_Controller
 		$this->load->model('dashboard_model', 'dm');
 	}
 
-	public function index($id = null)
-	{
+	public function index($id=null){
 		$admin = $this->session->userdata('admin');
 
 		// print_r($admin);die;
@@ -33,8 +30,8 @@ class Dashboard extends MY_Controller
 		$data['fppbj_reject']		= $this->mm->get_fppbj_reject();
 		$data['pending_kadiv']		= $this->mm->get_pending_kadiv();
 		$data['pending_admin_hsse'] = $this->mm->get_pending_admin_hsse();
-		$data['pending_admin_pengendalian'] = $this->mm->get_pending_admin_pengendalian();
-		$data['pending_kadept_proc'] = $this->mm->get_pending_kadept_proc();
+		$data['pending_admin_pengendalian']= $this->mm->get_pending_admin_pengendalian();
+		$data['pending_kadept_proc']= $this->mm->get_pending_kadept_proc();
 		$data['pending_dirut']		= $this->mm->get_pending_dirut();
 		$data['pending_dirke']		= $this->mm->get_pending_dirke();
 		$data['pending_dirsdm']		= $this->mm->get_pending_dirsdm();
@@ -67,19 +64,17 @@ class Dashboard extends MY_Controller
 		$data['fp3_pending_kp']		= $this->fp->statusApprove(2);
 		$data['fp3_success'] 		= $this->fp->statusApprove(3);
 		$data['fp3_reject'] 		= $this->fp->statusApprove(4);
-
+		
 		// $data['graph']	= $this->mm->rekapPerencanaanGraph($year);
-
-		$this->header = 'Selamat Datang ' . $this->admin['division'];
-		// $this->content = $this->parser->parse('dashboard/dashboard_admin', $data, TRUE);
-		// $this->script = $this->load->view('dashboard/dashboard_js', $data, TRUE);
-		$this->content = $this->load->view('dashboard/dashboard_admin', $data, TRUE);
+				
+		$this->header = 'Selamat Datang '.$this->admin['division'];
+		$this->content = $this->parser->parse('dashboard/dashboard_admin', $data, TRUE);
 		$this->script = $this->load->view('dashboard/dashboard_js', $data, TRUE);
+
 		parent::index();
 	}
-
-	public function search_data()
-	{
+	
+	public function search_data(){
 		echo json_encode($this->mm->search_data());
 	}
 
@@ -87,7 +82,8 @@ class Dashboard extends MY_Controller
 	{
 		if ($this->mm->delete($id)) {
 			$return['status'] = 'success';
-		} else {
+		}
+		else {
 			$return['status'] = 'error';
 		}
 
@@ -101,7 +97,7 @@ class Dashboard extends MY_Controller
 			array(
 				'type' => 'delete',
 				'label' => 'Hapus'
-			),
+			) ,
 			array(
 				'type' => 'cancel',
 				'label' => 'Batal'
@@ -109,7 +105,7 @@ class Dashboard extends MY_Controller
 		);
 		echo json_encode($this->formDelete);
 	}
-
+	
 	public function detail_graph($method, $year)
 	{
 		$this->breadcrumb->addlevel(1, array(
