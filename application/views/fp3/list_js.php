@@ -106,7 +106,11 @@
 							console.log('ke 4');
 							if (id_division == user_logged) {
 								console.log('ke 5');
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							} else {
 								console.log('ke 6');
 								return btn;
@@ -126,7 +130,11 @@
 						} else {
 							if (id_division == user_logged) {
 								console.log('ke 11');
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							} else {
 								console.log('ke 12');
 								return btn;
@@ -145,7 +153,11 @@
 							console.log('ke 16');
 							if (id_division == user_logged) {
 								console.log('ke 17');
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							} else {
 								console.log('ke 18');
 								return btn;
@@ -166,7 +178,11 @@
 							console.log('ke 23');
 							if (id_division == user_logged) {
 								console.log('ke 24');
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							} else {
 								console.log('ke 25');
 								return btn;
@@ -633,6 +649,7 @@
 				var keterangan = value[12].value;
 				var idr_anggaran = parseInt(value[16].value);
 				var year_anggaran = value[13].value;
+				var pejabat = value[17].value; 
 
 				if (value[2].value == 1) {
 					metode_pengadaan = 'Pelelangan';
@@ -661,13 +678,13 @@
 
 				//reject status
 				else if (is_approve == 1 && is_reject == 1) {
-					status = 'FP3 (Ditolak Ka.Dept User) <span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Direvisi Ka.Dept User) <span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fp3_reject tooltip';
 				} else if (is_approve == 2 && is_reject == 1) {
-					status = 'FP3 (Ditolak Admin Pengendalian)<span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Direvisi Admin Pengendalian)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fp3_reject tooltip';
 				} else if (is_approve == 3 && is_reject == 1) {
-					status = 'FP3 (Ditolak Ka.Dept Procurement)<span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Direvisi Ka.Dept Procurement)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
 
@@ -687,7 +704,7 @@
 					status = 'FP3 telah di setujui Ka.Div SDM & Umum';
 					badge = 'success';
 				} else if (is_approve == "4" && is_reject == 1 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan == 'Pelelangan' || metode_pengadaan == 'Pengadaan Langsung')) {
-					status = 'FP3 (Di tolak Ka.Div SDM & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Di revisi Ka.Div SDM & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
 
@@ -699,7 +716,7 @@
 					status = 'FP3 telah di setujui Dir.Keuangan & Umum';
 					badge = 'success';
 				} else if (is_approve == "4" && is_reject == 1 && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan == 'Pelelangan' || metode_pengadaan == 'Pengadaan Langsung')) {
-					status = 'FP3 (Di tolak Dir.Keuangan & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Di revisi Dir.Keuangan & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
 
@@ -712,7 +729,7 @@
 					status = 'FP3 telah di setujui Dir.Utama';
 					badge = 'success';
 				} else if (is_approve == "4" && is_reject == 1 && idr_anggaran >= 1000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan == 'Pelelangan' || metode_pengadaan == 'Pengadaan Langsung')) {
-					status = 'FP3 (Di tolak Dir.Utama)<span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Di revisi Dir.Utama)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
 
@@ -735,7 +752,7 @@
 				// 	status = 'FP3 (Menunggu Ka.Dept User)';
 				// 	badge = 'warning';
 				// }else if (is_reject == 1) {
-				// 	status = 'FP3 (FP3 Ditolak)<span class="tooltiptext reject">'+keterangan+'</span>';
+				// 	status = 'FP3 (FP3 Direvisi)<span class="tooltiptext reject">'+keterangan+'</span>';
 				// 	badge = 'danger fp3_reject tooltip';
 				// }
 
@@ -745,7 +762,7 @@
 				return html;
 			},
 			additionFeature: function(el) {
-				el.prepend(insertButton(site_url + "fp3/insert/<?php echo $id; ?>"));
+				el.prepend(insertButton(site_url + "fp3/insert/<?php echo $id; ?>/<?php echo $year; ?>"));
 			},
 			finish: function() {},
 			filter: {

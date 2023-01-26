@@ -85,6 +85,6 @@ defined('EXIT__AUTO_MIN')      or define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // URL App
-define('URL_TO_LOGIN', 'https://deveproc.nusantararegas.com/');
+define('URL_TO_LOGIN', 'https://deveproc.nusantararegas.com/eproc_nusantararegas/');
 define('URL_TO_VMS', 'http://10.10.10.3/eproc_pengadaan/');
 define('URL_TO_EPROC', 'http://10.10.10.3/eproc_nusantararegas/');

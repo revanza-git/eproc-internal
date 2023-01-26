@@ -7,7 +7,7 @@ class Fp3_model extends MY_Model
 	{
 		parent::__construct();
 	}
-	function getFppbj($form = "")
+	function getFppbj($form = "", $year=null)
 	{
 		$admin = $this->session->userdata('admin');
 		/*$query = "	SELECT
@@ -22,6 +22,11 @@ class Fp3_model extends MY_Model
 		} else {
 			$division = " AND id_division = " . $admin['id_division'];
 		}
+		if (isset($year)) {
+            $year_conditional = " AND a.entry_stamp LIKE '%$year%'";
+        } else {
+            $year_conditional = "";
+        }
 
 		$query = "	SELECT
 						a.*,
@@ -31,14 +36,18 @@ class Fp3_model extends MY_Model
 					LEFT JOIN
 						tb_division b ON b.id=a.id_division
 					WHERE 
-						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3) $division)
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3) $division $year_conditional)
 						OR  
 
-						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000)) $division
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000)) $division $year_conditional
 
 						OR
+						(is_status = 2 AND a.del = 0 $division $year_conditional)
+
+						OR
+
+						(is_status = 1 AND a.del = 0 $division $year_conditional)";
 						
-						(is_status = 2 AND a.del = 0 $division)";
 
 		$query = $this->db->query($query)->result_array();
 		$data = array();
@@ -52,8 +61,6 @@ class Fp3_model extends MY_Model
 
 	function getData($id_division = "", $id_fppbj = "", $year = "")
 	{
-		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-
 		$admin = $this->session->userdata('admin');
 
 		if ($year != '') {
@@ -85,7 +92,8 @@ class Fp3_model extends MY_Model
 						a.entry_stamp,
 						b.id_division,
 						b.tipe_pengadaan,
-						b.idr_anggaran
+						b.idr_anggaran,
+						a.pejabat_pengadaan_id
 
 						FROM ms_fp3 a
 
@@ -187,7 +195,8 @@ class Fp3_model extends MY_Model
 				// 'desc' 			   => $data['desc'],
 				'edit_stamp' 	   => date('Y-m-d H:i:s'),
 				'is_status' 	   => 1,
-				'is_approved' 	   => $is_approved
+				'is_approved' 	   => $is_approved,
+				'is_reject'		   => 0
 			);
 
 			$this->db->where('id', $id_fppbj)->update('ms_fppbj', $data_fppbj);
@@ -230,7 +239,8 @@ class Fp3_model extends MY_Model
 				'is_writeoff' => 0,
 				'is_status'	 => 1,
 				'is_approved' => $is_approved,
-				'edit_stamp' => date('Y-m-d H:i:s')
+				'edit_stamp'  => date('Y-m-d H:i:s'),
+				'is_reject'		   => 0
 			);
 			$this->db->where('id', $data['id_fppbj'])->update('ms_fppbj', $up);
 			$data_fp3 = array(
@@ -335,6 +345,31 @@ class Fp3_model extends MY_Model
 			));
 	}
 
+	public function getTotalFP3($year = "")
+	{
+		$admin = $this->session->userdata('admin');
+
+		if ($year != '') {
+			$q = ' entry_stamp LIKE "%' . $year . '%"';
+		} else {
+			$q = '';
+		}
+
+		$query = " 	SELECT
+						*
+					FROM
+						ms_fp3
+					WHERE
+						$q";
+
+		$query = $this->db->query($query);
+
+		// echo $this->db->last_query();die;
+
+		return $query;
+	}
+
+
 	public function statusApprove($status = "", $year = "")
 	{
 		$admin = $this->session->userdata('admin');
@@ -375,8 +410,15 @@ class Fp3_model extends MY_Model
 						ms_fppbj
 					WHERE
 						$s";
+						
+						if ($status == 0 || $status == '0') {
+            log_message('error', 'start reject fp3');
+            log_message('error', $query);
+            log_message('error', 'end reject fp3');
+        }
 
 		$query = $this->db->query($query);
+		
 
 		// echo $this->db->last_query();die;
 

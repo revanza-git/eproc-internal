@@ -134,7 +134,11 @@ $(function(){
 							return btn;
 						} else {
 							<?php if ($admin['id_division'] == 1 && $admin['id_role'] == 6 || ($id_division == $this->session->userdata('admin')['id_division'])) { ?>
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							<?php } else { ?>
 								return btn;
 							<?php } ?>
@@ -143,7 +147,15 @@ $(function(){
 						// && _is_approve == 3
 						return btn;
 					} else {
-						return btn.concat(btn_edit);
+						if (is_reject == 0) {
+							return btn;
+						} else {
+							if (is_reject == 0) {
+								return btn;
+							} else {
+								return btn.concat(btn_edit);
+							}
+						}
 					}
 				}
 				<?php if ($admin['id_role'] == 5 || $admin['id_division'] == 1){ ?>
@@ -155,7 +167,11 @@ $(function(){
 		 						return _btn;
 						} else {
 							<?php if ($id_division == $this->session->userdata('admin')['id_division']) { ?>
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							<?php } else { ?>
 								return btn;
 							<?php } ?>
@@ -168,7 +184,11 @@ $(function(){
 							return btn;
 						} else {
 							<?php if ($admin['id_division'] == 1 && $admin['id_role'] == 6 || ($id_division == $this->session->userdata('admin')['id_division'])) { ?>
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							<?php } else { ?>
 								return btn;
 							<?php } ?>
@@ -183,7 +203,11 @@ $(function(){
 		 					if ($id_divisi == $this->session->userdata('admin')['id_division'] || $id_divisi == 1) {
 		 				?>
 
-			 			return btn.concat(btn_edit);
+			 			if (is_reject == 0) {
+							return btn;
+						} else {
+							return btn.concat(btn_edit);
+						}
 
  						<?php } } else { ?>
  							return btn;
@@ -201,7 +225,11 @@ $(function(){
 								return btn;
 							} else {
 								<?php if ($admin['id_division'] == 1 && $admin['id_role'] == 6 || ($id_division == $this->session->userdata('admin')['id_division'])) { ?>
-									return btn.concat(btn_edit);
+									if (is_reject == 0) {
+										return btn;
+									} else {
+										return btn.concat(btn_edit);
+									}
 								<?php } else { ?>
 									return btn;
 								<?php } ?>
@@ -210,7 +238,11 @@ $(function(){
 							// && _is_approve == 3
 							return btn;
 						} else {
-							return btn.concat(btn_edit);
+							if (is_reject == 0) {
+								return btn;
+							} else {
+								return btn.concat(btn_edit);
+							}
 						}
 					}
 	 				<?php if ($admin['id_role'] == 5 || $admin['id_division'] == 1) { ?>
@@ -221,7 +253,11 @@ $(function(){
 		 						return _btn;
 						} else {
 							<?php if ($id_division == $this->session->userdata('admin')['id_division']) { ?>
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							<?php } else { ?>
 								return btn;
 							<?php } ?>
@@ -234,7 +270,11 @@ $(function(){
 							return btn;
 						} else {
 							<?php if ($admin['id_division'] == 1 && $admin['id_role'] == 6 || ($id_division == $this->session->userdata('admin')['id_division'])) { ?>
-								return btn.concat(btn_edit);
+								if (is_reject == 0) {
+									return btn;
+								} else {
+									return btn.concat(btn_edit);
+								}
 							<?php } else { ?>
 								return btn;
 							<?php } ?>
@@ -248,7 +288,11 @@ $(function(){
 	 					<?php if($admin['id_role'] == 2 || $admin['id_role'] == 5 || $admin['id_role'] == 3 || $admin['id_role'] == 4) {
 		 					if ($id_divisi == $this->session->userdata('admin')['id_division'] || $id_divisi == 1) {
 		 				?>
-		 				return btn.concat(btn_edit);
+		 				if (is_reject == 0) {
+							return btn;
+						} else {
+							return btn.concat(btn_edit);
+						}
 
  						<?php } } else { ?>
  							return btn;
@@ -1838,7 +1882,7 @@ $(function(){
 				badge = 'warning';
 			}
 			else if (is_status == "0" && is_reject == 1 && is_approved_hse == 0 && is_approve == 0) {
-				status = 'FPPBJ (ditolak Kadept.user) <span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Kadept.user) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && (is_approved_hse == 0 ||is_approved_hse == null) && is_reject == 0 && is_writeoff == 0) {
@@ -1846,7 +1890,7 @@ $(function(){
 				badge = 'warning';
 			}
 			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == '2' && is_reject == 1 && is_writeoff == 0) {
-				status = 'FPPBJ (ditolak Kadept.HSSE) <span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Kadept.HSSE) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == 1 && is_reject == 0 && is_writeoff == 0) {
@@ -1858,11 +1902,11 @@ $(function(){
 				badge = 'warning';
 			}
 			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == 1 && is_reject == 1 && is_writeoff == 0) {
-				status = 'FPPBJ (ditolak Admin Pengendalian) <span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Admin Pengendalian) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan != 'jasa' && is_reject == 1 && is_writeoff == 0) {
-				status = 'FPPBJ (ditolak Admin Pengendalian) <span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Admin Pengendalian) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			else if (is_status == "0" && is_approve == "2" && is_reject == 0 && is_writeoff == 0) {
@@ -1870,7 +1914,7 @@ $(function(){
 				badge = 'warning';
 			}
 			else if (is_status == "0" && is_approve == "2" && is_reject == 1 && is_writeoff == 0) {
-				status = 'FPPBJ (ditolak Kadept.Procurement) <span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Kadept.Procurement) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			// <100Jt(Pending Status)&& is_planning == 1 && _persetujuan !== null
@@ -1881,7 +1925,7 @@ $(function(){
 
 			// <100Jt(Reject Status)
 			else if (is_status == "0" && is_approve == "2" && is_reject == 1 && is_writeoff == 0 && (idr_anggaran <= 100000000)) {
-				status = 'FPPBJ (Ditolak Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 
@@ -1905,7 +1949,7 @@ $(function(){
 			}
 			// >100Jt < 1M (Reject Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
-				status = 'FPPBJ (Di tolak Ka.Div SDM & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 
@@ -1922,7 +1966,7 @@ $(function(){
 			}
 			// >1M < 10M (Reject Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
-				status = 'FPPBJ (Di tolak Dir.Keuangan & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 
@@ -1939,7 +1983,7 @@ $(function(){
 			}
 			// > 10M (Reject Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 1000000000) {
-				status = 'FPPBJ (Di tolak Dir.Utama)<span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FPPBJ (Direvisi Dir.Utama)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			// FPPBJ Normal
@@ -1955,7 +1999,7 @@ $(function(){
 				badge = 'warning';
 			}
 			else if (is_status == '2' && is_approve == "0" && is_reject == 1 && is_writeoff == 0) {
-				status = 'FKPBJ (Di tolak ka.Dept user)<span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FKPBJ (Direvisi ka.Dept user)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			// FKPBJ waiting to approve by manager user
@@ -1964,7 +2008,7 @@ $(function(){
 				badge = 'warning';
 			}
 			else if (is_status == "2" && is_approve == "1" && is_reject == 1 && is_writeoff == 0) {
-				status = 'FKPBJ (Di tolak Admin Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FKPBJ (Direvisi Admin Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 
@@ -1973,7 +2017,7 @@ $(function(){
 				badge = 'warning';
 			}
 			else if (is_status == "2" && is_approve == "2" && is_reject == 1 && is_writeoff == 0) {
-				status = 'FKPBJ (Di tolak Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
+				status = 'FKPBJ (Direvisi Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			// FKPBJ waiting to approve by admin 
@@ -2008,20 +2052,20 @@ $(function(){
 
 				//reject status
 				else if (is_status == 1 && is_approve == 1 && is_reject == 1) {
-					status = 'FP3 (Ditolak Ka.Dept User) <span class="tooltiptext reject">'+keterangan+'</span>';
+					status = 'FP3 (Direvisi Ka.Dept User) <span class="tooltiptext reject">'+keterangan+'</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
 				else if (is_status == 1 && is_approve == 2 && is_reject == 1) {
-					status = 'FP3 (Ditolak Admin Pengendalian)<span class="tooltiptext reject">'+keterangan+'</span>';
+					status = 'FP3 (Direvisi Admin Pengendalian)<span class="tooltiptext reject">'+keterangan+'</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
 				else if (is_status == 1 && is_approve == 3 && is_reject == 1) {
-					status = 'FP3 (Ditolak Ka.Dept Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
+					status = 'FP3 (Direvisi Ka.Dept Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
 
 				//approve <= 100 juta && (metode_pengadaan == 'Penunjukan Langsung')
-				else if (is_status == 1 && is_approve == 3 && is_reject == 0 && idr_anggaran <= 100000000 ) {
+				else if (is_status == 1 && is_approve == 3 && is_reject == 0 && idr_anggaran < 100000000 ) {
 					status = 'FP3 (telah disetujui Kadept.Procurement)';
 					badge = 'success';
 				}
@@ -2035,7 +2079,7 @@ $(function(){
 					status = 'FP3 telah di setujui Ka.Div SDM & Umum';
 					badge = 'success';
 				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
-					status = 'FP3 (Di tolak Ka.Div SDM & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
 
@@ -2047,7 +2091,7 @@ $(function(){
 					status = 'FP3 telah di setujui Dir.Keuangan & Umum';
 					badge = 'success';
 				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
-					status = 'FP3 (Di tolak Dir.Keuangan & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
 
@@ -2060,7 +2104,7 @@ $(function(){
 					status = 'FP3 telah di setujui Dir.Utama';
 					badge = 'success';
 				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && idr_anggaran >= 1000000000) {
-					status = 'FP3 (Di tolak Dir.Utama)<span class="tooltiptext reject">' + keterangan + '</span>';
+					status = 'FP3 (Direvisi Dir.Utama)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
 				// else if (is_status == "3" || (is_approve == "3" && is_reject == 0)) {

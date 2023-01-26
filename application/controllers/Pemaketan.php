@@ -704,6 +704,7 @@ class Pemaketan extends MY_Controller
 
 			/* INSERT FPPBJ */
 			$admin = $this->session->userdata('admin');
+			$rate = $this->db->get('tb_in_rate')->row_object();
 
 			$data['is_planning']	= $this->check_perencanaan_umum($data['year_anggaran'][0]);
 			$data['is_perencanaan'] = ($data['is_perencanaan'] == '') ? '2' : $data['is_perencanaan'];
@@ -711,7 +712,7 @@ class Pemaketan extends MY_Controller
 
 			foreach ($data['idr_anggaran'] as $key => $value) {
 				// $tr_price[$key]['id_fppbj']		  = $input;
-				$tr_price[$key]['idr_anggaran'] = $value;
+				$tr_price[$key]['idr_anggaran'] = ($data['usd_anggaran'][$key] != 0) ? $rate->value_in_idr * $data['usd_anggaran'][$key] : $value;
 				$tr_price[$key]['usd_anggaran'] = $data['usd_anggaran'][$key];
 				$tr_price[$key]['year_anggaran'] = $data['year_anggaran'][$key];
 			}
@@ -975,7 +976,7 @@ class Pemaketan extends MY_Controller
             $btn_reject = array(
                 array(
                     'type'     => 'reject',
-                    'label' => '<i style="line-height:25px;" class="fas fa-thumbs-down reject-btn"></i>&nbsp;Tolak Data'
+                    'label' => '<i style="line-height:25px;" class="fas fa-thumbs-down reject-btn"></i>&nbsp;Revisi Data'
                 )
             );
             $btn_cancel = array(
@@ -1016,6 +1017,7 @@ class Pemaketan extends MY_Controller
         $admin    = $this->session->userdata('admin');
         $data     = $this->pm->get_data_step($id);
         $dataFP3 = $this->pm->get_data_fp3($id);
+        $user_pejabat_pengadaan = $this->pm->pejabatPengadaan();
         $jwpp     = $data['jwpp_start'];
         $jwpp_fp3     = $dataFP3['jwpp_start'];
         $jwp      = $data['jwp_start'];
@@ -1246,7 +1248,7 @@ class Pemaketan extends MY_Controller
         // print_r($data);
         if ($admin['id_role'] == 6 || $admin['id_role'] == 3 || $admin['id_role'] == 4 || $admin['id_role'] == 2 || $admin['id_role'] == 7 || $admin['id_role'] == 8 || $admin['id_role'] == 9) {
 			$btn_setuju = '<button class="button is-primary" type="submit" name="approve"><span class="icon"><i class="far fa-thumbs-up"></i></span> Setujui Data</button>';
-			$btn_reject = '<a href="#" class="button is-danger reject-btn-step"><span class="icon"><i class="fas fa-times"></i></span> Tolak Data</a>';
+			$btn_reject = '<a href="#" class="button is-danger reject-btn-step"><span class="icon"><i class="fas fa-times"></i></span> Revisi Data</a>';
 			$btn_cancel = '<button type="button" class="close">Close</button>';
 			$btn_app_risiko = '<a class="button is-danger"Setujui Analisa Risiko</a>';
 
@@ -1262,6 +1264,14 @@ class Pemaketan extends MY_Controller
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
+                    $pejabat_pengadaan = '<fieldset class="form-group read_only form13" for=""><label for="">Pilih Pejabat Pengadaan</label><b>:</b><span><select name="pejabat_pengadaan">';
+
+                    foreach($user_pejabat_pengadaan as $key => $value)
+                    {
+                        $pejabat_pengadaan .= '<option value="'.$key.'">'.$value.'</option>';
+                    }
+
+                    $pejabat_pengadaan .= '</select></span></fieldset>';
 				} else if ($data['is_approved'] == 2 && $admin['id_role'] == 2) {
 					$param = 3;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
@@ -1272,6 +1282,14 @@ class Pemaketan extends MY_Controller
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
+                    $pejabat_pengadaan = '<fieldset class="form-group read_only form13" for=""><label for="">Pilih Pejabat Pengadaan</label><b>:</b><span><select name="pejabat_pengadaan">';
+
+                    foreach($user_pejabat_pengadaan as $key => $value)
+                    {
+                        $pejabat_pengadaan .= '<option value="'.$key.'">'.$value.'</option>';
+                    }
+
+                    $pejabat_pengadaan .= '</select></span></fieldset>';
 				} else if ($data['is_approved'] == 1 && (($admin['id_role'] == 4 && $admin['id_division'] == 5) || ($admin['id_role'] == 5 && $admin['id_division'] == 5)) && $data['is_approved_hse'] == 0) {
 					$param = 1;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
@@ -1523,6 +1541,7 @@ class Pemaketan extends MY_Controller
 							<fieldset class="form-group read_only form11 " for="' . $data['desc_dokumen'] . '"><label for="' . $data['desc_dokumen'] . '">Keterangan</label><b>:</b><span>' . $data['desc_dokumen'] . '</span>
 							</fieldset>
 							' . $tgl_approval . '
+                            ' . $pejabat_pengadaan . '
 							<fieldset class="form-group form11 " for="' . $data['id'] . '">
 								<input type="hidden" name="keterangan" value="' . $data['id'] . '">
 							</fieldset>
@@ -2023,7 +2042,7 @@ class Pemaketan extends MY_Controller
         $button = '';
         if ($admin['id_role'] == 2 || $admin['id_role'] == 3 || $admin['id_role'] == 4 || $admin['id_role'] == 6) {
             $btn_setuju = '<button class="button is-primary" type="submit" name="approve"><span class="icon"><i class="far fa-thumbs-up"></i></span> Setujui Data</button>';
-            $btn_reject = '<a href="#" class="button is-danger reject-btn-step"><span class="icon"><i class="fas fa-times"></i></span> Tolak Data</a>';
+            $btn_reject = '<a href="#" class="button is-danger reject-btn-step"><span class="icon"><i class="fas fa-times"></i></span> Revisi Data</a>';
             $btn_cancel = '<button type="button" class="close">Close</button>';
             $btn_app_risiko = '<a class="button is-danger">Setujui Analisa Risiko</a>';
 

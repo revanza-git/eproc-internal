@@ -1,17 +1,37 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pemaketan_model extends MY_Model{
+	public $ms_user = 'ms_user';
 	public $fppbj = 'ms_fppbj';
 	public $eproc_db;
 	function __construct(){
 		parent::__construct();
 		$this->eproc_db = $this->load->database('eproc',true);
 	}
+
+	function pejabatPengadaan()
+	{
+		$query = "SELECT id, name FROM " . $this->ms_user . " where id_role = 9 or id_role = 8 or id_role = 7 or id_role = 2";
+
+		$data = $this->db->query($query)->result_array();
+
+		$result = array();
+		foreach($data as $value)
+		{
+			if ($value['name'] == "Haryo") {
+                $value['name'] = "Kepala Procurement";
+            }
+			$result[$value['id']] = $value['name'];
+		}
+
+		return $result;
+		
+	}
 	
 	function getData($year){
-		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-
+		log_message('error', 'start_get_data');
 		$admin = $this->session->userdata('admin');
+		//print_r($admin); die;
 		if ($admin['id_role'] != in_array(7,8,9)) {
 			if ($admin['id_role'] == 6) {
 				$pic = " AND ms_fppbj.id_pic = ".$admin['id_user'];
@@ -25,11 +45,14 @@ class Pemaketan_model extends MY_Model{
 				        ms_fppbj.is_approved = 3 AND 
 				        ms_fppbj.is_reject = 0 AND 
 				        ms_fppbj.is_writeoff = 0 AND 
-				        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000)) AND ms_fppbj.del = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%"';
+				        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000) AND 
+				        (ms_fppbj.metode_pengadaan = 4 OR 
+				        ms_fppbj.metode_pengadaan = 2 OR 
+				        ms_fppbj.metode_pengadaan = 1)) AND ms_fppbj.del = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%"';
 			} if ($admin['id_role'] == 8) {
-				$get = 'WHERE ms_fppbj.del = 0 AND ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) ';
+				$get = 'WHERE ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
 			} if ($admin['id_role'] == 9) {
-				$get = 'WHERE ms_fppbj.del = 0 AND ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 ';
+				$get = 'WHERE ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
 			}
 		$query = "	SELECT  name,
 							count(*) AS total,
@@ -41,6 +64,10 @@ class Pemaketan_model extends MY_Model{
 		if($this->input->post('filter')){
 			$query .= $this->filter($form, $this->input->post('filter'), false);
 		}
+		
+		log_message('error', $query);
+		
+		log_message('error', 'end_get_data');
 		//echo $query;die;
 		$query .= " GROUP BY id_division ";
 		return $query;
@@ -69,6 +96,68 @@ class Pemaketan_model extends MY_Model{
 
 		return $data;
 	}
+	
+	function getDataRekap($form = "", $year = null)
+	{
+		if ($year > 0) {
+			//echo "Kondisi 1";
+			$query = "	SELECT  b.name AS division,
+								ms_fppbj.nama_pengadaan AS name,
+								YEAR(ms_fppbj.entry_stamp) as year,
+								ms_fppbj.id
+						FROM " . $this->fppbj . "
+						LEFT JOIN
+							tb_division b ON b.id=ms_fppbj.id_division
+						LEFT JOIN
+							ms_fp3 ON ms_fp3.id_fppbj = ms_fppbj.id
+						WHERE
+						(ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.del = 0 AND ms_fppbj.is_approved = 3 AND (ms_fppbj.idr_anggaran <= 100000000 OR (ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.metode_pengadaan = 3))
+                            OR  
+
+                            (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.del = 0 AND ms_fppbj.is_approved = 4 AND ms_fppbj.idr_anggaran > 100000000))
+
+                            OR
+
+                            (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.is_status = 2 AND ms_fppbj.del = 0)
+
+                            OR
+
+                            (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.is_status = 1 AND ms_fp3.status != 'hapus' AND ms_fppbj.del = 0)";
+			if ($this->input->post('filter')) {
+				$query .= $this->filter($form, $this->input->post('filter'), true);
+			}
+			$query .= " GROUP BY a.id";
+			//echo $query;
+		} else {
+			//echo "Kondisi 2";
+			$query = "	SELECT  ms_fppbj.nama_pengadaan AS name,
+								count(*) AS total,
+								YEAR(ms_fppbj.entry_stamp) as year,
+								ms_fppbj.id
+						FROM " . $this->fppbj . "
+						LEFT JOIN
+							ms_fp3 ON ms_fp3.id_fppbj = ms_fppbj.id
+						WHERE
+						(ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.del = 0 AND ms_fppbj.is_approved = 3 AND (ms_fppbj.idr_anggaran <= 100000000 OR (ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.metode_pengadaan = 3))
+                            OR  
+
+                            (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.del = 0 AND ms_fppbj.is_approved = 4 AND ms_fppbj.idr_anggaran > 100000000))
+
+                            OR
+
+                            (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.is_status = 2 AND ms_fppbj.del = 0)
+
+                            OR
+
+                            (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.is_status = 1 AND ms_fp3.status != 'hapus' AND ms_fppbj.del = 0)";
+			if ($this->input->post('filter')) {
+				$query .= $this->filter($form, $this->input->post('filter'), true);
+			}
+			$query .= " GROUP BY YEAR(ms_fppbj.entry_stamp)";
+		}
+		// print_r($query);
+		return $query;
+	}
 
 	function selectData($id){
 		$query = "SELECT 	
@@ -94,8 +183,6 @@ class Pemaketan_model extends MY_Model{
 	}
 
 	function getDataDivision($form=array(), $id_division="",$id_fppbj="0",$year = ""){
-		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-
 		$admin = $this->session->userdata('admin');
 		if ($admin['id_role'] != in_array(7,8,9)) {
 
@@ -106,23 +193,34 @@ class Pemaketan_model extends MY_Model{
 			}			
 
 			if ($year != '') {
-				$year_anggaran = " AND ms_fppbj.entry_stamp LIKE '%".$year."%'"; 
+				$year_anggaran = "ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND";
 			} else {
 				$year_anggaran = " "; 
 			}
 					
-			$where = "ms_fppbj.id_division = ".$id_division." $year_anggaran  AND	ms_fppbj.del=0 ".$pic;
+			if($id_division != '1')
+			{
+				$where_id_division = "ms_fppbj.id_division = " . $id_division . " AND ";
+			}
+			else
+			{
+				$where_id_division = " ";
+			}
+
+			$where = " $year_anggaran  ms_fppbj.del=0 " . $pic;
 		}if ($admin['id_role'] == 7) {
-			$where = 'ms_fppbj.del = 0 AND
-					ms_fppbj.is_status = 0 AND 
+			$where = 'ms_fppbj.is_status = 0 AND 
 			        ms_fppbj.is_approved = 3 AND 
 			        ms_fppbj.is_reject = 0 AND 
 			        ms_fppbj.is_writeoff = 0 AND 
-			        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000)) AND ms_fppbj.del = 0';
+			        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000) AND 
+			        (ms_fppbj.metode_pengadaan = 4 OR 
+			        ms_fppbj.metode_pengadaan = 2 OR 
+			        ms_fppbj.metode_pengadaan = 1)) AND ms_fppbj.del = 0';
 		} if ($admin['id_role'] == 8) {
-			$where = 'ms_fppbj.del = 0 AND ms_fppbj.is_status = 0 AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) ';
+			$where = 'ms_fppbj.is_status = 0 AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
 		} if ($admin['id_role'] == 9) {
-			$where = 'ms_fppbj.del = 0 AND ms_fppbj.is_status = 0 AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 ';
+			$where = 'ms_fppbj.is_status = 0 AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
 		} 
 		if ($id_fppbj == '0' || $id_fppbj == '') {
 			$id_fppbj = '';
@@ -130,7 +228,7 @@ class Pemaketan_model extends MY_Model{
 				$where = " ((ms_fppbj.tipe_pengadaan = 'jasa' AND ms_fppbj.is_approved = 1) OR (ms_fppbj.tipe_pengadaan = 'barang' AND ms_fppbj.is_approved = 0 AND ms_fppbj.id_division = 5) OR (ms_fppbj.del = 0 AND ms_fppbj.id_division = 5))";
 			}
 		} else {
-			$id_fppbj = 'AND ms_fppbj.id = '.$id_fppbj; 
+			$id_fppbj = 'ms_fppbj.id = ' . $id_fppbj . ' AND ';
 		}
 		$query = "	SELECT  ms_fppbj.nama_pengadaan,
 							tb_proc_method.name metode,
@@ -156,7 +254,7 @@ class Pemaketan_model extends MY_Model{
 					LEFT JOIN tb_proc_method ON ms_fppbj.metode_pengadaan = tb_proc_method.id
 					LEFT JOIN tr_note ON tr_note.id_fppbj=ms_fppbj.id AND tr_note.type = 'reject'
 					LEFT JOIN ms_fp3 fp3 ON fp3.id_fppbj=ms_fppbj.id
-					WHERE id_division =".$id_division." ".$id_fppbj." AND ".$where;
+					WHERE " . $where_id_division . " " . $id_fppbj . " " . $where;
 		// echo $query;die;
 		if($this->input->post('filter')){
 			$query .= $this->filter($form, $this->input->post('filter'), false);
@@ -164,6 +262,7 @@ class Pemaketan_model extends MY_Model{
 
 		$query .= " GROUP BY ms_fppbj.id ";
 		// print_r($query);die;
+		
 		return $query;
 	}
 

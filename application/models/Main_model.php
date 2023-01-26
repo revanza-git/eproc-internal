@@ -40,7 +40,7 @@ class Main_model extends CI_model
 						'is_active'		=>	$data['is_active'],
 						'app'			=>	'vms',
 						'type'			=>  'user',
-						'attempts' 		=> 	0,
+						// 'attempts' 		=> 	0,
 					);
 
 					$this->session->set_userdata('user', $set_session);
@@ -68,7 +68,7 @@ class Main_model extends CI_model
 						'app'			=>	'vms',
 						'app_type'		=>	$sql['type_app'],
 						'type'			=> 'admin',
-						'attempts' 		=> 	0,
+						// 'attempts' 		=> 	0,
 					);
 
 					$this->session->set_userdata('admin', $set_session);
@@ -127,20 +127,20 @@ class Main_model extends CI_model
 				}
 			}
 		} else {
-			$attempt = $this->session->userdata('attempts');
-            $attempt++;
-			$this->session->set_userdata('attempts', $attempt);
+			// $attempt = $this->session->userdata('attempts');
+            // $attempt++;
+			// $this->session->set_userdata('attempts', $attempt);
 
-			if ($attempt > 2) {
-				$query = "SELECT * FROM ms_login WHERE username = ?";
-				$data = $this->eproc_db->query($query, array($username))->row_array();
-				if ($data['type'] == 'admin') {
-					$this->session->set_tempdata('penalty', true, 600);
-				}else{
-					$this->session->set_tempdata('penalty', true, 300);
-				}
-				$this->session->set_userdata('attempts', 0);
-			}
+			// if ($attempt > 2) {
+			// 	$query = "SELECT * FROM ms_login WHERE username = ?";
+			// 	$data = $this->eproc_db->query($query, array($username))->row_array();
+			// 	if ($data['type'] == 'admin') {
+			// 		$this->session->set_tempdata('penalty', true, 600);
+			// 	}else{
+			// 		$this->session->set_tempdata('penalty', true, 300);
+			// 	}
+			// 	$this->session->set_userdata('attempts', 0);
+			// }
 			return false;
 		}
 	}

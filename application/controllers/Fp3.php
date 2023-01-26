@@ -8,9 +8,15 @@ class Fp3 extends MY_Controller
 	public $alias 		= 'ms_fp3';
 	public $module 		= 'kurs';
 
+	public $current_year = 2022;
+	
 	public function __construct()
-	{
+	{	
 		parent::__construct();
+		log_message('error', 'start year');
+        log_message('error', $this->current_year);
+        log_message('error', 'end year');
+		
 		$this->load->model('Fp3_model', 'fp3');
 		$this->load->model('Fppbj_model', 'fm');
 		$this->load->model('Main_model', 'mm');
@@ -195,9 +201,148 @@ class Fp3 extends MY_Controller
 		echo json_encode($return);
 	}
 
-	public function insert()
+	public function insert($year=null)
 	{
-		$this->form = $this->form;
+		if (isset($year)) {
+            $this->form = array(
+                'form' => array(
+                    array(
+                        'field'	=> 	'status',
+                        'type'	=>	'fp3',
+                        'label'	=>	'FP3',
+                    ),
+                    array(
+                        'field'	=> 	'id_fppbj',
+                        'type'	=>	'dropdown',
+                        'label'	=>	'Nama Pengadaan (Lama)',
+                        'source' =>  $this->fp3->getFppbj("", $year),
+                        'rules' =>	'required'
+                    ),
+                    array(
+                        'field'	=> 	'nama_pengadaan',
+                        'type'	=>	'text',
+                        'label'	=>	'Nama Pengadaan (Baru)',
+                    ),
+                    array(
+                        'field'	=> 	'no_pr_lama',
+                        'type'	=>	'text',
+                        'label'	=>	'Nomor PR (Lama)',
+                    ),
+                    array(
+                        'field'	=> 	'no_pr',
+                        'type'	=>	'text',
+                        'label'	=>	'Nomor PR (Baru)',
+                    ),
+                    array(
+                        'field'	=> 	'metode_pengadaan_lama',
+                        'type'	=>	'text',
+                        'label'	=>	'Metode Pengadaan (Lama)'
+                    ), array(
+                        'field'	=> 	'metode_pengadaan',
+                        'type'	=>	'dropdown',
+                        'label'	=>	'Metode Pengadaan (Baru)',
+                        'source' =>	$this->mm->getProcMethod(),
+                    ),
+                    // array(
+                    // 	'field'	=> 	'idr_anggaran_lama',
+                    // 	'type'	=>	'currency',
+                    // 	'label'	=>	'Anggaran (Lama)',
+                    // ),
+                    // array(
+                    // 	'field'	=> 	'idr_anggaran',
+                    // 	'type'	=>	'currency',
+                    // 	'label'	=>	'Anggaran (Baru)',
+                    // ),
+                    array(
+                        'field'	=> 	array('jwpp_start_lama', 'jwpp_end_lama'),
+                        'type'	=>	'date_range',
+                        'label'	=>	'Masa Penyelesaian Pekerjaan (Lama)',
+                    ),
+                    array(
+                        'field'	=> 	array('jwpp_start', 'jwpp_end'),
+                        'type'	=>	'date_range',
+                        'label'	=>	'Masa Penyelesaian Pekerjaan (Baru)',
+                    ), array(
+                        'field'	=> 	'desc_lama',
+                        'type'	=>	'textarea',
+                        'label'	=>	'Keterangan (Lama)',
+                    ), array(
+                        'field'	=> 	'desc',
+                        'type'	=>	'textarea',
+                        'label'	=>	'Keterangan (Baru)',
+                    ), array(
+                        'field' => 'kak_lampiran_lama',
+                        'type'  => 'file',
+                        'label' => 'KAK Lampiran (Lama)',
+                        'upload_path' => base_url('assets/lampiran/kak_lampiran/'),
+                        'upload_url' => site_url('fp3/upload_lampiran'),
+                        'allowed_types' => '*'
+                    ), array(
+                        'field' => 'kak_lampiran',
+                        'type'  => 'file',
+                        'label' => 'KAK Lampiran (Baru)',
+                        'upload_path' => base_url('assets/lampiran/kak_lampiran/'),
+                        'upload_url' => site_url('fp3/upload_lampiran'),
+                        'allowed_types' => '*'
+                    ),
+                    array(
+                        'field' => 'pr_lampiran_lama',
+                        'type'  => 'file',
+                        'label' => 'PR Lampiran (Lama)',
+                        'upload_path' => base_url('assets/lampiran/pr_lampiran/'),
+                        'upload_url' => site_url('fp3/upload_lampiran'),
+                        'allowed_types' => '*'
+                    ), array(
+                        'field' => 'pr_lampiran',
+                        'type'  => 'file',
+                        'label' => 'PR Lampiran (Baru)',
+                        'upload_path' => base_url('assets/lampiran/pr_lampiran/'),
+                        'upload_url' => site_url('fp3/upload_lampiran'),
+                        'allowed_types' => '*'
+                    ), array(
+                        'field'	=> 	'desc_batal',
+                        'type'	=>	'textarea',
+                        'label'	=>	'Justifikasi Batal',
+                    ), array(
+                        'field'	=> 	'fp3_type',
+                        'type'	=>	'hidden',
+                    )
+                ),
+
+                'successAlert' => 'Berhasil mengubah data!',
+                'filter' => array(
+                    array(
+                        'field'	=> 	'a|status',
+                        'type'	=>	'text',
+                        'label'	=>	'Status'
+                    ), array(
+                        'field'	=> 	'a|id_fppbj',
+                        'type'	=>	'dropdown',
+                        'label'	=>	'Nama Pengadaan B/J',
+                        'source' =>  $this->fp3->getFppbj(),
+                        'rules' => 	'required',
+                    ), array(
+                        'field'	=> 	'a|nama_pengadaan',
+                        'type'	=>	'text',
+                        'label'	=>	'Nama Pengadaan',
+                        'rules' => 	'required',
+                    ), array(
+                        'field'	=> 	'a|metode_pengadaan',
+                        'type'	=>	'text',
+                        'label'	=>	'Metode Pengadaan',
+                        'rules' => 	'required',
+                    ), array(
+                        'field'	=> 	'a|jadwal_pengadaan',
+                        'type'	=>	'dateTime',
+                        'label'	=>	'Masa Penyelesaian Pekerjaan',
+                        'rules' => 	'required',
+                    )
+
+                )
+            );
+        } else {
+            $this->form = $this->form;
+        }
 		foreach ($this->form['form'] as $key => $element) {
 			if ($this->form['form'][$key]['type'] == 'date_range') {
 				$_value = array();
@@ -258,7 +403,7 @@ class Fp3 extends MY_Controller
 		$fp3 = $this->fp3->selectData($id);
 		$fppbj = $this->fm->selectData($fp3['id_fppbj']);
 
-		$param_ = array('is_status' => 1, 'is_approved' => $param_);
+		$param_ = array('is_status' => 1, 'is_approved' => $param_, 'pejabat_pengadaan_id' => $post['pejabat_pengadaan_id']);
 		$data 	= $this->mm->approve($table, $id, $param_);
 
 		$division = $this->get_email_division($this->session->userdata('admin')['id_division']);
@@ -276,6 +421,7 @@ class Fp3 extends MY_Controller
 		$fp3['id_pengadaan'] = $fp3['id_fppbj'];
 		$fp3['approved_by']  = $this->session->userdata('admin')['id_user'];
 		$tgl_approval = $post['tgl_approval'];
+		$fp3['pejabat_pengadaan_id'] = $post['pejabat_pengadaan_id'];
 		$fp3['date']	= $tgl_approval . ' ' . date('H:i:s');
 
 		unset($fp3['id_fppbj']);
@@ -407,6 +553,11 @@ class Fp3 extends MY_Controller
 					'type'	=>	'text',
 					'label'	=>	'PIC ',
 				),
+				array(
+					'field' => 'pejabat_pengadaan_id',
+					'type'	=> 'hidden',
+					'label'	=> '',
+				),
 			)
 		);
 		$admin = $this->session->userdata('admin');
@@ -436,7 +587,7 @@ class Fp3 extends MY_Controller
 			$btn_reject = array(
 				array(
 					'type' 	=> 'reject',
-					'label' => '<i style="line-height:25px;" class="fas fa-thumbs-down"></i>&nbsp;Tolak Data'
+					'label' => '<i style="line-height:25px;" class="fas fa-thumbs-down"></i>&nbsp;Revisi Data'
 				)
 			);
 			$btn_cancel = array(
@@ -445,6 +596,8 @@ class Fp3 extends MY_Controller
 					'label' => 'Tutup'
 				)
 			);
+			
+			log_message('error', $admin['id_role']);
 
 			if ($dataFP3['is_approved'] == 0 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 4) {
 				$this->form['form'][16]['type'] = 'date';
@@ -455,13 +608,16 @@ class Fp3 extends MY_Controller
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
 				$this->form['form'][16]['value'] = date('Y-m-d');
+				$this->form['form'][18]['type'] = 'dropdown';
+				$this->form['form'][18]['label'] = 'Pilih Pejabat Pengadaan';
+				$this->form['form'][18]['source'] = $this->pm->pejabatPengadaan();	
 				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
 			} else if ($dataFP3['is_approved'] == 2 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 2) {
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
 				$this->form['form'][16]['value'] = date('Y-m-d');
 				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 7 && ($dataFP3['idr_anggaran'] > '100000000' && $dataFP3['idr_anggaran'] <= '1000000000')) {
+			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 7) {
 				// && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')))
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
@@ -492,7 +648,7 @@ class Fp3 extends MY_Controller
 		$modelAlias = $this->modelAlias;
 		$getData   = $this->$modelAlias->selectData($id);
 		foreach ($this->form['form'] as $key => $value) {
-			if ($key != 16) {
+			if ($key != 16 && $key != 18) {	
 				$this->form['form'][$key]['readonly'] = true;
 			}
 			$getData[$value['field']] = ($getData[$value['field']]) ? $getData[$value['field']] : "-";
@@ -896,7 +1052,7 @@ class Fp3 extends MY_Controller
 			$to .= ' ' . $value['email'];
 		}
 
-		$subject = $fppbj['nama_pengadaan'] . ' di tolak oleh ' . $this->session->userdata('admin')['name'];
+		$subject = $fppbj['nama_pengadaan'] . ' di revisi oleh ' . $this->session->userdata('admin')['name'];
 		$message = $save['keterangan'];
 
 		$activity = $this->session->userdata('admin')['name'] . " menolak pengadaan : " . $fppbj['nama_pengadaan'];

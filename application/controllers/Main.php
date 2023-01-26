@@ -50,11 +50,11 @@ class Main extends CI_Controller
 	public function check()
 	{
 		if ($this->input->post('username') && $this->input->post('password')) {
-			if($this->session->tempdata('penalty')){
-				$message = "Akun telah terkunci, harap tunggu beberapa menit lagi untuk login";
-				echo "<script type='text/javascript'>alert('$message');</script>";
-				$this->load->view('template/layout-login-nr');
-			}else{
+			// if($this->session->tempdata('penalty')){
+			// 	$message = "Akun telah terkunci, harap tunggu beberapa menit lagi untuk login";
+			// 	echo "<script type='text/javascript'>alert('$message');</script>";
+			// 	$this->load->view('template/layout-login-nr');
+			// }else{
 				$is_logged = $this->mm->cek_login();
 				if ($is_logged) {
 					if ($this->session->userdata('user')) {
@@ -67,7 +67,7 @@ class Main extends CI_Controller
 						$type 			= 'user';
 						$app 			= $user['app'];
 	
-						header("Location:https://eproc.nusantararegas.com/eproc_pengadaan/main/login_user/" . $name . "/" . $id_user . "/" . $id_sbu . "/" . $vendor_status . "/" . $is_active . "/" . $type . "/" . $app);
+						header("Location:https://deveproc.nusantararegas.com/eproc_pengadaan/main/login_user/" . $name . "/" . $id_user . "/" . $id_sbu . "/" . $vendor_status . "/" . $is_active . "/" . $type . "/" . $app);
 					} else if ($this->session->userdata('admin')) {
 						if ($this->session->userdata('admin')['app_type'] == 1) {
 							$admin = $this->session->userdata('admin');
@@ -90,7 +90,7 @@ class Main extends CI_Controller
 					echo "<script type='text/javascript'>alert('$message');</script>";
 					$this->load->view('template/layout-login-nr');
 				}
-			}
+			// }
 		}
 	}
 
