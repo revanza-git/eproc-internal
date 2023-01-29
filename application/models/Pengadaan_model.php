@@ -26,7 +26,7 @@ class Pengadaan_model extends CI_Model {
 	{
 		$query = "	SELECT  nama_pengadaan AS name,
 							count(*) AS total,
-							year_anggaran AS year,
+							YEAR(entry_stamp) AS year,
 							ms_fppbj.id
 					FROM ".$this->fppbj."
 					WHERE ms_fppbj.del = 0 ";

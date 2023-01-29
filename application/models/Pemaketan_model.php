@@ -31,7 +31,15 @@ class Pemaketan_model extends MY_Model{
 	function getData($year){
 		log_message('error', 'start_get_data');
 		$admin = $this->session->userdata('admin');
-		//print_r($admin); die;
+
+		$years = explode(',', $year);
+
+		if (count($years) == 1) {
+			$query_year = "ms_fppbj.entry_stamp BETWEEN '".$years[0]."-01-01 00:00:00' AND '".$years[0]."-12-31 23:59:59'";
+		} else {
+			$query_year = "ms_fppbj.entry_stamp BETWEEN '".$years[0]."-01-01 00:00:00' AND '".$years[count($years)-1]."-12-31 23:59:59'";
+		}
+		
 		if ($admin['id_role'] != in_array(7,8,9)) {
 			if ($admin['id_role'] == 6) {
 				$pic = " AND ms_fppbj.id_pic = ".$admin['id_user'];
@@ -39,20 +47,20 @@ class Pemaketan_model extends MY_Model{
 				$pic = " ";
 			}
 
-			$get = "WHERE ms_fppbj.del = 0 AND ms_fppbj.entry_stamp LIKE '%".$year."%' ".$pic;
+			$get = "WHERE ms_fppbj.del = 0 AND ".$query_year." ".$pic;
 		}if ($admin['id_role'] == 7) {
-				$get = 'WHERE ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND 
+				$get = 'WHERE ms_fppbj.is_status = 0 AND '.$query_year.' AND 
 				        ms_fppbj.is_approved = 3 AND 
 				        ms_fppbj.is_reject = 0 AND 
 				        ms_fppbj.is_writeoff = 0 AND 
 				        ((ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.idr_anggaran <= 1000000000) AND 
 				        (ms_fppbj.metode_pengadaan = 4 OR 
 				        ms_fppbj.metode_pengadaan = 2 OR 
-				        ms_fppbj.metode_pengadaan = 1)) AND ms_fppbj.del = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%"';
+				        ms_fppbj.metode_pengadaan = 1)) AND ms_fppbj.del = 0 AND '.$query_year;
 			} if ($admin['id_role'] == 8) {
-				$get = 'WHERE ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
+				$get = 'WHERE ms_fppbj.is_status = 0 AND '.$query_year.' AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND (ms_fppbj.idr_anggaran > 1000000000 AND ms_fppbj.idr_anggaran <= 10000000000) AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
 			} if ($admin['id_role'] == 9) {
-				$get = 'WHERE ms_fppbj.is_status = 0 AND ms_fppbj.entry_stamp LIKE "%'.$year.'%" AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
+				$get = 'WHERE ms_fppbj.is_status = 0 AND '.$query_year.' AND ms_fppbj.is_approved = 3 AND ms_fppbj.is_reject = 0 AND ms_fppbj.is_writeoff = 0 AND ms_fppbj.idr_anggaran >= 10000000000 AND (ms_fppbj.metode_pengadaan = 4 OR ms_fppbj.metode_pengadaan = 2 OR ms_fppbj.metode_pengadaan = 1)';
 			}
 		$query = "	SELECT  name,
 							count(*) AS total,
@@ -193,7 +201,13 @@ class Pemaketan_model extends MY_Model{
 			}			
 
 			if ($year != '') {
-				$year_anggaran = "ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND";
+				$years = explode(',', $year);
+
+				if (count($years) == 1) {
+					$year_anggaran = "ms_fppbj.entry_stamp BETWEEN '".$years[0]."-01-01 00:00:00' AND '".$years[0]."-12-31 23:59:59' AND";
+				} else {
+					$year_anggaran = "ms_fppbj.entry_stamp BETWEEN '".$years[0]."-01-01 00:00:00' AND '".$years[count($years)-1]."-12-31 23:59:59' AND";
+				}
 			} else {
 				$year_anggaran = " "; 
 			}
