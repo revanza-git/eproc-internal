@@ -1,7 +1,6 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MY_Controller extends CI_Controller
-{
+class MY_Controller extends CI_Controller{
 	public $id_client;
 
 	public $_sideMenu;
@@ -24,8 +23,7 @@ class MY_Controller extends CI_Controller
 
 	public $eproc_db;
 
-	function __construct()
-	{
+	function __construct(){
 		parent::__construct();
 		$this->load->library('session');
 		$this->_sideMenu = array();
@@ -37,13 +35,12 @@ class MY_Controller extends CI_Controller
 			}
 		}
 		$this->load->library('session');
-		$this->eproc_db = $this->load->database('eproc', true);
+		$this->eproc_db = $this->load->database('eproc',true);
 	}
 
-	function index($id = null)
-	{
+	function index($id = null){
 
-		/*
+	/*
 	| -------------------------------------------------------------------
 	|  Basic Structure of pages
 	| -------------------------------------------------------------------
@@ -51,12 +48,12 @@ class MY_Controller extends CI_Controller
 		$this->isAdmin();
 		$this->breadcrumb = $this->breadcrumb->generate();
 		$this->load->library('sideMenu', $this->_sideMenu);
-
+		
 		$user 	= $this->session->userdata('user');
 		$admin 	= $this->session->userdata('admin');
 		$data = array(
 			'user' 			=> ($user) ? $user['name'] : $admin['role_name'],
-			'sideMenu' 		=> $this->sidemenu->generate($this->activeMenu),
+			'sideMenu' 		=> $this->sidemenu->generate($this->activeMenu) ,
 			'breadcrumb' 	=> $this->breadcrumb,
 			'header' 		=> $this->header,
 			'content' 		=> $this->content,
@@ -65,14 +62,13 @@ class MY_Controller extends CI_Controller
 		$this->parser->parse('template/base', $data);
 	}
 
-	function formFilter()
-	{
+	function formFilter(){
 		$return['button'] = array(
 			array(
 				'type' => 'button',
 				'label' => 'Filter',
 				'class' => 'btn-filter'
-			),
+			) ,
 			array(
 				'type' => 'reset',
 				'label' => 'Reset'
@@ -82,11 +78,10 @@ class MY_Controller extends CI_Controller
 		echo json_encode($return);
 	}
 
-	function isAdmin()
-	{
+	function isAdmin(){
 		$admin = $this->session->userdata('admin');
 		if ($this->session->userdata('admin')) {
-
+			
 			/*
 			| -------------------------------------------------------------------
 			|  Structure of your side menu
@@ -94,13 +89,13 @@ class MY_Controller extends CI_Controller
 			*/
 
 			if ($admin['id_division'] == 5 && $admin['id_role'] == 4) {
-				$url = base_url('pengadaan');
-			} else {
-				$url = base_url('pemaketan/division/' . $admin['id_division']);
+				$url = base_url('pengadaan');	
+			}else{
+				$url = base_url('pemaketan/division/'.$admin['id_division']);
 			}
 
 			if ($admin['id_division'] != 1) {
-				$fp3 = site_url('fp3/index/' . $admin['id_division']);
+				$fp3 = site_url('fp3/index/'.$admin['id_division']);
 			} else {
 				$fp3 = site_url('pengadaan/fp3');
 			}
@@ -110,7 +105,7 @@ class MY_Controller extends CI_Controller
 					'group' => 'dashboard',
 					'title' => 'Beranda',
 					'icon' => 'home',
-					'url' => site_url(),
+					'url' => site_url() ,
 					'role' => array(
 						1,
 						2,
@@ -136,7 +131,7 @@ class MY_Controller extends CI_Controller
 				array(
 					'title' => 'Perencanaan Pengadaan',
 					'icon' => 'cubes',
-					'url' => base_url('pengadaan'),
+					'url' => base_url('pengadaan') ,
 					'group' => 'pemaketan',
 					'url' => '#',
 					'role' => array(
@@ -148,10 +143,10 @@ class MY_Controller extends CI_Controller
 						8,
 						9,
 						10
-					),
+					) ,
 					'list' => array(
 						array(
-							'url' => base_url('pengadaan'),
+							'url' => base_url('pengadaan') ,
 							'title' => 'Daftar FPPBJ',
 							'role' => array(
 								1,
@@ -165,7 +160,7 @@ class MY_Controller extends CI_Controller
 							),
 						),
 						array(
-							'url' => base_url('perencanaan/rekap'),
+							'url' => base_url('perencanaan/rekap') ,
 							'title' => 'Rekap Perencanaan',
 							'role' => array(
 								1,
@@ -175,12 +170,12 @@ class MY_Controller extends CI_Controller
 							),
 						)
 					)
-				),
+				) ,
 				array(
 					'title' => 'FP3',
 					'icon' => 'table',
 					'group' => 'FP3',
-					'url' => $fp3,
+					'url' => $fp3 ,
 					'role' => array(
 						2,
 						3,
@@ -190,25 +185,25 @@ class MY_Controller extends CI_Controller
 						7,
 						8,
 						9
-					),
-				),
+					) ,
+				) ,
 				array(
 					'title' => 'Master',
 					'icon' => 'database',
 					'url' => '#',
 					'role' => array(
 						1
-					),
+					) ,
 					'list' => array(
 						array(
-							'url' => site_url('master/kurs'),
+							'url' => site_url('master/kurs') ,
 							'title' => 'Kurs',
 							'role' => array(
 								1
 							)
 						),
 						array(
-							'url' => site_url('master/user'),
+							'url' => site_url('master/user') ,
 							'title' => 'User',
 							'role' => array(
 								1
@@ -220,16 +215,16 @@ class MY_Controller extends CI_Controller
 					'title' => 'Riwayat Aktivitas',
 					'icon' => 'clock',
 					'group' => 'Riwayat Aktivitas',
-					'url' => base_url('log'),
+					'url' => base_url('log') ,
 					'role' => array(
 						1
-					),
-				),
+					) ,
+				) ,
 				array(
 					'title' => 'Ke aplikasi pengadaan B/J',
 					'icon' => 'sign-in-alt',
 					'group' => 'Ke aplikasi pengadaan B/J',
-					'url' => base_url('auth/to_vms'),
+					'url' => base_url('App') ,
 					'role' => array(
 						1,
 						2,
@@ -240,14 +235,13 @@ class MY_Controller extends CI_Controller
 						7,
 						8,
 						9
-					),
+					) ,
 				)
 			);
 		}
 	}
 
-	public function validation($form = null)
-	{
+	public function validation($form = null){
 
 		ob_start();
 		// print_r($form);die;
@@ -258,24 +252,26 @@ class MY_Controller extends CI_Controller
 		}
 
 		if ($this->form_validation->run() == FALSE) {
-
+			
 			$return['status'] = 'error';
-			foreach ($form as $value) {
+			foreach($form as $value) {
 				if ($value['type'] == 'file') {
 					$return['file'][$value['field']] = $this->session->userdata($value['field']);
 				}
 
 				if ($value['type'] == 'date_range' && $value['rules'] == 'required') {
-
-					$return['form'][$value['field'][0]] = $value['label'] . ' harus diisi';
-					$return['form'][$value['field'][1]] = $value['label'] . ' harus diisi';
-				} else {
+					
+					$return['form'][$value['field'][0]] = $value['label'].' harus diisi';
+					$return['form'][$value['field'][1]] = $value['label'].' harus diisi';
+				}
+				else {
 					$return['form'][$value['field']] = form_error($value['field']);
 				}
 			}
 
 			$_r = false;
-		} else {
+		}
+		else {
 			$return['status'] = 'success';
 			$_r = true;
 		}
@@ -298,7 +294,7 @@ class MY_Controller extends CI_Controller
 			array(
 				'type' => 'submit',
 				'label' => 'Simpan',
-			),
+			) ,
 			array(
 				'type' => 'cancel',
 				'label' => 'Batal'
@@ -306,14 +302,13 @@ class MY_Controller extends CI_Controller
 		);
 		echo json_encode($this->form);
 	}
-	public function insertStep()
-	{
+	public function insertStep(){
 		$this->formWizard['url'] = $this->insertUrl;
 		$this->formWizard['button'] = array(
 			array(
 				'type' => 'submit',
 				'label' => 'Simpan',
-			),
+			) ,
 			array(
 				'type' => 'cancel',
 				'label' => 'Batal'
@@ -336,19 +331,19 @@ class MY_Controller extends CI_Controller
 		}
 	}
 
-	public function edit($id = null)
-	{
+	public function edit($id = null){
 
 		$modelAlias = $this->modelAlias;
 		$data = $this->$modelAlias->selectData($id);
-
-		foreach ($this->form['form'] as $key => $element) {
+		
+		foreach($this->form['form'] as $key => $element) {
 			$this->form['form'][$key]['value'] = $data[$element['field']];
-			if ($this->form['form'][$key]['type'] == 'date_range') {
+			if($this->form['form'][$key]['type']=='date_range'){
 				$_value = array();
-
+				
 				foreach ($this->form['form'][$key]['field'] as $keys => $values) {
 					$_value[] = $data[$values];
+					
 				}
 				$this->form['form'][$key]['value'] = $_value;
 			}
@@ -360,7 +355,7 @@ class MY_Controller extends CI_Controller
 			array(
 				'type' => 'submit',
 				'label' => 'Ubah'
-			),
+			) ,
 			array(
 				'type' => 'cancel',
 				'label' => 'Batal'
@@ -369,8 +364,7 @@ class MY_Controller extends CI_Controller
 		echo json_encode($this->form);
 	}
 
-	public function update($id)
-	{
+	public function update($id){
 		$modelAlias = $this->modelAlias;
 		if ($this->validation()) {
 			$save = $this->input->post();
@@ -381,41 +375,40 @@ class MY_Controller extends CI_Controller
 			}
 		}
 	}
-
-	public function getSingleData($id)
-	{
-		$user  = $this->session->userdata('user');
-		$modelAlias = $this->modelAlias;
-		$getData   = $this->$modelAlias->selectData($id);
+	
+	public function getSingleData($id){
+        $user  = $this->session->userdata('user');
+        $modelAlias = $this->modelAlias;
+        $getData   = $this->$modelAlias->selectData($id);
 		// print_r($getData);
-		foreach ($this->form['form'] as $key => $value) {
+        foreach($this->form['form'] as $key => $value){
 			$this->form['form'][$key]['readonly'] = TRUE;
-			$getData[$value['field']] = ($getData[$value['field']]) ? $getData[$value['field']] : "-";
-			$this->form['form'][$key]['value'] = $getData[$value['field']];
-
-			if ($value['type'] == 'date_range') {
-				foreach ($value['field'] as $keyField => $rowField) {
-					$this->form['form'][$key]['value'][] = $getData[$rowField];
-				}
-			}
-			if ($value['type'] == 'dateperiod') {
+			$getData[$value['field']] = ($getData[$value['field']]) ? $getData[$value['field']] : "-" ;
+            $this->form['form'][$key]['value'] = $getData[$value['field']];
+           
+            if($value['type']=='date_range'){
+                foreach($value['field'] as $keyField =>$rowField){
+                    $this->form['form'][$key]['value'][] = $getData[$rowField];
+                }
+            }
+            if($value['type']=='dateperiod'){
 				$dateperiod = json_decode($getData[$value['field']]);
-				$this->form['form'][$key]['value'] = date('d M Y', strtotime($dateperiod->start)) . " sampai " . date('d M Y', strtotime($dateperiod->end));
-			}
-			if ($value['type'] == 'money') {
-				$this->form['form'][$key]['value'] = number_format($getData[$value['field']]);
-			}
-			if ($value['type'] == 'currency') {
-				$this->form['form'][$key]['value'] = number_format($getData[$value['field']], 2);
-			}
-			if ($value['type'] == 'money_asing') {
-				$this->form['form'][$key]['value'][] = $getData[$value['field'][0]];
-				$this->form['form'][$key]['value'][] = number_format($getData[$value['field'][1]]);
-			}
-		}
+				$this->form['form'][$key]['value'] = date('d M Y', strtotime($dateperiod->start))." sampai ".date('d M Y', strtotime($dateperiod->end));
+            }
+            if($value['type']=='money'){
+                    $this->form['form'][$key]['value'] = number_format($getData[$value['field']]);
+            }
+            if($value['type']=='currency'){
+                    $this->form['form'][$key]['value'] = number_format($getData[$value['field']],2);
+            }
+            if($value['type']=='money_asing'){
+                $this->form['form'][$key]['value'][] = $getData[$value['field'][0]];
+                $this->form['form'][$key]['value'][] = number_format($getData[$value['field'][1]]);
+            }
+        }
 
-		echo json_encode($this->form);
-	}
+        echo json_encode($this->form);
+    }
 
 	public function approveOvertimeUser($id)
 	{
@@ -430,7 +423,8 @@ class MY_Controller extends CI_Controller
 		$modelAlias = $this->modelAlias;
 		if ($this->$modelAlias->delete($id)) {
 			$return['status'] = 'success';
-		} else {
+		}
+		else {
 			$return['status'] = 'error';
 		}
 
@@ -444,7 +438,7 @@ class MY_Controller extends CI_Controller
 			array(
 				'type' => 'delete',
 				'label' => 'Hapus'
-			),
+			) ,
 			array(
 				'type' => 'cancel',
 				'label' => 'Batal'
@@ -455,17 +449,17 @@ class MY_Controller extends CI_Controller
 
 	public function upload_lampiran()
 	{
-
-		foreach ($_FILES as $key => $row) {
-			if (is_array($row['name'])) {
+		
+		foreach($_FILES as $key => $row) {
+			if(is_array($row['name'])){
 				foreach ($row['name'] as $keys => $values) {
 					$file_name = $row['name'] = $key . '_' . name_generator($_FILES[$key]['name'][$keys]);
-					$_FILES['files']['name'] = $file_name;
-					$_FILES['files']['type'] = $_FILES[$key]['type'][$keys];
-					$_FILES['files']['tmp_name'] = $_FILES[$key]['tmp_name'][$keys];
-					$_FILES['files']['error'] = $_FILES[$key]['error'][$keys];
-					$_FILES['files']['size'] = $_FILES[$key]['size'][$keys];
-
+					 $_FILES['files']['name']= $file_name;
+			        $_FILES['files']['type']= $_FILES[$key]['type'][$keys];
+			        $_FILES['files']['tmp_name']= $_FILES[$key]['tmp_name'][$keys];
+			         $_FILES['files']['error']= $_FILES[$key]['error'][$keys];
+			         $_FILES['files']['size']= $_FILES[$key]['size'][$keys];
+					
 					$config['upload_path'] = './assets/lampiran/temp/';
 					$config['allowed_types'] = $_POST['allowed_types'];
 					$this->load->library('upload');
@@ -474,7 +468,8 @@ class MY_Controller extends CI_Controller
 					if (!$this->upload->do_upload('files')) {
 						$return['status'] = 'error';
 						$return['message'] = $this->upload->display_errors('', '');
-					} else {
+					}
+					else {
 						$return['status'] = 'success';
 						$return['upload_path'] = base_url('assets/lampiran/temp/' . $file_name);
 						$return['file_name'] = $file_name;
@@ -482,7 +477,8 @@ class MY_Controller extends CI_Controller
 
 					echo json_encode($return);
 				}
-			} else {
+				
+			}else{
 				$file_name = $_FILES[$key]['name'] = $key . '_' . name_generator($_FILES[$key]['name']);
 				$config['upload_path'] = './assets/lampiran/temp/';
 				$config['allowed_types'] = $_POST['allowed_types'];
@@ -491,7 +487,8 @@ class MY_Controller extends CI_Controller
 				if (!$this->upload->do_upload($key)) {
 					$return['status'] = 'error';
 					$return['message'] = $this->upload->display_errors('', '');
-				} else {
+				}
+				else {
 					$return['status'] = 'success';
 					$return['upload_path'] = base_url('assets/lampiran/temp/' . $file_name);
 					$return['file_name'] = $file_name;
@@ -499,11 +496,11 @@ class MY_Controller extends CI_Controller
 
 				echo json_encode($return);
 			}
+			
 		}
 	}
 
-	public function do_upload($field, $db_name = '')
-	{
+	public function do_upload($field, $db_name = ''){
 		$file_name = $_FILES[$db_name]['name'] = $db_name . '_' . name_generator($_FILES[$db_name]['name']);
 		$config['upload_path'] = './assets/lampiran/' . $db_name . '/';
 		$config['allowed_types'] = 'pdf|jpeg|jpg|png|gif';
@@ -513,7 +510,8 @@ class MY_Controller extends CI_Controller
 			$_POST[$db_name] = $file_name;
 			$this->form_validation->set_message('do_upload', $this->upload->display_errors('', ''));
 			return false;
-		} else {
+		}
+		else {
 			$this->session->set_userdata($db_name, $file_name);
 			$_POST[$db_name] = $file_name;
 			return true;
@@ -522,8 +520,8 @@ class MY_Controller extends CI_Controller
 
 	public function deleteTemp($save, $lastData = null)
 	{
-
-		foreach ($this->form['form'] as $key => $value) {
+		
+		foreach($this->form['form'] as $key => $value) {
 
 			if ($value['type'] == 'file') {
 				if ($lastData != null && ($save[$value['field']] != $lastData[$value['field']])) {
@@ -543,13 +541,11 @@ class MY_Controller extends CI_Controller
 	}
 
 
-	public function send_note($to, $from, $value, $id_fppbj, $document)
-	{
-		return $this->db->insert('tr_note', array('entry_by' => $from, 'id_user' => $to, 'value' => $value, 'document' => $document, 'id_fppbj' => $id_fppbj, 'is_active' => 1));
+	public function send_note($to, $from, $value,$id_fppbj,$document){
+		return $this->db->insert('tr_note', array('entry_by' => $from, 'id_user' => $to, 'value' => $value, 'document' => $document,'id_fppbj' => $id_fppbj,'is_active'=>1));
 	}
 
-	public function send_mail($to, $subject, $message, $link = "#", $type = '')
-	{
+	public function send_mail($to, $subject, $message, $link="#",$type=''){	
 		/* 
 		| -------------------------------------------------------------------
 		| Push Mail Notification 
@@ -562,7 +558,7 @@ class MY_Controller extends CI_Controller
 		|	$link		= {link to application (if exist)};
 		|
 		*/
-
+		
 		$admin = $this->session->userdata('admin');
 		// print_r($this->session->userdata('admin'));
 		/*if ($to == '') {
@@ -572,25 +568,25 @@ class MY_Controller extends CI_Controller
 		// $subject = "Pembuatan Usulan Komag Baru";
 		// $message = "<b>".$admin['name']."</b> Telah membuat usulan komag baru.";
 		$link = "location.href='asd';";
-		$config = array(
+		$config = Array(
 			'protocol' 	=> 'smtp',
-			'smtp_host' => 'mail.nusantararegas.com',
-			'smtp_port' => 587,
-			'smtp_user' => 'vms-noreply@nusantararegas.com',
-			'smtp_pass' => 'Nus@nt@r@t3rd3p@n',
-			'mailtype'  => 'html',
+			'smtp_host' => 'mail.pertamina.com',
+			'smtp_port' => 25,
+			'smtp_user' => 'portal.nr@pertamina.com',
+			'smtp_pass' => 'PGE@Wm8iltpi1',
+			'mailtype'  => 'html', 
 			'charset'   => 'utf-8',
-			'smtp_crypto' => 'tls',
+			'smtp_crypto' => 'tls',		
 
 			'crlf' => "\r\n",
-			// 'charset'   => 'iso-8859-1',
+				// 'charset'   => 'iso-8859-1',
 		);
-		$this->load->library('email');
+        $this->load->library('email');
 
-		$this->email->initialize($config);
+        $this->email->initialize($config);
 		$this->email->set_newline("\r\n");
 		// Set to, from, message
-		$this->email->from('no-reply@nusantararegas.com', 'System aplikasi kelogistikan');
+		$this->email->from('portal.nr@pertamina.com', 'E-Proc Nusantara Regas');
 
 		$html = '<html xmlns="http://www.w3.org/1999/xhtml">
 					<head>
@@ -666,7 +662,7 @@ class MY_Controller extends CI_Controller
 									padding-top: 25px;
 									color: #000000;
 									font-family: sans-serif;" class="header">
-										<img src="' . base_url("assets/images/NUSANTARA-REGAS-2.png") . '" alt="" style="height: 35px; float: left;">
+										<img src="'.base_url("assets/images/NUSANTARA-REGAS-2.png").'" alt="" style="height: 35px; float: left;">
 								</td>
 							</tr>
 				
@@ -691,7 +687,7 @@ class MY_Controller extends CI_Controller
 									padding-top: 25px; 
 									color: #000000;
 									font-family: sans-serif;" class="paragraph">
-										' . $message . '
+										'.$message.'
 								</td>
 							</tr>
 							<tr>
@@ -773,53 +769,54 @@ class MY_Controller extends CI_Controller
 					</body>
 				</html>';
 
-
-
+		
+		
 		// print_r($html)kiri12saki@gmail.com;die;$to
 		$this->email->to($to);
 		//'ayu@nusantararegas.com','amathul@nusantararegas.com','haryo.priantomo@nusantararegas.com'amathul@nusantararegas.com,haryo.priantomo@nusantararegas.com
-		if ($type == 'fkpbj') {
-			// $this->email->cc('cecilia@nusantararegas.com,ayu@nusantararegas.com,amathul@nusantararegas.com,haryo.priantomo@nusantararegas.com');
+		if ($type=='fkpbj') {
+			$this->email->cc('cecilia.keliat2@pertamina.com,ayudya.aromaticasari@pertamina.com,amathul.basyith@pertamina.com,syah.abimoro@pertamina.com');
 			// $this->email->cc('arinal.dzikrul@dekodr.co.id');
 		}
 		$this->email->bcc('kiri12saki@gmail.com'); //'fadlimp@gmail.com',
-		$this->email->subject($subject);
-		$this->email->message($html);
+        $this->email->subject($subject);
+        $this->email->message($html);
 
 		$result = $this->email->send();
-
+		
 		/*if ($result) {
 			// $to, $from, $value, $document
 			$this->send_note($to, $from, $message, '');
 		}else{
 			print_r($this->email->print_debugger());	
 		}*/
-
+		
+		log_message('error', json_encode($result));
 		return $result;
 	}
 
 	public function get_email_by_role($role)
 	{
-		$query = "SELECT * FROM ms_admin WHERE id_role_app2 = " . $role;
+		$query = "SELECT * FROM ms_admin WHERE id_role_app2 = ".$role;
 		$query = $this->eproc_db->query($query)->result_array();
 		return $query;
 	}
 
 	public function get_email_division($division)
 	{
-		$query = "SELECT email FROM ms_admin WHERE id_division = " . $division;
+		$query = "SELECT email FROM ms_admin WHERE id_division = ".$division;
 		$query = $this->eproc_db->query($query)->result_array();
 		return $query;
 	}
 
 	public function get_division($division)
 	{
-		$query = "SELECT * FROM tb_division WHERE id = " . $division;
+		$query = "SELECT * FROM tb_division WHERE id = ".$division;
 		$query = $this->db->query($query)->row_array();
 		return $query;
 	}
 
-	public function activity_log($id_user, $activity, $iden)
+	public function activity_log($id_user,$activity,$iden)
 	{
 		$arr = array(
 			'id_user' 		=> $id_user,
@@ -828,43 +825,42 @@ class MY_Controller extends CI_Controller
 			'iden'			=> $iden
 		);
 
-		return $this->db->insert('tr_log_activity', $arr);
+		return $this->db->insert('tr_log_activity',$arr);
 	}
-
-	function sendMailEproc($to, $sub, $message)
-	{
-
-		$config = array(
+	
+	function sendMailEproc($to,$sub,$message){
+		
+		$config = Array(
 			'protocol' 	=> 'smtp',
-			'smtp_host' => 'mail.nusantararegas.com',
-			'smtp_port' => 587,
-			'smtp_user' => 'no-reply@nusantararegas.com',
-			'smtp_pass' => 'Nus@nt@r@h3b4t',
-			'mailtype'  => 'html',
+			'smtp_host' => 'mail.pertamina.com',
+			'smtp_port' => 25,
+			'smtp_user' => 'portal.nr@pertamina.com',
+			'smtp_pass' => 'PGE@Wm8iltpi1',
+			'mailtype'  => 'html', 
 			'charset'   => 'utf-8',
-			'smtp_crypto' => 'tls',
+			'smtp_crypto' => 'tls',		
+
 			'crlf' => "\r\n",
-			// 'charset'   => 'iso-8859-1',
+				// 'charset'   => 'iso-8859-1',
 		);
-		$this->load->library('email');
+        $this->load->library('email');
 
-		$this->email->initialize($config);
+        $this->email->initialize($config);
 		$this->email->set_newline("\r\n");
-
 		// Set to, from, message
-		$this->email->from('no-reply@nusantararegas.com', 'System aplikasi kelogistikan');
+		$this->email->from('portal.nr@pertamina.com', 'E-Proc Nusantara Regas');
 		$this->email->to($to);
 		//'ayu@nusantararegas.com','amathul@nusantararegas.com','haryo.priantomo@nusantararegas.com'
-		$this->email->cc('amathul@nusantararegas.com,haryo.priantomo@nusantararegas.com');
-		$this->email->bcc('fadlimp@gmail.com', 'arinaldha@gmail.com');
-		$this->email->subject($subject);
-		$this->email->message($html);
-		// $this->email->send();
-
+		$this->email->cc('amathul.basyith@pertamina.com,syah.abimoro@pertamina.com');
+		$this->email->bcc('fadlimp@gmail.com','arinaldha@gmail.com'); 
+        $this->email->subject($subject);
+        $this->email->message($html);
+		$this->email->send();
+		
 		echo "Berhasil";
 	}
 
-	public function insertHistoryPengadaan($id_pengadaan, $type, $data)
+	public function insertHistoryPengadaan($id_pengadaan,$type,$data)
 	{
 		unset($data['entry_stamp']);
 		$data['id_pengadaan'] 	= $id_pengadaan;
@@ -872,7 +868,7 @@ class MY_Controller extends CI_Controller
 		$data['entry_stamp']	= date('Y-m-d H:i:s');
 		return $this->db->insert('tr_history_pengadaan', $data);
 	}
-
+	
 	public function check_avail_date($jwpp, $metode = "")
 	{
 		$now = strtotime(date('Y-m-d'));

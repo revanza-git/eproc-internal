@@ -1,244 +1,95 @@
 <?php
 
-class Main_model extends CI_model
-{
+class Main_model extends CI_model{
 
 	public $eproc_db;
 	public $eproc_gabungan_db;
 	function __construct()
 	{
 		parent::__construct();
-		$this->eproc_db = $this->load->database('eproc', true);
-		$this->eproc_gabungan_db = $this->load->database('eproc', true);
+		$this->eproc_db = $this->load->database('eproc',true);
+		$this->eproc_gabungan_db = $this->load->database('test',true);
 	}
 
 	public function cek_login()
 	{
 		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-
-		$sql = "SELECT * FROM ms_login WHERE username = ? AND password = ?";
-		$_sql = $this->eproc_db->query($sql, array($username, $password));
-
-		$sql = $_sql->row_array();
-
-		$ct_sql = '';
-
-		if ($_sql->num_rows() > 0) {
-			if ($sql['type'] == "user") {
-				$ct_sql = "SELECT * FROM ms_vendor WHERE id=? AND is_active =?";
-
-				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'], 1));
-				if (count($ct_sql->result_array()) > 0) {
-					$data = $ct_sql->row_array();
-					$this->session->sess_destroy();
-					$set_session = array(
-						'id_user' 		=> 	$data['id'],
-						'name'			=>	$data['name'],
-						'id_sbu'		=>	$data['id_sbu'],
-						'vendor_status'	=>	$data['vendor_status'],
-						'is_active'		=>	$data['is_active'],
-						'app'			=>	'vms',
-						'type'			=>  'user',
-						// 'attempts' 		=> 	0,
-					);
-
-					$this->session->set_userdata('user', $set_session);
-					return true;
-				} else {
-					return false;
-				}
-			} else if ($sql['type'] == "admin" and $sql['type_app'] == 1) {
-
-				$ct_sql = "SELECT *,ms_admin.id id, ms_admin.name name, tb_role.name role_name FROM ms_admin JOIN tb_role ON ms_admin.id_role = tb_role.id WHERE ms_admin.id=? AND ms_admin.del=?";
-
-				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'], 0));
-
-				if (count($ct_sql->result_array()) > 0) {
-					echo "Sukses Login app 1";
-					$data = $ct_sql->row_array();
-					$this->session->sess_destroy();
-					$set_session = array(
-						'id_user' 		=> 	$data['id'],
-						'name'			=>	$data['name'],
-						'id_sbu'		=>	$data['id_sbu'],
-						'id_role'		=>	$data['id_role'],
-						'role_name'		=>	$data['role_name'],
-						'sbu_name'		=>	$data['sbu_name'],
-						'app'			=>	'vms',
-						'app_type'		=>	$sql['type_app'],
-						'type'			=> 'admin',
-						// 'attempts' 		=> 	0,
-					);
-
-					$this->session->set_userdata('admin', $set_session);
-
-					return true;
-				} else {
-					echo "Gagal Login app 1";
-					return false;
-				}
-			} else if ($sql['type'] == "admin" and $sql['type_app'] == 2) {
-				$ct_sql = " SELECT 
-								a.name,
-								a.email,
-								a.id_role,
-								a.id_division,
-								a.photo_profile,
-								a.id,
-								b.name division
-							FROM
-								ms_admin a 
-							INNER JOIN
-								tb_division b ON b.id=a.id_division
-							WHERE
-								a.del = ? AND a.id = ?
-								";
-
-				$ct_sql = $this->eproc_db->query($ct_sql, array(0, $sql['id_user']));
-
-				if (count($ct_sql->result_array()) > 0) {
-					$data = $ct_sql->row_array();
-					$this->session->sess_destroy();
-					$set_session = array(
-						'name'			=>	$data['name'],
-						'division'		=>	$data['division'],
-						'id_user' 		=> 	$data['id'],
-						'id_role'		=>	$data['id_role'],
-						'id_division'	=>  $data['id_division'],
-						'email'			=>  $data['email'],
-						'photo_profile' =>  $data['photo_profile'],
-						'app_type' 		=>	$sql['type_app'],
-						'attempts' 		=> 	0,
-					);
-					$this->session->set_userdata('admin', $set_session);
-					$admin = $this->session->userdata('admin');
-
-					$activity = array(
-						'id_user'	=>	$admin['id_user'],
-						'activity'	=>	$admin['name'] . " Telah Login",
-						'activity_date' => date('Y-m-d H:i:s')
-					);
-
-					$this->db->insert('tr_log_activity', $activity);
-					return true;
-				} else {
-					return false;
-				}
-			}
-		} else {
-			// $attempt = $this->session->userdata('attempts');
-            // $attempt++;
-			// $this->session->set_userdata('attempts', $attempt);
-
-			// if ($attempt > 2) {
-			// 	$query = "SELECT * FROM ms_login WHERE username = ?";
-			// 	$data = $this->eproc_db->query($query, array($username))->row_array();
-			// 	if ($data['type'] == 'admin') {
-			// 		$this->session->set_tempdata('penalty', true, 600);
-			// 	}else{
-			// 		$this->session->set_tempdata('penalty', true, 300);
-			// 	}
-			// 	$this->session->set_userdata('attempts', 0);
-			// }
-			return false;
-		}
-	}
-
-	public function to_app($id)
-	{
-		$query = "	SELECT
-						a.*,
-						b.name role_name
-						-- c.name division
-					FROM
-						ms_admin a
-					JOIN
-						tb_role b ON b.id=a.id_role
-					-- JOIN
-					-- 	tb_division c ON c.id=a.id_division
-					WHERE
-						a.id = ?
-		";
-
-		$query = $this->eproc_db->query($query, array($id))->row_array();
-		// echo $this->eproc_db->last_query();die;
-		return $query;
-	}
-
-	public function cek_login_()
-	{
-		$username = $this->input->post('username');
 
 		$password = $this->input->post('password');
+		
+		$del - 0;
 
 
 
-		$sql = "SELECT * FROM ms_login WHERE username = ? AND password = ?";
+		$sql = "SELECT * FROM ms_login WHERE username = ? AND password = ? AND del = ?";
 
-		$_sql = $this->eproc_db->query($sql, array($username, $password));
-
+		$_sql = $this->eproc_db->query($sql, array($username, $password, $del));
+	
 		$sql = $_sql->row_array();
+		// print_r($sql);die;
 
 
-
+	
 		$ct_sql = '';
 
+		
+		
+		if($_sql->num_rows() > 0){
 
-
-		if ($_sql->num_rows() > 0) {
-
-
-
-			if ($sql['type'] == "user") {
+			
+	
+			if($sql['type'] == "user"){
 
 
 
 				$ct_sql = "SELECT * FROM ms_vendor WHERE id=? AND is_active =?";
 
-				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'], 1));
-				if (count($ct_sql->result_array()) > 0) {
+				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'],1));
+				if(count($ct_sql->result_array() )> 0){
 					$data = $ct_sql->row_array();
 
+			
 
+				$set_session = array(
 
-					$set_session = array(
+					'id_user' 		=> 	$data['id'],
 
-						'id_user' 		=> 	$data['id'],
+					'name'			=>	$data['name'],
 
-						'name'			=>	$data['name'],
+					'id_sbu'		=>	$data['id_sbu'],
 
-						'id_sbu'		=>	$data['id_sbu'],
+					'vendor_status'	=>	$data['vendor_status'],
 
-						'vendor_status'	=>	$data['vendor_status'],
+					'is_active'		=>	$data['is_active'],
 
-						'is_active'		=>	$data['is_active'],
+					'app'			=>	'vms',
 
-						'app'			=>	'vms',
+					'type'			=> 'user'
 
-						'type'			=> 'user'
+				);
 
-					);
+				
 
-
-
-					$this->session->set_userdata('user', $set_session);
-					return true;
-				} else {
+				$this->session->set_userdata('user',$set_session);
+				return true;
+				}
+				else{
 					return false;
 				}
-			} else if ($sql['type'] == "admin" and $sql['type_app'] == 1) {
+				
+			}else if($sql['type'] == "admin" AND $sql['type_app'] == 1){
 				// echo "Masuk kon 1";die;
 
 				$ct_sql = "SELECT *,ms_admin.id id, ms_admin.name name, tb_role.name role_name FROM ms_admin JOIN tb_role ON ms_admin.id_role = tb_role.id WHERE ms_admin.id=? AND ms_admin.del=?";
 
-				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'], 0));
-
-				if (count($ct_sql->result_array()) > 0) {
+				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'],0));
+				
+				if(count($ct_sql->result_array() )> 0){
+					echo "Sukses Login app 1";
 
 					$data = $ct_sql->row_array();
 
-
+						
 
 					$set_session = array(
 
@@ -262,17 +113,19 @@ class Main_model extends CI_model
 
 					);
 
+					
 
-
-					$this->session->set_userdata('admin', $set_session);
+					$this->session->set_userdata('admin',$set_session);
 
 
 
 					return true;
-				} else {
+				}else{
+					echo "Gagal Login app 1";
 					return false;
 				}
-			} else if ($sql['type'] == "admin" and $sql['type_app'] == 2) {
+
+			}else if ($sql['type'] == "admin" AND $sql['type_app'] == 2) {
 				// echo "Masuk kon 2";die;
 				$ct_sql = " SELECT 
 								a.name,
@@ -290,9 +143,9 @@ class Main_model extends CI_model
 								a.del = ? AND a.id = ?
 								";
 
-				$ct_sql = $this->eproc_db->query($ct_sql, array(0, $sql['id_user']));
-
-				if (count($ct_sql->result_array()) > 0) {
+				$ct_sql = $this->eproc_db->query($ct_sql, array(0,$sql['id_user']));
+				
+				if(count($ct_sql->result_array() )> 0){
 
 					$data = $ct_sql->row_array();
 
@@ -307,21 +160,217 @@ class Main_model extends CI_model
 						'photo_profile' =>  $data['photo_profile'],
 						'app_type' 		=>	$sql['type_app']
 					);
-					$this->session->set_userdata('admin', $set_session);
+					$this->session->set_userdata('admin',$set_session);
+					$admin = $this->session->userdata('admin');
+
+					$activity = array(
+						'id_user'	=>	$admin['id_user'],
+						'activity'	=>	$admin['name']." Telah Login",
+						'activity_date' => date('Y-m-d H:i:s')
+					);
+
+					$this->db->insert('tr_log_activity',$activity);
 					return true;
 					// return header("Location: http://localhost/eeproc_perencanaan/dashboard");
-				} else {
+				}else{
 					return false;
 				}
+
 			}
-		} else {
+
+
+
+		}else{
 
 			return false;
+
 		}
 	}
 
-	function getKurs()
+	public function to_app($id)
 	{
+		$query = "	SELECT
+						a.*,
+						b.name role_name
+						-- c.name division
+					FROM
+						ms_admin a
+					JOIN
+						tb_role b ON b.id=a.id_role
+					-- JOIN
+					-- 	tb_division c ON c.id=a.id_division
+					WHERE
+						a.id = ?
+		"; 
+
+		$query = $this->eproc_db->query($query,array($id))->row_array();
+		// echo $this->eproc_db->last_query();die;
+		return $query;
+	}
+
+	public function cek_login_()
+	{
+		$username = $this->input->post('username');
+
+		$password = $this->input->post('password');
+
+
+
+		$sql = "SELECT * FROM ms_login WHERE username = ? AND password = ?";
+
+		$_sql = $this->eproc_db->query($sql, array($username, $password));
+	
+		$sql = $_sql->row_array();
+
+
+	
+		$ct_sql = '';
+
+		
+		
+		if($_sql->num_rows() > 0){
+
+			
+	
+			if($sql['type'] == "user"){
+
+
+
+				$ct_sql = "SELECT * FROM ms_vendor WHERE id=? AND is_active =?";
+
+				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'],1));
+				if(count($ct_sql->result_array() )> 0){
+					$data = $ct_sql->row_array();
+
+			
+
+				$set_session = array(
+
+					'id_user' 		=> 	$data['id'],
+
+					'name'			=>	$data['name'],
+
+					'id_sbu'		=>	$data['id_sbu'],
+
+					'vendor_status'	=>	$data['vendor_status'],
+
+					'is_active'		=>	$data['is_active'],
+
+					'app'			=>	'vms',
+
+					'type'			=> 'user'
+
+				);
+
+				
+
+				$this->session->set_userdata('user',$set_session);
+				return true;
+				}
+				else{
+					return false;
+				}
+				
+			}else if($sql['type'] == "admin" AND $sql['type_app'] == 1){
+				// echo "Masuk kon 1";die;
+
+				$ct_sql = "SELECT *,ms_admin.id id, ms_admin.name name, tb_role.name role_name FROM ms_admin JOIN tb_role ON ms_admin.id_role = tb_role.id WHERE ms_admin.id=? AND ms_admin.del=?";
+
+				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'],0));
+				
+				if(count($ct_sql->result_array() )> 0){
+
+					$data = $ct_sql->row_array();
+
+						
+
+					$set_session = array(
+
+						'id_user' 		=> 	$data['id'],
+
+						'name'			=>	$data['name'],
+
+						'id_sbu'		=>	$data['id_sbu'],
+
+						'id_role'		=>	$data['id_role'],
+
+						'role_name'		=>	$data['role_name'],
+
+						'sbu_name'		=>	$data['sbu_name'],
+
+						'app'			=>	'vms',
+
+						'app_type'		=>	$sql['type_app'],
+
+						'type'			=> 'admin'
+
+					);
+
+					
+
+					$this->session->set_userdata('admin',$set_session);
+
+
+
+					return true;
+				}else{
+					return false;
+				}
+
+			}else if ($sql['type'] == "admin" AND $sql['type_app'] == 2) {
+				// echo "Masuk kon 2";die;
+				$ct_sql = " SELECT 
+								a.name,
+								a.email,
+								a.id_role,
+								a.id_division,
+								a.photo_profile,
+								a.id,
+								b.name division
+							FROM
+								ms_admin a 
+							INNER JOIN
+								tb_division b ON b.id=a.id_division
+							WHERE
+								a.del = ? AND a.id = ?
+								";
+
+				$ct_sql = $this->eproc_db->query($ct_sql, array(0,$sql['id_user']));
+				
+				if(count($ct_sql->result_array() )> 0){
+
+					$data = $ct_sql->row_array();
+
+					$set_session = array(
+
+						'name'			=>	$data['name'],
+						'division'		=>	$data['division'],
+						'id_user' 		=> 	$data['id'],
+						'id_role'		=>	$data['id_role'],
+						'id_division'	=>  $data['id_division'],
+						'email'			=>  $data['email'],
+						'photo_profile' =>  $data['photo_profile'],
+						'app_type' 		=>	$sql['type_app']
+					);
+					$this->session->set_userdata('admin',$set_session);
+					return true;
+					// return header("Location: http://localhost/eeproc_perencanaan/dashboard");
+				}else{
+					return false;
+				}
+
+			}
+
+
+
+		}else{
+
+			return false;
+
+		}
+	}
+
+	function getKurs(){
 		$return = array();
 		$query = "SELECT * FROM tb_kurs WHERE del = 0";
 		$query = $this->db->query($query);
@@ -331,8 +380,7 @@ class Main_model extends CI_model
 		return $return;
 	}
 
-	public function getRole()
-	{
+	public function getRole(){
 		$return = array();
 		$query = "SELECT * FROM tb_role";
 		$query = $this->db->query($query);
@@ -342,8 +390,7 @@ class Main_model extends CI_model
 		return $return;
 	}
 
-	public function getDiv()
-	{
+	public function getDiv(){
 		$return = array();
 		$query = "SELECT * FROM tb_division WHERE del = 0";
 		$query = $this->db->query($query);
@@ -352,9 +399,8 @@ class Main_model extends CI_model
 		}
 		return $return;
 	}
-
-	function getProcMethod()
-	{
+	
+	function getProcMethod(){
 		$return[''] = 'Pilih Dibawah Ini';
 		$query = "SELECT * FROM tb_proc_method WHERE del = 0";
 		$query = $this->db->query($query);
@@ -365,8 +411,7 @@ class Main_model extends CI_model
 	}
 
 
-	function getFppbj()
-	{
+	function getFppbj(){
 		$return[''] = 'Pilih Dibawah Ini';
 		$query = "SELECT * FROM ms_fppbj WHERE del = 0";
 		$query = $this->db->query($query);
@@ -376,22 +421,19 @@ class Main_model extends CI_model
 		return $return;
 	}
 
-	function getDiv_($id = "")
-	{
+	function getDiv_($id=""){
 		return  $this->db->where('id', $id)->get('tb_division')->row_array();
 	}
 
-	public function update_status($table_ = "ms_fppbj", $id, $param_)
-	{
+	public function update_status($table_= "ms_fppbj", $id, $param_){
 		return $this->db->where('id', $id)->update($table_, array('is_status' => $param_));
 	}
 
-	public function approve($table, $id, $param_)
-	{
+	public function approve($table, $id, $param_){
 		// echo $table;print_r($param_);die;
 		// update fppbj detail
 		// print_r($table);die;
-
+		
 		$data = $this->db->where('id', $id)->get($table)->row_array();
 
 		// print_r($data);die;
@@ -400,7 +442,8 @@ class Main_model extends CI_model
 			// echo "string 1";die;
 			$this->db->where('id', $data['id_fppbj'])->update('ms_fppbj', $param_);
 			$query = $this->db->where('id', $id)->update($table, $param_);
-		} else if ($data['is_status'] == 2) {
+		}
+		else if ($data['is_status'] == 2) {
 			// echo "string 2";die;
 			$update = array(
 				// 'id_pic' => $param_['id_pic'],
@@ -408,7 +451,7 @@ class Main_model extends CI_model
 			);
 			$this->db->where('id_fppbj', $data['id'])->update('ms_fkpbj', $param_);
 			$query = $this->db->where('id', $data['id'])->update('ms_fppbj', $param_);
-		} else {
+		} else{
 			// echo "string 3";die;
 			$this->db->where('id', $id)->update($table, $param_);
 			$query = $this->db->where('id', $data['id'])->update('ms_fppbj', $param_);
@@ -417,9 +460,8 @@ class Main_model extends CI_model
 		return $query;
 	}
 
-	public function notification($id_user = '', $active = 1)
-	{
-		$note = "SELECT * FROM tr_note WHERE id_user = " . $id_user . " AND is_active = " . $active . " AND type IS NULL ORDER BY id DESC";
+	public function notification($id_user='', $active = 1){
+		$note = "SELECT * FROM tr_note WHERE id_user = ".$id_user." AND is_active = ".$active." AND type IS NULL ORDER BY id DESC";
 		$query = $this->db->query($note);
 		// foreach ($note as $key => $value) {
 		// 	$data .= '<div class="notification is-warning"><p>'.$value['value'].'</p><button class="delete">X</button></div>';
@@ -428,11 +470,10 @@ class Main_model extends CI_model
 		return $query;
 	}
 
-	public function get_fppbj($year = "")
-	{
-		if ($year != '') {
-			$q = ' AND entry_stamp LIKE "%' . $year . '%"';
-		} else {
+	public function get_fppbj($year){
+		if($year != ''){
+			$q = ' AND entry_stamp LIKE "%'.$year.'%"';
+		} else{
 			$q = '';
 		}
 
@@ -441,13 +482,13 @@ class Main_model extends CI_model
 				  FROM
 				  		ms_fppbj
 				  WHERE
-				  		is_status = 0 AND is_approved = 0 AND del = 0 " . $q;
+				  		is_status = 0 AND is_approved = 0 AND del = 0 ".$q;
 
 		$id_division = $this->session->userdata('admin')['id_division'];
 		$id_role 	 = $this->session->userdata('admin')['id_role'];
 
 		if ($id_division != 1) {
-			$sql .= " AND id_division = " . $id_division;
+			$sql .= " AND id_division = ".$id_division;
 		}
 		/*if($id_division != 1 && $id_role == 2){
 			$sql .= " AND is_approved = 2";
@@ -456,54 +497,57 @@ class Main_model extends CI_model
 		return $query;
 	}
 
-	public function get_fppbj_selesai($year = "", $is_perencanaan = '1')
-	{
+	public function get_fppbj_selesai($year,$is_perencanaan='1'){
 		$id_division = $this->session->userdata('admin')['id_division'];
 
 		if ($id_division != 1 && $id_division != 5) {
-			$divisi = "id_division = " . $id_division . " AND ";
-		} else {
+			$divisi = "id_division = ".$id_division." AND ";
+		}else{
 			$divisi = '';
 		}
 
-		if ($year != '') {
-			$q = ' entry_stamp LIKE "%' . $year . '%" AND ';
-		} else {
+		if($year != ''){
+			$q = ' entry_stamp LIKE "%'.$year.'%" AND ';
+		} else{
 			$q = '';
 		}
 
-		if ($is_perencanaan != '1') {
-			$perencanaan = " is_perencanaan = " . $is_perencanaan . " AND ";
-		} else {
-			$perencanaan = " is_perencanaan = 1 AND ";
-		}
+//		if ($is_perencanaan != '1') {
+//			$perencanaan = " is_perencanaan = ".$is_perencanaan." AND ";
+//		} else {
+//			$perencanaan = "  ";
+//		}
 
-		$sql = "SELECT
+        if ($is_perencanaan != '1') {
+            $sql = "SELECT * from ms_fppbj a where a.is_perencanaan = 2 AND YEAR(a.entry_stamp) = $year and is_approved = 3";
+        } else {
+            $sql = "SELECT
 					*
 				FROM
 					ms_fppbj
 				WHERE 
 					is_approved_hse < 2
-					AND ((" . $divisi . " $q $perencanaan is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3))))
-					OR  (" . $divisi . " $q $perencanaan is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000) ";
-
+                        AND ((".$divisi." $q is_perencanaan = 1 AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3))))
+					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000) ";
+        }
+        
+        
 		$query = $this->db->query($sql);
 		return $query;
 	}
 
-	public function get_total_fppbj_semua($year = "", $is_perencanaan = "1")
-	{
+	public function get_total_fppbj_semua($year,$is_perencanaan="1"){
 		$id_role = $this->session->userdata('admin')['id_role'];
 		$id_division = $this->session->userdata('admin')['id_division'];
 
-		if ($year != '') {
-			$q = ' AND entry_stamp LIKE "%' . $year . '%" ';
-		} else {
+		if($year != ''){
+			$q = ' AND entry_stamp LIKE "%'.$year.'%" ';
+		} else{
 			$q = '';
 		}
 
 		if ($is_perencanaan != '1') {
-			$perencanaan = " AND is_perencanaan = " . $is_perencanaan;
+			$perencanaan = " AND is_perencanaan = ".$is_perencanaan;
 		} else {
 			$perencanaan = " AND is_perencanaan = 1";
 		}
@@ -513,10 +557,41 @@ class Main_model extends CI_model
 				  FROM
 				  		ms_fppbj
 				  WHERE 
-				  		del = 0 AND is_status = 0 AND is_approved_hse < 2 " . $q . $perencanaan;
+				  		del = 0 AND is_status = 0 AND is_approved_hse < 2 ".$q.$perencanaan;
 
 		if ($id_division != 1 && $id_division != 5) {
-			$sql .= " AND id_division = " . $id_division;
+			$sql .= " AND id_division = ".$id_division;
+		}
+		
+		$query = $this->db->query($sql);
+		return $query;
+	}
+
+	public function total_pending_dir_fkpbj($year = "")
+	{
+		$admin = $this->session->userdata('admin');
+
+		if ($year != '') {
+			$q = ' AND entry_stamp LIKE "%' . $year . '%"';
+		} else {
+			$q = '';
+		}
+
+		$sql = "SELECT
+						*
+				  FROM
+				  		ms_fkpbj
+				  WHERE 
+				  		is_status = 0 
+				  		AND is_approved = 3
+						AND del = 0
+				        AND is_reject = 0
+				        $q
+				        AND idr_anggaran > 100000000
+				        ";
+
+		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
+			$sql .= " AND id_division = " . $admin['id_division'];
 		}
 
 		$query = $this->db->query($sql);
@@ -560,44 +635,44 @@ class Main_model extends CI_model
 		return $query;
 	}
 
-	public function get_fppbj_pending($year = "", $is_perencanaan = "1")
-	{
+	public function get_fppbj_pending($year,$is_perencanaan="1"){
 		$id_role = $this->session->userdata('admin')['id_role'];
 		$id_division = $this->session->userdata('admin')['id_division'];
 
 		if ($id_division != 1 && $id_division != 5) {
-			$divisi = "id_division = " . $id_division . " AND ";
-		} else {
+			$divisi = "id_division = ".$id_division." AND ";
+		} else{
 			$divisi = " ";
 		}
-
-		if ($year != '') {
-			$q = ' AND entry_stamp LIKE "%' . $year . '%" ';
-		} else {
+		
+		if($year != ''){
+			$q = ' AND entry_stamp LIKE "%'.$year.'%" ';
+		} else{
 			$q = '';
 		}
 
 		if ($is_perencanaan != '1') {
-			$perencanaan = " AND is_perencanaan = " . $is_perencanaan;
+			$perencanaan = " AND is_perencanaan = ".$is_perencanaan;
 		} else {
 			$perencanaan = " AND is_perencanaan = 1";
 		}
-
+		
 		$sql = "	SELECT
 						*
 				  	FROM
 				  		ms_fppbj
 				  	WHERE 
-				  		$divisi del = 0 AND is_approved = 0 AND is_status = 0 AND is_reject = 0 " . $q . $perencanaan;
-
+				  		$divisi del = 0 AND is_approved = 0 AND is_status = 0 AND is_reject = 0 ".$q.$perencanaan;
+		
 		$query = $this->db->query($sql);
+
+		
 		return $query;
 	}
 
-	function search_data($value)
-	{
+	function search_data($value){
 		$result = array();
-		$admin = $this->session->userdata('admin');
+		$admin = $this->session->userdata('admin');		
 		$query = "	SELECT
 		                a.id,
 		                a.nama_pengadaan,
@@ -611,9 +686,9 @@ class Main_model extends CI_model
 					WHERE a.del = 0 AND a.nama_pengadaan LIKE ? OR b.name LIKE ?
 					LIMIT 5";
 
-		$query = $this->db->query($query, array('%' . $_POST['search'] . '%', '%' . $_POST['search'] . '%'))->result_array();
+	    $query = $this->db->query($query, array('%'.$_POST['search'].'%','%'.$_POST['search'].'%'))->result_array();		
 		$result = array();
-		foreach ($query as $key => $value) {
+		foreach($query as $key => $value){
 			if ($value['is_status'] == 0) {
 				$class = 'fppbj';
 			} elseif ($value['is_status'] == 1) {
@@ -621,14 +696,14 @@ class Main_model extends CI_model
 			} else {
 				$class = 'fkpbj';
 			}
-			$result[$value['id']] = '<div class="search-result"><div class="sr-logo ' . $class . '">
+			$result[$value['id']] = '<div class="search-result"><div class="sr-logo '.$class.'">
 				<span class="icon"><i class="fas fa-file-alt"></i></span>
 				</div>
 				<div class="sr-item">
-					<div class="sr-name"><span class="sr-no">1.</span><a href="' . base_url('pemaketan/division/' . $value['id_division'] . '/' . $value['id'] . '/' . date('Y', strtotime($value['entry_stamp']))) . '">' . $value['nama_pengadaan'] . '</a></div>
+					<div class="sr-name"><span class="sr-no">1.</span><a href="'.base_url('pemaketan/division/'.$value['id_division'].'/'.$value['id'].'/'.date('Y',strtotime($value['entry_stamp']))).'">'.$value['nama_pengadaan'].'</a></div>
 					<div class="sr-keterangan">
 						<span class="status">Aktif</span>
-						<span class="divisi"' . $value['nama_divisi'] . '</span>
+						<span class="divisi"'.$value['nama_divisi'].'</span>
 					</div>
 					<div class="sr-icon">
 						<span class="icon ar">
@@ -640,55 +715,56 @@ class Main_model extends CI_model
 					</div>
 				</div></div>';
 		}
-
+		
 		return $result;
 	}
 
-	public function get_fppbj_reject($year = "", $is_perencanaan = "1")
-	{
+	public function get_fppbj_reject($year,$is_perencanaan="1"){
 		$id_role = $this->session->userdata('admin')['id_role'];
 		$id_division = $this->session->userdata('admin')['id_division'];
 
-		if ($id_division != 1 && $id_division != 5) {
-			$divisi = "id_division = " . $id_division . " AND ";
-		} else {
+		if ($id_division!= 1 && $id_division != 5) {
+			$divisi = "id_division = ".$id_division." AND ";
+		} else{
 			$divisi = '';
 		}
 
-		if ($year != '') {
-			$q = ' AND entry_stamp LIKE "%' . $year . '%" AND ';
-		} else {
+		if($year != ''){
+			$q = ' AND entry_stamp LIKE "%'.$year.'%" AND ';
+		} else{
 			$q = ' AND ';
 		}
 
 		if ($is_perencanaan != '1') {
-			$perencanaan = " is_perencanaan = " . $is_perencanaan;
+			$perencanaan = " is_perencanaan = ".$is_perencanaan;
 		} else {
 			$perencanaan = " is_perencanaan = 1";
 		}
-
+		
 		$sql = "SELECT
 						*
 				  FROM
 				  		ms_fppbj
 				  WHERE 
-				  " . $divisi . "
+				  ".$divisi."
 				  		is_writeoff = 0
 						AND 
 						(is_status = 0 $q $perencanaan AND del = 0 AND is_reject = 1 AND idr_anggaran < 100000000)
                         OR
 						(is_status = 0 $q $perencanaan AND del = 0 AND is_reject = 1 AND idr_anggaran > 100000000)";
-
+		
 		/*if ($id_role == 2) {
 			$sql .= " AND is_approved <= 2"; 
 		}*/
+		
 		$query = $this->db->query($sql);
+	
 		return $query;
 	}
 
 	public function delete($id)
 	{
-		return $this->db->where('id', $id)->update('tr_note', array('is_active' => 0, 'edit_stamp' => date('Y-m-d H:i:s')));
+		return $this->db->where('id',$id)->update('tr_note',array('is_active' => 0,'edit_stamp'=>date('Y-m-d H:i:s')));
 	}
 
 	public function get_pending_kadiv()
@@ -759,7 +835,13 @@ class Main_model extends CI_model
 					FROM 
 						ms_fppbj
 					WHERE
-						is_status = 0 AND del = 0 AND is_approved = 1 AND ((is_approved_hse = 1  AND tipe_pengadaan = 'jasa') OR (is_approved_hse = 0 AND tipe_pengadaan = 'barang')) AND (is_reject = 0) " . $q . $perencanaan;
+						is_status = 0 AND 
+						del = 0 AND 
+						is_approved = 1 AND 
+						(
+							(is_approved_hse = 1  AND tipe_pengadaan = 'jasa') OR 
+							((is_approved_hse = 0 OR is_approved_hse = 1) AND tipe_pengadaan = 'barang')
+						) AND (is_reject = 0) " . $q . $perencanaan;
 
 		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
 			$query .= " AND id_division = " . $admin['id_division'];
@@ -892,6 +974,34 @@ class Main_model extends CI_model
 				        is_approved = 3 AND 
 				        is_reject = 0 AND 
 				        is_writeoff = 0 AND 
+				        ((idr_anggaran > 100000000 AND idr_anggaran <= 1000000000)) AND del = 0";
+
+		return $this->db->query($query);
+	}
+
+	public function get_pending_dirsdm_fkpbj($year = "")
+	{
+		$admin = $this->session->userdata('admin');
+
+		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
+			$q = "id_division = " . $admin['id_division'] . " AND";
+		}
+
+		if ($year != '') {
+			$q2 = ' entry_stamp LIKE "%' . $year . '%"';
+		} else {
+			$q2 = '';
+		}
+
+		$query = "SELECT 
+						* 
+					FROM 
+						ms_fkpbj
+					WHERE
+						$q $q2 AND
+						is_status = 0 AND 
+				        is_approved = 3 AND 
+				        is_reject = 0 AND 
 				        ((idr_anggaran > 100000000 AND idr_anggaran <= 1000000000)) AND del = 0";
 
 		return $this->db->query($query);

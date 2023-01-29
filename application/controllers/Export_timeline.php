@@ -641,28 +641,28 @@ class Export_timeline extends MY_Controller {
 								$pending_status = 'Menunggu Persetujuan Kadept User';
 							} 
 							else if ($value__['is_approved'] == 0 && $value__['is_reject'] == 1) {
-								$pending_status = 'Di tolak Kadept User';
+								$pending_status = 'Di revisi Kadept User';
 							}
 							// ------------------------------------------ End Status User	
 							else if ($value__['is_approved'] == 1 && $value__['tipe_pengadaan'] == 'jasa' && $value__['is_approved_hse'] == '0' && $value__['is_reject'] == 0) {
 								$pending_status = 'Menunggu Persetujuan HSSE';
 							}
 							else if ($value__['is_approved'] == 1 && $value__['tipe_pengadaan'] == 'jasa' && $value__['is_approved_hse'] > '1') {
-								$pending_status = 'Di tolak HSSE';
+								$pending_status = 'Di revisi HSSE';
 							}
 							// ------------------------------------------ End Status HSSE
 							else if (($value__['is_approved'] == 1 && $value__['tipe_pengadaan'] == 'barang' && $value__['is_reject'] == 0) OR $value__['is_approved'] == 1 && $value__['tipe_pengadaan'] == 'jasa' && $value__['is_approved_hsse'] == 1 && $value__['is_reject'] == 0) {
 								$pending_status = 'Menunggu Persetujuan Admin Pengendalian';
 							}
 							else if (($value__['is_approved'] == 1 && $value__['tipe_pengadaan'] == 'barang' && $value__['is_reject'] == 1 && $value__['is_reject'] == 1) OR $value__['is_approved'] == 1 && $value__['tipe_pengadaan'] == 'jasa' && $value__['is_approved_hsse'] == 1 && $value__['is_reject'] == 1) {
-								$pending_status = 'Di tolak Admin Pengendalian';
+								$pending_status = 'Di revisi Admin Pengendalian';
 							}
 							// ------------------------------------------ End Status Admin Pengendalian
 							else if ($value__['is_approved'] == 2 && $value__['is_reject'] == 0) {
 								$pending_status = 'Menunggu Persetujuan Kadept Procurement';
 							}
 							else if ($value__['is_approved'] == 2 && $value__['is_reject'] == 1) {
-								$pending_status = 'Di tolak Kadept Procurement';
+								$pending_status = 'Di revisi Kadept Procurement';
 							}
 							else if ($value__['is_approved'] == 3 && $value__['is_reject'] == 0 && $value__['idr_anggaran'] < 100000000 && ($value__['metode_pengadaan'] == 'Penunjukan Langsung')) {
 								$pending_status = 'Di setujui Kadept Procurement';
@@ -675,7 +675,7 @@ class Export_timeline extends MY_Controller {
 								$pending_status = 'Menunggu Persetujuan Kadiv SDM & Umum';
 							}
 							else if ($value__['is_approved'] == "3" && $value__['is_reject'] == 1 && (($value__['idr_anggaran'] > 100000000 && $value__['idr_anggaran'] <= 1000000000) && ($value__['metode_pengadaan'] == 'Penunjukan Langsung' || $value__['metode_pengadaan'] == 'Pemilihan Langsung' || $value__['metode_pengadaan'] == 'Pelelangan'))) {
-								$pending_status = 'Ditolak Kadiv SDM & Umum';
+								$pending_status = 'Direvisi Kadiv SDM & Umum';
 							}
 							else if ($value__['is_approved'] == "4" && $value__['is_reject'] == 0 && (($value__['idr_anggaran'] > 100000000 && $value__['idr_anggaran'] <= 1000000000) && ($value__['metode_pengadaan'] == 'Penunjukan Langsung' || $value__['metode_pengadaan'] == 'Pemilihan Langsung' || $value__['metode_pengadaan'] == 'Pelelangan'))) {
 								$pending_status = 'Disetujui Kadiv SDM & Umum';
@@ -685,7 +685,7 @@ class Export_timeline extends MY_Controller {
 								$pending_status = 'Menunggu Persetujuan Dir.Keuangan & Umum';
 							}
 							elseif ($value__['is_approved'] == "3" && $value__['is_reject'] == 1 && ($value__['idr_anggaran'] > 1000000000 && $value__['idr_anggaran'] <= 10000000000) && ($value__['metode_pengadaan'] == 'Penunjukan Langsung' || $value__['metode_pengadaan'] == 'Pemilihan Langsung' || $value__['metode_pengadaan'] == 'Pelelangan')) {
-								$pending_status = 'Ditolak Dir.Keuangan & Umum';
+								$pending_status = 'Direvisi Dir.Keuangan & Umum';
 							}
 							elseif ($value__['is_approved'] == "4" && $value__['is_reject'] == 0 && ($value__['idr_anggaran'] > 1000000000 && $value__['idr_anggaran'] <= 10000000000) && ($value__['metode_pengadaan'] == 'Penunjukan Langsung' || $value__['metode_pengadaan'] == 'Pemilihan Langsung' || $value__['metode_pengadaan'] == 'Pelelangan')) {
 								$pending_status = 'Di setujui Dir.Keuangan & Umum';
@@ -695,7 +695,7 @@ class Export_timeline extends MY_Controller {
 								$pending_status = 'Menunggu Persetujuan Dir.Utama';
 							}
 							elseif ($value__['is_approved'] == "3" && $value__['id_perencanaan_umum'] < 1 && $value__['is_reject'] == 1 && $value__['idr_anggaran'] >= 10000000000 && ($value__['metode_pengadaan'] == 'Penunjukan Langsung' || $value__['metode_pengadaan'] == 'Pemilihan Langsung' || $value__['metode_pengadaan'] == 'Pelelangan')) {
-								$pending_status = 'Ditolak Persetujuan Dir.Utama';
+								$pending_status = 'Direvisi Persetujuan Dir.Utama';
 							}
 							elseif ($value__['is_approved'] == "4" && $value__['id_perencanaan_umum'] < 1 && $value__['is_reject'] == 0 && $value__['idr_anggaran'] >= 10000000000 && ($value__['metode_pengadaan'] == 'Penunjukan Langsung' || $value__['metode_pengadaan'] == 'Pemilihan Langsung' || $value__['metode_pengadaan'] == 'Pelelangan')) {
 								$pending_status = 'Disetujui Dir.Utama';
@@ -707,21 +707,21 @@ class Export_timeline extends MY_Controller {
 								$pending_status = 'Menunggu Persetujuan Kadept User';
 							}
 							else if ($value__['is_approved'] == "0" && $value__['is_reject'] == "1") {
-								$pending_status = 'Di Tolak Kadept User';
+								$pending_status = 'Di Revisi Kadept User';
 							}
 							// ------------------------------------------ End Status User
 							else if ($value__['is_approved'] == "1" && $value__['is_reject'] == "0") {
 								$pending_status = 'Menunggu Persetujuan Admin Pengendalian';
 							}
 							else if ($value__['is_approved'] == "1" && $value__['is_reject'] == "1") {
-								$pending_status = 'Di Tolak Admin Pengendalian';
+								$pending_status = 'Di Revisi Admin Pengendalian';
 							}
 							// ------------------------------------------ End Status Admin Pengendalian
 							else if ($value__['is_approved'] == "2" && $value__['is_reject'] == "0") {
 								$pending_status = 'Menunggu Persetujuan Kadept Procurement';
 							}
 							else if ($value__['is_approved'] == "2" && $value__['is_reject'] == "1") {
-								$pending_status = 'Di Tolak Kadept Procurement';
+								$pending_status = 'Di Revisi Kadept Procurement';
 							}
 							else if ($value__['is_approved'] == "3" && $value__['is_reject'] == "0") {
 								$pending_status = 'Di Setujui Kadept Procurement';
@@ -747,21 +747,21 @@ class Export_timeline extends MY_Controller {
 								$pending_status = 'Menunggu Persetujuan Kadept User';
 							}
 							else if ($value__['is_approved'] == "0" && $value__['is_reject'] == "1") {
-								$pending_status = 'Di Tolak Kadept User';
+								$pending_status = 'Di Revisi Kadept User';
 							}
 							// ------------------------------------------ End Status User
 							else if ($value__['is_approved'] == "1" && $value__['is_reject'] == "0") {
 								$pending_status = 'Menunggu Persetujuan Admin Procurement';
 							}
 							else if ($value__['is_approved'] == "1" && $value__['is_reject'] == "1") {
-								$pending_status = 'Di Tolak Admin Procurement';
+								$pending_status = 'Di Revisi Admin Procurement';
 							}
 							// ------------------------------------------ End Status Admin Procurement
 							else if ($value__['is_approved'] == "2" && $value__['is_reject'] == "0") {
 								$pending_status = 'Menunggu Persetujuan Kadept Procurement';
 							}
 							else if ($value__['is_approved'] == "2" && $value__['is_reject'] == "1") {
-								$pending_status = 'Di Tolak Kadept Procurement';
+								$pending_status = 'Di Revisi Kadept Procurement';
 							}
 							else if ($value__['is_approved'] == "3" && $value__['is_reject'] == "0") {
 								$pending_status = 'Di Setujui Kadept Procurement';

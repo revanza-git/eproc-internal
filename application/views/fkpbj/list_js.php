@@ -16,7 +16,7 @@ $(function(){
 				})
 
 	var folder = $('#tableGenerator').folder({
-		url: '<?php echo site_url('fkpbj/getData/'.$id); ?>',
+		url: '<?php echo site_url('fkpbj/getData/'.$id . '/' . $id_division . '/' . $id_fppbj . '/' . $year); ?>',
 		data: dataPost,
 		dataRightClick: function(key, btn, value){
 			_id = value[key][4].value;

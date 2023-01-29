@@ -1049,7 +1049,7 @@ class Riwayat extends MY_Controller
 				<tr>
 					<th>Tanggal</th>
 					<th>Status</th>
-					<th>Di Setujui / Tolak Oleh</th>
+					<th>Di Setujui / Revisi Oleh</th>
 					<th>Keterangan</th>
 				</tr>
 			</thead>
@@ -1654,7 +1654,7 @@ class Riwayat extends MY_Controller
 				<tr>
 					<th>Tanggal</th>
 					<th>Status</th>
-					<th>Di Setujui / Tolak Oleh</th>
+					<th>Di Setujui / Revisi Oleh</th>
 					<th>Keterangan</th>
 				</tr>
 			</thead>
@@ -2065,7 +2065,7 @@ class Riwayat extends MY_Controller
 				<tr>
 					<th>Tanggal</th>
 					<th>Status</th>
-					<th>Di Setujui / Tolak Oleh</th>
+					<th>Di Setujui / Revisi Oleh</th>
 					<th>Keterangan</th>
 				</tr>
 			</thead>
@@ -2265,7 +2265,7 @@ class Riwayat extends MY_Controller
 				<tr>
 					<th>Tanggal</th>
 					<th>Status</th>
-					<th>Di Setujui / Tolak Oleh</th>
+					<th>Di Setujui / Revisi Oleh</th>
 					<th>Keterangan</th>
 				</tr>
 			</thead>

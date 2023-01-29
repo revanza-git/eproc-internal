@@ -1,38 +1,38 @@
 
                     <div class="field display-info">
 
-                      <label for="" class="label">
+<label for="" class="label">
 
-                        Nama Paket Pengadaan
+  Nama Paket Pengadaan
 
-                      </label>
+</label>
 
-                      <div class="control">
+<div class="control">
 
-                        <p class="is-text">:</p>
+  <p class="is-text">:</p>
 
-                        <p class="is-text">Penjualan Test</p>
+  <p class="is-text">Penjualan Test</p>
 
-                      </div>
+</div>
 
-                      <label for="" class="label">
+<label for="" class="label">
 
-                        Sumber Anggaran
+  Sumber Anggaran
 
-                      </label>
+</label>
 
-                      <div class="control">
+<div class="control">
 
-                        <p class="is-text">:</p>
+  <p class="is-text">:</p>
 
-                        <p class="is-text">Non-Perusahaan</p>
+  <p class="is-text">Non-Perusahaan</p>
 
-                      </div>
+</div>
 
-                      <div class="control is-center">
+<div class="control is-center">
 
-                        <button class="button is-primary is-wide">Edit</button>
+  <button class="button is-primary is-wide">Edit</button>
 
-                      </div>
+</div>
 
-                    </div>
+</div>

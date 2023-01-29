@@ -97,7 +97,7 @@ class User extends MY_Controller {
 		$to = $_POST['email'];
 		$subject = "Password User";
 		$message = "Ini adalah akun anda :<br> Username : '".$_POST['email']."' <br> Password : '".$password."' <br> <a href=".base_url().">Klik Disini</a> untuk login";
-		// $this->send_mail($to,$subject,$message);
+		$this->send_mail($to,$subject,$message);
 		parent::save();
 	}
 

@@ -3,10 +3,27 @@
 class Pengadaan_model extends CI_Model {
 
 	public $fppbj="ms_fppbj";
+	
+	function pejabatPengadaan()
+	{
+		$query = "SELECT id, name FROM ms_user where id_role = 9 or id_role = 8 or id_role = 7 or id_role = 2";
+
+		$data = $this->db->query($query)->result_array();
+
+		$result = array();
+		foreach($data as $value)
+		{
+			if ($value['name'] == "Haryo") {
+                $value['name'] = "Kepala Procurement";
+            }
+			$result[$value['id']] = $value['name'];
+		}
+
+		return $result;
+	}
 
 	public function getData()
 	{
-		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
 		$query = "	SELECT  nama_pengadaan AS name,
 							count(*) AS total,
 							year_anggaran AS year,
@@ -55,8 +72,6 @@ class Pengadaan_model extends CI_Model {
 
 	public function getDataFP3()
 	{
-		$this->db->query("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-
 		$query = "	SELECT  nama_pengadaan AS name,
 							count(*) AS total,
 							year_anggaran AS year,

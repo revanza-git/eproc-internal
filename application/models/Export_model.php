@@ -533,11 +533,15 @@ class Export_model extends MY_Model{
                         a.name,
                         b.username,
                         b.password,
-                        a.id
+                        a.id,
+						a.email,
+						c.name division
                     FROM
                         ms_admin a
                     JOIN
                         ms_login b ON b.id_user=a.id AND b.type = 'admin'
+					LEFT JOIN
+						eproc_perencanaan.tb_division c ON c.id=a.id_division
                     WHERE
                         a.del = 0 AND a.id_role_app2 != 0 ORDER BY a.id DESC";
         $data = $this->eproc_db->query($query)->result_array();

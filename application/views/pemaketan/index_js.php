@@ -119,8 +119,8 @@ $(function(){
 				}
 			});
 			
-			$( '.money' ).mask('999,999,999,999,999.99', {reverse: true});
-		  	$( '.money' ).mask('999,999,999,999,999.99', {reverse: true});
+			//$( '.money' ).mask('999,999,999,999,999.99', {reverse: true});
+		  	//$( '.money' ).mask('999,999,999,999,999.99', {reverse: true});
 		  	
 			<?php if ($is_perencanaan == '0') { ?>
 				$('#step2 .form0').hide();

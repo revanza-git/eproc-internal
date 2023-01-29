@@ -143,79 +143,74 @@ class Input extends CI_Controller
 
    	public function s($id = null)
    	{
-		//$q = "SELECT * FROM ms_fp3 WHERE status = 'hapus' AND entry_stamp LIKE '%2021%' and del = 0";
-		//$q = $this->db->query($q)->result();
-		//$q = $this->db->where_in('id',array(191))->update('ms_fppbj',array('del'=>'1'));
-		//$q = $this->db->where_in('id_fppbj',array(514))->get('ms_fp3')->result();
-		//$q = $this->db->where_in('id_fppbj',array(514))->update('ms_fp3',array('jwpp_end'=>'2022-01-05'));
-		//$q = $this->eproc_db->join('ms_vendor','ms_vendor.id=tr_surat_ubo.id_vendor', 'LEFT')->get('tr_surat_ubo')->result();
-		//$q = $this->eproc_db->where_in('id',array('847','852'))->where_in('id_vendor',array('278','109'))->get('ms_ijin_usaha')->result();
+		//$q = " SELECT id, name, vendor_status FROM ms_vendor WHERE name LIKE '%Prima%'";
+		$q = "	SELECT 
+						a.*
+					FROM
+						tr_history_pengadaan a
+					LEFT JOIN
+						eproc.ms_admin b ON b.id=a.approved_by
+					WHERE
+						(a.status = 'approval' OR a.status = 'reject') AND a.del = 0 AND a.id_pengadaan = 536 AND a.is_status = 0";
+		//$q = "SELECT * FROM ms_fppbj WHERE is_perencanaan = 2 and entry_stamp LIKE '%2022%' and del = 0";
+		$q = $this->db->query($q)->result();
 		
-		//$q = "SELECT * FROM ms_fppbj WHERE nama_pengadaan LIKE '%AR TB%' AND entry_stamp LIKE '%2021%'";
-	//	$q = $this->db->query($q)->result();
-		
-		//$q = $this->db->where('id_fppbj', 487)->get('ms_fkpbj')->result();
-		
-		/*$q = $this->db->where('id', 532)->update('ms_fppbj', array(
-		'jwpp_start' => '2021-09-11', 
-		'jwp_start' => '2021-09-11', 
-		'desc_dokumen' => '- Rencana Pengangkutan untuk BR 11 
-		- Metode Pengadaan Penunjukan langsung sesuai dengan Memorandum Kadiv Operasi No. 103/NR/B200/M/2021 tanggal 8 September 2021.
-		- Untuk BOQ yang disampaikan ke vendor PPH  sudah termasuk dalam harga penawaran tidak dimunculkan terpisah.'));*/
-		
-		/*$q = $this->db->where('id_fppbj', 525)->update('ms_fkpbj', array('jwpp_end' => '2021-05-06', 'desc_dokumen' => '- Pengangkutan untuk BR06 
-		- Metode Pengadaan Penunjukan langsung sesuai dengan Memorandum Kadiv Operasi No. 043/NR/B200/M/2021 tanggal 19 April 2021.
-		- Untuk BOQ yang disampaikan ke vendor PPH  sudah termasuk dalam harga penawaran tidak dimunculkan terpisah.'));*/
-		
-		//$q = $this->eproc_db->where('id_division', 12)->join('ms_login', 'ms_login.id_user=ms_admin.id')->get('ms_admin')->result();
-		
-		//$q = $this->eproc_db->where('id_role_app2', 6)->join('ms_login', 'ms_login.id_user=ms_admin.id')->get('ms_admin')->result();
-		
-		//$q = $this->eproc_db->get('tb_role')->result();
-		
-		//$q = $this->db->where('id_pengadaan', 515)->where('status', 'approval')->get('tr_history_pengadaan')->result();
-		
-		//$q = $this->db->where('id_pengadaan', 516)->get('tr_history_pengadaan')->result();
-		
-		//$q = $this->db->where('id', 514)->get('ms_fppbj')->result();
-		
-		//$q = $this->db->where('id', 93)->get('ms_fp3')->result();
-		
-		//$q = $this->eproc_db->get('tr_assessment')->result();
-		
-		//$q = $this->eproc_db->where('id_procurement', 351)->get('tr_ass_point')->result();
-		
-		//$q = $this->db->where('id', 93)->update('ms_fp3', array('status' => 'hapus', 'perubahan' => null, 'desc_batal' => 'Informasi kerusakan/permintaan perbaikan  didapatkan pada bulan November 2021, personil di Departemen Layanan Umum tidak ada yang memiliki kompetensi atas pekerjaan tersebut sehingga diperlukan waktu untuk berkoordinasi dengan engineer di Departemen Reliability. Untuk memaksimalkan kontrak eksisting milik Departemen Reliability dibutuhkan tambahan waktu untuk koordinasi dengan kontraktor pelaksana kontrak tersebut. Selain itu diakhir tahun ada kegiatan Turn Around yang pusat koordinasinya ada di site office mempertimbangkan masa pandemi covid 19, sudah banyak personil NR dan kontraktor dalam kegiatan tersebut. Atas halbtersebut diatas, maka pekerjaan perbaikan tersebut diputuskan untuk tidak dilaksanakan di sisa waktu tahun 2021'));
-		
-		//$q = "SELECT id FROM ms_fppbj WHERE del = 0 AND (metode_pengadaan = 0 ) AND entry_stamp LIKE '%2021%'";
-		//$q = $this->db->query($q)->result();
-		//$q = $this->db->where('id_fppbj',633)->get('tr_analisa_risiko')->result();
-		//$q = $this->db->where('id_analisa_risiko',1594)->get('tr_analisa_risiko_detail')->result();
-		//$q = $this->db->where_in('id', array(579,580,581,582,583))->update('ms_fppbj',array('del'=>1));
-		$q = $this->db->where('id', 602)->get('ms_fppbj')->result();
-		print_r($q);
-		
-		// desc_dokumen 487 => Penunjukkan langsung kapal pengangkut LNG untuk kargo BR04, jwpp_end => 2021-03-18
-		/* desc_dokumen 525 => 1. Metode pengadaan penunjukkan langsung ke PT Sarana  
-									Bahari Hikmah, kapal Ekaputra, untuk cargo BR06. 
-								2. Akan ada biaya cooldown karena kapal dalam kondisi tidak
-									ready to load (RTL) 
-			jwpp_end => 2021-05-07
-		*/
-		/*
-			desc_dokumen 529 => Metode pengadaan penunjukkan langsung ke PT Hikmah Sarana Bahari, kapal Ekaputra 1 untuk kargo BR12, BR07 dan BR08
-			jwpp_end => 2021-06-30
-		*/
-		/*
-			desc_dokumen 532 => Pengadaan kapal LNG untuk mengankut kargo BR11 dari pelabuhan PT Badak LNG di Bontang ke FSRU Nusantara Regas Satu di Teluk Jakarta
-			jwpp_start => 2021-09-11
-			pr_lampiran => pr_lampiran_090921_043824_835.pdf
-		*/
+		//$q = $this->db->query($q)->result_array();
+		//$this->eproc_db->where_in('id', array(319,320))->update('ms_vendor',array('del'=>1,'is_active'=>1));
 
+		$q = "select * from ms_login where username LIKE '%test%'";
+		$q = $this->eproc_db->query($q)->result();
+		$q = $this->eproc_db->where_in('id', array(319,320))->get('ms_vendor')->result();
+		//$q = $this->eproc_db->where('id', 319)->delete('ms_vendor');
+ 		//$q = $this->eproc_db->join('ms_login','ms_login.id_user=ms_admin.id')->where('ms_login.type','admin')->where('id_division',11)->get('ms_admin')->result();
+		//$q = $this->db->where('id', 663)->get('ms_fppbj')->result();
+		//$q = $this->db->where('id_fppbj', 539)->get('ms_fkpbj')->result();
+		//$q = $this->db->where('id_fppbj', 658)->update('ms_fkpbj',array('is_approved' => 0));
+		/*$q = $this->db->where('id',592)->update('ms_fppbj',array(
+		'tipe_pr' => 'services',
+		'tipe_pengadaan' => 'jasa'
+		));*/
+		/*$q = $this->db->where('id_fppbj',539)->update('ms_fkpbj',array(
+		'metode_pengadaan' => '1',
+		));*/
+		//$q = $this->db->where_in('id',3157)->update('tr_history_pengadaan',array('date'=>'2022-04-08 09:48:58'));
+		//$q = $this->db->where('id_fppbj',661)->update('tr_analisa_risiko',array('dpt_list'=>'{"dpt":["304"],"usulan":""}'));
+		//echo count($q);
+		//$q = $this->db->where('id_fppbj',654)->update('ms_fp3',array('jwpp_start'=>'2022-07-01','jwpp_end'=>'2023-06-30'));
+		/*$data = $q[3];
+		unset($data->id);
+		$data->is_approved = 4;
+		$data->approved_by = 69;
+		$data->date = '2021-12-03 10:06:25';
+		
+		$q = $this->db->insert('tr_history_pengadaan',$data);*/
+		//$this->db->where('id',3209)->delete('tr_history_pengadaan');
+		//$q = $this->eproc_db->get('tb_csms_limit')->result();
+		
+		print_r($q);
    	}
 	
+	function show_riwayat_pengadaan($id_pengadaan,$status){
+		$q = "	SELECT 
+						a.*
+					FROM
+						tr_history_pengadaan a
+					LEFT JOIN
+						eproc.ms_admin b ON b.id=a.approved_by
+					WHERE
+						a.del = 0 AND a.id_pengadaan = $id_pengadaan AND a.is_status = $status";
+		$q = $this->db->query($q)->result();
+		//print_r($q);die;
+		$bl = "<table border=1><tr><td>Status</td><td>Tanggal</td></tr>";
+		foreach($q as $k => $v){
+			$bl .= "<tr><td>".$v->status."</td><td>".$v->entry_stamp."</td></tr>";
+		}
+		$bl .= "</table>";
+		echo $bl;
+	}
+	
 	function insert_assessment(){
-		$_i = array();
+		/*$_i = array();
 		for($i = 1; $i <= 31; $i++){
 			if($i < 5){
 			$_i[$i] = 1;
@@ -259,7 +254,7 @@ class Input extends CI_Controller
 				'point'=>24,
 				'entry_stamp'=>date("Y-m-d H:i:s")
 				)
-			);
+			);*/
 	}
 	
 	/*

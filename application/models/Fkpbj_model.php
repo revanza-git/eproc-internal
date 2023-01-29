@@ -21,8 +21,22 @@ class Fkpbj_model extends MY_Model
 		return $data;
 	}
 
-	function getData($form = array())
+	function getData($form = array(), $id_division = "", $id_fppbj = "", $year = "")
 	{
+		$admin = $this->session->userdata('admin');
+
+		if ($year != '') {
+			$year_anggaran = " AND b.entry_stamp LIKE '%" . $year . "%'";
+		} else {
+			$year_anggaran = " ";
+		}
+
+		if ($id_fppbj == '0' || $id_fppbj == '') {
+			$id_fppbj = '';
+		} else {
+			$id_fppbj = 'AND a.id_fppbj = ' . $id_fppbj;
+		}
+
 		$query = "	SELECT
 						b.nama_pengadaan,
 						a.desc,
@@ -35,7 +49,7 @@ class Fkpbj_model extends MY_Model
 
 						LEFT JOIN ms_fppbj b ON b.id = a.id_fppbj
 
-					WHERE a.del = 0";
+					WHERE a.del = 0 AND b.id_division = $id_division $id_fppbj $year_anggaran";
 		if ($this->input->post('filter')) {
 			$query .= $this->filter($form, $this->input->post('filter'), true);
 		}
@@ -150,48 +164,54 @@ class Fkpbj_model extends MY_Model
 		return $this->db->insert('ms_fkpbj', $save);
 	}
 
-	public function statusApprove($status = "", $year = "", $is_perencanaan = "1")
+	public function statusApprove($status, $year, $is_perencanaan = "1")
 	{
 		$admin = $this->session->userdata('admin');
 
 		if ($status == '4') {
-			$s = " AND is_reject = 1 ";
+			$s = " AND fkpbj.is_reject = 1 ";
 		} elseif ($status == '5') {
 			$s = "";
 		} else {
-			$s = " AND is_reject = 0 AND is_approved = " . $status;
+			$s = " AND fkpbj.is_reject = 0 AND fkpbj.is_approved = " . $status;
 		}
 
 		if ($year != '') {
-			$q = ' AND entry_stamp LIKE "%' . $year . '%"';
+			$q = ' AND fkpbj.entry_stamp LIKE "%' . $year . '%"';
 		} else {
 			$q = '';
 		}
 
-		if ($is_perencanaan != '1') {
-			$perencanaan = " AND is_perencanaan = " . $is_perencanaan;
-		} else {
-			$perencanaan = " AND is_perencanaan = 1";
-		}
+		 if ($is_perencanaan != '1') {
+			$selection = " fkpbj.*, fppbj.* ";
+		 	$join_fppbj = " JOIN ms_fppbj fppbj ON fkpbj.id_fppbj = fppbj.id";
+		 	$join_fppbj_conditional = " AND fppbj.is_perencanaan = 2 AND YEAR(fppbj.entry_stamp) = $year and fppbj.is_approved = 3";
+		 } else {
+			 $selection = " fkpbj.*, fppbj.id_division as fppbj_division ";
+             $join_fppbj = " JOIN ms_fppbj fppbj ON fkpbj.id_fppbj = fppbj.id";
+             $join_fppbj_conditional = "";
+		 }
 
 		$query = " 	SELECT
-						a.*
+						$selection
 					FROM
-						ms_fppbj a
+					". $this->table ." fkpbj $join_fppbj
 					WHERE
-						a.del = 0 AND a.is_status = 2 $perencanaan $s $q";
+					fkpbj.del = 0 AND fkpbj.is_status = 2 $s $q $join_fppbj_conditional";
 
 		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
-			$query .= " AND a.id_division = " . $admin['id_division'];
+			$query .= " AND fkpbj.id_division = " . $admin['id_division'];
 		}
+		
 
 		$query = $this->db->query($query);
+		
 
 		// echo $this->db->last_query();die;
 
 		return $query;
 	}
-
+	
 	public function getDataFp3($id_fppbj)
 	{
 		$query = $this->db->where('del', 0)->where('id_fppbj', $id_fppbj)->order_by('id', 'desc')->get('ms_fp3');

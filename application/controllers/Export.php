@@ -1744,7 +1744,7 @@ class Export extends MY_Controller {
 
 		$total_fp3_perencanaan = $fp3_lama_pelelangan + $fp3_lama_pemilihan_langsung + $fp3_lama_swakelola + $fp3_lama_penunjukan_langsung + $fp3_lama_pengadaan_langsung;
 
-		$total_aktual = $total_fkpbj + $total_fkpbj_baru_1 + $total_fp3_np + $total_fp3_tl + $total_fp3_mp + $total_fp3_baru_np + $total_fp3_baru_tl + $total_fp3_baru_mp + $total_fp3_baru_hps + $total_fppbj_baru + $total_fp3_hps - $total_fppbj;
+		$total_aktual = $total_fkpbj + $total_fkpbj_baru_1 + $total_fp3_np + $total_fp3_tl + $total_fp3_mp + $total_fp3_baru_np + $total_fp3_baru_tl + $total_fp3_baru_mp + $total_fp3_baru_hps + $total_fppbj_baru - $total_fp3_hps;
 
 		$terealisasi = $total_fkpbj + $total_fp3_np + $total_fp3_tl + $total_fp3_mp + $total_fp3_hps;
 
@@ -2204,8 +2204,10 @@ class Export extends MY_Controller {
 				$key_ = $key_ + 1;
 				$table.= '<tr>
 								<td>'.$key_.'</td>
+								<td>'.$value_['division'].'</td>
 								<td>'.$value_['username'].'</td>
 								<td>'.$value_['password'].'</td>
+								<td>'.$value_['email'].'</td>
 							</tr>';
 		}
 
@@ -2353,8 +2355,10 @@ class Export extends MY_Controller {
 							</caption>
 							<tr>
 								<th>No.</th>
+								<th>Divisi</th>
 								<th>Username</th>
 								<th>Password</th>
+								<th>Email</th>
 							</tr>
 							'.$table.'
 						</table>
@@ -3296,7 +3300,7 @@ class Export extends MY_Controller {
 						}
 
 						$status_perencanaan = ($value__['is_perencanaan'] == 1) ? 'Perencanaan' : 'Diluar perencanaan';
-						$status_approved = ($value__['is_reject'] == 1) ? ' (Ditolak) ' : '';
+						$status_approved = ($value__['is_reject'] == 1) ? ' (Direvisi) ' : '';
 
 						if (!empty($get_fkpbj) && !empty($get_fp3)) {
 							$div_head = '	<td id="' . $value__['id_fppbj'] . '" rowspan=3>' . $no__ . '</td>

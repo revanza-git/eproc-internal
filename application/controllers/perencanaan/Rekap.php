@@ -35,7 +35,7 @@ class Rekap extends MY_Controller {
 					'upload_path'=> base_url('assets/lampiran/rekap/'),
 					'upload_url'=> site_url('perencanaan/rekap/upload_lampiran'),
 					'allowed_types'=> '*',
-					'rules' => 	'required',
+					//'rules' => 	'required',
 				)
 			),
 
@@ -43,7 +43,7 @@ class Rekap extends MY_Controller {
 		);
 
 		$this->admin	 	= $this->session->userdata('admin');
-		$this->getData 		= $this->pm->getDataYear($year);
+		$this->getData 		= $this->pm->getDataRekap($year);
 		$this->getDataYear	= $this->pm->getDataYear($year);
 		$this->approveURL	= site_url('/perencanaan/rekap/save/');
 		$this->form_validation->set_rules($this->form['form']);

@@ -664,22 +664,22 @@ class Pemaketan extends MY_Controller
 			$_validation = $this->formWizard['step'][$_page]['fppbj'];
 			$this->form_validation->set_rules($_validation);
 			if ($data['jwpp_start']) {
-				if (!$this->check_avail_date($data['jwpp_start'], $data['metode_pengadaan'])) {
-					$form = [
-						'jwpp_start' => 'Tanggal tidak sesuai'
-					];
-					echo json_encode(array('status' => 'error', 'form' => $form));
-					die;
-				}
+				// if (!$this->check_avail_date($data['jwpp_start'], $data['metode_pengadaan'])) {
+				// 	$form = [
+				// 		'jwpp_start' => 'Tanggal tidak sesuai'
+				// 	];
+				// 	echo json_encode(array('status' => 'error', 'form' => $form));
+				// 	die;
+				// }
 			}
 			if ($data['jwpp_end']) {
-				if (!$this->check_end_date($data['jwpp_start'], $data['jwpp_end'])) {
-					$form = [
-						'jwpp_start' => 'Tanggal akhir tidak boleh kurang dari tanggal mulai'
-					];
-					echo json_encode(array('status' => 'error', 'form' => $form));
-					die;
-				}
+				// if (!$this->check_end_date($data['jwpp_start'], $data['jwpp_end'])) {
+				// 	$form = [
+				// 		'jwpp_start' => 'Tanggal akhir tidak boleh kurang dari tanggal mulai'
+				// 	];
+				// 	echo json_encode(array('status' => 'error', 'form' => $form));
+				// 	die;
+				// }
 			}
 			if ($this->validation($_validation)) {
 			}

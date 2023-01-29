@@ -40,8 +40,12 @@ var del = $('.delete-notif').modal({
     }
 })
 
+
+
+
 // CALLING THE GRAPHIC
 function getGraph(year){
+    console.log(year);
     $.ajax({
         url:'<?php echo site_url('main/rekapPerencanaanGraph') ?>/'+year,
         method: 'post',
@@ -217,6 +221,7 @@ function getGraph(year){
 
 //---------- FPPBJ
 function getApprovalFPPBJ(year){
+    console.log(year);
     $.ajax({
         url:'<?php echo site_url('main/rekapFPPBJ') ?>/'+year,
         method: 'post',
@@ -239,6 +244,7 @@ function getApprovalFPPBJ(year){
 
 //---------- FKPBJ
 function getApprovalFKPBJ(year){
+    console.log(year);
     $.ajax({
         url:'<?php echo site_url('main/rekapFKPBJ') ?>/'+year,
         method: 'post',
@@ -248,6 +254,7 @@ function getApprovalFKPBJ(year){
             $('#rekapFKPBJ').append(data);
 
             $("#rekapFKPBJ .accordion-header").click(function() {
+                // alert('asd');
                 for (i = 0; i < $(this).length; i++) {
                     $(this).toggleClass('active');
                     $(this).find('.spin').toggleClass('spin-effect');
@@ -261,6 +268,7 @@ function getApprovalFKPBJ(year){
 
 //---------- FP3
 function getApprovalFP3(year){
+    console.log(year);
     $.ajax({
         url:'<?php echo site_url('main/rekapFP3') ?>/'+year,
         method: 'post',
@@ -283,6 +291,7 @@ function getApprovalFP3(year){
 
 //---------- FPPBJ Baru
 function getApprovalFPPBJBaru(year){
+    console.log(year);
     $.ajax({
         url:'<?php echo site_url('main/rekapFPPBJBaru') ?>/'+year,
         method: 'post',
@@ -290,6 +299,7 @@ function getApprovalFPPBJBaru(year){
         success: function(data) {
             $('#rekapFPPBJBaru').empty();
             $('#rekapFPPBJBaru').append(data);
+
             $("#rekapFPPBJBaru .accordion-header").click(function() {
                 for (i = 0; i < $(this).length; i++) {
                     $(this).toggleClass('active');
@@ -304,6 +314,7 @@ function getApprovalFPPBJBaru(year){
 
 //---------- FkPBJ Baru
 function getApprovalFKPBJBaru(year) {
+    console.log(year);
     $.ajax({
         url: '<?php echo site_url('main/rekapFKPBJBaru') ?>/' + year,
         method: 'post',

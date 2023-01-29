@@ -44,7 +44,7 @@ class Riwayat_model extends MY_Model {
 					LEFT JOIN
 						tb_proc_method d ON d.id=a.metode_pengadaan
 					WHERE
-						c.id_pengadaan = ? $con";
+						c.id_pengadaan = ? AND c.del = 0 $con ORDER BY c.is_status ASC";
 
 		$query = $this->db->query($query,array($id));
 

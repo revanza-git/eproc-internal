@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -95,7 +95,51 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
+$db['eproc_'] = array(
+	'dsn'	=> '',
+	'hostname' => '10.10.11.20',
+	'username' => 'root',
+	'password' => 'Nusantara1234',
+	'database' => 'eproc_dev',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
 $db['eproc'] = array(
+	'dsn'	=> '',
+	'hostname' => '10.10.11.20',
+	'username' => 'root',
+	'password' => 'Nusantara1234',
+	'database' => 'eproc',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+$db['test'] = array(
 	'dsn'	=> '',
 	'hostname' => '10.10.11.20',
 	'username' => 'root',

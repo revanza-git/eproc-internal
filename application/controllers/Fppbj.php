@@ -1,7 +1,6 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Fppbj extends MY_Controller
-{
+class Fppbj extends MY_Controller {
 
 	public $form;
 	public $modelAlias 	= 'fm';
@@ -10,194 +9,191 @@ class Fppbj extends MY_Controller
 	public $admin		= '';
 	public $perencanaan_db;
 
-	public function __construct()
-	{
+	public function __construct(){
 		parent::__construct();
-		include_once APPPATH . 'third_party/dompdf2/dompdf_config.inc.php';
-		$this->load->model('Fppbj_model', 'fm');
-		$this->load->model('Main_model', 'mm');
+		include_once APPPATH.'third_party/dompdf2/dompdf_config.inc.php';
+		$this->load->model('Fppbj_model','fm');
+		$this->load->model('Main_model','mm');
 		$this->load->model('riwayat_model', 'rm');
 		$this->admin = $this->session->userdata('admin');
-		$this->eproc_gabungan_db = $this->load->database('eproc', true);
+		$this->eproc_gabungan_db = $this->load->database('test',true);
 
 		$this->formWizard = array(
-			'step' => array(
-				'fppbj' => array(
-					'label' => 'Form FPPBJ',
-					'form' => array(
+			'step'=>array(
+				'fppbj'=>array(
+					'label'=>'Form FPPBJ',
+					'form'=>array(
+								array(
+									'field'	=> 	'no_pr',
+									'type'	=>	'text',
+									'label'	=>	'No. PR',
+									'value' =>	'ss'
+								),array(
+									'field'	=> 	'tipe_pr',
+									'type'	=>	'dropdown',
+									'label'	=>	'Tipe PR',
+									'source'=>	array(0 => 'Pilih Dibawah Ini', 'direct_charge' => 'Direct Charges', 'services' => 'Services', 'user_purchase' => 'User Purchase'),
+								),
+								array(
+									'field'	=> 	'nama_pengadaan',
+									'type'	=>	'text',
+									'label'	=>	'Nama Pengadaan',
+									'rules' => 	'required',
+								),array(
+									'field'	=> 	'pengadaan',
+									'type'	=>	'dropdown',
+									'label'	=>	'Jenis Pengadaan',
+									'source'=>	array(0 => 'Pilih Dibawah Ini', 'jasa' => 'Pengadaan Jasa', 'barang' => 'Pengadaan Barang'),
+									'rules'	=>	'required'
+								),array(
+									'field'	=> 	'jenis_pengadaan',
+									'type'	=>	'dropdown',
+									'label'	=>	'Jenis Detail Pengadaan',
+									'source'=>	array('' => 'Pilih Jenis Pengadaan Diatas'),
+									'rules'	=>	'required'
+								),array(
+									'field'	=> 	'metode_pengadaan',
+									'type'	=>	'dropdown',
+									'label'	=>	'Metode Pengadaan',
+									'source'=>	$this->mm->getProcMethod(),
+									'rules'	=> 	'required'
+								),array(
+									'field'	=> 	'idr_anggaran',
+									'type'	=>	'currency',
+									'label'	=>	'Anggaran (IDR)',
+								),array(
+									'field'	=> 	'usd_anggaran',
+									'type'	=>	'currency',
+									'label'	=>	'Anggaran (USD)',
+								),array(
+									'field'	=> 	'year_anggaran',
+									'type'	=>	'number',
+									'label'	=>	'Tahun Anggaran',
+									'rules' => 	'required'
+								),array(
+									'field'	=> 	'kak_lampiran',
+									'type'	=>	'file',
+									'label'	=>	'KAK / Spesifikasi Teknis',
+									'upload_path'=> base_url('assets/lampiran/kak_lampiran/'),
+									'upload_url'=> site_url('fkpbj/upload_lampiran'),
+									'allowed_types'=> '*',
+								),array(
+									'field'	=> 	'hps',
+									'type'	=>	'radio',
+									'label'	=>	'Ketersediaan HPS',
+									'source'=>	array(1 => 'Ada', 0 => 'Tidak Ada')
+								),array(
+									'field'	=> 	'lingkup_kerja',
+									'type'	=>	'textarea',
+									'label'	=>	'Lingkup Kerja',
+									'rules' => 	'required'
+								),array(
+									'field'	=> 	'penggolongan_penyedia',
+									'type'	=>	'dropdown',
+									'label'	=>	'Penggolongan Penyedia Jasa (Usulan)',
+									'source'=>	array(0 => 'Pilih Dibawah Ini', 'perseorangan' => 'Perseorangan', 'usaha_kecil' => 'Usaha Kecil(K)', 'usaha_menengah' => 'Usaha Menengah(M)', 'usaha_besar' => 'Usaha Besar(B)')
+								)
+								// ,array(
+								// 	'field'	=> 	'penggolongan_CSMS',
+								// 	'type'	=>	'dropdown',
+								// 	'label'	=>	'Penggolongan CSMS (Sesuai Hasil Analisa Resiko)',
+								// 	'source'=>	array(0 => 'Pilih Dibawah Ini', 'high' => 'High', 'medium' => 'Medium', 'low' => 'Low')
+								// )
+								,array(
+									'field'	=> 	'jwpp',
+									'type'	=>	'dateperiod',
+									'label'	=>	'Jangka Waktu Penyelesaian Pekerjaan ("JWPP")',
+									'rules' =>  'required'
+								),array(
+									'field'	=> 	'jwp',
+									'type'	=>	'dateperiod',
+									'label'	=>	'Masa Pemeliharaan'
+								),array(
+									'field'	=> 	'desc_metode_pembayaran',
+									'type'	=>	'textarea',
+									'label'	=>	'Metode Pembayaran (Usulan)',
+								),array(
+									'field'	=> 	'jenis_kontrak',
+									'type'	=>	'dropdown',
+									'label'	=>	'Jenis Kontrak (Usulan)',
+									'source'=>	array(	''	 	=> 'Pilih Dibawah Ini',
+														'po' 	=> 'Purchase Order (PO)',
+														'GTC01' => 'GTC01 - Kontrak Jasa Konstruksi non EPC',
+														'GTC02' => 'GTC02 - Kontrak Jasa Konsultan',
+														'GTC03' => 'GTC03 - Kontrak Jasa Umum',
+														'GTC04' => 'GTC04 - Kontrak Jasa Pemeliharaan',
+														'GTC05' => 'GTC05 - Kontrak Jasa Pembuatan Software',
+														'GTC06' => 'GTC06 - Kontrak Jasa Sewa Fasilitas dan Alat',
+														'GTC07' => 'GTC07 - Kontrak Jasa Tenaga Kerja.',
+														'spk'	=> 'SPK'
+													)
+								),array(
+									'field'	=> 	'sistem_kontrak',
+									'type'	=>	'multiple',
+									'label'	=>	'Sistem Kontrak (Usulan)',
+									'source'=>	array(	'lumpsum' 		=> 'Perikatan Harga - Lumpsum',
+														'unit_price'	=> 'Perikatan Harga - Unit Price',
+														'modified' 		=> 'Perikatan Harga - Modified (lumpsum + unit price)',
+														'outline' 		=> 'Perikatan Harga - Outline Agreement',
+														'turn_key' 		=> 'Delivery - Turn Key',
+														'sharing' 		=> 'Delivery - Sharing Contract',
+														'success_fee' 	=> 'Delivery - Success Fee',
+														'stockless' 	=> 'Delivery - Stockless Purchasing',
+														'on_call' 		=> 'Delivery - On Call Basic',
+													)
+								),array(
+									'field'	=> 	'desc_dokumen',
+									'type'	=>	'textarea',
+									'label'	=>	'Keterangan',
+								)
+								// ,array(
+								// 	'field'	=> 	'desc',
+								// 	'type'	=>	'textarea',
+								// 	'label'	=>	'Keterangan Lainnya',
+								// )
+								
+							),
+					'button'=>array(
 						array(
-							'field'	=> 	'no_pr',
-							'type'	=>	'text',
-							'label'	=>	'No. PR',
-							'value' =>	'ss'
-						), array(
-							'field'	=> 	'tipe_pr',
-							'type'	=>	'dropdown',
-							'label'	=>	'Tipe PR',
-							'source' =>	array(0 => 'Pilih Dibawah Ini', 'direct_charge' => 'Direct Charges', 'services' => 'Services', 'user_purchase' => 'User Purchase'),
-						),
-						array(
-							'field'	=> 	'nama_pengadaan',
-							'type'	=>	'text',
-							'label'	=>	'Nama Pengadaan',
-							'rules' => 	'required',
-						), array(
-							'field'	=> 	'pengadaan',
-							'type'	=>	'dropdown',
-							'label'	=>	'Jenis Pengadaan',
-							'source' =>	array(0 => 'Pilih Dibawah Ini', 'jasa' => 'Pengadaan Jasa', 'barang' => 'Pengadaan Barang'),
-							'rules'	=>	'required'
-						), array(
-							'field'	=> 	'jenis_pengadaan',
-							'type'	=>	'dropdown',
-							'label'	=>	'Jenis Detail Pengadaan',
-							'source' =>	array('' => 'Pilih Jenis Pengadaan Diatas'),
-							'rules'	=>	'required'
-						), array(
-							'field'	=> 	'metode_pengadaan',
-							'type'	=>	'dropdown',
-							'label'	=>	'Metode Pengadaan',
-							'source' =>	$this->mm->getProcMethod(),
-							'rules'	=> 	'required'
-						), array(
-							'field'	=> 	'idr_anggaran',
-							'type'	=>	'currency',
-							'label'	=>	'Anggaran (IDR)',
-						), array(
-							'field'	=> 	'usd_anggaran',
-							'type'	=>	'currency',
-							'label'	=>	'Anggaran (USD)',
-						), array(
-							'field'	=> 	'year_anggaran',
-							'type'	=>	'number',
-							'label'	=>	'Tahun Anggaran',
-							'rules' => 	'required'
-						), array(
-							'field'	=> 	'kak_lampiran',
-							'type'	=>	'file',
-							'label'	=>	'KAK / Spesifikasi Teknis',
-							'upload_path' => base_url('assets/lampiran/kak_lampiran/'),
-							'upload_url' => site_url('fkpbj/upload_lampiran'),
-							'allowed_types' => '*',
-						), array(
-							'field'	=> 	'hps',
-							'type'	=>	'radio',
-							'label'	=>	'Ketersediaan HPS',
-							'source' =>	array(1 => 'Ada', 0 => 'Tidak Ada')
-						), array(
-							'field'	=> 	'lingkup_kerja',
-							'type'	=>	'textarea',
-							'label'	=>	'Lingkup Kerja',
-							'rules' => 	'required'
-						), array(
-							'field'	=> 	'penggolongan_penyedia',
-							'type'	=>	'dropdown',
-							'label'	=>	'Penggolongan Penyedia Jasa (Usulan)',
-							'source' =>	array(0 => 'Pilih Dibawah Ini', 'perseorangan' => 'Perseorangan', 'usaha_kecil' => 'Usaha Kecil(K)', 'usaha_menengah' => 'Usaha Menengah(M)', 'usaha_besar' => 'Usaha Besar(B)')
-						)
-						// ,array(
-						// 	'field'	=> 	'penggolongan_CSMS',
-						// 	'type'	=>	'dropdown',
-						// 	'label'	=>	'Penggolongan CSMS (Sesuai Hasil Analisa Resiko)',
-						// 	'source'=>	array(0 => 'Pilih Dibawah Ini', 'high' => 'High', 'medium' => 'Medium', 'low' => 'Low')
-						// )
-						, array(
-							'field'	=> 	'jwpp',
-							'type'	=>	'dateperiod',
-							'label'	=>	'Jangka Waktu Penyelesaian Pekerjaan ("JWPP")',
-							'rules' =>  'required'
-						), array(
-							'field'	=> 	'jwp',
-							'type'	=>	'dateperiod',
-							'label'	=>	'Masa Pemeliharaan'
-						), array(
-							'field'	=> 	'desc_metode_pembayaran',
-							'type'	=>	'textarea',
-							'label'	=>	'Metode Pembayaran (Usulan)',
-						), array(
-							'field'	=> 	'jenis_kontrak',
-							'type'	=>	'dropdown',
-							'label'	=>	'Jenis Kontrak (Usulan)',
-							'source' =>	array(
-								''	 	=> 'Pilih Dibawah Ini',
-								'po' 	=> 'Purchase Order (PO)',
-								'GTC01' => 'GTC01 - Kontrak Jasa Konstruksi non EPC',
-								'GTC02' => 'GTC02 - Kontrak Jasa Konsultan',
-								'GTC03' => 'GTC03 - Kontrak Jasa Umum',
-								'GTC04' => 'GTC04 - Kontrak Jasa Pemeliharaan',
-								'GTC05' => 'GTC05 - Kontrak Jasa Pembuatan Software',
-								'GTC06' => 'GTC06 - Kontrak Jasa Sewa Fasilitas dan Alat',
-								'GTC07' => 'GTC07 - Kontrak Jasa Tenaga Kerja.',
-								'spk'	=> 'SPK'
-							)
-						), array(
-							'field'	=> 	'sistem_kontrak',
-							'type'	=>	'multiple',
-							'label'	=>	'Sistem Kontrak (Usulan)',
-							'source' =>	array(
-								'lumpsum' 		=> 'Perikatan Harga - Lumpsum',
-								'unit_price'	=> 'Perikatan Harga - Unit Price',
-								'modified' 		=> 'Perikatan Harga - Modified (lumpsum + unit price)',
-								'outline' 		=> 'Perikatan Harga - Outline Agreement',
-								'turn_key' 		=> 'Delivery - Turn Key',
-								'sharing' 		=> 'Delivery - Sharing Contract',
-								'success_fee' 	=> 'Delivery - Success Fee',
-								'stockless' 	=> 'Delivery - Stockless Purchasing',
-								'on_call' 		=> 'Delivery - On Call Basic',
-							)
-						), array(
-							'field'	=> 	'desc_dokumen',
-							'type'	=>	'textarea',
-							'label'	=>	'Keterangan',
-						)
-						// ,array(
-						// 	'field'	=> 	'desc',
-						// 	'type'	=>	'textarea',
-						// 	'label'	=>	'Keterangan Lainnya',
-						// )
-
-					),
-					'button' => array(
-						array(
-							'type' => 'prev',
-							'label' => 'Sebelumnya',
-							'class' => 'btn-prev'
-						), array(
-							'type' => 'next',
-							'label' => 'Lanjut',
+							'type'=>'prev',
+							'label'=>'Sebelumnya',
+							'class'=>'btn-prev'
+						),array(
+							'type'=>'next',
+							'label'=>'Lanjut',
 							// 'class'=>'btn-to-jasa btn-to-swakelola btn-to-jasa-swakelola'
-							'class' => 'btn-to'
+							'class'=>'btn-to'
 						)
 					)
 				),
-				'dpt' => array(
-					'label' => 'Rekomendasi DPT',
-					'form' => array(
+				'dpt'=>array(
+					'label'=>'Rekomendasi DPT',
+					'form'=>array(
+								array(
+									'field'	=> 	'type',
+									'type'	=>	'checkbox',
+									'label'	=>	'Daftar DPT',
+									// 'rules' => 	'required',
+									'full'=>true,
+									'source'=>	array(
+										'' => 'Pilih DPT'
+									)
+								),
+								array(
+									'field'		=> 'type_usulan',
+									'type'		=> 'text',
+									'label'		=> 'Usulan Non DPT'
+								),							
+							),
+					'button'=>array(
 						array(
-							'field'	=> 	'type',
-							'type'	=>	'checkbox',
-							'label'	=>	'Daftar DPT',
-							// 'rules' => 	'required',
-							'full' => true,
-							'source' =>	array(
-								'' => 'Pilih DPT'
-							)
-						),
-						array(
-							'field'		=> 'type_usulan',
-							'type'		=> 'text',
-							'label'		=> 'Usulan Non DPT'
-						),
-					),
-					'button' => array(
-						array(
-							'type' => 'prev',
-							'label' => 'Sebelumnya',
-							'class' => 'btn-prev'
-						), array(
-							'type' => 'next',
-							'label' => 'Lanjut',
-							'class' => 'btn-next'
+							'type'=>'prev',
+							'label'=>'Sebelumnya',
+							'class'=>'btn-prev'
+						),array(
+							'type'=>'next',
+							'label'=>'Lanjut',
+							'class'=>'btn-next'
 						)
 					)
 				)
@@ -213,15 +209,14 @@ class Fppbj extends MY_Controller
 		$this->form_validation->set_rules($this->form['form']);
 	}
 
-	function save()
-	{
+	function save(){
 		$modelAlias = $this->modelAlias;
 		if ($this->validation()) {
 			$save = $this->input->post();
 			$save['idr_anggaran'] = str_replace(',', '', $save['idr_anggaran']);
 			$save['id_division'] = $this->session->userdata('admin')['id_division'];
 			$save['entry_stamp'] = timestamp();
-
+			
 			if ($this->$modelAlias->insert($save)) {
 				$this->session->set_flashdata('msg', $this->successMessage);
 				$this->deleteTemp($save);
@@ -230,39 +225,37 @@ class Fppbj extends MY_Controller
 		}
 	}
 
-	public function index()
-	{
+	public function index(){
 		$this->breadcrumb->addlevel(1, array(
 			'url' => site_url('fppbj'),
 			'title' => 'FPPBJ'
 		));
 
 		$this->header 	= 'FPPBJ';
-		$this->content 	= $this->load->view('fppbj/list', null, TRUE);
+		$this->content 	= $this->load->view('fppbj/list',null, TRUE);
 		$this->script 	= $this->load->view('fppbj/list_js', null, TRUE);
 		parent::index();
 	}
 
 
-	public function getSingleData($id = null)
-	{
+	public function getSingleData($id=null){
 		// define status parameter
 		$admin = $this->session->userdata('admin');
-
-		$param_  = ($admin['id_role'] == 4) ? ($param_ = 1) : '';
-		$this->form['url'] 		= site_url($this->approveURL . $id . '/' . $param_);
+		
+		$param_  = ($admin['id_role'] == 4) ? ($param_=1) : '' ;
+		$this->form['url'] 		= site_url($this->approveURL.$id.'/'.$param_);
 		$this->form['button'] 	= array(
-			# code...
-			array(
-				'type' 	=> 'export',
-				'link'	=> $this->form['url'],
-				'label' => '<i style="line-height:25px;" class="fas fa-thumbs-up"></i>&nbsp;Setujui Data'
-			),
-			array(
-				'type' => 'cancel',
-				'label' => 'Tutup'
-			)
-		);
+										# code...
+										array(
+											'type' 	=> 'export',
+											'link'	=> $this->form['url'],
+											'label' => '<i style="line-height:25px;" class="fas fa-thumbs-up"></i>&nbsp;Setujui Data'
+										),
+										array(
+											'type' => 'cancel',
+											'label' => 'Tutup'
+										)
+								);
 
 		parent::getSingleData($id);
 	}
@@ -272,6 +265,7 @@ class Fppbj extends MY_Controller
 		$user = $this->fm->get_email($id);
 		$email = array();
 
+		$pejabat_pengadaan = $this->input->post('pejabat_pengadaan');
 		$tgl_approval = $this->input->post('tgl_approval');
 		// print_r($param_);die;
 
@@ -288,12 +282,12 @@ class Fppbj extends MY_Controller
 		$id_pic = $this->input->post()['id_pic'];
 		$table = "ms_fppbj";
 		if ($this->session->userdata('admin') != 5) {
-			$param_ = array('is_reject' => 0, 'is_approved' => $param_);
+			$param_ = array('is_reject' => 0, 'is_approved' => $param_, 'pejabat_pengadaan_id' => $pejabat_pengadaan);
 			if ($id_pic != '' || $id_pic != null) {
 				$param_['id_pic'] = $id_pic;
 			}
 		} else {
-			$param_ = array('is_reject' => 0, 'is_approved' => $param_, 'is_approved_hse' => 1);
+			$param_ = array('is_reject' => 0, 'is_approved' => $param_, 'is_approved_hse' => 1, 'pejabat_pengadaan_id' => $pejabat_pengadaan);
 			if ($id_pic != '' || $id_pic != null) {
 				$param_['id_pic'] = $id_pic;
 			}
@@ -393,6 +387,7 @@ class Fppbj extends MY_Controller
 		$fppbj['dpt_list'] = $get_dpt['dpt_list'];
 		$fppbj['approved_by'] = $this->session->userdata('admin')['id_user'];
 		$fppbj['date']	= $tgl_approval . ' ' . date('H:i:s');
+		$fppbj['pejabat_pengadaan_id'] = $pejabat_pengadaan;
 
 		unset($fppbj['id']);
 		unset($fppbj['metode_pengadaan_name']);
@@ -479,8 +474,8 @@ class Fppbj extends MY_Controller
 			$to .= ' ' . $value['email'];
 		}
 
-		$subject = $fppbj['nama_pengadaan'] . ' di tolak';
-		$message = 'Pengadaan dengan nama : ' . $fppbj['nama_pengadaan'] . ' di tolak oleh ' . $this->session->userdata('admin')['name'] . '. <br> catatan : <br>' . $save['keterangan'];
+		$subject = $fppbj['nama_pengadaan'] . ' di revisi';
+		$message = 'Pengadaan dengan nama : ' . $fppbj['nama_pengadaan'] . ' di revisi oleh ' . $this->session->userdata('admin')['name'] . '. <br> catatan : <br>' . $save['keterangan'];
 
 		$activity = $this->session->userdata('admin')['name'] . " menolak pengadaan : " . $fppbj['nama_pengadaan'];
 
@@ -493,20 +488,22 @@ class Fppbj extends MY_Controller
 		return $data;
 	}
 
-	public function btnCallback($id, $param)
-	{
+	public function btnCallback($id,$param){
+		
 		$analisa_risiko = $this->db->where('id_fppbj', $id)->get('tr_analisa_risiko')->row_array();
 
 		if ($this->admin['id_role'] == 4 && $this->admin['id_division'] == 5) {
 			// echo "kondisi 1";die;
-			$this->approveRisiko($id, $param);
-		} else {
+			
+			$this->approveRisiko($id,$param);
+			
+		}else{
 			if (isset($_POST['approve'])) {
 				// echo "kondisi 2";die;
-				$this->approve($id, $param);
-			} else {
+				$this->approve($id,$param);
+			}else{
 				// echo "kondisi 3";die;
-				$this->reject($id, $param);
+				$this->reject($id,$param);
 			}
 		}
 	}
@@ -581,33 +578,33 @@ class Fppbj extends MY_Controller
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
-	public function edit($id = null)
-	{
+	public function edit($id = null){
 		$modelAlias = $this->modelAlias;
 		$data = $this->$modelAlias->selectData($id);
-
-		foreach ($this->form['form'] as $key => $element) {
+		
+		foreach($this->form['form'] as $key => $element) {
 			$this->form['form'][$key]['value'] = $data[$element['field']];
-			if ($this->form['form'][$key]['type'] == 'date_range') {
+			if($this->form['form'][$key]['type']=='date_range'){
 				$_value = array();
-
+				
 				foreach ($this->form['form'][$key]['field'] as $keys => $values) {
 					$_value[] = $data[$values];
+					
 				}
 				$this->form['form'][$key]['value'] = $_value;
 			}
 
-			if ($this->form['form'][$key]['field'] == 'nama_pengadaan') {
-				$this->form['form'][$key]['readonly'] = true;
+			if ($this->form['form'][$key]['field']=='nama_pengadaan') {
+				$this->form['form'][$key]['readonly'] = true; 
 			}
-			if ($this->form['form'][$key]['field'] == 'metode_pengadaan') {
-				$this->form['form'][$key]['readonly'] = true;
+			if ($this->form['form'][$key]['field']=='metode_pengadaan') {
+				$this->form['form'][$key]['readonly'] = true; 
 			}
-			if ($this->form['form'][$key]['field'] == 'jwpp') {
-				$this->form['form'][$key]['readonly'] = true;
+			if ($this->form['form'][$key]['field']=='jwpp') {
+				$this->form['form'][$key]['readonly'] = true; 
 			}
-			if ($this->form['form'][$key]['field'] == 'jwp') {
-				$this->form['form'][$key]['readonly'] = true;
+			if ($this->form['form'][$key]['field']=='jwp') {
+				$this->form['form'][$key]['readonly'] = true; 
 			}
 		}
 		$this->form['fppbj'] = $data;
@@ -617,7 +614,7 @@ class Fppbj extends MY_Controller
 			array(
 				'type' => 'submit',
 				'label' => 'Ubah'
-			),
+			) ,
 			array(
 				'type' => 'cancel',
 				'label' => 'Batal'
@@ -626,15 +623,14 @@ class Fppbj extends MY_Controller
 		echo json_encode($this->form);
 	}
 
-	public function update($id)
-	{
+	public function update($id){
 		$modelAlias = $this->modelAlias;
 		$fppbj = $this->fm->selectData($id);
-
+		
 		if ($this->validation()) {
-			$param_  = ($admin['id_role'] == 4) ? ($param_ = 1) : (($admin['id_role'] == 6) ? ($param_ = 2) : (($admin['id_role'] == 2) ? ($param_ = 3) : ''));
+			$param_  = ($admin['id_role'] == 4) ? ($param_=1) : (($admin['id_role'] == 6) ? ($param_=2) : (($admin['id_role'] == 2) ? ($param_=3) : ''));
 			$save = $this->input->post();
-			$save['is_approved'] 			 = $param_;
+			$save['is_approved'] 			 = $param_; 
 			$save['is_reject'] 				 = 0;
 			$save['id_division'] 	    	 = $fppbj['id_division'];
 			$save['nama_pengadaan']   		 = $fppbj['nama_pengadaan'];
@@ -663,11 +659,10 @@ class Fppbj extends MY_Controller
 		}
 	}
 
-	public function validation()
-	{
+	public function validation(){
 		$__validation = $this->formWizard['step'][$_POST['validation']]['form'];
-		if ($_POST['validation'] == 'fppbj') {
-
+		if($_POST['validation']=='fppbj'){
+			
 			$__val = array();
 			foreach ($this->input->post() as $key => $value) {
 				$__val[$key] = $__validation[$value];
@@ -675,11 +670,11 @@ class Fppbj extends MY_Controller
 			// print_r($__val);
 			$this->form_validation->set_rules($__val);
 			$this->validation($__val);
-		} else {
+		}else{
 
 			$this->form_validation->set_rules($this->formWizard['step'][$_POST['validation']]['form']);
 			$this->validation($__validation);
-		}
+		}	
 	}
 
 	public function clean_tr_email_blast()
@@ -689,10 +684,10 @@ class Fppbj extends MY_Controller
 		$query = " DELETE FROM tr_email_blast WHERE id != 0";
 		$this->db->query($query);
 
-		$fppbj = $this->db->where('del', 0)->get('ms_fppbj')->result_array();
+		$fppbj = $this->db->where('del',0)->get('ms_fppbj')->result_array();
 
 		foreach ($fppbj as $key => $value) {
-			$this->fm->insert_tr_email_blast($value['id'], $value['jwpp_start'], $value['metode_pengadaan']);
+			$this->fm->insert_tr_email_blast($value['id'],$value['jwpp_start'],$value['metode_pengadaan']);
 		}
 	}
 
@@ -742,5 +737,5 @@ class Fppbj extends MY_Controller
 	// 		}
 	// 	}
 	// }
-
+	
 }
