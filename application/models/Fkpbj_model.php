@@ -189,7 +189,7 @@ class Fkpbj_model extends MY_Model
 		 } else {
 			 $selection = " fkpbj.*, fppbj.id_division as fppbj_division ";
              $join_fppbj = " JOIN ms_fppbj fppbj ON fkpbj.id_fppbj = fppbj.id";
-             $join_fppbj_conditional = "";
+             $join_fppbj_conditional = " GROUP BY id_fppbj";
 		 }
 
 		$query = " 	SELECT

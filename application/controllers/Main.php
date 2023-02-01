@@ -346,7 +346,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no = 1; 
 			foreach ($fppbj_selesai->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 		  	}
 			$width_pending = ($fppbj_pending->num_rows() / $total_perencanaan) * 100;
@@ -366,7 +366,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no = 1; 
 			foreach ($fppbj_pending->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';	
+				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';	
 				  $no++;
 			}
 			$width_admin_hsse = ($pending_admin_hsse->num_rows() / $total_perencanaan) * 100;
@@ -386,7 +386,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1;
 			foreach ($pending_admin_hsse->result() as $key) {
-				$res .= '<p>'. $no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';	
+				$res .= '<p>'. $no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';	
 				$no++;
 			}
 			$width_admin_pengendalian = ($pending_admin_pengendalian->num_rows() / $total_perencanaan) * 100;
@@ -406,7 +406,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_admin_pengendalian->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 			}
 			$width_kadept_proc = ($pending_kadept_proc->num_rows() / $total_perencanaan) * 100; 
@@ -427,7 +427,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_kadept_proc->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 			}
 			$width_pending_dir = ($total_pending_dir->num_rows() / $total_perencanaan) * 100;
@@ -448,7 +448,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_dirsdm->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			   $no++;
 			}
 			$width_reject = ($fppbj_reject->num_rows() / $total_perencanaan) * 100;
@@ -460,7 +460,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_dirke->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			   $no++;
 			}
 			$width_reject = ($fppbj_reject->num_rows() / $total_perencanaan) * 100;
@@ -472,7 +472,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_dirut->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			   $no++;
 			}
 		// 	$width_reject = ($fppbj_reject->num_rows() / $total_perencanaan) * 100;
@@ -492,7 +492,7 @@ class Main extends CI_Controller {
 		// 	<div class="accordion-panel">';
 		// 		$no=1;
 		// 		foreach ($fppbj_reject->result() as $key) {
-		// 			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+		// 			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 		// 		    $no++;
 		// 		}
 			$res .= '</div>
@@ -546,7 +546,7 @@ class Main extends CI_Controller {
 							<div class="accordion-panel">';
 							$no = 1; 
 							foreach ($done_dirut->result() as $key) {
-								$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+								$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 								$no++;
 							}
 					$res .= '</div>
@@ -554,7 +554,7 @@ class Main extends CI_Controller {
 					<div class="accordion-panel">';
 					$no = 1;
 					foreach ($pending_dirut->result() as $key) {
-						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 						$no++;
 					}
 					$res .= '</div>
@@ -562,7 +562,7 @@ class Main extends CI_Controller {
 					<div class="accordion-panel">';
 					$no = 1;
 					foreach ($reject_dirut->result() as $key) {
-						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 						$no++;
 					}
 					$res .= '</div>
@@ -611,7 +611,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($done_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .= '</div>
@@ -619,14 +619,14 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$np = 1;
 				foreach ($pending_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				}
 				$res .= '</div>
 				<button class="accordion-header">Tidak disetujui <span class="badge is-danger">'.$reject_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
 				<div class="accordion-panel">';
 				$no = 1;
 				foreach ($reject_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .='</div>
@@ -675,7 +675,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($done_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .= '</div>
@@ -683,7 +683,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1;
 				foreach ($pending_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .= '</div>
@@ -691,7 +691,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1;
 				foreach ($reject_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .='</div>
@@ -737,7 +737,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no = 1; 
 			foreach ($fkpbj_success->result() as $key) {
-                $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 			}
 
@@ -773,7 +773,7 @@ class Main extends CI_Controller {
 					<div class="accordion-panel">';
 					$no = 1; 
 					foreach ($fkpbj_pending->result() as $key) {
-						$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+						$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
 						$no++;
 					}			
 			}
@@ -794,7 +794,7 @@ class Main extends CI_Controller {
                 <div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fkpbj_pending_ap->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 			$width_fkpbj_pending_kp = ($fkpbj_pending_kp->num_rows() / $total_fkpbj->num_rows()) * 100;
@@ -815,7 +815,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fkpbj_pending_kp->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 
@@ -836,7 +836,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 		$no = 1;
 		foreach ($pending_dirsdm->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 		$res .= '</div>';
@@ -845,7 +845,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 		$no = 1;
 		foreach ($fkpbj_pending_dirke->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 		$res .= '</div>';
@@ -854,7 +854,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 		$no = 1;
 		foreach ($fkpbj_pending_dirut->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 
@@ -907,7 +907,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no = 1; 
 			foreach ($fp3_success->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+				$res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 			}
 
@@ -943,7 +943,7 @@ class Main extends CI_Controller {
 					<div class="accordion-panel">';
 					$no = 1; 
 					foreach ($fp3_pending->result() as $key) {
-						$res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+						$res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 						$no++;
 					}
 			}
@@ -964,7 +964,7 @@ class Main extends CI_Controller {
                 <div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_pending_ap->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 			$width_fp3_pending_kp = ($fp3_pending_kp->num_rows() / $total_fp3->num_rows()) * 100;
@@ -985,7 +985,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_pending_kp->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 			$width_fp3_pending_aldir = ($fp3_pending_aldir->num_rows() / $total_fp3->num_rows()) * 100;
@@ -1006,7 +1006,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_pending_sdm->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 			$res .= '</div>';
@@ -1016,7 +1016,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_pending_dirke->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 			$res .= '</div>';
@@ -1026,7 +1026,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_pending_dirut->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$width_fp3_reject = ($fp3_reject->num_rows() / $total_fp3->num_rows()) * 100;
@@ -1090,7 +1090,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no = 1; 
 			foreach ($fppbj_selesai->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 		  	}
 			$width_pending = ($fppbj_pending->num_rows() / $total_perencanaan) * 100;
@@ -1110,7 +1110,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no = 1; 
 			foreach ($fppbj_reject->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';	
+				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';	
 				  $no++;
 			}
 			$width_admin_hsse = ($pending_admin_hsse->num_rows() / $total_perencanaan) * 100;
@@ -1130,7 +1130,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1;
 			foreach ($pending_admin_hsse->result() as $key) {
-				$res .= '<p>'. $no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';	
+				$res .= '<p>'. $no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';	
 				$no++;
 			}
 			if ($year == '2022') {
@@ -1158,7 +1158,7 @@ class Main extends CI_Controller {
 			if ($year != '2022') {
 				$no=1; 
 				foreach ($pending_admin_pengendalian->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}	
 			}
@@ -1180,7 +1180,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_kadept_proc->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 			}
 			$width_pending_dir = ($total_pending_dir->num_rows() / $total_perencanaan) * 100;
@@ -1201,7 +1201,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_dirsdm->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			   $no++;
 			}
 			$res .= '</div>
@@ -1212,7 +1212,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_dirke->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			   $no++;
 			}
 			$res .= '</div>
@@ -1223,7 +1223,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no=1; 
 			foreach ($pending_dirut->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			   $no++;
 			}
 			$width_reject = ($fppbj_reject->num_rows() / $total_perencanaan) * 100;
@@ -1281,7 +1281,7 @@ class Main extends CI_Controller {
 							<div class="accordion-panel">';
 							$no = 1; 
 							foreach ($done_dirut->result() as $key) {
-								$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+								$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 								$no++;
 							}
 					$res .= '</div>
@@ -1289,7 +1289,7 @@ class Main extends CI_Controller {
 					<div class="accordion-panel">';
 					$no = 1;
 					foreach ($pending_dirut->result() as $key) {
-						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 						$no++;
 					}
 					$res .= '</div>
@@ -1297,7 +1297,7 @@ class Main extends CI_Controller {
 					<div class="accordion-panel">';
 					$no = 1;
 					foreach ($reject_dirut->result() as $key) {
-						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 						$no++;
 					}
 					$res .= '</div>
@@ -1346,7 +1346,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($done_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .= '</div>
@@ -1354,14 +1354,14 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$np = 1;
 				foreach ($pending_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				}
 				$res .= '</div>
 				<button class="accordion-header">Tidak disetujui <span class="badge is-danger">'.$reject_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
 				<div class="accordion-panel">';
 				$no = 1;
 				foreach ($reject_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .='</div>
@@ -1410,7 +1410,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($done_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .= '</div>
@@ -1418,7 +1418,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1;
 				foreach ($pending_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .= '</div>
@@ -1426,7 +1426,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1;
 				foreach ($reject_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$res .='</div>
@@ -1468,7 +1468,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no = 1; 
 			foreach ($fp3_success->result() as $key) {
-                $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 			}
 
@@ -1488,7 +1488,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_pending->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$width_fp3_pending_ap = ($fp3_pending_ap->num_rows() / $total_fp3->num_rows()) * 100;
@@ -1508,7 +1508,7 @@ class Main extends CI_Controller {
                 <div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_pending_ap->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 			$width_fp3_pending_kp = ($fp3_pending_kp->num_rows() / $total_fp3->num_rows()) * 100;
@@ -1529,7 +1529,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_pending_kp->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
 				$width_fp3_reject = ($fp3_reject->num_rows() / $total_fp3->num_rows()) * 100;
@@ -1548,7 +1548,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fp3_reject->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id.'/'.date('Y',strtotime($key->entry_stamp))).'">'.$key->nama_pengadaan.'</a></p>';
+                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 				}
             $res .= '</div>

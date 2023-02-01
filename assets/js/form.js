@@ -1081,7 +1081,7 @@
 			return $('.form-control', wrapper);
 		},
 		generateIntro: function(key, data){
-			var matrix = '<div class="intro-wrapper"><div class="intro"><div class="intro-icon"><img src="http://127.0.0.1/eproc_nr/assets/images/sketch.svg" alt="FPPBJ" style="height: 175px"></div><div class="intro-title">FPPBJ</div><div class="intro-caption">FORMULIR PERMOHONAN PENGADAAN BARANG/JASA (FPPBJ). <br>Form ini untuk membuat perencanaan pengadaan baru dengan metode : Pelelangan, Pemilihan Langsung, Pengadaan Langsung, Penunjukan Langsung, Swakelola</div></div></div>';
+			var matrix = '<div class="intro-wrapper"><div class="intro"><div class="intro-icon"></div><div class="intro-title">FPPBJ</div><div class="intro-caption">FORMULIR PERMOHONAN PENGADAAN BARANG/JASA (FPPBJ). <br>Form ini untuk membuat perencanaan pengadaan baru dengan metode : Pelelangan, Pemilihan Langsung, Pengadaan Langsung, Penunjukan Langsung, Swakelola</div></div></div>';
 			var wrapper = this.generateWrapper(key, this.formTags);
 			
 			

@@ -212,14 +212,14 @@ class Pemaketan_model extends MY_Model{
 				$year_anggaran = " "; 
 			}
 					
-			if($id_division != '1')
-			{
+			// if($id_division != '1')
+			// {
 				$where_id_division = "ms_fppbj.id_division = " . $id_division . " AND ";
-			}
-			else
-			{
-				$where_id_division = " ";
-			}
+			// }
+			// else
+			// {
+			// 	$where_id_division = " ";
+			// }
 
 			$where = " $year_anggaran  ms_fppbj.del=0 " . $pic;
 		}if ($admin['id_role'] == 7) {
