@@ -444,13 +444,10 @@ class Fp3 extends MY_Controller
 		$this->send_mail($to, $subject, $message, $link);
 
 		echo json_encode(array('status' => 'success'));
-		// redirect($_SERVER['HTTP_REFERER']);
-		// return $data;
 	}
 
 	public function getSingleData($id = null)
 	{
-		// define status parameter
 		$this->form = array(
 			'form' => array(
 				array(

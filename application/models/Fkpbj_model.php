@@ -182,33 +182,30 @@ class Fkpbj_model extends MY_Model
 			$q = '';
 		}
 
-		 if ($is_perencanaan != '1') {
+		if ($is_perencanaan != '1') {
 			$selection = " fkpbj.*, fppbj.* ";
 		 	$join_fppbj = " JOIN ms_fppbj fppbj ON fkpbj.id_fppbj = fppbj.id";
 		 	$join_fppbj_conditional = " AND fppbj.is_perencanaan = 2 AND YEAR(fppbj.entry_stamp) = $year and fppbj.is_approved = 3";
-		 } else {
-			 $selection = " fkpbj.*, fppbj.id_division as fppbj_division ";
-             $join_fppbj = " JOIN ms_fppbj fppbj ON fkpbj.id_fppbj = fppbj.id";
-             $join_fppbj_conditional = " GROUP BY id_fppbj";
-		 }
+		} else {
+			$selection = " fkpbj.*, fppbj.id_division as fppbj_division ";
+            $join_fppbj = " JOIN ms_fppbj fppbj ON fkpbj.id_fppbj = fppbj.id";
+            $join_fppbj_conditional = " GROUP BY id_fppbj";
+		}
+
+		$division_query = '';
+		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
+			$division_query = " AND fkpbj.id_division = " . $admin['id_division'];
+		}
 
 		$query = " 	SELECT
 						$selection
 					FROM
 					". $this->table ." fkpbj $join_fppbj
 					WHERE
-					fkpbj.del = 0 AND fkpbj.is_status = 2 $s $q $join_fppbj_conditional";
-
-		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
-			$query .= " AND fkpbj.id_division = " . $admin['id_division'];
-		}
-		
+					fkpbj.del = 0 AND fppbj.del = 0 AND fkpbj.is_status = 2 $s $q $division_query $join_fppbj_conditional";
 
 		$query = $this->db->query($query);
 		
-
-		// echo $this->db->last_query();die;
-
 		return $query;
 	}
 	

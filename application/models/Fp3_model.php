@@ -412,7 +412,7 @@ class Fp3_model extends MY_Model
 					WHERE
 						$s";
 						
-						if ($status == 0 || $status == '0') {
+		if ($status == 0 || $status == '0') {
             log_message('error', 'start reject fp3');
             log_message('error', $query);
             log_message('error', 'end reject fp3');
@@ -420,9 +420,6 @@ class Fp3_model extends MY_Model
 
 		$query = $this->db->query($query);
 		
-
-		// echo $this->db->last_query();die;
-
 		return $query;
 	}
 }

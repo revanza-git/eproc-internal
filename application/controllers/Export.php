@@ -1492,10 +1492,13 @@ class Export extends MY_Controller {
 	function rekap_perencanaan($year = null)
 	{
 		$this->load->library('excel');
+		$this->load->model('Main_model', 'mm');
 
 		// fetch data	
 		$dateHead 	= $this->date_week($year);
 		$dateDetail = $this->date_detail($year);
+		$fppbj_selesai		= $this->mm->get_fppbj_selesai($year);
+
 		// print_r($dateDetail);die;
 		// $data		= $this->ex->rekap_department($year);
 		$count_fkpbj = $this->ex->count_rekap_department_fkpbj($year);
@@ -1574,8 +1577,6 @@ class Export extends MY_Controller {
 
 		$data = $this->ext->rekap_department($year);
 		$div = $this->ext->getDivision();
-		// print_r($data);
-		// die;
 
 		$no = 1;
 		foreach ($data as $key => $value) {
@@ -1611,7 +1612,6 @@ class Export extends MY_Controller {
 				foreach ($metodes as $key_metode => $metode) {
 					$data_telat = $this->ext->count_rekap_department_fkpbj_telat($year, $value['id_division'], $metode);
 
-					// $data_fkpbj 	 = $this->ext->count_rekap_department_fkpbj_tidak_telat($year,$value['id_division'],$metode);
 					$data_fkpbj = $this->ext->count_rekap_department_fkpbj($year, $value['id_division'], $metode);
 
 					$telat = $data_telat[0]['metode_' . $key_metode];
@@ -1639,7 +1639,6 @@ class Export extends MY_Controller {
 					$fp3_baru = $data_fp3_baru[0]['metode_' . $key_metode];
 					$fp3_lama = $data_fp3_lama[0]['metode_' . $key_metode];
 
-					//$value['metode_' . $key_metode]
 					$show_table .= ' <td>' . $perencanaan . '</td>
 									<td>' . $fppbj . '</td>
 									<td>' . $fkpbj . '</td>
@@ -1689,8 +1688,6 @@ class Export extends MY_Controller {
 				$__penunjukan_langsung 	+= $value['metode_4'];
 				$__pengadaan_langsung 	+= $value['metode_5'];
 			}
-
-
 
 			$no++;
 		}
@@ -1806,7 +1803,7 @@ class Export extends MY_Controller {
 					</tr>
 					<tr>
 	                  	<td style="font-weight: bold; text-align:left;" colspan=4>Total Perencanaan</td>
-	                    <td style="font-weight: bold;" colspan=44 align="center">' . $total_perencanaan . '</td>
+	                    <td style="font-weight: bold;" colspan=44 align="center">' . count($fppbj_selesai->result())	. '</td>
 	                  </tr>
 	                  <tr>
 	                    <td style="font-weight: bold; text-align:left;" colspan=4>Total Aktual</td>
@@ -3237,25 +3234,11 @@ class Export extends MY_Controller {
 	{
 		$data = $this->ex->rekap_perencanaan($year);
 		$dateHead = $this->date_week($year);
-		// print_r($data);die;
 
 		$table .= $dateHead;
 		foreach ($data as $divisi => $value) {
-			// print_r($value);die;
 			$time_range = json_encode(array('start' => $value['jwpp_start'], 'end' => $value['jwpp_end']));
-			// echo $time_range;
 			$week 		= $this->date_week_($year, $time_range, $value['metode_pengadaan']);
-
-			// $table 		.= '<tr class="content">
-			// 					<td id="'.$value['id_fppbj'].'">'.($key + 1).'</td>
-			// 					<td>'.$value['divisi'].'</td>
-			// 					<td>'.$value['nama_pengadaan'].'</td>
-			// 					<td>'.$value['metode_pengadaan'].'</td>
-			// 					<td>Rp. '.number_format($value['idr_anggaran']).'</td>
-			// 					<td>'.$jenis_pengadaan.'</td>
-			// 					'.$week.'
-			// 				</tr>';	
-			// <td>'.$value['desc'].'</td>
 
 			foreach ($value as $key => $value_) {
 
@@ -3265,7 +3248,6 @@ class Export extends MY_Controller {
 									</tr>';
 
 					foreach ($value_ as $key_ => $value__) {
-						// print_r($value__);die;
 						if ($value__['jenis_pengadaan'] == 'jasa_lainnya') {
 							$jenis_pengadaan = 'Jasa Lainnya';
 						} else if ($value__['jenis_pengadaan'] == 'jasa_konstruksi') {
@@ -3282,15 +3264,12 @@ class Export extends MY_Controller {
 							$jenis_pengadaan = '-';
 						}
 						$time_range_ = $time_range = json_encode(array('start' => $value__['jwpp_start'], 'end' => $value__['jwpp_end']));
-						// echo $time_range_;die;
 
 						$week_ 		= $this->date_week_($year, $time_range_, $value__['metode_pengadaan']);
 
 						$pic = $this->ex->getPicById($value__['id_pic']);
 						$get_fkpbj 	= $this->ex->get_fkpbj($value__['id_fppbj']);
 						$get_fp3 	= $this->ex->get_fp3($value__['id_fppbj']);
-						// print_r($get_fkpbj);die;
-						// print_r($get_fp3);
 						$no__ = $key_ + 1;
 
 						if ($value__['idr_anggaran'] != '0.00') {
@@ -3353,12 +3332,8 @@ class Export extends MY_Controller {
 						}
 
 						if (!empty($get_fkpbj)) {
-
-							// foreach ($get_fkpbj as $key_fk => $get_fkpbj) {
-							// print_r($value_fk);die;
 							$start_date = $get_fkpbj['jwpp_start'];
 							$metode = trim($get_fkpbj['metode_pengadaan_name']);
-							// echo($metode);die;
 							if ($metode == "Pelelangan") {
 								$metode_day = 60; //60 hari
 							} else if ($metode == "Pengadaan Langsung") {
@@ -3377,7 +3352,6 @@ class Export extends MY_Controller {
 
 							$yellow_start = date('Y-m-d', strtotime('-' . $start_yellow . 'days', strtotime($start_date)));
 							$yellow_end = date('Y-m-d', strtotime('-' . $end_yellow . 'days', strtotime($start_date)));
-							// echo 'Ini yellow start '.$yellow_start;
 
 							$entry_date = strtotime($get_fkpbj['entry_stamp']);
 							$yellow_start_ = strtotime($yellow_start);

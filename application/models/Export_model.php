@@ -34,17 +34,13 @@ class Export_model extends MY_Model{
         $data = $data->row_array();
         $data['dpt_list_'] = json_decode($data['dpt_list']);
 
-        // print_r($data);
         if ($data['dpt_list_'] !== null) {
-            # code...
             unset($data['dpt_list']);
             foreach ($data['dpt_list_']->dpt as $id_dpt) {
-                // echo $id_dpt;
                 $data['dpt_list'][] .= $this->get_dpt($id_dpt);
             }
         }
         $data['usulan'] = $data['dpt_list_']->usulan;
-        // print_r($data);die;
         return $data;
     }
 
@@ -56,7 +52,6 @@ class Export_model extends MY_Model{
 
     public function get_sistem_kontrak($id_fppbj,$table)
     {
-        // echo $id_fppbj;echo $table;
         if ($table == 'ms_fppbj') {
             $data = $this->db->where('id', $id_fppbj)->get('ms_fppbj');
         } else {
@@ -64,17 +59,15 @@ class Export_model extends MY_Model{
         }
         
         $data = $data->row_array();
-        // print_r($data);die;
 
         $data['sistem_kontrak'] = json_decode($data['sistem_kontrak']);
 
-        // print_r($data['sistem_kontrak']);die;
         if (!empty($data['sistem_kontrak'])) {
             foreach ($data['sistem_kontrak'] as $id_fppbj) {
                 $data['sistem_kontrak_'][] .= $id_fppbj;
             }
         }
-        // print_r($data);die;
+
         return $data;
     }
     
@@ -89,7 +82,6 @@ class Export_model extends MY_Model{
                     ->join('tb_proc_method', 'tb_proc_method.id = ms_fppbj.metode_pengadaan')
                     ->order_by('id_kadiv DESC, divisi')
                     ->get('ms_fppbj')->result_array();
-                    // print_r($data);die;
 
         foreach ($data as $key => $value) {
             $id_[] = $value['id_fppbj'];
@@ -102,20 +94,13 @@ class Export_model extends MY_Model{
 
     function rekap_perencanaan($year = null)
     {
-        // $kadiv = $this->db->select('name kadiv, id')->get('tb_kadiv')->result_array();
-        // print_r($kadiv);
-        // foreach ($kadiv as $key => $kadiv_) {
         $division = $this->db->select('tb_kadiv.name id_kadiv, tb_division.name, tb_division.id')
             ->join('tb_kadiv', 'tb_division.id_kadiv=tb_kadiv.id', 'LEFT')
             ->order_by('id_kadiv', 'DESC')
             ->get('tb_division')
             ->result_array();
-        // $division = "SELECT tb_kadiv.name kadiv, tb_division.name divisi,tb_division.id FROM tb_kadiv INNER JOIN tb_division ON tb_division.id_kadiv=tb_kadiv.id ORDER BY id_kadiv";
-        // $division = $this->db->query($division)->result_array();
-        // print_r($kadiv_);die;
-        // print_r($division);die;
+     
         foreach ($division as $key_ => $division_) {
-            // print_r($division_);die;
             $data[$division_['id_kadiv']][$division_['name']] = $this->db->query("SELECT   tb_division.name AS division,
                         ms_fppbj.id id_fppbj,
                         year_anggaran,
@@ -180,23 +165,17 @@ class Export_model extends MY_Model{
                         )
                         ORDER BY id_kadiv DESC, divisi")->result_array();
         }
-        // }
-        // print_r($data);die;
 
-        // print_r($data);die;
-        // echo $this->db->last_query();die;
         foreach ($data as $key => $value) {
             $id_[] = $value['id_fppbj'];
         }
         $id_ = json_encode($id_);
         $this->session->set_userdata('export_id', $id_);
 
-        // print_r($data);die;
         return $data;
     }
 
     function rekap_department_fkpbj($year = null,$id_division){
-        // echo "string1 - ".$year." - string2 ".$id_division;die;
         $query = "SELECT
                         ms_fppbj.id,
                         tb_division.id id_division, 
@@ -237,7 +216,6 @@ class Export_model extends MY_Model{
 
     function count_rekap_department_fkpbj_telat($year = null,$id_division,$metode_pengadaan){
         $metode = trim($metode_pengadaan);
-        // echo($metode_pengadaan."-".$id_division."-".$year);die;
         if ($metode == "Pelelangan") {
             $metode_day = 60; //60 hari
         }else if ($metode == "Pengadaan Langsung") {
@@ -270,8 +248,6 @@ class Export_model extends MY_Model{
                         GROUP BY tb_division.id
                         order by tb_division.id DESC";
             $query = $this->db->query($query,array($id_division))->result_array();
-        // echo $this->db->last_query();die;
-        // print_r($query);die;
         if (count($query) > 0) {
             return $query;    
         } else {
@@ -290,7 +266,6 @@ class Export_model extends MY_Model{
 
     function count_rekap_department_fkpbj_tidak_telat($year = null,$id_division,$metode_pengadaan){
         $metode = trim($metode_pengadaan);
-        // echo($metode);die;
         if ($metode == "Pelelangan") {
             $metode_day = 60; //60 hari
         }else if ($metode == "Pengadaan Langsung") {
@@ -323,8 +298,6 @@ class Export_model extends MY_Model{
                         GROUP BY tb_division.id
                         order by tb_division.id DESC";
             $query = $this->db->query($query,array($year,$id_division))->result_array();
-        // echo $this->db->last_query();die;
-        // print_r($query);die;
         if (count($query) > 0) {
             return $query;    
         } else {
@@ -362,7 +335,6 @@ class Export_model extends MY_Model{
                         order by tb_division.id DESC";
             $query = $this->db->query($query,array($year))->result_array();
         }
-        // print_r($query);die;
         return $query;
     }
 
@@ -397,59 +369,7 @@ class Export_model extends MY_Model{
             $query = $this->db->query($query)->result_array();
 
         }
-        // print_r($query);die;
         return $query;
-        // $kadiv = $this->db  ->select('tb_kadiv.name kadiv, tb_kadiv.id')
-        //                     ->get('tb_kadiv')
-        //                     ->result_array();
-        // // print_r($kadiv);die;
-        // foreach ($divisi as $key => $value) {
-        //     // print_r($value);die;
-        //     $data[$key]['id_kadiv'] = $value['id'];
-        //     $data[$key]['kadiv']    = $value['kadiv'];
-
-        //     $getIdDivision = $this->db->query('SELECT id id_division FROM tb_division WHERE id_kadiv ='.$value['id'])->result_array();
-        //     // print_r($getIdDivision);die;
-        //     $id_divisi_ = '';
-        //     $pelelangan = '';
-        //     $pemilihan_langsung ='';
-        //     $swakelola ='';
-        //     $penunjukan_langsung ='';
-        //     $pengadaan_langsung ='';
-        //     // $met_ = '';
-        //     $query = '';
-        //     foreach ($getIdDivision as $key_div => $value_div) {
-        //          // $id_divisi_ .= $value_div['id_division'].',';
-        //         // $met_ .= ',';
-        //         $query .= 'tb_division.name division, id id_division,
-        //                         (SELECT count(id) FROM ms_fppbj where ms_fppbj.id = tb_division.id AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved_hse < 2 AND ((id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 1 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)))) OR  (id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 1 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000)) as pelelangan,
-
-        //                         (SELECT count(id) FROM ms_fppbj where ms_fppbj.id = tb_division.id  AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved_hse < 2 AND ((id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 2 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)))) OR  (id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 2 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000)) as pemilihan_langsung,
-
-        //                         (SELECT count(id) FROM ms_fppbj where ms_fppbj.id = tb_division.id  AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved_hse < 2 AND ((id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 3 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)))) OR  (id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 3 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000)) as swakelola,
-
-        //                         (SELECT count(id) FROM ms_fppbj where ms_fppbj.id = tb_division.id  AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved_hse < 2 AND ((id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 4 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)))) OR  (id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 4 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000)) as penunjukan_langsung,
-
-        //                         (SELECT count(id) FROM ms_fppbj where ms_fppbj.id = tb_division.id  AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved_hse < 2 AND ((id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 5 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)))) OR  (id_division ='.$value_div['id_division'].'  AND metode_pengadaan = 5 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000)) as pengadaan_langsung,';
-        //                       ;
-        //     }
-            // $id_divisi = substr($id_divisi_,substr($id_divisi_),-1);
-            // print_r($id_divisi);die;
-            // $met = substr($met_,substr($met_),-1);
-            // echo $query;die;
-            // $division = $this->db->select($query)
-            //             ->where('id_kadiv', $value['id'])
-            //             ->get('tb_division')
-            //             ->result_array();
-                // echo($division);die;
-       
-            // print_r($division);die;
-            // $data[$key]['detail'] = $division;
-            // print_r($data[$key]['detail'][0]);die;
-        //}
-        // print_r($data);die;
-        // return $data;
-        return $data;
     }
 
     function get_plan($year = null){
@@ -471,12 +391,7 @@ class Export_model extends MY_Model{
                         WHERE 
                             (ms_fppbj.year_anggaran = $year AND ms_fppbj.del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3))
                             OR  
-
                             (ms_fppbj.year_anggaran = $year AND ms_fppbj.del = 0 AND is_approved = 4 AND idr_anggaran > 100000000))
-
-                            -- OR
-
-                            -- (ms_fppbj.is_status = 2 AND ms_fppbj.del = 0)
                         GROUP BY tb_division.id
                         order by tb_division.id DESC";
             $query = $this->db->query($query)->result_array();
@@ -518,17 +433,11 @@ class Export_model extends MY_Model{
                         ->group_by('ms_fp3.id')
                         ->get('ms_fp3');
                         
-                        
-        // print_r($data->result_array());die;
         return $data->result_array();
     }
 
     function get_exportUser(){
-        // $data = $this->db->select('ms_user.*, tb_division.name division')
-        //             ->where('ms_user.del', 0)
-        //             ->join('tb_division', 'tb_division.id = ms_user.id_division')
-        //             ->get('ms_user')->result_array();
-        // echo $this->db->last_query();die;
+
         $query = "  SELECT
                         a.name,
                         b.username,
@@ -551,7 +460,6 @@ class Export_model extends MY_Model{
 
     public function getDivision($year)
     {
-        // echo $year;
         if($year > 0){
             $query = "  SELECT  tb_division.name AS division,
                                 nama_pengadaan AS name,
@@ -622,7 +530,6 @@ class Export_model extends MY_Model{
                         AND ((ms_fppbj.year_anggaran = ".$year." AND ".$where_id_div." ".$where_date." ms_fppbj.del = 0 AND ms_fppbj.is_approved = 3 AND (ms_fppbj.idr_anggaran <= 100000000 OR (ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.metode_pengadaan = 3))))
                         OR  (ms_fppbj.year_anggaran = ".$year." AND ".$where_id_div." ".$where_date." ms_fppbj.del = 0 AND ms_fppbj.is_approved = 4 AND ms_fppbj.idr_anggaran > 100000000)";
         $query .= " ORDER BY ms_fppbj.id_division";
-        // echo $query;die;
 
         return $this->db->query($query)->result_array();
     }

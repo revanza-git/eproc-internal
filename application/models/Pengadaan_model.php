@@ -24,12 +24,9 @@ class Pengadaan_model extends CI_Model {
 
 	public function getData()
 	{
-		$query = "	SELECT  nama_pengadaan AS name,
-							count(*) AS total,
-							YEAR(entry_stamp) AS year,
-							ms_fppbj.id
+		$query = "	SELECT count(*) AS total, YEAR(entry_stamp) AS year
 					FROM ".$this->fppbj."
-					WHERE ms_fppbj.del = 0 ";
+					WHERE ms_fppbj.del = 0";
 
 		$query .= " GROUP BY YEAR(entry_stamp)";
 
@@ -37,14 +34,11 @@ class Pengadaan_model extends CI_Model {
 			$query .= $this->filter($form, $this->input->post('filter'), false);
 		}
 
-		// echo $this->db->last_query();
-
 		return $query;
 	}
 
 	public function getDataByYear($year)
 	{
-		// echo $year;die;
 		$admin = $this->session->userdata('admin');
 		if ($admin['id_role'] != in_array(7,8,9)) {
 			if ($admin['id_role'] == 6) {

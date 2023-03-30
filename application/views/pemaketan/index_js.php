@@ -31,7 +31,6 @@ $(function(){
 		renderContent: function(el, value, key){
 			html = '';
 			html += '<div class="caption"><p>'+value[0].value+'</p><p><b>'+value[1].value+'</b> Item(s)</p></div>';
-			console.log(folder);
 			return html;
 		},
 		additionFeature: function(el){
@@ -49,7 +48,6 @@ $(function(){
 	var resiko = $('.buttonStep').modal({
 		header: 'Tambah Data FPPBJ',
 		render : function(el, data){
-			// console.log(data);
 
 			$('#step5 .form5').append('<div class="alert" style="color: #f90606; font-size: 95%; text-align: center;"></div>');
 
@@ -102,25 +100,17 @@ $(function(){
 					return _return;
 				},
 				onSubmit: function(){
-					// alert('on submit');
-					// location.reload();
+
 				},
 				onSuccessSubmit: function(){
-					// alert('onSuccessSubmit');
 					location.reload();
 					$(resiko).data('modal').close();
 					folder.data('plugin_folder').fetchData();
-					// console.log(resiko);
 				},
 				onSuccess: function(){
-					// alert('onSuccess');
-					// location.reload();
 					$(resiko).data('modal').close();
 				}
 			});
-			
-			//$( '.money' ).mask('999,999,999,999,999.99', {reverse: true});
-		  	//$( '.money' ).mask('999,999,999,999,999.99', {reverse: true});
 		  	
 			<?php if ($is_perencanaan == '0') { ?>
 				$('#step2 .form0').hide();
@@ -164,7 +154,6 @@ $(function(){
 					}
 
 					function _clear(){
-						// $(this).checked(false);
 						$('#step2 .form8').empty();
 						$('#step2 .form9').remove();
 						$('#step2 .form10').remove();

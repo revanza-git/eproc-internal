@@ -5,6 +5,7 @@ class Dashboard_model extends MY_Model
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Main_model', 'mm');
 	}
 	function total_rencana_baseline($form)
 	{
@@ -106,7 +107,7 @@ class Dashboard_model extends MY_Model
 		return $ct;
 	}
 
-		function rekapPerencanaanGraph($year)
+	function rekapPerencanaanGraph($year)
 	{
 		$this->load->model('Export_test_model', 'ext');
 
@@ -168,18 +169,9 @@ class Dashboard_model extends MY_Model
 		$total_fp3_penunjukan_langsung = $fp3_lama_penunjukan_langsung + $fp3_baru_penunjukan_langsung;
 		$total_fp3_pengadaan_langsung = $fp3_lama_pengadaan_langsung + $fp3_baru_pengadaan_langsung;
 
-		// echo $fppbj_pelelangan . $fppbj_pemilihan_langsung . $fppbj_swakelola . $fppbj_penunjukan_langsung . $fppbj_pengadaan_langsung;
-		// die;
-
-		if ($year == '2022') {
-            $data['plan']   				= 103;
-            $data['act']    				= 96;
-            $data['act_out']				= 32;
-        } else {
-            $data['plan']   				= count($this->rekap_department($year)) + count($this->rekap_department_fkpbj($year)) + count($this->rekap_department_fp3($year));
-            $data['act']    				= count($this->rekap_department_fkpbj($year)) + count($this->rekap_department_fp3($year));
-            $data['act_out']				= count($this->rekap_department($year, 2)) + count($this->rekap_department_fkpbj($year, 2)) + count($this->rekap_department_fp3($year, 2)); //+ count($this->rekap_department($year,2))
-        }
+		$data['plan']   				= count($this->mm->get_fppbj_selesai($year)->result());
+		$data['act']    				= count($this->rekap_department_fkpbj($year));
+		$data['act_out']				= count($this->rekap_department($year, 2)) + count($this->rekap_department_fkpbj($year, 2)) + count($this->rekap_department_fp3($year, 2)); //+ count($this->rekap_department($year,2))
 
 		$data['pelelangan']             = $total_fppbj_pelelangan + $total_fkpbj_pelelangan + $total_fp3_pelelangan; //$total_fppbj_pelelangan + $total_fkpbj_pelelangan + $total_fp3_pelelangan;
         $data['pemilihan_langsung']     = $total_fppbj_pemilihan_langsung + $total_fkpbj_pemilihan_langsung + $total_fp3_pemilihan_langsung; //$total_fppbj_pemilihan_langsung + $total_fkpbj_pemilihan_langsung + $total_fp3_pemilihan_langsung;
@@ -188,12 +180,6 @@ class Dashboard_model extends MY_Model
         $data['pengadaan_langsung']     = $total_fppbj_pengadaan_langsung + $total_fkpbj_pengadaan_langsung + $total_fp3_pengadaan_langsung; //$total_fppbj_pengadaan_langsung + $total_fkpbj_pengadaan_langsung + $total_fp3_pengadaan_langsung;
         $data['percent_act'] = round(($data['act'] / $data['plan']) * 100);
 		$data['percent_act_out'] = round(($data['act_out'] / $data['plan']) * 100);
-		// $data['total']  = count($this->db->select('id')->where('year_anggaran', $year)->where('del', 0)->where('is_reject', 0)->get('ms_fppbj')->result_array());
-		// $data['plan']   = count($this->db->select('id')->where('year_anggaran', $year)->where('del', 0)->where('is_status < 2')->where('is_reject', 0)->get('ms_fppbj')->result_array());
-		// $data['act']    = count($this->db->select('id')->where('year_anggaran', $year)->where('del', 0)->where('is_status', 2)->where('is_reject', 0)->get('ms_fppbj')->result_array());
-
-		// $data['plan']   = $data['plan'] / $data['total'] * 100;
-		// $data['act']    = $data['act'] / $data['total'] * 100;
 
 		return $data;
 	}
@@ -311,7 +297,6 @@ class Dashboard_model extends MY_Model
 				   WHERE 
 				        is_reject = 0 
 				        AND del = 0
-				        AND is_approved_hse < 2
 						AND 
 						(
 							(
@@ -363,12 +348,11 @@ class Dashboard_model extends MY_Model
 						$divisi
 						is_perencanaan = " . $type . " AND
 				    	is_status = 2
+						AND is_approved = 3
 				        AND del = 0
 						AND entry_stamp LIKE '%" . $year . "%'";
 
 		$query = $this->db->query($sql);
-		// print_r($query);die;
-		// echo $this->db->last_query();die;
 		return $query->result_array();
 	}
 
@@ -395,8 +379,6 @@ class Dashboard_model extends MY_Model
 				GROUP by b.id";
 			
 		$query = $this->db->query($sql);
-		// print_r($query);die;
-		// echo $this->db->last_query();die;
 		return $query->result_array();
 	}
 	

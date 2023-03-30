@@ -126,11 +126,6 @@ class Fppbj_model extends MY_Model{
 		$this->db->where('ms_fppbj.id', $id);
 		$this->db->join('tb_proc_method', 'tb_proc_method.id = metode_pengadaan');
 		$query= $this->db->get('ms_fppbj');
-
-		// $this->db->select('*')->from('ms_fppbj');
-		// $sub = $this->subquery->start_subquery('where_in');
-		// $sub->select('id')->from('ms_fkpbj');
-		// $this->subquery->end_subquery('id', FALSE);
 		
 		$data = $query->row_array();
 
@@ -140,15 +135,11 @@ class Fppbj_model extends MY_Model{
 		foreach ($data['fkpbj_detail'] as $key => $value)
 			$data['fkpbj_detail'][$key]['type']	= "fkpbj";
 		
-		
 		foreach ($data['fp3_detail'] as $key => $value)
 			$data['fp3_detail'][$key]['type']	= "fp3";
-			
 
 		$data['detail']	= array_merge ($data['fkpbj_detail'], $data['fp3_detail']);
 
-		
-		// print_r($data);
 		return $data;
 
 	}

@@ -503,7 +503,7 @@ class MY_Controller extends CI_Controller{
 	public function do_upload($field, $db_name = ''){
 		$file_name = $_FILES[$db_name]['name'] = $db_name . '_' . name_generator($_FILES[$db_name]['name']);
 		$config['upload_path'] = './assets/lampiran/' . $db_name . '/';
-		$config['allowed_types'] = 'pdf|jpeg|jpg|png|gif';
+		$config['allowed_types'] = 'gif';
 		$this->load->library('upload');
 		$this->upload->initialize($config);
 		if (!$this->upload->do_upload($db_name)) {
@@ -546,27 +546,8 @@ class MY_Controller extends CI_Controller{
 	}
 
 	public function send_mail($to, $subject, $message, $link="#",$type=''){	
-		/* 
-		| -------------------------------------------------------------------
-		| Push Mail Notification 
-		| -------------------------------------------------------------------
-		| These function send email notification to user.
-		|
-		|	$to 		= {direct to email user};
-		|	$subject	= {title email};
-		|	$messagege	= {notification message};
-		|	$link		= {link to application (if exist)};
-		|
-		*/
-		
 		$admin = $this->session->userdata('admin');
-		// print_r($this->session->userdata('admin'));
-		/*if ($to == '') {
-			$to		= "arinal.dzikrul@dekodr.co.id";
-		}*/
-		//$to		= "arinal.dzikrul@dekodr.co.id";
-		// $subject = "Pembuatan Usulan Komag Baru";
-		// $message = "<b>".$admin['name']."</b> Telah membuat usulan komag baru.";
+
 		$link = "location.href='asd';";
 		$config = Array(
 			'protocol' 	=> 'smtp',
@@ -577,15 +558,11 @@ class MY_Controller extends CI_Controller{
 			'mailtype'  => 'html', 
 			'charset'   => 'utf-8',
 			'smtp_crypto' => 'tls',		
-
 			'crlf' => "\r\n",
-				// 'charset'   => 'iso-8859-1',
 		);
         $this->load->library('email');
-
         $this->email->initialize($config);
 		$this->email->set_newline("\r\n");
-		// Set to, from, message
 		$this->email->from('portal.nr@pertamina.com', 'E-Proc Nusantara Regas');
 
 		$html = '<html xmlns="http://www.w3.org/1999/xhtml">
@@ -771,27 +748,16 @@ class MY_Controller extends CI_Controller{
 
 		
 		
-		// print_r($html)kiri12saki@gmail.com;die;$to
 		$this->email->to($to);
-		//'ayu@nusantararegas.com','amathul@nusantararegas.com','haryo.priantomo@nusantararegas.com'amathul@nusantararegas.com,haryo.priantomo@nusantararegas.com
 		if ($type=='fkpbj') {
 			$this->email->cc('cecilia.keliat2@pertamina.com,ayudya.aromaticasari@pertamina.com,amathul.basyith@pertamina.com,syah.abimoro@pertamina.com');
-			// $this->email->cc('arinal.dzikrul@dekodr.co.id');
 		}
-		$this->email->bcc('kiri12saki@gmail.com'); //'fadlimp@gmail.com',
+		$this->email->bcc('kiri12saki@gmail.com');
         $this->email->subject($subject);
         $this->email->message($html);
 
 		$result = $this->email->send();
-		
-		/*if ($result) {
-			// $to, $from, $value, $document
-			$this->send_note($to, $from, $message, '');
-		}else{
-			print_r($this->email->print_debugger());	
-		}*/
-		
-		log_message('error', json_encode($result));
+	
 		return $result;
 	}
 
@@ -829,11 +795,10 @@ class MY_Controller extends CI_Controller{
 	}
 	
 	function sendMailEproc($to,$sub,$message){
-		
 		$config = Array(
 			'protocol' 	=> 'smtp',
 			'smtp_host' => 'mail.pertamina.com',
-			'smtp_port' => 25,
+			'smtp_port' =>  25,
 			'smtp_user' => 'portal.nr@pertamina.com',
 			'smtp_pass' => 'PGE@Wm8iltpi1',
 			'mailtype'  => 'html', 
@@ -851,8 +816,10 @@ class MY_Controller extends CI_Controller{
 		$this->email->from('portal.nr@pertamina.com', 'E-Proc Nusantara Regas');
 		$this->email->to($to);
 		//'ayu@nusantararegas.com','amathul@nusantararegas.com','haryo.priantomo@nusantararegas.com'
-		$this->email->cc('amathul.basyith@pertamina.com,syah.abimoro@pertamina.com');
-		$this->email->bcc('fadlimp@gmail.com','arinaldha@gmail.com'); 
+		// $this->email->cc('amathul.basyith@pertamina.com,syah.abimoro@pertamina.com');
+		$this->email->cc('irahman.hanif@gmail.com'); 
+		// $this->email->bcc('fadlimp@gmail.com','arinaldha@gmail.com'); 
+		$this->email->bcc('irahman.hanif@gmail.com'); 
         $this->email->subject($subject);
         $this->email->message($html);
 		$this->email->send();

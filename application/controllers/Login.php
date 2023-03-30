@@ -17,16 +17,13 @@ class Login extends CI_Controller
     public function index()
     {
         if ($this->session->userdata('user')) {
-            // header("Location: http://10.10.10.3/eproc_pengadaan/dashboard");
         } elseif ($this->session->userdata('admin')) {
             if ($this->session->userdata('admin')['app_type'] == 1) {
-                // header("Location: http://10.10.10.3/eproc_pengadaan/admin");
             } else {
                 redirect('dashboard');
             }
         } else {
             header("Location: ".URL_TO_LOGIN);
-            // $this->load->view('template/layout-login-nr');
         }
     }
 
@@ -45,9 +42,7 @@ class Login extends CI_Controller
             }
         } else {
             $message = "Username atau Password salah";
-
             echo "<script type='text/javascript'>alert('$message');</script>";
-
             $this->index();
         }
     }

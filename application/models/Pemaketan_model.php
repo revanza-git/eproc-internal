@@ -76,7 +76,7 @@ class Pemaketan_model extends MY_Model{
 		log_message('error', $query);
 		
 		log_message('error', 'end_get_data');
-		//echo $query;die;
+
 		$query .= " GROUP BY id_division ";
 		return $query;
 	}
@@ -108,7 +108,6 @@ class Pemaketan_model extends MY_Model{
 	function getDataRekap($form = "", $year = null)
 	{
 		if ($year > 0) {
-			//echo "Kondisi 1";
 			$query = "	SELECT  b.name AS division,
 								ms_fppbj.nama_pengadaan AS name,
 								YEAR(ms_fppbj.entry_stamp) as year,
@@ -121,23 +120,16 @@ class Pemaketan_model extends MY_Model{
 						WHERE
 						(ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.del = 0 AND ms_fppbj.is_approved = 3 AND (ms_fppbj.idr_anggaran <= 100000000 OR (ms_fppbj.idr_anggaran > 100000000 AND ms_fppbj.metode_pengadaan = 3))
                             OR  
-
                             (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.del = 0 AND ms_fppbj.is_approved = 4 AND ms_fppbj.idr_anggaran > 100000000))
-
                             OR
-
                             (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.is_status = 2 AND ms_fppbj.del = 0)
-
                             OR
-
                             (ms_fppbj.is_perencanaan = 1 AND ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND ms_fppbj.is_status = 1 AND ms_fp3.status != 'hapus' AND ms_fppbj.del = 0)";
 			if ($this->input->post('filter')) {
 				$query .= $this->filter($form, $this->input->post('filter'), true);
 			}
-			$query .= " GROUP BY a.id";
-			//echo $query;
+			$query .= " GROUP BY id";
 		} else {
-			//echo "Kondisi 2";
 			$query = "	SELECT  ms_fppbj.nama_pengadaan AS name,
 								count(*) AS total,
 								YEAR(ms_fppbj.entry_stamp) as year,
@@ -163,7 +155,6 @@ class Pemaketan_model extends MY_Model{
 			}
 			$query .= " GROUP BY YEAR(ms_fppbj.entry_stamp)";
 		}
-		// print_r($query);
 		return $query;
 	}
 
@@ -192,6 +183,7 @@ class Pemaketan_model extends MY_Model{
 
 	function getDataDivision($form=array(), $id_division="",$id_fppbj="0",$year = ""){
 		$admin = $this->session->userdata('admin');
+
 		if ($admin['id_role'] != in_array(7,8,9)) {
 
 			if ($admin['id_role'] == 6) {
@@ -212,14 +204,7 @@ class Pemaketan_model extends MY_Model{
 				$year_anggaran = " "; 
 			}
 					
-			// if($id_division != '1')
-			// {
-				$where_id_division = "ms_fppbj.id_division = " . $id_division . " AND ";
-			// }
-			// else
-			// {
-			// 	$where_id_division = " ";
-			// }
+			$where_id_division = "ms_fppbj.id_division = " . $id_division . " AND ";
 
 			$where = " $year_anggaran  ms_fppbj.del=0 " . $pic;
 		}if ($admin['id_role'] == 7) {
@@ -269,13 +254,12 @@ class Pemaketan_model extends MY_Model{
 					LEFT JOIN tr_note ON tr_note.id_fppbj=ms_fppbj.id AND tr_note.type = 'reject'
 					LEFT JOIN ms_fp3 fp3 ON fp3.id_fppbj=ms_fppbj.id
 					WHERE " . $where_id_division . " " . $id_fppbj . " " . $where;
-		// echo $query;die;
-		if($this->input->post('filter')){
+		
+					if($this->input->post('filter')){
 			$query .= $this->filter($form, $this->input->post('filter'), false);
 		}
 
 		$query .= " GROUP BY ms_fppbj.id ";
-		// print_r($query);die;
 		
 		return $query;
 	}
@@ -348,9 +332,7 @@ class Pemaketan_model extends MY_Model{
 
 	function getDataYear($form = "", $year = null)
 	{
-
 		if ($year > 0) {
-			//echo "Kondisi 1";
 			$query = "	SELECT  b.name AS division,
 								a.nama_pengadaan AS name,
 								a.year_anggaran AS year,
@@ -364,9 +346,7 @@ class Pemaketan_model extends MY_Model{
 				$query .= $this->filter($form, $this->input->post('filter'), true);
 			}
 			$query .= " GROUP BY a.id";
-			//echo $query;
 		} else {
-			//echo "Kondisi 2";
 			$query = "	SELECT  nama_pengadaan AS name,
 								count(*) AS total,
 								year_anggaran AS year,
@@ -379,15 +359,12 @@ class Pemaketan_model extends MY_Model{
 			}
 			$query .= " GROUP BY YEAR(entry_stamp)";
 		}
-		// print_r($query);
 		return $query;
 	}
 
 	function getDataYear_($form = "", $year = null)
 	{
-
 		if ($year > 0) {
-			//echo "Kondisi 1";
 			$query = "	SELECT  tb_division.name AS division,
 								a.nama_pengadaan AS name,
 								a.year_anggaran AS year,
@@ -427,9 +404,7 @@ class Pemaketan_model extends MY_Model{
 				$query .= $this->filter($form, $this->input->post('filter'), true);
 			}
 			$query .= " GROUP BY a.id";
-			//echo $query;
 		} else {
-			//echo "Kondisi 2";
 			$query = "	SELECT  nama_pengadaan AS name,
 								count(*) AS total,
 								year_anggaran AS year,
@@ -468,7 +443,6 @@ class Pemaketan_model extends MY_Model{
 			}
 			$query .= " GROUP BY YEAR(entry_stamp)";
 		}
-		// print_r($query);
 		return $query;
 	}
 
@@ -513,14 +487,6 @@ class Pemaketan_model extends MY_Model{
 				WHERE a.id = ".$id;
 		$query = $this->db->query($sql)->row_array();
 
-		// $query['query'] = "SELECT 
-		// 				a.* 
-		// 			FROM 
-		// 				tr_analisa_risiko_detail a 
-		// 			INNER JOIN
-		// 				tr_analisa_risiko b ON a.id=b.id_analisa_risiko
-		// 			WHERE b.id_fppbj = ".$query['id'];
-		// print_r($query);
 		return $query;
 	}
 

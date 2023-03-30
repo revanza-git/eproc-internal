@@ -24,6 +24,7 @@ $(function(){
 		data: dataPost,
 		dataRightClick: function(key, btn, value){
 			_id 				= value[key][9].value;
+			$('#id_fppbj').val(_id);
 			_metode				= value[key][1].value;
 			_is_approve			= value[key][4].value;
 			is_status 			= value[key][3].value;
@@ -35,7 +36,6 @@ $(function(){
 			is_approved_hse		= value[key][12].value;
 			idr_anggaran		= value[key][16].value;
 
-			console.log(metode_pengadaan);
 			urlTimeline = '<?php echo base_url('timeline/view/fppbj');?>/'+_id;
 			urlpdf 		= site_url+"export/fppbj/"+_id;
 			id_role = '<?php echo $this->session->userdata('admin')['id_role'] ?>'
@@ -68,8 +68,6 @@ $(function(){
  					href:site_url+"fkpbj/add_fkpbj/"+_id
  				}];
 
-
- 				
  				btn_edit = [
  				{
  					icon : 'cog',
@@ -129,7 +127,6 @@ $(function(){
 
 						return btn;
 					} else if (is_status == 2) {
-						console.log('Ke 1');
 						if (_is_approve == 3) {
 							return btn;
 						} else {
@@ -144,7 +141,6 @@ $(function(){
 							<?php } ?>
 						}
 					} else if (is_status == 1) {
-						// && _is_approve == 3
 						return btn;
 					} else {
 						if (is_reject == 0) {
@@ -162,7 +158,6 @@ $(function(){
 
 					else if (is_status == 0){
 						if (is_status == 0 && is_reject == 0 && del == 0 && is_approved_hse < 2 && ((del == 0 && _is_approve == 3 && (idr_anggaran <= 100000000 || (idr_anggaran > 100000000 && metode_pengadaan == 3)))) ||  (del == 0 && _is_approve == 4 && idr_anggaran > 100000000) && (metode_pengadaan != 3 || metode_pengadaan != 5)) {
-							console.log('ke blablar')
 								var _btn = _btn_fkpbj.concat(btn);
 		 						return _btn;
 						} else {
@@ -195,7 +190,6 @@ $(function(){
 						}
 					}
 					else if (is_status == 1) {
-						// && _is_approve == 3
 						return btn;
 					}
 	 				else {
@@ -220,7 +214,6 @@ $(function(){
 
 							return btn;
 						} else if (is_status == 2) {
-							console.log('Ke 3');
 							if (_is_approve == 3) {
 								return btn;
 							} else {
@@ -235,7 +228,6 @@ $(function(){
 								<?php } ?>
 							}
 						} else if (is_status == 1) {
-							// && _is_approve == 3
 							return btn;
 						} else {
 							if (is_reject == 0) {
@@ -248,7 +240,6 @@ $(function(){
 	 				<?php if ($admin['id_role'] == 5 || $admin['id_division'] == 1) { ?>
 					else if (is_status == 0){
 						if (is_status == 0 && is_reject == 0 && del == 0 && is_approved_hse < 2 && ((del == 0 && _is_approve == 3 && (idr_anggaran <= 100000000 || (idr_anggaran > 100000000 && metode_pengadaan == 3)))) ||  (del == 0 && _is_approve == 4 && idr_anggaran > 100000000) && (metode_pengadaan != 3 || metode_pengadaan != 5)) {
-							console.log('ke blablar')
 								var _btn = _btn_fkpbj.concat(btn);
 		 						return _btn;
 						} else {
@@ -265,7 +256,6 @@ $(function(){
 					}
 					<?php  }?>
 					else if (is_status == 2) {
-						console.log('Ke 4');
 						if (_is_approve == 3) {
 							return btn;
 						} else {
@@ -281,7 +271,6 @@ $(function(){
 						}
 					}
 					else if (is_status == 1) {
-						// && _is_approve == 3
 						return btn;
 					}
 	 				else {
@@ -311,13 +300,11 @@ $(function(){
 					href = $(this).attr('href');
 					window.location.href = href;
 				})
-			// View Data Only
-			var step = $('.buttonViewStep').modal({
+
+				var step = $('.buttonViewStep').modal({
 				header: 'Lihat Data',
 				dataType:'html',
                 render : function(el, data){
-                  // var data = JSON.parse(data);
-                  // form = '';
                   $(el).html(data);
 
                   $('.close').on('click',function(){
@@ -363,9 +350,9 @@ $(function(){
 		  			$('.close-reject-step').on('click',function() {
 		  				$('.form-keterangan-reject.modal-reject-step').removeClass('active');
 		  			})
-					//+'/'+$('.form31 input').val()
+
 		  			$.ajax({
-							url:'<?php echo site_url('pemaketan/get_pic') ?>/'+$('.form11 input').val(),
+							url:'<?php echo site_url('pemaketan/get_pic') ?>/'+$('#id_fppbj').val(),
 							method: 'post',
 							async:false,
 							success: function(xhr) {
@@ -469,7 +456,6 @@ $(function(){
 			var view = $('.buttonView').modal({
 				header: 'Lihat Data',
 				render : function(el, data){
-					// console.log(data)
 					_self = view;
 					var anggaran_idr = '';
 					var anggaran_usd = '';
@@ -477,7 +463,6 @@ $(function(){
 						location.reload();
 
 					};
-					// data.isReset = false;
 					
 					$(el).form(data).data('form');
 
@@ -624,7 +609,6 @@ $(function(){
 		  				jenis_kontrak 			= $('#formStep [name="jenis_kontrak"]').val();
 		  				sistem_kontrak 			= $('#formStep [name="sistem_kontrak[]"]').val();
 		  				desc_dokumen 			= $('#formStep [name="desc_dokumen"]').val();
-		  				// alert(year_anggaran);
 
 		  				if (no_pr == '') {
 		  					alert('No.PR Harus Diisi !');
@@ -681,7 +665,6 @@ $(function(){
 					
 					$('.deleteFile').on('click',function(e) {
 						data = $(this).data('id');
-						//alert(data);
 						$('[type="file"].closeInput'+data+'').css('display','block');
 						$('.fileUploadBlock.close'+data+'').empty();
 						$('[type="hidden"].closeHidden'+data+'').val('');
@@ -695,41 +678,15 @@ $(function(){
 		  			}else {
 		  				csms = 3;
 		  			}
-					/*else{
-		  				csms = '';
-		  			}*/
-					// $.ajax({
-					// 	url: '<?php echo site_url('main/get_dpt_csms')?>/'+csms,
-					// 	// data: category,
-					// 	dataType: 'json',
-					// 	complete : function(){
-					// 	},
-					// 	success: function(dpt){
-					// 		// console.log(dpt);
-					// 		$('#tab2 .checkboxWrapper').empty();
-					// 		$('#tab2 label').css("float", "left");
-
-					// 		$('#tab2 .tab-content').append('<fieldset class="form-group form0 " for=""><label for="">Usulan Non DPT</label><input type="text" class="form-control" name="usulan"></fieldset>');
-
-					// 		$('#tab2 .checkboxWrapper').append('<div class="search-recomendation"><input id="searchDPT" type="text" onkeyup="filterDPTFKPBJ()" class="sc" placeholder="Cari DPT"/><span class="icon"><i class="fas fa-search"></i></span></div>');
-
-					// 		dpt.forEach(function(element) {
-					// 			$('#tab2 .checkboxWrapper').append('<div class="inputGroup" id="inputGroup"> <input id="option'+element.id_vendor+'" name="type[]" type="checkbox" value="'+element.id_vendor+'"/> <label for="option'+element.id_vendor+'">'+element.vendor+'</label> </div>');
-					// 		});
-					// 	}
-					// });
 
 					var val_e = $('[name="jenis_pengadaan"]').val();
 
 					$.ajax({
 							url: '<?php echo site_url('main/get_dpt_type/')?>/'+val_e,
-							// data: category,
 							dataType: 'json',
 							complete : function(){
 							},
 							success: function(dpt){
-								// console.log(dpt);
-								// alert('ke sini 1');
 								$('#tab2 .checkboxWrapper').empty();
 								$('#tab2 .tab-content .form1').empty();
 								$('#tab2 label').css("float", "left");
@@ -750,24 +707,18 @@ $(function(){
 					});
 
 					$('[name="jenis_pengadaan"]').on('click',function() {
-						// abcd += '';
-						// alert(id_pengadaan);
 						var dpt_type = $(this).val();
 
 						$.ajax({
 							url: '<?php echo site_url('main/get_dpt_type/')?>/'+dpt_type,
-							// data: category,
 							dataType: 'json',
 							complete : function(){
 							},
 							success: function(dpt){
-								// console.log(dpt);
 								$('#tab2 .checkboxWrapper').empty();
 								$('#tab2 .tab-content .form1').empty();
 								$('#tab2 label').css("float", "left");
-
 								$('#tab2 .tab-content').append('<fieldset class="form-group form1 " for=""><label for="">Usulan Non DPT</label><input type="text" class="form-control" name="usulan"></fieldset>');
-
 								$('#tab2 .checkboxWrapper').append('<div class="search-recomendation"><input id="searchDPT" type="text" onkeyup="filterDPT()" class="sc" placeholder="Cari DPT"/><span class="icon"><i class="fas fa-search"></i></span></div>');
 								dpt.forEach(function(element) {
 									if (element.score == '' || element.score == null) {
@@ -784,13 +735,11 @@ $(function(){
 								});
 							}
 						});
-						// alert(abcd);
 					});
 
 					$("#searchDPT").on('keyup', function(){
 						var matcher = new RegExp($(this).val(), 'gi');
-						// console.log(matcher);
-						// console.log($(this).val());
+						
 						$('.checkboxWrapper').css('display','block').not(function(){
 							return matcher.test($(this).find('.inputGroup').text())
 						}).css('display','none');
@@ -1209,7 +1158,6 @@ $(function(){
 					});
 
 		  			var __no = $('input[name="nomor"]').val();
-		  			console.log("no"+__no);
 					var __form = '<div style="margin:0.35em 0.625em 0.75em"><label for="">Anggaran (IDR)</label><input type="text" class="form-control money" id="" value="" name="idr_anggaran[]" placeholder="" style="text-align: right;"></div><div style="margin:0.35em 0.625em 0.75em"><label for="">Anggaran (USD)</label><input type="text" class="form-control money" id="" value="" name="usd_anggaran[]" placeholder="" style="text-align: right;"></div><div style="margin:0.35em 0.625em 0.75em"><label for="">Tahun Anggaran*</label><input type="number" class="form-control" id="" value="" name="year_anggaran[]" placeholder=""></div>';
 					var __line = '<hr style="display: block; color:#3273dc; border-bottom: 1px #3273dc solid; margin: 20px 0;">';
 
@@ -1269,7 +1217,6 @@ $(function(){
 				});
 
 				function _clear(){
-					// $(this).checked(false);
 					$('.modal .form7').empty();
 					$('.modal .form8').remove();
 					$('.modal .form9').remove();
@@ -1277,7 +1224,6 @@ $(function(){
 
 				$('.deleteFile').on('click',function(e) {
 					data = $(this).data('id');
-					//alert(data);
 					$('[type="file"].closeInput'+data+'').css('display','block');
 					$('.fileUploadBlock.close'+data+'').empty();
 					$('[type="hidden"].closeHidden'+data+'').val('');
@@ -1876,7 +1822,6 @@ $(function(){
 
 			// STATUS FPPBJ
 			// DATA PEMAKETAN PENGADAAN DALAM STATUS FPPBJ
-
 			if (is_status == "0" && is_approve == "0" && is_reject == "0") {
 				status = 'FPPBJ (Menunggu persetujuan Kadept.user)';
 				badge = 'warning';
@@ -1917,83 +1862,56 @@ $(function(){
 				status = 'FPPBJ (Direvisi Kadept.Procurement) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			// <100Jt(Pending Status)&& is_planning == 1 && _persetujuan !== null
 			else if (is_status == "0" && is_approve == "2"  && is_reject == '0' && is_writeoff == '0' && idr_anggaran <= 100000000) {
 				status = 'FPPBJ (Menunggu persetujuan Kadept.Procurement)';
 				badge = 'warning';
 			}
-
-			// <100Jt(Reject Status)
 			else if (is_status == "0" && is_approve == "2" && is_reject == 1 && is_writeoff == 0 && (idr_anggaran <= 100000000)) {
 				status = 'FPPBJ (Direvisi Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-
-			// <100Jt(Success Status)
 			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && idr_anggaran <= 100000000) {
-				// console.log('Masuk Ke Kondisi Sukses <100 JT');
 				status = 'FPPBJ (Disetujui Kadept.Procurement)';
 				badge = 'success';
 			}
-
-			// >100Jt < 1M (Pending Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
 				status = 'FPPBJ (Menunggu persetujuan Ka.Div SDM & Umum)';
 				badge = 'warning';
 			}
-			// >100Jt < 1M (Success Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
-				// console.log('Masuk Ke Kondisi Sukses >100Jt < 1M ');
 				status = 'FPPBJ telah di setujui Ka.Div SDM & Umum';
 				badge = 'success';
 			}
-			// >100Jt < 1M (Reject Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
 				status = 'FPPBJ (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-
-			// >1M < 10M (Pending Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
 				status = 'FPPBJ (Menunggu persetujuan Dir.Keuangan & Umum)';
 				badge = 'warning';
 			}
-			// >1M < 10M (Success Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
-				// console.log('Masuk Ke Kondisi Sukses >1M < 10M ');
 				status = 'FPPBJ telah di setujui Dir.Keuangan & Umum';
 				badge = 'success';
 			}
-			// >1M < 10M (Reject Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
 				status = 'FPPBJ (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-
-			// > 10M (Pending Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 10000000000) {
 				status = 'FPPBJ (Menunggu persetujuan Dir.Utama)';
 				badge = 'warning';
 			}
-			// > 10M (Success Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 1000000000) {
-				console.log('Masuk Ke Kondisi Sukses >10M ');
 				status = 'FPPBJ telah di setujui Dir.Utama';
 				badge = 'success';
 			}
-			// > 10M (Reject Status)&& (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')
 			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 1000000000) {
 				status = 'FPPBJ (Direvisi Dir.Utama)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			// FPPBJ Normal
-			// else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0) {
-			// 	status = 'FPPBJ';
-			// 	badge = 'success';
-			// }
 			
 			// FKPBJ
-			// Data status is now on FKPBJ but not approved yet 
 			else if (is_status == '2' && is_approve == "0" && is_reject == 0 && is_writeoff == 0) {
 				status = 'FKPBJ (FKPBJ ini dilanjutkan ke ka.Dept user)';
 				badge = 'warning';
@@ -2002,7 +1920,6 @@ $(function(){
 				status = 'FKPBJ (Direvisi ka.Dept user)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			// FKPBJ waiting to approve by manager user
 			else if (is_status == "2" && is_approve == "1" && is_reject == 0 && is_writeoff == 0) {
 				status = 'FKPBJ (FKPBJ ini dilanjutkan ke Admin Procurement)';
 				badge = 'warning';
@@ -2011,7 +1928,6 @@ $(function(){
 				status = 'FKPBJ (Direvisi Admin Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-
 			else if (is_status == "2" && is_approve == "2" && is_reject == 0 && is_writeoff == 0) {
 				status = 'FKPBJ (FKPBJ ini dilanjutkan ke Kadept.Procurement)';
 				badge = 'warning';
@@ -2020,21 +1936,10 @@ $(function(){
 				status = 'FKPBJ (Direvisi Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			// FKPBJ waiting to approve by admin 
-			// else if (is_status == "2" && is_approve == "2" && is_reject == 0 && is_writeoff == 0) {
-			// 	status = 'FKPBJ (FKPBJ ini dilanjutkan ke admin pengendalian)';
-			// 	badge = 'warning';
-			// }
 			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0) {
 				status = 'FKPBJ';
 				badge = 'success';
-			}
-			// else if (is_status == "2" && is_reject == "1") {
-			// 	status = 'FKPBJ';
-			// 	badge = 'danger';
-			// }
-			// FKPBJ is now active
-				
+			}	
 			
 			// FP3		
 			else if (is_status == 1 && is_approve == 0 && is_reject == 0) {
@@ -2049,8 +1954,6 @@ $(function(){
 					status = 'FP3 (Menunggu Ka.Dept Procurement)';
 					badge = 'warning';
 				}
-
-				//reject status
 				else if (is_status == 1 && is_approve == 1 && is_reject == 1) {
 					status = 'FP3 (Direvisi Ka.Dept User) <span class="tooltiptext reject">'+keterangan+'</span>';
 					badge = 'danger fp3_reject tooltip';
@@ -2063,27 +1966,20 @@ $(function(){
 					status = 'FP3 (Direvisi Ka.Dept Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
-
-				//approve <= 100 juta && (metode_pengadaan == 'Penunjukan Langsung')
 				else if (is_status == 1 && is_approve == 3 && is_reject == 0 && idr_anggaran < 100000000 ) {
 					status = 'FP3 (telah disetujui Kadept.Procurement)';
 					badge = 'success';
 				}
-
-				//approve > 100 juta < 1M
 				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
 					status = 'FP3 (Menunggu persetujuan Ka.Div SDM & Umum)';
 					badge = 'warning';
 				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
-					console.log('Masuk Ke Kondisi Sukses >100Jt < 1M ');
 					status = 'FP3 telah di setujui Ka.Div SDM & Umum';
 					badge = 'success';
 				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
 					status = 'FP3 (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
-
-				//approve > 1 M < 10M
 				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
 					status = 'FP3 (Menunggu persetujuan Dir.Keuangan & Umum)';
 					badge = 'warning';
@@ -2094,8 +1990,6 @@ $(function(){
 					status = 'FP3 (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
-
-				//approve > 10M
 				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && idr_anggaran >= 10000000000) {
 					status = 'FP3 (Menunggu persetujuan Dir.Utama)';
 					badge = 'warning';
@@ -2107,61 +2001,11 @@ $(function(){
 					status = 'FP3 (Direvisi Dir.Utama)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
-				// else if (is_status == "3" || (is_approve == "3" && is_reject == 0)) {
-				// 	status = 'FP3';
-				// 	badge = 'success';
-				// }
-
-				// else if (is_approve == 2 && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Ka.Dept Procurement)';
-				// 	badge = 'warning';
-				// }
-				// else if (is_approve == 1 && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Admin Pengendalian)';
-				// 	badge = 'warning';
-				// }
-				// else if (is_approve == 0 && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Ka.Dept User)';
-				// 	badge = 'warning';
-				// }
-				// else if (is_approve == 3 && is_reject == 1) {
-				// 	status = 'FP3 (Ditolak Manager Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
-				// 	badge = 'danger fp3_reject tooltip';
-				// }
-				// else if (is_approve == 2 && is_reject == 1) {
-				// 	status = 'FP3 (Ditolak Admin Pengendalian)<span class="tooltiptext reject">'+keterangan+'</span>';
-				// 	badge = 'danger fp3_reject tooltip';
-				// }
-				// else if (is_approve == 1 && is_reject == 1) {
-				// 	status = 'FP3 (Ditolak Manager User) <span class="tooltiptext reject">'+keterangan+'</span>';
-				// 	badge = 'danger fp3_reject tooltip';
-				// }
-
-				// else if (is_approve == "3" && is_reject == 0) {
-				// 	status = 'FP3';
-				// 	badge = 'success';
-				// }
-				// else if (is_approve == "2" && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Ka.Dept Procurement)';
-				// 	badge = 'warning';
-				// }
-				// else if (is_approve == "1" && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Admin Pengendalian)';
-				// 	badge = 'warning';
-				// }
-				// else if (is_approve == "0" && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Ka.Dept User)';
-				// 	badge = 'warning';
-				// }else if (is_reject == 1) {
-				// 	status = 'FP3 (FP3 Ditolak)<span class="tooltiptext reject">'+keterangan+'</span>';
-				// 	badge = 'danger fp3_reject tooltip';
-				// }
 			else{
 				$('.note'+_id).empty();
 			}
 
 			html += '<div class="caption"><p>'+nama_pengadaan+'</p><p>'+value[1].value+'</p><p>'+value[2].value+'</p><p><span class="badge is-'+badge+'">'+status+'</span></p></div>';
-			// console.log(folder);
 			return html;
 		},
 
@@ -2178,6 +2022,7 @@ $(function(){
 		finish: function(){
 
 		},
+
 		filter: {
 			wrapper: $('.contentWrap'),
 			data : {
@@ -2189,7 +2034,7 @@ $(function(){
 
 
 	var resiko = $('.buttonStep').modal({
-		header: 'Tambah Data FPPBJ',
+		header: 'Tambah Data FPPBJaaa',
 		render : function(el, data){
 
 			var fw = $(el).formWizard({

@@ -146,12 +146,6 @@ class Fppbj extends MY_Controller {
 									'type'	=>	'textarea',
 									'label'	=>	'Keterangan',
 								)
-								// ,array(
-								// 	'field'	=> 	'desc',
-								// 	'type'	=>	'textarea',
-								// 	'label'	=>	'Keterangan Lainnya',
-								// )
-								
 							),
 					'button'=>array(
 						array(
@@ -161,7 +155,6 @@ class Fppbj extends MY_Controller {
 						),array(
 							'type'=>'next',
 							'label'=>'Lanjut',
-							// 'class'=>'btn-to-jasa btn-to-swakelola btn-to-jasa-swakelola'
 							'class'=>'btn-to'
 						)
 					)
@@ -239,7 +232,6 @@ class Fppbj extends MY_Controller {
 
 
 	public function getSingleData($id=null){
-		// define status parameter
 		$admin = $this->session->userdata('admin');
 		
 		$param_  = ($admin['id_role'] == 4) ? ($param_=1) : '' ;

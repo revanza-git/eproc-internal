@@ -32,7 +32,6 @@ class Fkpbj extends MY_Controller {
 							'field'	=> 	'nama_pengadaan',
 							'type'	=>	'text',
 							'label'	=>	'Nama Pengadaan',
-							// 'rules' => 	'required',
 						),array(
 							'field'	=> 	'pengadaan',
 							'type'	=>	'dropdown',
@@ -50,7 +49,6 @@ class Fkpbj extends MY_Controller {
 							'type'	=>	'dropdown',
 							'label'	=>	'Metode Pengadaan',
 							'source'=>	$this->mm->getProcMethod(),
-							// 'rules'	=> 	'required'
 						),array(
 							'field'	=> 	'idr_anggaran',
 							'type'	=>	'currency',
@@ -90,23 +88,14 @@ class Fkpbj extends MY_Controller {
 							'label'	=>	'Penggolongan Penyedia Jasa (Usulan)',
 							'source'=>	array(0 => 'Pilih Dibawah Ini', 'perseorangan' => 'Perseorangan', 'usaha_kecil' => 'Usaha Kecil(K)', 'usaha_menengah' => 'Usaha Menengah(M)', 'usaha_besar' => 'Usaha Besar(B)'),
 							'rules' =>	'required'
-						)
-						// ,array(
-						// 	'field'	=> 	'penggolongan_CSMS',
-						// 	'type'	=>	'dropdown',
-						// 	'label'	=>	'Penggolongan CSMS (Sesuai Hasil Analisa Resiko)',
-						// 	'source'=>	array(0 => 'Pilih Dibawah Ini', 'high' => 'High', 'medium' => 'Medium', 'low' => 'Low')
-						// )
-						,array(
+						),array(
 							'field'	=> 	array('jwpp_start','jwpp_end'),
 							'type'	=>	'date_range',
 							'label'	=>	'Jangka Waktu Penyelesaian Pekerjaan ("JWPP")',
-							// 'rules' =>	'required'
 						),array(
 							'field'	=> 	array('jwp_start','jwp_end'),
 							'type'	=>	'date_range',
 							'label'	=>	'Masa Pemeliharaan dan/atau Durasi Laporan',
-							// 'rules' =>	'required'
 						),array(
 							'field'	=> 	'desc_metode_pembayaran',
 							'type'	=>	'textarea',
@@ -143,7 +132,6 @@ class Fkpbj extends MY_Controller {
 												'stockless' 	=> 'Delivery - Stockless Purchasing',
 												'on_call' 		=> 'Delivery - On Call Basic',
 											),
-							// 'rules' =>	'required'
 						),
 						array(
 							'field'	=> 	'desc_dokumen',
@@ -329,8 +317,6 @@ class Fkpbj extends MY_Controller {
 	}
 
 	public function save($id_fppbj){	
-		// $division = $this->get_email_division($this->session->userdata('admin')['id_division']);
-		// print_r($division);die;
 		$modelAlias = $this->modelAlias;
 		$fppbj = $this->fm->selectData($id_fppbj);
 		$fp3 = $this->fkm->getDataFp3($id_fppbj);
@@ -349,131 +335,135 @@ class Fkpbj extends MY_Controller {
 			$kak_lampiran = $fp3['kak_lampiran'];
 		}
 
-		$file_name = $_FILES['kak_lampiran']['name'];
+		// $file_name = $_FILES['kak_lampiran']['name'];
         
-        $config['upload_path'] = './assets/lampiran/pr_lampiran/';
-		$config['allowed_types'] = '*';
-        // $config['allowed_types'] = 'jpeg|jpg|png|gif|pdf|';
-        
-        $this->load->library('upload',$config,'uploadprlampiran');
-        $this->uploadprlampiran->initialize($config);
-        $upload_pr = $this->uploadprlampiran->do_upload('pr_lampiran');
+        $config['upload_path'] = './assets/lampiran/pr_lampiran';
+        $config['allowed_types'] = 'pdf|doc|docx|jpeg|jpg|png';
+    	$config['max_size']      = 10000;
 
-        $config_kak['upload_path'] = './assets/lampiran/kak_lampiran/';
-        $config_kak['allowed_types'] = '*';
-        // $config_kak['allowed_types'] = 'jpeg|jpg|png|gif|pdf';
+		$this->load->library('upload',$config,'uploadprlampiran');
+        $this->uploadprlampiran->initialize($config);
+
+		if ( ! $this->uploadprlampiran->do_upload('pr_lampiran'))
+		{
+		    $error = array('error' => $this->upload->display_errors());
+		    print_r($error);
+		} else {
+			$upload_pr = $this->uploadprlampiran->data();
+		    print_r($upload_pr);
+		}
+
+        $config_kak['upload_path'] = './assets/lampiran/kak_lampiran';
+        $config['allowed_types'] = 'pdf|doc|docx|jpeg|jpg|png';
+    	$config['max_size']      = 10000;
         
 	    $this->load->library('upload',$config_kak,'uploadkaklampiran');
 	    $this->uploadkaklampiran->initialize($config_kak);
-	    $upload_kak = $this->uploadkaklampiran->do_upload('kak_lampiran');
+	   
 
-        // if (!$upload_pr || !$upload_kak){
-        //     $_POST[$_FILES] = $file_name;
-        //     $this->form_validation->set_message('do_upload', $this->uploadkaklampiran->display_errors('',''));
-        //     $this->form_validation->set_message('do_upload', $this->uploadprlampiran->display_errors('',''));
-        //     return false;
-        //     // print_r($this->uploadkaklampiran->display_errors());print_r($this->uploadprlampiran->display_errors());
-        // }
-        // else{
-        	$file_name_pr  = $this->uploadprlampiran->data()['file_name'];
-        	$file_name_kak = $this->uploadkaklampiran->data()['file_name'];
-           	$admin 		   = $this->session->userdata('admin');
-			$param_  	   = ($admin['id_role'] == 4) ? ($param_=1) : (($admin['id_role'] == 6) ? ($param_=2) : (($admin['id_role'] == 2) ? ($param_=3) : ''));
+		if ( ! $this->uploadkaklampiran->do_upload('kak_lampiran'))
+		{
+		    $error = array('error' => $this->uploadkaklampiran->display_errors());
+		    print_r($error);
 			
-			$save = $this->input->post();
-			// print_r($save);die;
-			$get_usulan = $this->db->where('id_fppbj',$id_fppbj)->get('tr_analisa_risiko')->row_array();
-			$usulan_lama = json_decode($get_usulan['dpt_list']);
+		} else {
+			$upload_kak = $this->uploadkaklampiran->data();
+		
+		    print_r($upload_kak);
+		}
 
-			if ($save['type'] != "" && $save['usulan'] != "") {
-				$dpt_list['dpt']	= $save['type'];
-				$usulan 			= $save['usulan'];
-			}else if ($save['type'] != "") {
-				// echo "string 1";die;
-				$dpt_list['dpt']	= $save['type'];
-				$usulan = $usulan_lama->usulan;				
-			} else if ($save['usulan'] != "") {
-				// echo "string 2";die;
-				$dpt_list['dpt']	= $usulan_lama->dpt;
-				$usulan 			= $save['usulan'];				
-			} else {
-				// echo "string 3";die;
-				$dpt_list['dpt']	= $usulan_lama->dpt;
-				$usulan 			= $usulan_lama->usulan;	
+		$file_name_pr  = $this->uploadprlampiran->data()['file_name'];
+		$file_name_kak = $this->uploadkaklampiran->data()['file_name'];
+		$admin 		   = $this->session->userdata('admin');
+		$param_  	   = ($admin['id_role'] == 4) ? ($param_=1) : (($admin['id_role'] == 6) ? ($param_=2) : (($admin['id_role'] == 2) ? ($param_=3) : ''));
+		
+		$save = $this->input->post();
+		$get_usulan = $this->db->where('id_fppbj',$id_fppbj)->get('tr_analisa_risiko')->row_array();
+		$usulan_lama = json_decode($get_usulan['dpt_list']);
+
+		if ($save['type'] != "" && $save['usulan'] != "") {
+			$dpt_list['dpt']	= $save['type'];
+			$usulan 			= $save['usulan'];
+		}else if ($save['type'] != "") {
+			$dpt_list['dpt']	= $save['type'];
+			$usulan = $usulan_lama->usulan;				
+		} else if ($save['usulan'] != "") {
+			$dpt_list['dpt']	= $usulan_lama->dpt;
+			$usulan 			= $save['usulan'];				
+		} else {
+			$dpt_list['dpt']	= $usulan_lama->dpt;
+			$usulan 			= $usulan_lama->usulan;	
+		}
+		
+		$dpt_list['usulan']				= $usulan;
+
+		$save_fkpbj['dpt'] 	    		= json_encode($dpt_list);
+		$save_fkpbj['id_fppbj'] 		= $id_fppbj;
+		$save_fkpbj['no_pr'] 	    	= $save['no_pr'];
+		$save_fkpbj['tipe_pr'] 	    	= $save['tipe_pr'];
+		$save_fkpbj['pr_lampiran'] 	    = ($file_name_pr == '') ? $fppbj['pr_lampiran'] :$file_name_pr;
+		$save_fkpbj['jenis_pengadaan'] 	= $save['jenis_pengadaan'];
+		$save_fkpbj['id_division'] 	    = $fppbj['id_division'];
+		$save_fkpbj['nama_pengadaan']   = $nama_pengadaan;
+		$save_fkpbj['metode_pengadaan'] = $metode_pengadaan;
+		$save_fkpbj['jwpp_start'] 		= $jwpp_start;
+		$save_fkpbj['jwpp_end'] 		= $jwpp_end;
+		$save_fkpbj['jwp_start'] 		= $fppbj['jwp_start'];
+		$save_fkpbj['jwp_end'] 			= $fppbj['jwp_end'];
+		$save_fkpbj['id_pic']		    = $fppbj['id_pic'];
+		$save_fkpbj['kak_lampiran'] 	= ($file_name_kak == '') ? $kak_lampiran : $file_name_kak;
+		$save_fkpbj['idr_anggaran']   	= currency($save['idr_anggaran']);
+		$save_fkpbj['usd_anggaran']   	= currency($save['usd_anggaran']);
+		$save_fkpbj['year_anggaran']   	= $save['year_anggaran'];
+		$save_fkpbj['hps']   			= $save['hps'];
+		$save_fkpbj['desc_dokumen']   	= $save['desc_dokumen'];
+		$save_fkpbj['lingkup_kerja']   	= $save['lingkup_kerja'];
+		$save_fkpbj['penggolongan_penyedia']   = $save['penggolongan_penyedia'];
+		$save_fkpbj['desc_metode_pembayaran']  = $save['desc_metode_pembayaran'];
+		$save_fkpbj['jenis_kontrak']   	= $save['jenis_kontrak'];
+		$save_fkpbj['sistem_kontrak']   = json_encode($save['sistem_kontrak']);
+		$save_fkpbj['is_status'] 		= 2;
+		$save_fkpbj['is_approved']  	= $param_;
+		$save_fkpbj['entry_stamp']  	= date('Y-m-d H:i:s');
+
+		if ($this->$modelAlias->insert($fppbj['id'],$save_fkpbj)) {
+			$by_division = $this->get_division($this->session->userdata('admin')['id_division']);
+			$division = $this->get_email_division($this->session->userdata('admin')['id_division']);
+
+			$to_ = '';
+			foreach ($division as $key => $value) {
+				$to_ .= $value['email'].' ,';
 			}
-			
-			$dpt_list['usulan']				= $usulan;
+			$to = substr($to_,substr($to_),-2);
+			$subject = 'FKPBJ baru telah dibuat.';
+			$message = 'FKPBJ dengan nama pengadaan '.$fppbj['nama_pengadaan'].' telah di buat oleh '.$by_division['name'];
 
-			// print_r($dpt_list);die;
+			$activity = $this->session->userdata('admin')['name']." membuat FKPBJ dengan nama pengadaan : ".$fppbj['nama_pengadaan'];
 
-			$save_fkpbj['dpt'] 	    		= json_encode($dpt_list);
-			$save_fkpbj['id_fppbj'] 		= $id_fppbj;
-			$save_fkpbj['no_pr'] 	    	= $save['no_pr'];
-			$save_fkpbj['tipe_pr'] 	    	= $save['tipe_pr'];
-			$save_fkpbj['pr_lampiran'] 	    = ($file_name_pr == '') ? $fppbj['pr_lampiran'] :$file_name_pr;
-			$save_fkpbj['jenis_pengadaan'] 	= $save['jenis_pengadaan'];
-			$save_fkpbj['id_division'] 	    = $fppbj['id_division'];
-			$save_fkpbj['nama_pengadaan']   = $nama_pengadaan;
-			$save_fkpbj['metode_pengadaan'] = $metode_pengadaan;
-			$save_fkpbj['jwpp_start'] 		= $jwpp_start;
-			$save_fkpbj['jwpp_end'] 		= $jwpp_end;
-			$save_fkpbj['jwp_start'] 		= $fppbj['jwp_start'];
-			$save_fkpbj['jwp_end'] 			= $fppbj['jwp_end'];
-			$save_fkpbj['id_pic']		    = $fppbj['id_pic'];
-			$save_fkpbj['kak_lampiran'] 	= ($file_name_kak == '') ? $kak_lampiran : $file_name_kak;
-			$save_fkpbj['idr_anggaran']   	= currency($save['idr_anggaran']);
-			$save_fkpbj['usd_anggaran']   	= currency($save['usd_anggaran']);
-			$save_fkpbj['year_anggaran']   	= $save['year_anggaran'];
-			$save_fkpbj['hps']   			= $save['hps'];
-			$save_fkpbj['desc_dokumen']   	= $save['desc_dokumen'];
-			$save_fkpbj['lingkup_kerja']   	= $save['lingkup_kerja'];
-			$save_fkpbj['penggolongan_penyedia']   = $save['penggolongan_penyedia'];
-			$save_fkpbj['desc_metode_pembayaran']  = $save['desc_metode_pembayaran'];
-			$save_fkpbj['jenis_kontrak']   	= $save['jenis_kontrak'];
-			$save_fkpbj['sistem_kontrak']   = json_encode($save['sistem_kontrak']);
-			$save_fkpbj['is_status'] 		= 2;
-			$save_fkpbj['is_approved']  	= $param_;
-			$save_fkpbj['entry_stamp']  	= date('Y-m-d H:i:s');
-			//$save_fkpbj['kak_lampiran'] 	= $data_image['file_name'];
-			if ($this->$modelAlias->insert($fppbj['id'],$save_fkpbj)) {
-				$by_division = $this->get_division($this->session->userdata('admin')['id_division']);
-				$division = $this->get_email_division($this->session->userdata('admin')['id_division']);
+			unset($save_fkpbj['id_fppbj']);
+			unset($save_fkpbj['dpt']);
 
-				$to_ = '';
-				foreach ($division as $key => $value) {
-					$to_ .= $value['email'].' ,';
-				}
-				$to = substr($to_,substr($to_),-2);
-				$subject = 'FKPBJ baru telah dibuat.';
-				$message = 'FKPBJ dengan nama pengadaan '.$fppbj['nama_pengadaan'].' telah di buat oleh '.$by_division['name'];
+			$save_fkpbj['dpt_list'] = json_encode($dpt_list);
+			$this->insertHistoryPengadaan($id_fppbj,'perubahan',$save_fkpbj);
 
-				$activity = $this->session->userdata('admin')['name']." membuat FKPBJ dengan nama pengadaan : ".$fppbj['nama_pengadaan'];
+			$this->activity_log($this->session->userdata('admin')['id_user'],$activity,$fppbj['id']);
 
-				unset($save_fkpbj['id_fppbj']);
-				unset($save_fkpbj['dpt']);
+			$this->send_mail($to, $subject, $message, $link, 'fkpbj');
 
-				$save_fkpbj['dpt_list'] = json_encode($dpt_list);
-				$this->insertHistoryPengadaan($id_fppbj,'perubahan',$save_fkpbj);
-
-				$this->activity_log($this->session->userdata('admin')['id_user'],$activity,$fppbj['id']);
-
-				$this->send_mail($to, $subject, $message, $link, 'fkpbj');
-
-				$this->db->insert('tr_analisa_risiko',array('id_fppbj' => $id_fppbj,'dpt_list' => json_encode($save['type'])));
-				$data_note = array(
-					'id_user' => $this->session->userdata('admin')['id_division'],
-					'id_fppbj'=> $fppbj['id'],
-					'value' => 'FKPBJ dengan nama pengadaan '.$fppbj['nama_pengadaan'].' telah di buat oleh '.$by_division['name'],
-					'entry_stamp'=> date('Y-m-d H:i:s'),
-					'is_active' => 1
-				);
-				$this->db->insert('tr_note',$data_note);
-				$this->session->set_flashdata('msg', $this->successMessage);
-				$this->deleteTemp($save);
-				echo '<script>alert("Berhasil");</script>';
-				redirect($_SERVER['HTTP_REFERER']);
-			}
-        // }
+			$this->db->insert('tr_analisa_risiko',array('id_fppbj' => $id_fppbj,'dpt_list' => json_encode($save['type'])));
+			$data_note = array(
+				'id_user' => $this->session->userdata('admin')['id_division'],
+				'id_fppbj'=> $fppbj['id'],
+				'value' => 'FKPBJ dengan nama pengadaan '.$fppbj['nama_pengadaan'].' telah di buat oleh '.$by_division['name'],
+				'entry_stamp'=> date('Y-m-d H:i:s'),
+				'is_active' => 1
+			);
+			$this->db->insert('tr_note',$data_note);
+			$this->session->set_flashdata('msg', $this->successMessage);
+			$this->deleteTemp($save);
+			echo '<script>alert("Berhasil");</script>';
+			redirect($_SERVER['HTTP_REFERER']);
+		}
 	}
 
 	public function add_fkpbj($id_fppbj)
@@ -491,6 +481,8 @@ class Fkpbj extends MY_Controller {
 			$desc_pengadaan = $data['desc_dokumen'];
 
 			$getKAKLampiran = $this->getKAKLampiran($data['kak_lampiran']);
+
+			$getPRLampiran	= $this->getPRLampiran($data['pr_lampiran']);
 
 			$jwpp 	= $data['jwpp_start'];
 			// $jwp  	= $data['jwp_start'];
@@ -535,8 +527,9 @@ class Fkpbj extends MY_Controller {
 
 			$getKAKLampiran = $this->getKAKLampiran($dataFP3['kak_lampiran']);
 
+			$getPRLampiran	= $this->getPRLampiran($dataFP3['pr_lampiran']);
+
 			$jwpp 	= $dataFP3['jwpp_start'];
-			// $jwp  	= $dataFP3['jwp_start'];
 			if ($jwpp != '' && $dataFP3['jwpp_end'] != '' || $jwpp != null && $dataFP3['jwpp_end'] != null) {
 				$jwpp	= date('d M Y', strtotime($jwpp)) . " sampai " . date('d M Y', strtotime($dataFP3['jwpp_end']));
 			} else {
@@ -584,7 +577,6 @@ class Fkpbj extends MY_Controller {
 		$val_jenis_pengadaan = $data['jenis_pengadaan'];
 		$val_metode_pengadaan= $dataFP3['metode_pengadaan'];
 
-  		$getPRLampiran  		 		= $this->getPRLampiran($dataFP3['pr_lampiran']);
 		$status_metode 	 		 		= $this->getStatusMetode($dataFP3['metode_pengadaan']);
 		$radio_ 				 		= $this->getHps($data['hps']);
 		$option_tipe_pr 		 		= $this->getTipePR($val_tipe_pr);
@@ -812,24 +804,24 @@ class Fkpbj extends MY_Controller {
 
 	public function getPRLampiran($data)
 	{
-		if ($data != '') {
-			$pr_lama = '<a href="'.base_url().'/assets/lampiran/pr_lampiran/'.$data.'" target="blank"><i class="fas fa-file"></i></a>';
-			$field_lampiran_pr = '<input type="file" class="form-control closeInput1" id="" name="pr_lampiran" style="display: none;">
-								<input class="closeHidden1" type="hidden" name="pr_lampiran" value="'.$data.'">
-								<div class="fileUploadBlock close1">
-									<i class="fa fa-upload"></i>&nbsp;
-										<a href="'.base_url().'assets/lampiran/pr_lampiran/'.$data.'" target="blank">
-										'.$data.'
-										</a>
-									<div class="deleteFile" data-id="1">
-									<i class="fa fa-trash"></i>
-									</div>
-								</div>';
+		// if ($data != '') {
+		// 	$pr_lama = '<a href="'.base_url().'/assets/lampiran/pr_lampiran/'.$data.'" target="blank"><i class="fas fa-file"></i></a>';
+		// 	$field_lampiran_pr = '<input type="file" class="form-control closeInput1" id="" name="pr_lampiran" style="display: none;">
+		// 						<input class="closeHidden1" type="hidden" name="pr_lampiran" value="'.$data.'">
+		// 						<div class="fileUploadBlock close1">
+		// 							<i class="fa fa-upload"></i>&nbsp;
+		// 								<a href="'.base_url().'assets/lampiran/pr_lampiran/'.$data.'" target="blank">
+		// 								'.$data.'
+		// 								</a>
+		// 							<div class="deleteFile" data-id="1">
+		// 							<i class="fa fa-trash"></i>
+		// 							</div>
+		// 						</div>';
 								
-		} else{
+		// } else{
 			$pr_lama = '-';
 			$field_lampiran_pr = '<input type="file" class="form-control" id="" name="pr_lampiran">';
-		}
+		// }
 
 		return $field_lampiran_pr;
 	}

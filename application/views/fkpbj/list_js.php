@@ -111,7 +111,6 @@ $(function(){
 					$('.form', el).form(data).data('form');
 				}
 			});
-			console.log(aktif)
 			var batal = $('.buttonBatalkan').modal({
 				header: 'Batalkan Data?',
 				render : function(el, data){
