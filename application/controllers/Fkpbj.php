@@ -524,7 +524,6 @@ class Fkpbj extends MY_Controller {
 			$nama_pengadaan = $dataFP3['nama_pengadaan'];
 
 			$desc_pengadaan = $dataFP3['desc'];
-
 			$getKAKLampiran = $this->getKAKLampiran($dataFP3['kak_lampiran']);
 
 			$getPRLampiran	= $this->getPRLampiran($dataFP3['pr_lampiran']);
@@ -577,7 +576,7 @@ class Fkpbj extends MY_Controller {
 		$val_jenis_pengadaan = $data['jenis_pengadaan'];
 		$val_metode_pengadaan= $dataFP3['metode_pengadaan'];
 
-		$status_metode 	 		 		= $this->getStatusMetode($dataFP3['metode_pengadaan']);
+		// $status_metode 	 		 		= $this->getStatusMetode($dataFP3['metode_pengadaan']);
 		$radio_ 				 		= $this->getHps($data['hps']);
 		$option_tipe_pr 		 		= $this->getTipePR($val_tipe_pr);
 		$option_tipe_pengadaan  	 	= $this->getTipePengadaan($val_tipe_pr,$val_tipe_pengadaan);
