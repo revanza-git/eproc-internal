@@ -1999,13 +1999,13 @@ class Pemaketan extends MY_Controller
         if ($data['metode_pengadaan'] == 1) {
             $status_metode = 'Pelelangan';
         } else if ($data['metode_pengadaan'] == 2) {
-            $status_metode = 'Pemilihan Lnagsung';
+            $status_metode = 'Pemilihan Langsung';
         } else if ($data['metode_pengadaan'] == 3) {
             $status_metode = 'Swakelola';
         } else if ($data['metode_pengadaan'] == 4) {
-            $status_metode = 'Penunjukan Lnagsung';
+            $status_metode = 'Penunjukan Langsung';
         } else {
-            $status_metode = 'Pengadaan Lnagsung';
+            $status_metode = 'Pengadaan Langsung';
         }
         $jdp = $data['jenis_pengadaan'];
         if ($jdp == 'stock') {
