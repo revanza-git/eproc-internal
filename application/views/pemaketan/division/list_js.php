@@ -599,10 +599,12 @@ $(function(){
 		  			$('#nextBtn2').click(function() {
 		  				no_pr 					= $('#formStep [name="no_pr"]').val();
 		  				tipe_pr 				= $('#formStep [name="tipe_pr"]').val();
+						lampiran_pr 			= $('#formStep [name="pr_lampiran"]').val();
 		  				tipe_pengadaan 			= $('#formStep [name="tipe_pengadaan"]').val();
 		  				jenis_pengadaan 		= $('#formStep [name="jenis_pengadaan"]').val();
 		  				idr_anggaran 			= $('#formStep [name="idr_anggaran"]').val();
 		  				year_anggaran 			= $('#formStep [name="year_anggaran"]').val();
+						lampiran_kak 			= $('#formStep [name="kak_lampiran"]').val();
 		  				hps 					= $('#formStep [name="hps"]').val();
 		  				lingkup_kerja 			= $('#formStep [name="lingkup_kerja"]').val();
 		  				desc_metode_pembayaran 	= $('#formStep [name="desc_metode_pembayaran"]').val();
@@ -614,6 +616,8 @@ $(function(){
 		  					alert('No.PR Harus Diisi !');
 		  				} else if(tipe_pr == ''){
 		  					alert('Tipe PR Harus Diisi !');
+						}else if(lampiran_pr == ''){
+							alert('Lampiran PR Harus Diisi !');	
 		  				} else if(tipe_pengadaan == ''){
 		  					alert('Jenis Pengadaan Harus Diisi !');
 		  				} else if(jenis_pengadaan == ''){
@@ -622,6 +626,8 @@ $(function(){
 		  					alert('Anggaran (IDR) Harus Diisi !');
 		  				} else if(year_anggaran == ''){
 		  					alert('Tahun Anggaran Harus Diisi !');
+		  				}else if(lampiran_kak == ''){
+							alert('Lampiran KAK Harus Diisi !');	
 		  				} else if(hps == ''){
 		  					alert('Ketersediaan HPS Harus Diisi !');
 		  				} else if(lingkup_kerja == ''){

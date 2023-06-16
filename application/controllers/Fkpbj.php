@@ -663,7 +663,7 @@ class Fkpbj extends MY_Controller {
 							</fieldset>
 
 							<fieldset class="form-group   form2" for="">
-								<label for="">Lampiran PR</label>
+								<label for="">Lampiran PR*</label>
 								'.$getPRLampiran.'
 							</fieldset>
 
