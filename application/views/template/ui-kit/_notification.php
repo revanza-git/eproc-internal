@@ -1,11 +1,11 @@
-			  <div class="notification is-danger">
+<div class="notification is-danger">
 
-                <p>
-                  
-                  Harap melengkapi data administrasi vendor.Pilih menu Administrasi di samping atau klik di sini.
+<p>
+  
+  Harap melengkapi data administrasi vendor.Pilih menu Administrasi di samping atau klik di sini.
 
-                </p>
+</p>
 
-                <button class="delete">X</button>
+<button class="delete">X</button>
 
-              </div>
+</div>

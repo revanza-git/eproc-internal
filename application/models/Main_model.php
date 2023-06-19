@@ -19,28 +19,17 @@ class Main_model extends CI_model{
 		
 		$del - 0;
 
-
-
 		$sql = "SELECT * FROM ms_login WHERE username = ? AND password = ? AND del = ?";
 
 		$_sql = $this->eproc_db->query($sql, array($username, $password, $del));
 	
 		$sql = $_sql->row_array();
-		// print_r($sql);die;
-
-
 	
 		$ct_sql = '';
 
-		
-		
 		if($_sql->num_rows() > 0){
-
-			
 	
 			if($sql['type'] == "user"){
-
-
 
 				$ct_sql = "SELECT * FROM ms_vendor WHERE id=? AND is_active =?";
 
@@ -48,27 +37,15 @@ class Main_model extends CI_model{
 				if(count($ct_sql->result_array() )> 0){
 					$data = $ct_sql->row_array();
 
-			
-
 				$set_session = array(
-
 					'id_user' 		=> 	$data['id'],
-
 					'name'			=>	$data['name'],
-
 					'id_sbu'		=>	$data['id_sbu'],
-
 					'vendor_status'	=>	$data['vendor_status'],
-
 					'is_active'		=>	$data['is_active'],
-
 					'app'			=>	'vms',
-
 					'type'			=> 'user'
-
 				);
-
-				
 
 				$this->session->set_userdata('user',$set_session);
 				return true;
@@ -78,8 +55,6 @@ class Main_model extends CI_model{
 				}
 				
 			}else if($sql['type'] == "admin" AND $sql['type_app'] == 1){
-				// echo "Masuk kon 1";die;
-
 				$ct_sql = "SELECT *,ms_admin.id id, ms_admin.name name, tb_role.name role_name FROM ms_admin JOIN tb_role ON ms_admin.id_role = tb_role.id WHERE ms_admin.id=? AND ms_admin.del=?";
 
 				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'],0));
@@ -89,35 +64,19 @@ class Main_model extends CI_model{
 
 					$data = $ct_sql->row_array();
 
-						
-
 					$set_session = array(
-
 						'id_user' 		=> 	$data['id'],
-
 						'name'			=>	$data['name'],
-
 						'id_sbu'		=>	$data['id_sbu'],
-
 						'id_role'		=>	$data['id_role'],
-
 						'role_name'		=>	$data['role_name'],
-
 						'sbu_name'		=>	$data['sbu_name'],
-
 						'app'			=>	'vms',
-
 						'app_type'		=>	$sql['type_app'],
-
 						'type'			=> 'admin'
-
 					);
 
-					
-
 					$this->session->set_userdata('admin',$set_session);
-
-
 
 					return true;
 				}else{
@@ -171,7 +130,6 @@ class Main_model extends CI_model{
 
 					$this->db->insert('tr_log_activity',$activity);
 					return true;
-					// return header("Location: http://localhost/eeproc_perencanaan/dashboard");
 				}else{
 					return false;
 				}
@@ -211,58 +169,31 @@ class Main_model extends CI_model{
 	public function cek_login_()
 	{
 		$username = $this->input->post('username');
-
 		$password = $this->input->post('password');
 
-
-
 		$sql = "SELECT * FROM ms_login WHERE username = ? AND password = ?";
-
 		$_sql = $this->eproc_db->query($sql, array($username, $password));
-	
 		$sql = $_sql->row_array();
 
-
-	
 		$ct_sql = '';
 
-		
-		
 		if($_sql->num_rows() > 0){
 
-			
-	
 			if($sql['type'] == "user"){
-
-
-
 				$ct_sql = "SELECT * FROM ms_vendor WHERE id=? AND is_active =?";
-
 				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'],1));
 				if(count($ct_sql->result_array() )> 0){
-					$data = $ct_sql->row_array();
-
-			
+				$data = $ct_sql->row_array();
 
 				$set_session = array(
-
 					'id_user' 		=> 	$data['id'],
-
 					'name'			=>	$data['name'],
-
 					'id_sbu'		=>	$data['id_sbu'],
-
 					'vendor_status'	=>	$data['vendor_status'],
-
 					'is_active'		=>	$data['is_active'],
-
 					'app'			=>	'vms',
-
 					'type'			=> 'user'
-
 				);
-
-				
 
 				$this->session->set_userdata('user',$set_session);
 				return true;
@@ -272,45 +203,25 @@ class Main_model extends CI_model{
 				}
 				
 			}else if($sql['type'] == "admin" AND $sql['type_app'] == 1){
-				// echo "Masuk kon 1";die;
-
 				$ct_sql = "SELECT *,ms_admin.id id, ms_admin.name name, tb_role.name role_name FROM ms_admin JOIN tb_role ON ms_admin.id_role = tb_role.id WHERE ms_admin.id=? AND ms_admin.del=?";
-
 				$ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'],0));
 				
 				if(count($ct_sql->result_array() )> 0){
-
 					$data = $ct_sql->row_array();
 
-						
-
 					$set_session = array(
-
 						'id_user' 		=> 	$data['id'],
-
 						'name'			=>	$data['name'],
-
 						'id_sbu'		=>	$data['id_sbu'],
-
 						'id_role'		=>	$data['id_role'],
-
 						'role_name'		=>	$data['role_name'],
-
 						'sbu_name'		=>	$data['sbu_name'],
-
 						'app'			=>	'vms',
-
 						'app_type'		=>	$sql['type_app'],
-
 						'type'			=> 'admin'
-
 					);
 
-					
-
 					$this->session->set_userdata('admin',$set_session);
-
-
 
 					return true;
 				}else{
@@ -318,7 +229,6 @@ class Main_model extends CI_model{
 				}
 
 			}else if ($sql['type'] == "admin" AND $sql['type_app'] == 2) {
-				// echo "Masuk kon 2";die;
 				$ct_sql = " SELECT 
 								a.name,
 								a.email,
@@ -354,7 +264,6 @@ class Main_model extends CI_model{
 					);
 					$this->session->set_userdata('admin',$set_session);
 					return true;
-					// return header("Location: http://localhost/eeproc_perencanaan/dashboard");
 				}else{
 					return false;
 				}
@@ -429,30 +338,20 @@ class Main_model extends CI_model{
 		return $this->db->where('id', $id)->update($table_, array('is_status' => $param_));
 	}
 
-	public function approve($table, $id, $param_){
-		// echo $table;print_r($param_);die;
-		// update fppbj detail
-		// print_r($table);die;
-		
+	public function approve($table, $id, $param_){		
 		$data = $this->db->where('id', $id)->get($table)->row_array();
 
-		// print_r($data);die;
-
 		if ($data['is_status'] == 1) {
-			// echo "string 1";die;
 			$this->db->where('id', $data['id_fppbj'])->update('ms_fppbj', $param_);
 			$query = $this->db->where('id', $id)->update($table, $param_);
 		}
 		else if ($data['is_status'] == 2) {
-			// echo "string 2";die;
 			$update = array(
-				// 'id_pic' => $param_['id_pic'],
 				'is_approved' => $param_['is_approved']
 			);
 			$this->db->where('id_fppbj', $data['id'])->update('ms_fkpbj', $param_);
 			$query = $this->db->where('id', $data['id'])->update('ms_fppbj', $param_);
 		} else{
-			// echo "string 3";die;
 			$this->db->where('id', $id)->update($table, $param_);
 			$query = $this->db->where('id', $data['id'])->update('ms_fppbj', $param_);
 		}
@@ -463,9 +362,6 @@ class Main_model extends CI_model{
 	public function notification($id_user='', $active = 1){
 		$note = "SELECT * FROM tr_note WHERE id_user = ".$id_user." AND is_active = ".$active." AND type IS NULL ORDER BY id DESC";
 		$query = $this->db->query($note);
-		// foreach ($note as $key => $value) {
-		// 	$data .= '<div class="notification is-warning"><p>'.$value['value'].'</p><button class="delete">X</button></div>';
-		// }
 
 		return $query;
 	}
@@ -490,9 +386,7 @@ class Main_model extends CI_model{
 		if ($id_division != 1) {
 			$sql .= " AND id_division = ".$id_division;
 		}
-		/*if($id_division != 1 && $id_role == 2){
-			$sql .= " AND is_approved = 2";
-		}*/
+
 		$query = $this->db->query($sql);
 		return $query;
 	}
@@ -512,12 +406,6 @@ class Main_model extends CI_model{
 			$q = '';
 		}
 
-//		if ($is_perencanaan != '1') {
-//			$perencanaan = " is_perencanaan = ".$is_perencanaan." AND ";
-//		} else {
-//			$perencanaan = "  ";
-//		}
-
         if ($is_perencanaan != '1') {
             $sql = "SELECT * from ms_fppbj a where a.is_perencanaan = 2 AND YEAR(a.entry_stamp) = $year and is_approved = 3";
         } else {
@@ -527,10 +415,12 @@ class Main_model extends CI_model{
 					ms_fppbj
 				WHERE 
 					is_approved_hse < 2
-                        AND ((".$divisi." $q is_perencanaan = 1 AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3))))
-					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000) ";
+                        AND (".$divisi." $q is_perencanaan = 1 AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)))
+					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 0 AND is_reject = 0 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000)
+					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 1 AND del = 0)
+					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 2 AND del = 0)
+					";
         }
-        
         
 		$query = $this->db->query($sql);
 		return $query;
@@ -557,7 +447,7 @@ class Main_model extends CI_model{
 				  FROM
 				  		ms_fppbj
 				  WHERE 
-				  		del = 0 AND is_status = 0 AND is_approved_hse < 2 ".$q.$perencanaan;
+				  		del = 0".$q.$perencanaan;
 
 		if ($id_division != 1 && $id_division != 5) {
 			$sql .= " AND id_division = ".$id_division;
@@ -696,8 +586,9 @@ class Main_model extends CI_model{
 			} else {
 				$class = 'fkpbj';
 			}
-			$result[$value['id']] = '<div class="search-result"><div class="sr-logo '.$class.'">
-				<span class="icon"><i class="fas fa-file-alt"></i></span>
+			$result[$value['id']] = 
+				'<div class="search-result"><div class="sr-logo '.$class.'">
+					<span class="icon"><i class="fas fa-file-alt"></i></span>
 				</div>
 				<div class="sr-item">
 					<div class="sr-name"><span class="sr-no">1.</span><a href="'.base_url('pemaketan/division/'.$value['id_division'].'/'.$value['id'].'/'.date('Y',strtotime($value['entry_stamp']))).'">'.$value['nama_pengadaan'].'</a></div>
@@ -713,7 +604,8 @@ class Main_model extends CI_model{
 							<i class="fas fa-luggage-cart"></i>
 						</span>
 					</div>
-				</div></div>';
+					</div>
+				</div>';
 		}
 		
 		return $result;

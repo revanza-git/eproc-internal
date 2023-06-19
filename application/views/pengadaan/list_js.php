@@ -2,17 +2,15 @@
 
 $(function(){
 	dataPost = {
-		// order: 'id',
-		// sort: 'desc'
 	};			
 
 	var folder = $('#folderGenerator').folder({
 		url: '<?php echo site_url('pengadaan/getData/'); ?>',
 		data: dataPost,
 		dataRightClick: function(key, btn, value){
-			_id 		= value[key][2].value;
-			urlDivision = '<?php echo base_url('pemaketan/index/');?>/'+_id;
-			urlYear = '<?php echo base_url('export_timeline/rekap_timeline/');?>/'+_id;
+			year 		= value[key][1].value;
+			urlDivision = '<?php echo base_url('pemaketan/index/');?>/'+year;
+			urlYear = '<?php echo base_url('export_timeline/rekap_timeline/');?>/'+year;
 
 			btn = [
 			{
@@ -29,6 +27,7 @@ $(function(){
 			];
 			return btn;
 		},
+
 		callbackFunctionRightClick: function(){
 			var view = $('.buttonView').click(function(){
 				$(location).attr('href',urlDivision);
@@ -40,15 +39,15 @@ $(function(){
 		},
 
 		renderContent: function(el, value, key){
-			console.log(value);
 			html = '';
-			html += '<div class="caption"><p>'+value[2].value+'</p><p><b>'+value[1].value+'</b> Item(s)</p></div>';
-			// console.log(folder);
+			html += '<div class="caption"><p>'+value[1].value+'</p><p><b>'+value[0].value+'</b> Item(s)</p></div>';
 			return html;
 		},
+
 		additionFeature: function(el){
 		
 		},
+
 		finish: function(){
      	
 		}

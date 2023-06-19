@@ -16,15 +16,18 @@ $(function(){
 			urlPerencanaan	= '<?php echo base_url('export/rekap_perencanaan/');?>/'+_year;
 			urlDepartment 	= '<?php echo base_url('export/rekap_department/');?>/'+_year;
 
-			btn = [{
-					icon : 'search',
-					label: 'Lihat Data',
-					class: 'buttonView',
-					},{
+			btn = [
+					{
+						icon : 'search',
+						label: 'Lihat Data',
+						class: 'buttonView',
+					},
+					{
 						icon : 'file-download',
 						label: 'Rekap Perencanaan',
 						class: 'buttonPerencanaan',
-					}];
+					},
+				];
 			return btn;
 		},
 		callbackFunctionRightClick: function(){
@@ -34,13 +37,11 @@ $(function(){
 
 			// DOWNLOAD Data on PDF
 			var pdf = $('.buttonPerencanaan').click(function(){
-				// $(location).attr('href',urlpdf);
 				window.open(urlPerencanaan, "_blank");
 			});
 
 			// DOWNLOAD Data on PDF
 			var pdf = $('.buttonPDF').click(function(){
-				// $(location).attr('href',urlpdf);
 				window.open(buttonDepartment, "_blank");
 			});
 		},
@@ -52,41 +53,12 @@ $(function(){
 			return html;
 		},
 		additionFeature: function(el){
-			// el.prepend(insertButton(site_url+"perencanaan/rekap/insert/<?php echo $id;?>"));
 		},
 		finish: function(){
      		
 
 		}
 	});
-	// var add = $('.buttonAdd').modal({
-	// 	render : function(el, data){
-	// 		data.onSuccess = function(){
-	// 			folder.data('plugin_tableGenerator').fetchData();
-
-	// 					$(add).data('modal').close();
-	// 		}
-
-	// 		$(el).form(data);
-			
-	// 		$('.modal [name="pengadaan"]').on('change', function(){
-	// 			// get parent value
-	// 			var pengadaan = $(this).val();
-
-	// 			// Change option on select based on parent
-	// 			if (pengadaan == "barang") {
-	// 				$('.modal [name="jenis_pengadaan"]').empty();
-	// 				$('.modal [name="jenis_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value=''>Pilih Salah Satu</option><option value=''>Pilih Salah Satu</option><option value=''>Pilih Salah Satu</option>");
-	// 			}else if(pengadaan == "jasa"){
-	// 				$('.modal [name="jenis_pengadaan"]').empty();
-	// 				$('.modal [name="jenis_pengadaan"]').append("<option value=''>Pilih Dibawah Ini</option><option value='jasa_konstruksi'>Jasa Konstruksi</option><option value='jasa_konsultasi'>Jasa Konsultasi</option><option value='jasa_lainnya'>Jasa Lainnya</option>");
-	// 			}else{
-	// 				$('.modal [name="jenis_pengadaan"]').empty();
-	// 				$('.modal [name="jenis_pengadaan"]').append("<option value=''>Pilih Jenis Pengadaan Diatas</option>");
-	// 			}
-	// 		});
-	// 	}
-	// });
 });
 
 

@@ -1,13 +1,4 @@
 <script type="text/javascript">
-// Build the chart
-
-// $(".accordion-header").click(function() {
-//     for (i = 0; i < $(this).length; i++) {
-//         $(this).toggleClass('active');
-//         $(this).find('.spin').toggleClass('spin-effect');
-//         $(this).next('.accordion-panel').toggleClass('active');
-//     }
-// });
 
 var year = $('#yearGraph').val();
         getGraph(year);
@@ -71,7 +62,6 @@ function getGraph(year){
                         }
                     },
                     tooltip: {
-                        // pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
                         shared: true
                     },
                     plotOptions: {
@@ -90,59 +80,6 @@ function getGraph(year){
                         data: ['', __graph.act_out]
                     }]
                 });
-
-            // Highcharts.chart('graph_', {
-            //     chart: {
-            //         type: 'column'
-            //     },
-            //     title: {
-            //         text: 'Data Rekap Perencanaan'
-            //     },
-            //     subtitle: {
-            //         // text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
-            //     },
-            //     xAxis: {
-            //         type: 'category',
-            //         labels: {
-            //             rotation: -45,
-            //             style: {
-            //                 fontSize: '13px',
-            //                 fontFamily: 'Verdana, sans-serif'
-            //             }
-            //         }
-            //     },
-            //     yAxis: {
-            //         min: 0,
-            //         title: {
-            //             text: 'Jenis Pengadaan'
-            //         }
-            //     },
-            //     legend: {
-            //         enabled: false
-            //     },
-            //     tooltip: {
-            //         pointFormat: 'Jumlah: <b>{point.y:.1f}</b>'
-            //     },
-            //     series: [{
-            //         name: 'Population',
-            //         data: [
-            //             ['Perencanaan', __graph.plan],
-            //             ['Aktual', __graph.act]
-            //         ],
-            //         dataLabels: {
-            //             enabled: false,
-            //             rotation: -90,
-            //             color: '#FFFFFF',
-            //             align: 'right',
-            //             format: '{point.y:.1f}', // one decimal
-            //             y: 10, // 10 pixels down from the top
-            //             style: {
-            //                 fontSize: '13px',
-            //                 fontFamily: 'Verdana, sans-serif'
-            //             }
-            //         }
-            //     }]
-            // });
 
             var id_division = '<?= $admin['id_division'] ?>';
 
@@ -168,7 +105,6 @@ function getGraph(year){
                         text: 'Data Aktual Pengadaan'
                     },
                     subtitle: {
-                        // text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
                     },
                     xAxis: {
                         type: 'category',

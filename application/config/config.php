@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://10.10.10.4/eproc_nusantararegas/';
+$config['base_url'] = 'http://10.10.10.3/eproc_nusantararegas/';
 
 /*
 |--------------------------------------------------------------------------
@@ -211,9 +211,9 @@ $config['directory_trigger'] = 'd';
 |
 | For a live site you'll usually only enable Errors (1) to be logged otherwise
 | your log files will fill up very fast.
-|
+|/application/logs/application/logs
 */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 2;
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['log_threshold'] = 1;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '';
+$config['log_path'] = '/application/logs';
 
 /*
 |--------------------------------------------------------------------------
@@ -368,7 +368,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'pgn_monitoring';
+$config['sess_cookie_name'] = 'perencanaan_internal';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;

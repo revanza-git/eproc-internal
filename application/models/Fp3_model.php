@@ -237,10 +237,11 @@ class Fp3_model extends MY_Model
 		} else {
 			$up = array(
 				'is_writeoff' => 0,
-				'is_status'	 => 1,
+				'is_status'	  => 1,
 				'is_approved' => $is_approved,
 				'edit_stamp'  => date('Y-m-d H:i:s'),
-				'is_reject'		   => 0
+				'is_reject'	  => 0,
+				'del'	 	  => 1,
 			);
 			$this->db->where('id', $data['id_fppbj'])->update('ms_fppbj', $up);
 			$data_fp3 = array(
@@ -411,7 +412,7 @@ class Fp3_model extends MY_Model
 					WHERE
 						$s";
 						
-						if ($status == 0 || $status == '0') {
+		if ($status == 0 || $status == '0') {
             log_message('error', 'start reject fp3');
             log_message('error', $query);
             log_message('error', 'end reject fp3');
@@ -419,9 +420,6 @@ class Fp3_model extends MY_Model
 
 		$query = $this->db->query($query);
 		
-
-		// echo $this->db->last_query();die;
-
 		return $query;
 	}
 }

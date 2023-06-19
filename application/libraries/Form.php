@@ -366,8 +366,8 @@ class Form{
 		$path = $_POST[$name.'-path'];
 
 		$config['upload_path']		= './lampiran/'.$path;
-		$config['allowed_types']	= 'gif|jpg|png|bmp|jpeg|pdf';
-		$config['max_size']			= '15000';
+		$config['allowed_types']	= 'gif';
+		$config['max_size']			= 2000;
 		$config['file_name'] 		= $file_name = date("YmdHis").rand(1, 9); 
 
 		$this->CI->upload->initialize($config);

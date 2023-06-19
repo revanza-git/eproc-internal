@@ -59,7 +59,7 @@
 
   </section>
 
-  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.6.3.min.js');?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/js/fullcalendar/lib/jquery-ui.min.js');?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/js/fullcalendar/lib/jquery.min.js');?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/js/fullcalendar/lib/moment.min.js');?>"></script>

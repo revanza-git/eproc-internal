@@ -146,12 +146,6 @@ class Fppbj extends MY_Controller {
 									'type'	=>	'textarea',
 									'label'	=>	'Keterangan',
 								)
-								// ,array(
-								// 	'field'	=> 	'desc',
-								// 	'type'	=>	'textarea',
-								// 	'label'	=>	'Keterangan Lainnya',
-								// )
-								
 							),
 					'button'=>array(
 						array(
@@ -161,7 +155,6 @@ class Fppbj extends MY_Controller {
 						),array(
 							'type'=>'next',
 							'label'=>'Lanjut',
-							// 'class'=>'btn-to-jasa btn-to-swakelola btn-to-jasa-swakelola'
 							'class'=>'btn-to'
 						)
 					)
@@ -239,7 +232,6 @@ class Fppbj extends MY_Controller {
 
 
 	public function getSingleData($id=null){
-		// define status parameter
 		$admin = $this->session->userdata('admin');
 		
 		$param_  = ($admin['id_role'] == 4) ? ($param_=1) : '' ;
@@ -299,7 +291,7 @@ class Fppbj extends MY_Controller {
 
 		$sub_for_pejabat = "Persetujuan pengadaan aplikasi perencanaan Nusantara Regas";
 
-		$msg_for_pejabat = "Pengadaan dengan nama " . $fppbj['nama_pengadaan'] . " menunggu persetujuan anda, silahkan cek di aplikasi perencanaan Nusantara Regas <a href='http:/10.10.10.4/eproc_perencanaan/pemaketan/division/" . $fppbj['id_division'] . "/" . $fppbj['id'] . "'>http:/10.10.10.4/eproc_perencanaan</a>";
+		$msg_for_pejabat = "Pengadaan dengan nama " . $fppbj['nama_pengadaan'] . " menunggu persetujuan anda, silahkan cek di aplikasi perencanaan Nusantara Regas <a href='http:/10.10.10.3/eproc_perencanaan/pemaketan/division/" . $fppbj['id_division'] . "/" . $fppbj['id'] . "'>http:/10.10.10.3/eproc_perencanaan</a>";
 
 		# send email to Ka.Div SDM & Umum
 		if ($fppbj['is_status'] == "0" && $fppbj['is_approved'] == "3" && $fppbj['id_perencanaan_umum'] < 1 && $fppbj['is_reject'] == 0 && $fppbj['is_writeoff'] == 0 && (($fppbj['idr_anggaran'] > 100000000 && $fppbj['idr_anggaran'] <= 1000000000) && ($fppbj['metode_pengadaan_name'] == 'Penunjukan Langsung' || $fppbj['metode_pengadaan_name'] == 'Pemilihan Langsung' || $fppbj['metode_pengadaan_name'] === 'Pelelangan'))) {

@@ -82,7 +82,6 @@ class Rekap extends MY_Controller {
 	}
 
 	public function getDataYear($year = null){
-		// print_r($year);
 		$config['query'] = $this->pm->getDataYear($this->form, $year);
 		$return = $this->tablegenerator->initialize($config);
 		echo json_encode($return);

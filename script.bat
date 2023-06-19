@@ -1,1 +1,1 @@
-"C:\xampp\php\php.exe" -f "C:\xampp\htdocs\eproc_perencanaan\cron_base.php"
+"C:\xampp\php\php.exe" -f "C:\inetpub\wwwroot\eproc_nusantararegas\cron_base.php"

@@ -1,39 +1,46 @@
 <?php
-/**
- * 
- */
+
 class App extends MY_Controller
 {
 	public $eproc_db;
 
-	function __construct()
-	{
+	function __construct(){
 		parent::__construct();
+		$this->admin = $this->session->userdata('admin');
 		$this->load->model('main_model','mm');
 		$this->load->model('fppbj_model','fm');
 		$this->eproc_db = $this->load->database('eproc',true);
+		$this->load->helper('string');
 	}
 
 	public function index()
 	{
 		$admin = $this->session->userdata('admin');
-		// print_r($admin);die;
 		$getUser = $this->mm->to_app($admin['id_user']);
-		// echo "string";print_r($getUser);die;
-		$this->session->sess_destroy();
-		// echo "string";print_r($getUser);die;
-		$name 		= $getUser['name'];
-		$id_user 	= $getUser['id'];
-		$id_role 	= $getUser['id_role'];
-		$role_name 	= $getUser['role_name'];
-		$type 		= 'admin';
-		$app 		= 1;
-		$id_sbu 	= $getUser['id_sbu'];
-		$sbu_name 	= $getUser['sbu_name'];
-		$division	= $admin['division'];
-		$id_division= $admin['id_division'];
 
-		header("Location:http://10.10.10.4/eproc_pengadaan/main/login_admin/".$name."/".$id_user."/".$id_role."/".$role_name."/".$type."/".$app."/".$division."/".$id_division."/".$id_sbu."/".$sbu_name);
+		$data = array(
+			'name' 		 => $getUser['name'],
+			'id_user' 	 => $getUser['id'],
+			'id_role' 	 => $getUser['id_role'],
+			'role_name' 	 => $getUser['role_name'],
+			'type' 		 => 'admin',
+			'app' 		 => 1,
+			'id_sbu' 	 => $getUser['id_sbu'],
+			'sbu_name' 	 => $getUser['sbu_name'],
+			'division'	 => $admin['division'],
+			'id_division' => $admin['id_division'],
+		);
+		
+		$key = random_string('unique').random_string('unique').random_string('unique').random_string('unique');
+		
+		$this->eproc_db->insert('ms_key_value', array(
+			'key' => $key,
+			'value'=> json_encode($data),
+		));
+
+		$this->session->sess_destroy();
+		
+		header("Location: http://10.10.10.3/eproc_pengadaan/main/login_admin?key=".$key);
 	}
 
 	public function getUsers()

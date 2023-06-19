@@ -1,4 +1,4 @@
-	<div class="ps-wrapper" style="width: 100%;">
+<div class="ps-wrapper" style="width: 100%;">
 		<table class="penilaian_resiko">
 			<tr class="header">
 				<th rowspan="2">No</th>

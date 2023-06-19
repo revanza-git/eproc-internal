@@ -75,13 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => 'localhost',
-	// 'username' => 'root',
-	// 'password' => 'Nusantara1234',
-	// 'password' => 'Aspire4720z!',
-	'hostname' => '10.10.11.19',
-	'username' => 'dekodr',
-	'password' => 'Aspire4720z!',
+	'hostname' => '10.10.11.20',
+	'username' => 'root',
+	'password' => 'Nusantara1234',
 	'database' => 'eproc_perencanaan',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -98,12 +94,12 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
 $db['eproc_'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '10.10.11.20',
 	'username' => 'root',
 	'password' => 'Nusantara1234',
-	// 'password' => 'Aspire4720z!',
 	'database' => 'eproc_dev',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -123,9 +119,9 @@ $db['eproc_'] = array(
 
 $db['eproc'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.10.11.19',
-	'username' => 'dekodr',
-	'password' => 'Aspire4720z!',
+	'hostname' => '10.10.11.20',
+	'username' => 'root',
+	'password' => 'Nusantara1234',
 	'database' => 'eproc',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -145,9 +141,9 @@ $db['eproc'] = array(
 
 $db['test'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.10.11.19',
-	'username' => 'dekodr',
-	'password' => 'Aspire4720z!',
+	'hostname' => '10.10.11.20',
+	'username' => 'root',
+	'password' => 'Nusantara1234',
 	'database' => 'eproc',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

@@ -1,5 +1,5 @@
     <!-- click-menu global -->
-      <ul id="click-menu-global" class="click-menu">
+    <ul id="click-menu-global" class="click-menu">
         <li><span class="icon"><i class="fas fa-file-upload"></span></i>Upload File</li>
         <li class="bdr-bottom"></li>
         <li><span class="icon"><i class="fas fa-info-circle"></span></i>Info</li>
