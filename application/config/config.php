@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://10.10.10.3/eproc_nusantararegas/';
+$config['base_url'] = 'http://local.eproc.intra.com/eproc_nusantararegas/';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['log_threshold'] = 2;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '/application/logs';
+$config['log_path'] = '';
 
 /*
 |--------------------------------------------------------------------------

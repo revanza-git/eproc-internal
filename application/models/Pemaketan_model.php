@@ -512,7 +512,7 @@ class Pemaketan_model extends MY_Model{
 					INNER JOIN
 						tr_analisa_risiko b ON b.id=a.id_analisa_risiko
 					WHERE b.id_fppbj = ".$query1['id'];
-		$sql .= " GROUP BY a.id ASC";
+		$sql .= " GROUP BY a.id ORDER BY a.id ASC";
 		$query = $this->db->query($sql)->result_array();
 		return $query;
 		 // print_r($query);die;

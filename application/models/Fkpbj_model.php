@@ -119,7 +119,7 @@ class Fkpbj_model extends MY_Model
 		return $query->row_array();
 	}
 
-	public function insert($id, $save)
+	public function insert($id,$save)
 	{
 		//print_r($save);die;
 		$update_fppbj = array(
