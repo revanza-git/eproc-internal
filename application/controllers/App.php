@@ -40,7 +40,7 @@ class App extends MY_Controller
 
 		$this->session->sess_destroy();
 		
-		header("Location: http://local.eproc.intra.com/eproc_pengadaan/main/login_admin?key=".$key);
+		header("Location: ".$this->config->item("pengadaan_url")."main/login_admin?key=".$key);
 	}
 
 	public function getUsers()

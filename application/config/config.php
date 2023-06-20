@@ -24,6 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://local.eproc.intra.com/eproc_nusantararegas/';
+$config['pengadaan_url'] = 'http://local.eproc.intra.com/eproc_pengadaan/';
+$config['vms_url'] = 'http://local.eproc.vms.com/eproc_nusantararegas/';
+$config['vms_pengadaan_url'] = 'http://local.eproc.vms.com/eproc_pengadaan/';
 
 /*
 |--------------------------------------------------------------------------
