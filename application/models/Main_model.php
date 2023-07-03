@@ -383,7 +383,7 @@ class Main_model extends CI_model{
 		$id_division = $this->session->userdata('admin')['id_division'];
 		$id_role 	 = $this->session->userdata('admin')['id_role'];
 
-		if ($id_division != 1) {
+		if ($id_division != 1 && $id_division != 5) {
 			$sql .= " AND id_division = ".$id_division;
 		}
 

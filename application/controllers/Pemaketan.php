@@ -517,7 +517,7 @@ class Pemaketan extends MY_Controller
     public function division($id = "", $id_fppbj = "", $year = "")
     {
         $admin = $this->session->userdata('admin');
-        if ($admin['id_role'] == 5 || $admin['id_role'] == 4) {
+        if (($admin['id_role'] == 5 || $admin['id_role'] == 4) && $admin['id_division']!=5) {
             $id = $admin['id_division'];
         }
         $division = $this->mm->getDiv_($id);
@@ -542,6 +542,7 @@ class Pemaketan extends MY_Controller
         $data['is_approved']     = $data['step']['is_approved'];
         $data['is_perencanaan']  = $this->check_perencanaan_umum(date('Y'));
         $data['year']            = $year;
+        
         $this->header = 'Perencanaan Pengadaan - ' . $division['name'];
         $this->content = $this->load->view('pemaketan/division/list', $data, TRUE);
         $this->script = $this->load->view('pemaketan/division/list_js', $data, TRUE);
