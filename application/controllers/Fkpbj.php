@@ -339,7 +339,7 @@ class Fkpbj extends MY_Controller {
         
         $config['upload_path'] = './assets/lampiran/pr_lampiran';
         $config['allowed_types'] = 'pdf|doc|docx|jpeg|jpg|png';
-    	$config['max_size']      = 10000;
+    	$config['max_size']      = 30000;
 
 		$this->load->library('upload',$config,'uploadprlampiran');
         $this->uploadprlampiran->initialize($config);
@@ -355,7 +355,7 @@ class Fkpbj extends MY_Controller {
 
         $config_kak['upload_path'] = './assets/lampiran/kak_lampiran';
         $config['allowed_types'] = 'pdf|doc|docx|jpeg|jpg|png';
-    	$config['max_size']      = 10000;
+    	$config['max_size']      = 30000;
         
 	    $this->load->library('upload',$config_kak,'uploadkaklampiran');
 	    $this->uploadkaklampiran->initialize($config_kak);
