@@ -16552,3 +16552,1083 @@ ERROR - 2023-07-03 21:40:07 --> Severity: Warning --> Division by zero C:\inetpu
 ERROR - 2023-07-03 21:40:07 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1569
 ERROR - 2023-07-03 21:40:07 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1590
 DEBUG - 2023-07-03 21:40:07 --> Total execution time: 0.1557
+DEBUG - 2023-07-03 21:49:10 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:11 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:12 --> Total execution time: 1.4586
+DEBUG - 2023-07-03 21:49:37 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:37 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:38 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:38 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:49:38 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:49:38 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:49:38 --> start reject fp3
+ERROR - 2023-07-03 21:49:38 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 21:49:38 --> end reject fp3
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:49:38 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+DEBUG - 2023-07-03 21:49:38 --> Total execution time: 0.4493
+DEBUG - 2023-07-03 21:49:38 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:38 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:49:38 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:49:38 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:38 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:39 --> Total execution time: 0.3742
+DEBUG - 2023-07-03 21:49:39 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:39 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:39 --> Total execution time: 0.1939
+DEBUG - 2023-07-03 21:49:39 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:39 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:39 --> Total execution time: 0.1467
+DEBUG - 2023-07-03 21:49:39 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:39 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:49:39 --> start reject fp3
+ERROR - 2023-07-03 21:49:39 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 21:49:39 --> end reject fp3
+DEBUG - 2023-07-03 21:49:39 --> Total execution time: 0.1511
+DEBUG - 2023-07-03 21:49:39 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:40 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 996
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1023
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1043
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1069
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1092
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1113
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1156
+DEBUG - 2023-07-03 21:49:40 --> Total execution time: 0.2097
+DEBUG - 2023-07-03 21:49:40 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:40 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1506
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1530
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1549
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1569
+ERROR - 2023-07-03 21:49:40 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1590
+DEBUG - 2023-07-03 21:49:40 --> Total execution time: 0.1454
+DEBUG - 2023-07-03 21:49:47 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:47 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:49:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:49:47 --> Total execution time: 0.3534
+DEBUG - 2023-07-03 21:49:47 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:47 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:49:47 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:49:47 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:47 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:49:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:49:47 --> Total execution time: 0.1388
+DEBUG - 2023-07-03 21:49:47 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:49:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:49:47 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:49:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:49:47 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:49:48 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:49:48 --> Total execution time: 0.1673
+DEBUG - 2023-07-03 21:54:05 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:05 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:05 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:05 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:05 --> Total execution time: 0.1269
+DEBUG - 2023-07-03 21:54:05 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:05 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:54:05 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:54:06 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:06 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:06 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:06 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:06 --> Total execution time: 0.0932
+DEBUG - 2023-07-03 21:54:09 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:09 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:09 --> Total execution time: 0.1796
+DEBUG - 2023-07-03 21:54:09 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:09 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:54:09 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:54:09 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:09 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:09 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:09 --> start_get_data
+ERROR - 2023-07-03 21:54:09 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 43
+ERROR - 2023-07-03 21:54:09 --> 	SELECT  name,
+							count(*) AS total,
+							ms_fppbj.id,
+							tb_division.id id_division
+					FROM ms_fppbj
+					JOIN tb_division ON ms_fppbj.id_division = tb_division.id 
+					 WHERE ms_fppbj.del = 0 AND ms_fppbj.entry_stamp BETWEEN '2023-01-01 00:00:00' AND '2023-12-31 23:59:59'  
+ERROR - 2023-07-03 21:54:09 --> end_get_data
+DEBUG - 2023-07-03 21:54:09 --> Total execution time: 0.1598
+DEBUG - 2023-07-03 21:54:11 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:11 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:11 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:11 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:11 --> Total execution time: 0.1513
+DEBUG - 2023-07-03 21:54:12 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:12 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:54:12 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:54:12 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:12 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:12 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:12 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:12 --> Total execution time: 0.1738
+DEBUG - 2023-07-03 21:54:12 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:12 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:12 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:12 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:12 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:54:12 --> Total execution time: 0.1695
+DEBUG - 2023-07-03 21:54:20 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:20 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:20 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:20 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:20 --> Total execution time: 0.1509
+DEBUG - 2023-07-03 21:54:20 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:21 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:21 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:21 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:21 --> start_get_data
+ERROR - 2023-07-03 21:54:21 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 43
+ERROR - 2023-07-03 21:54:21 --> 	SELECT  name,
+							count(*) AS total,
+							ms_fppbj.id,
+							tb_division.id id_division
+					FROM ms_fppbj
+					JOIN tb_division ON ms_fppbj.id_division = tb_division.id 
+					 WHERE ms_fppbj.del = 0 AND ms_fppbj.entry_stamp BETWEEN '2023-01-01 00:00:00' AND '2023-12-31 23:59:59'  
+ERROR - 2023-07-03 21:54:21 --> end_get_data
+DEBUG - 2023-07-03 21:54:21 --> Total execution time: 0.1700
+DEBUG - 2023-07-03 21:54:23 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:23 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:23 --> Total execution time: 0.1637
+DEBUG - 2023-07-03 21:54:23 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:23 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:54:23 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:54:23 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:23 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:23 --> Total execution time: 0.1563
+DEBUG - 2023-07-03 21:54:23 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:24 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:24 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:24 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:54:24 --> Total execution time: 0.1683
+DEBUG - 2023-07-03 21:54:27 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:27 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:27 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:27 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:27 --> Severity: Warning --> Invalid argument supplied for foreach() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Export_model.php 39
+ERROR - 2023-07-03 21:54:27 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+DEBUG - 2023-07-03 21:54:27 --> Total execution time: 0.1729
+DEBUG - 2023-07-03 21:54:27 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:27 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:27 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:27 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:27 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+DEBUG - 2023-07-03 21:54:27 --> Total execution time: 0.1580
+DEBUG - 2023-07-03 21:54:39 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:39 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:39 --> Total execution time: 0.1557
+DEBUG - 2023-07-03 21:54:43 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:43 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:44 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:44 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:44 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:44 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:54:44 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:54:44 --> start reject fp3
+ERROR - 2023-07-03 21:54:44 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 21:54:44 --> end reject fp3
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:54:44 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+DEBUG - 2023-07-03 21:54:44 --> Total execution time: 0.2297
+DEBUG - 2023-07-03 21:54:44 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:44 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:54:44 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:54:44 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:44 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:44 --> Total execution time: 0.3788
+DEBUG - 2023-07-03 21:54:45 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:45 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:45 --> Total execution time: 0.1919
+DEBUG - 2023-07-03 21:54:45 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:45 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:45 --> Total execution time: 0.1598
+DEBUG - 2023-07-03 21:54:45 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:45 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:54:45 --> start reject fp3
+ERROR - 2023-07-03 21:54:45 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 21:54:45 --> end reject fp3
+DEBUG - 2023-07-03 21:54:45 --> Total execution time: 0.1485
+DEBUG - 2023-07-03 21:54:45 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:45 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:54:45 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 996
+ERROR - 2023-07-03 21:54:45 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1023
+ERROR - 2023-07-03 21:54:45 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1043
+ERROR - 2023-07-03 21:54:45 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1069
+ERROR - 2023-07-03 21:54:45 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1092
+ERROR - 2023-07-03 21:54:45 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1113
+ERROR - 2023-07-03 21:54:45 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1156
+DEBUG - 2023-07-03 21:54:45 --> Total execution time: 0.1990
+DEBUG - 2023-07-03 21:54:45 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:45 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:54:46 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1506
+ERROR - 2023-07-03 21:54:46 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1530
+ERROR - 2023-07-03 21:54:46 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1549
+ERROR - 2023-07-03 21:54:46 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1569
+ERROR - 2023-07-03 21:54:46 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1590
+DEBUG - 2023-07-03 21:54:46 --> Total execution time: 0.1415
+DEBUG - 2023-07-03 21:54:47 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:47 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:47 --> Total execution time: 0.1597
+DEBUG - 2023-07-03 21:54:47 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:47 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:54:47 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:54:48 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:48 --> Total execution time: 0.1164
+DEBUG - 2023-07-03 21:54:48 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:48 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:48 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:54:48 --> Total execution time: 0.0909
+DEBUG - 2023-07-03 21:54:55 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:54:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:54:55 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:54:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:54:55 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:54:55 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:54:55 --> Total execution time: 0.1611
+DEBUG - 2023-07-03 21:55:05 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:05 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:05 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:55:05 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:55:05 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:55:05 --> Total execution time: 0.1597
+DEBUG - 2023-07-03 21:55:23 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:23 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:55:23 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:55:24 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:55:24 --> Total execution time: 0.1690
+DEBUG - 2023-07-03 21:55:28 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:55:28 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:55:28 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:55:28 --> Total execution time: 0.1679
+DEBUG - 2023-07-03 21:55:44 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:44 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:44 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:55:44 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:55:44 --> Severity: Warning --> Invalid argument supplied for foreach() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Export_model.php 39
+ERROR - 2023-07-03 21:55:44 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+DEBUG - 2023-07-03 21:55:44 --> Total execution time: 0.1675
+DEBUG - 2023-07-03 21:55:44 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:45 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:55:45 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:55:45 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+DEBUG - 2023-07-03 21:55:45 --> Total execution time: 0.1081
+DEBUG - 2023-07-03 21:55:51 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:51 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:51 --> Total execution time: 0.1674
+DEBUG - 2023-07-03 21:55:56 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:56 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:56 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:56 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:56 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:55:56 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:55:56 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 21:55:56 --> start reject fp3
+ERROR - 2023-07-03 21:55:56 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 21:55:56 --> end reject fp3
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 21:55:56 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+DEBUG - 2023-07-03 21:55:56 --> Total execution time: 0.2313
+DEBUG - 2023-07-03 21:55:56 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:56 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:55:56 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:55:56 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:56 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:57 --> Total execution time: 0.3611
+DEBUG - 2023-07-03 21:55:57 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:57 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:57 --> Total execution time: 0.1902
+DEBUG - 2023-07-03 21:55:57 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:57 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:57 --> Total execution time: 0.1497
+DEBUG - 2023-07-03 21:55:57 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:57 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:55:57 --> start reject fp3
+ERROR - 2023-07-03 21:55:57 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 21:55:57 --> end reject fp3
+DEBUG - 2023-07-03 21:55:57 --> Total execution time: 0.1636
+DEBUG - 2023-07-03 21:55:57 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:57 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 996
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1023
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1043
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1069
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1092
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1113
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1156
+DEBUG - 2023-07-03 21:55:58 --> Total execution time: 0.1883
+DEBUG - 2023-07-03 21:55:58 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:58 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1506
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1530
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1549
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1569
+ERROR - 2023-07-03 21:55:58 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1590
+DEBUG - 2023-07-03 21:55:58 --> Total execution time: 0.1560
+DEBUG - 2023-07-03 21:55:59 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:55:59 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:55:59 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:55:59 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:55:59 --> Total execution time: 0.0814
+DEBUG - 2023-07-03 21:55:59 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:55:59 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:55:59 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:56:00 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:00 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:00 --> Total execution time: 0.0970
+DEBUG - 2023-07-03 21:56:03 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:03 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:03 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:03 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:04 --> Total execution time: 0.1487
+DEBUG - 2023-07-03 21:56:04 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:04 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:56:04 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:56:04 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:04 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:04 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:04 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:56:04 --> start_get_data
+ERROR - 2023-07-03 21:56:04 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 43
+ERROR - 2023-07-03 21:56:04 --> 	SELECT  name,
+							count(*) AS total,
+							ms_fppbj.id,
+							tb_division.id id_division
+					FROM ms_fppbj
+					JOIN tb_division ON ms_fppbj.id_division = tb_division.id 
+					 WHERE ms_fppbj.del = 0 AND ms_fppbj.entry_stamp BETWEEN '2023-01-01 00:00:00' AND '2023-12-31 23:59:59'  
+ERROR - 2023-07-03 21:56:04 --> end_get_data
+DEBUG - 2023-07-03 21:56:04 --> Total execution time: 0.1710
+DEBUG - 2023-07-03 21:56:06 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:06 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:06 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:06 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:07 --> Total execution time: 0.1491
+DEBUG - 2023-07-03 21:56:07 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:07 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 21:56:07 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 21:56:07 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:07 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:07 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:07 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:07 --> Total execution time: 0.1777
+DEBUG - 2023-07-03 21:56:07 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:07 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:07 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:07 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:56:07 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 21:56:07 --> Total execution time: 0.1672
+DEBUG - 2023-07-03 21:56:09 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:09 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:09 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:56:09 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+DEBUG - 2023-07-03 21:56:09 --> Total execution time: 0.1260
+DEBUG - 2023-07-03 21:56:09 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:09 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:09 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:56:09 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+DEBUG - 2023-07-03 21:56:09 --> Total execution time: 0.1483
+DEBUG - 2023-07-03 21:56:15 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:15 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:15 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:56:15 --> Severity: Warning --> Invalid argument supplied for foreach() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Export_model.php 39
+ERROR - 2023-07-03 21:56:15 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+DEBUG - 2023-07-03 21:56:15 --> Total execution time: 0.1528
+DEBUG - 2023-07-03 21:56:15 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:15 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 21:56:15 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 21:56:15 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+DEBUG - 2023-07-03 21:56:15 --> Total execution time: 0.1086
+DEBUG - 2023-07-03 21:56:23 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 21:56:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 21:56:23 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 21:56:23 --> Total execution time: 0.1339
+DEBUG - 2023-07-03 22:03:27 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:27 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:27 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:27 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:27 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:27 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:03:27 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:03:27 --> start reject fp3
+ERROR - 2023-07-03 22:03:27 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 22:03:27 --> end reject fp3
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:03:27 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+DEBUG - 2023-07-03 22:03:27 --> Total execution time: 0.2350
+DEBUG - 2023-07-03 22:03:27 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:27 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 22:03:27 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 22:03:27 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:27 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:28 --> Total execution time: 0.3354
+DEBUG - 2023-07-03 22:03:28 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:28 --> Total execution time: 0.1947
+DEBUG - 2023-07-03 22:03:28 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:28 --> Total execution time: 0.1477
+DEBUG - 2023-07-03 22:03:28 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:28 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 22:03:28 --> start reject fp3
+ERROR - 2023-07-03 22:03:28 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 22:03:28 --> end reject fp3
+DEBUG - 2023-07-03 22:03:28 --> Total execution time: 0.1442
+DEBUG - 2023-07-03 22:03:28 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:28 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 22:03:28 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 996
+ERROR - 2023-07-03 22:03:28 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1023
+ERROR - 2023-07-03 22:03:28 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1043
+ERROR - 2023-07-03 22:03:28 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1069
+ERROR - 2023-07-03 22:03:28 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1092
+ERROR - 2023-07-03 22:03:28 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1113
+ERROR - 2023-07-03 22:03:28 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1156
+DEBUG - 2023-07-03 22:03:28 --> Total execution time: 0.1873
+DEBUG - 2023-07-03 22:03:28 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:28 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 22:03:29 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1506
+ERROR - 2023-07-03 22:03:29 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1530
+ERROR - 2023-07-03 22:03:29 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1549
+ERROR - 2023-07-03 22:03:29 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1569
+ERROR - 2023-07-03 22:03:29 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1590
+DEBUG - 2023-07-03 22:03:29 --> Total execution time: 0.1675
+DEBUG - 2023-07-03 22:03:34 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:35 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:35 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:35 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:35 --> Total execution time: 0.1507
+DEBUG - 2023-07-03 22:03:35 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:35 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 22:03:35 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 22:03:35 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:35 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:35 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:35 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:35 --> Total execution time: 0.1456
+DEBUG - 2023-07-03 22:03:35 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:35 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:35 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:35 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:03:35 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 22:03:35 --> Total execution time: 0.1255
+DEBUG - 2023-07-03 22:03:39 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:39 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:39 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:39 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:39 --> Total execution time: 0.1124
+DEBUG - 2023-07-03 22:03:39 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 22:03:39 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 22:03:39 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:39 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:39 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:39 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:39 --> Total execution time: 0.1020
+DEBUG - 2023-07-03 22:03:42 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:42 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:42 --> Total execution time: 0.1523
+DEBUG - 2023-07-03 22:03:42 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:42 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 22:03:42 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 22:03:42 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:03:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:03:42 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:03:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:03:42 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:03:42 --> start_get_data
+ERROR - 2023-07-03 22:03:42 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 43
+ERROR - 2023-07-03 22:03:42 --> 	SELECT  name,
+							count(*) AS total,
+							ms_fppbj.id,
+							tb_division.id id_division
+					FROM ms_fppbj
+					JOIN tb_division ON ms_fppbj.id_division = tb_division.id 
+					 WHERE ms_fppbj.del = 0 AND ms_fppbj.entry_stamp BETWEEN '2023-01-01 00:00:00' AND '2023-12-31 23:59:59'  
+ERROR - 2023-07-03 22:03:42 --> end_get_data
+DEBUG - 2023-07-03 22:03:42 --> Total execution time: 0.1650
+DEBUG - 2023-07-03 22:04:13 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:13 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:13 --> Total execution time: 0.1553
+DEBUG - 2023-07-03 22:04:13 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:13 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 22:04:13 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 22:04:14 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:14 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:14 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:14 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:14 --> Total execution time: 0.1414
+DEBUG - 2023-07-03 22:04:14 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:14 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:14 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:14 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:04:14 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 22:04:14 --> Total execution time: 0.1195
+DEBUG - 2023-07-03 22:04:16 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:16 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:16 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:16 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:04:16 --> Severity: Warning --> Invalid argument supplied for foreach() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Export_model.php 39
+ERROR - 2023-07-03 22:04:16 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+DEBUG - 2023-07-03 22:04:16 --> Total execution time: 0.1509
+DEBUG - 2023-07-03 22:04:17 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:17 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:17 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:17 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:04:17 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+DEBUG - 2023-07-03 22:04:17 --> Total execution time: 0.1506
+DEBUG - 2023-07-03 22:04:21 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:21 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:21 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:21 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:21 --> Total execution time: 0.1572
+DEBUG - 2023-07-03 22:04:21 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:21 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:21 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:21 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:04:21 --> start_get_data
+ERROR - 2023-07-03 22:04:21 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 43
+ERROR - 2023-07-03 22:04:21 --> 	SELECT  name,
+							count(*) AS total,
+							ms_fppbj.id,
+							tb_division.id id_division
+					FROM ms_fppbj
+					JOIN tb_division ON ms_fppbj.id_division = tb_division.id 
+					 WHERE ms_fppbj.del = 0 AND ms_fppbj.entry_stamp BETWEEN '2023-01-01 00:00:00' AND '2023-12-31 23:59:59'  
+ERROR - 2023-07-03 22:04:21 --> end_get_data
+DEBUG - 2023-07-03 22:04:21 --> Total execution time: 0.1467
+DEBUG - 2023-07-03 22:04:24 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:24 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:24 --> Total execution time: 0.1373
+DEBUG - 2023-07-03 22:04:24 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:24 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 22:04:24 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 22:04:24 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:25 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:25 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:25 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:25 --> Total execution time: 0.1515
+DEBUG - 2023-07-03 22:04:25 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:25 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:25 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:25 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:04:25 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 22:04:25 --> Total execution time: 0.1544
+DEBUG - 2023-07-03 22:04:28 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:29 --> Total execution time: 0.1384
+DEBUG - 2023-07-03 22:04:29 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:04:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:04:29 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:04:29 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:04:29 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:04:29 --> start_get_data
+ERROR - 2023-07-03 22:04:29 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 43
+ERROR - 2023-07-03 22:04:29 --> 	SELECT  name,
+							count(*) AS total,
+							ms_fppbj.id,
+							tb_division.id id_division
+					FROM ms_fppbj
+					JOIN tb_division ON ms_fppbj.id_division = tb_division.id 
+					 WHERE ms_fppbj.del = 0 AND ms_fppbj.entry_stamp BETWEEN '2023-01-01 00:00:00' AND '2023-12-31 23:59:59'  
+ERROR - 2023-07-03 22:04:29 --> end_get_data
+DEBUG - 2023-07-03 22:04:29 --> Total execution time: 0.1508
+DEBUG - 2023-07-03 22:05:43 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:05:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:05:43 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:05:43 --> Total execution time: 0.1321
+DEBUG - 2023-07-03 22:08:59 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:08:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:08:59 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:08:59 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:08:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:08:59 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:08:59 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:08:59 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:08:59 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-03 22:08:59 --> start reject fp3
+ERROR - 2023-07-03 22:08:59 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 22:08:59 --> end reject fp3
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-03 22:08:59 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+DEBUG - 2023-07-03 22:08:59 --> Total execution time: 0.2582
+DEBUG - 2023-07-03 22:09:00 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:00 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 22:09:00 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 22:09:00 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:00 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:00 --> Total execution time: 0.3733
+DEBUG - 2023-07-03 22:09:00 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:00 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:00 --> Total execution time: 0.2069
+DEBUG - 2023-07-03 22:09:00 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:00 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:01 --> Total execution time: 0.1505
+DEBUG - 2023-07-03 22:09:01 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:01 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 22:09:01 --> start reject fp3
+ERROR - 2023-07-03 22:09:01 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-03 22:09:01 --> end reject fp3
+DEBUG - 2023-07-03 22:09:01 --> Total execution time: 0.1782
+DEBUG - 2023-07-03 22:09:01 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:01 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 996
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1023
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1043
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1069
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1092
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1113
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1156
+DEBUG - 2023-07-03 22:09:01 --> Total execution time: 0.2073
+DEBUG - 2023-07-03 22:09:01 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:01 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1506
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1530
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1549
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1569
+ERROR - 2023-07-03 22:09:01 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1590
+DEBUG - 2023-07-03 22:09:01 --> Total execution time: 0.1356
+DEBUG - 2023-07-03 22:09:07 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:07 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:07 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:09:07 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:09:07 --> Total execution time: 0.1794
+DEBUG - 2023-07-03 22:09:07 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:07 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-07-03 22:09:07 --> 404 Page Not Found: Assets/lampiran
+DEBUG - 2023-07-03 22:09:07 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:07 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:07 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:09:07 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:09:07 --> Total execution time: 0.1612
+DEBUG - 2023-07-03 22:09:08 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:08 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:08 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:09:08 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:09:08 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+DEBUG - 2023-07-03 22:09:08 --> Total execution time: 0.1628
+DEBUG - 2023-07-03 22:09:10 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:10 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:10 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:09:10 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:09:10 --> Severity: Warning --> Invalid argument supplied for foreach() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Export_model.php 39
+ERROR - 2023-07-03 22:09:10 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+DEBUG - 2023-07-03 22:09:10 --> Total execution time: 0.1686
+DEBUG - 2023-07-03 22:09:10 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:11 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:11 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2023-07-03 22:09:11 --> Session class already loaded. Second attempt ignored.
+ERROR - 2023-07-03 22:09:11 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+DEBUG - 2023-07-03 22:09:11 --> Total execution time: 0.1586
+DEBUG - 2023-07-03 22:09:48 --> UTF-8 Support Enabled
+DEBUG - 2023-07-03 22:09:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-07-03 22:09:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2023-07-03 22:09:48 --> Total execution time: 0.1582
