@@ -9,6 +9,9 @@ class Fp3_model extends MY_Model
 	}
 	function getFppbj($form = "", $year=null)
 	{
+		// date('yyyy')
+		// echo date('Y');
+		// $year = date('yyyy');
 		$admin = $this->session->userdata('admin');
 		/*$query = "	SELECT
 						a.*

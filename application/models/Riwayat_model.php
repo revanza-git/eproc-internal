@@ -16,7 +16,7 @@ class Riwayat_model extends MY_Model {
 		if ($status != 'approval') {
 			$con = " AND c.is_status = ".$status;
 		} else {
-			$con = " AND (c.status = 'approval' OR c.status = 'reject')";
+			//$con = " AND (c.status = 'approval' OR c.status = 'reject')";
 		}
 
 		$query = "	SELECT

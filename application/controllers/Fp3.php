@@ -343,6 +343,7 @@ class Fp3 extends MY_Controller
         } else {
             $this->form = $this->form;
         }
+
 		foreach ($this->form['form'] as $key => $element) {
 			if ($this->form['form'][$key]['type'] == 'date_range') {
 				$_value = array();
@@ -881,6 +882,7 @@ class Fp3 extends MY_Controller
 			),
 		);
 
+		echo print_r('testst');
 		$modelAlias = $this->modelAlias;
 		$data = $this->$modelAlias->selectData($id);
 
@@ -920,6 +922,7 @@ class Fp3 extends MY_Controller
 	public function update($id)
 	{
 		$modelAlias = $this->modelAlias;
+		
 		// if ($this->validation()) {
 		$save = $this->input->post();
 		$lastData = $this->$modelAlias->selectData($id);

@@ -1067,7 +1067,7 @@ class Riwayat extends MY_Controller
 				if (($value['date_approval'] == '' || $value['date_approval'] == null || $value['date_approval'] == '0000-00-00')) {
 					$date_approval = ' - ';
 				} else {
-					$date_approval = date('d M Y H:i:s', strtotime($value['date_approval']));
+					$date_approval = date('d M Y', strtotime($value['date_approval']));
 				}
 
 				$approve_by = $this->$modelAlias->getDataAdmin($value['approved_by']);
