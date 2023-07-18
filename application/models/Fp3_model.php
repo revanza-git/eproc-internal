@@ -46,7 +46,11 @@ class Fp3_model extends MY_Model
 
 						OR
 
-						(is_status = 1 AND a.del = 0 $division $year_conditional)";
+						(is_status = 1 AND a.del = 0 $division $year_conditional)
+						
+						AND
+
+						";
 						
 
 		$query = $this->db->query($query)->result_array();

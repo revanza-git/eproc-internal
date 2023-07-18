@@ -883,7 +883,7 @@ class Fp3 extends MY_Controller
 
 		$modelAlias = $this->modelAlias;
 		$data = $this->$modelAlias->selectData($id);
-
+		
 		foreach ($this->form['form'] as $key => $element) {
 			$this->form['form'][$key]['value'] = $data[$element['field']];
 			if ($this->form['form'][$key]['field'] == 'nama_lama') {
@@ -917,6 +917,7 @@ class Fp3 extends MY_Controller
 		echo json_encode($this->form);
 	}
 
+	//dicek approve sudah sampai terakhir belum, jika belum maka tidak boleh edit
 	public function update($id)
 	{
 		$modelAlias = $this->modelAlias;
