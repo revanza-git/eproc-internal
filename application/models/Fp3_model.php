@@ -11,7 +11,7 @@ class Fp3_model extends MY_Model
 	{
 		// date('yyyy')
 		// echo date('Y');
-		// $year = date('yyyy');
+		$year = date('yyyy');
 		$admin = $this->session->userdata('admin');
 		/*$query = "	SELECT
 						a.*

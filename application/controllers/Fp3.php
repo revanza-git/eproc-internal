@@ -703,13 +703,13 @@ class Fp3 extends MY_Controller
 		if ($save['fp3_type'] == 'ubah') {
 			if ($save['jwpp_start']) {
 				$metods = ($save['metode_pengadaan']) ? $save['metode_pengadaan'] : $fppbj['metode_pengadaan'];
-				// if (!$this->check_avail_date($save['jwpp_start'], $metods)) {
-				// 	$form = [
-				// 		'jwpp_start' => 'Tanggal tidak sesuai'
-				// 	];
-				// 	echo json_encode(array('status' => 'error', 'form' => $form));
-				// 	die;
-				// }
+				if (!$this->check_avail_date($save['jwpp_start'], $metods)) {
+					$form = [
+						'jwpp_start' => 'Tanggal tidak sesuai'
+					];
+					// echo json_encode(array('status' => 'error', 'form' => $form));
+					die;
+				}
 			}
 			if ($save['jwpp_end']) {
 				if (!$this->check_end_date($save['jwpp_start'], $save['jwpp_end'])) {
