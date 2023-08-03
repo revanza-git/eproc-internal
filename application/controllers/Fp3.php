@@ -707,7 +707,7 @@ class Fp3 extends MY_Controller
 					$form = [
 						'jwpp_start' => 'Tanggal tidak sesuai'
 					];
-					// echo json_encode(array('status' => 'error', 'form' => $form));
+					echo json_encode(array('status' => 'error', 'form' => $form));
 					die;
 				}
 			}

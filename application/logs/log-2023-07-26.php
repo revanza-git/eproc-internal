@@ -289,3 +289,160 @@ ERROR - 2023-07-26 14:33:08 --> end_get_data
 ERROR - 2023-07-26 14:34:26 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Pemaketan_model.php 187
 ERROR - 2023-07-26 14:34:35 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Pemaketan.php 1190
 ERROR - 2023-07-26 14:34:35 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Pemaketan.php 1825
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-26 16:27:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-07-26 16:27:36 --> start reject fp3
+ERROR - 2023-07-26 16:27:36 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-26 16:27:36 --> end reject fp3
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-07-26 16:27:48 --> start reject fp3
+ERROR - 2023-07-26 16:27:48 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-07-26 16:27:48 --> end reject fp3
+ERROR - 2023-07-26 16:27:54 --> start year
+ERROR - 2023-07-26 16:27:54 --> 2022
+ERROR - 2023-07-26 16:27:54 --> end year
+ERROR - 2023-07-26 16:28:22 --> start year
+ERROR - 2023-07-26 16:28:22 --> 2022
+ERROR - 2023-07-26 16:28:22 --> end year
+ERROR - 2023-07-26 16:28:22 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 - Invalid query: SELECT * FROM ms_fppbj WHERE id = 
+ERROR - 2023-07-26 16:28:22 --> Severity: Error --> Call to a member function row_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 184
+ERROR - 2023-07-26 16:28:35 --> start year
+ERROR - 2023-07-26 16:28:35 --> 2022
+ERROR - 2023-07-26 16:28:35 --> end year
+ERROR - 2023-07-26 16:28:35 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 - Invalid query: SELECT * FROM ms_fppbj WHERE id = 
+ERROR - 2023-07-26 16:28:35 --> Severity: Error --> Call to a member function row_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 184
+ERROR - 2023-07-26 16:29:07 --> start year
+ERROR - 2023-07-26 16:29:07 --> 2022
+ERROR - 2023-07-26 16:29:07 --> end year
+ERROR - 2023-07-26 16:29:07 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 - Invalid query: SELECT * FROM ms_fppbj WHERE id = 
+ERROR - 2023-07-26 16:29:07 --> Severity: Error --> Call to a member function row_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 184
+ERROR - 2023-07-26 16:29:56 --> start year
+ERROR - 2023-07-26 16:29:56 --> 2022
+ERROR - 2023-07-26 16:29:56 --> end year
+ERROR - 2023-07-26 16:29:56 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 - Invalid query: SELECT * FROM ms_fppbj WHERE id = 
+ERROR - 2023-07-26 16:29:56 --> Severity: Error --> Call to a member function row_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 184
+ERROR - 2023-07-26 16:30:03 --> start year
+ERROR - 2023-07-26 16:30:03 --> 2022
+ERROR - 2023-07-26 16:30:03 --> end year
+ERROR - 2023-07-26 16:30:04 --> start year
+ERROR - 2023-07-26 16:30:04 --> 2022
+ERROR - 2023-07-26 16:30:04 --> end year
+ERROR - 2023-07-26 16:30:07 --> start year
+ERROR - 2023-07-26 16:30:07 --> 2022
+ERROR - 2023-07-26 16:30:07 --> end year
+ERROR - 2023-07-26 16:30:07 --> start year
+ERROR - 2023-07-26 16:30:07 --> 2022
+ERROR - 2023-07-26 16:30:07 --> end year
+ERROR - 2023-07-26 16:30:07 --> start year
+ERROR - 2023-07-26 16:30:07 --> 2022
+ERROR - 2023-07-26 16:30:07 --> end year
+ERROR - 2023-07-26 16:30:09 --> start year
+ERROR - 2023-07-26 16:30:09 --> 2022
+ERROR - 2023-07-26 16:30:09 --> end year
+ERROR - 2023-07-26 16:30:43 --> start year
+ERROR - 2023-07-26 16:30:43 --> 2022
+ERROR - 2023-07-26 16:30:43 --> end year
+ERROR - 2023-07-26 16:30:49 --> start year
+ERROR - 2023-07-26 16:30:49 --> 2022
+ERROR - 2023-07-26 16:30:49 --> end year
+ERROR - 2023-07-26 16:30:56 --> start year
+ERROR - 2023-07-26 16:30:56 --> 2022
+ERROR - 2023-07-26 16:30:56 --> end year
+ERROR - 2023-07-26 16:30:56 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 - Invalid query: SELECT * FROM ms_fppbj WHERE id = 
+ERROR - 2023-07-26 16:30:56 --> Severity: Error --> Call to a member function row_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 184
+ERROR - 2023-07-26 16:31:03 --> start year
+ERROR - 2023-07-26 16:31:03 --> 2022
+ERROR - 2023-07-26 16:31:03 --> end year
+ERROR - 2023-07-26 16:31:03 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 - Invalid query: SELECT * FROM ms_fppbj WHERE id = 
+ERROR - 2023-07-26 16:31:03 --> Severity: Error --> Call to a member function row_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 184
+ERROR - 2023-07-26 16:31:06 --> start year
+ERROR - 2023-07-26 16:31:06 --> 2022
+ERROR - 2023-07-26 16:31:06 --> end year
+ERROR - 2023-07-26 16:31:06 --> start year
+ERROR - 2023-07-26 16:31:06 --> 2022
+ERROR - 2023-07-26 16:31:06 --> end year
+ERROR - 2023-07-26 16:31:07 --> start year
+ERROR - 2023-07-26 16:31:07 --> 2022
+ERROR - 2023-07-26 16:31:07 --> end year
+ERROR - 2023-07-26 16:31:22 --> start year
+ERROR - 2023-07-26 16:31:22 --> 2022
+ERROR - 2023-07-26 16:31:22 --> end year
+ERROR - 2023-07-26 16:31:22 --> start year
+ERROR - 2023-07-26 16:31:22 --> 2022
+ERROR - 2023-07-26 16:31:22 --> end year
+ERROR - 2023-07-26 16:31:22 --> start year
+ERROR - 2023-07-26 16:31:22 --> 2022
+ERROR - 2023-07-26 16:31:22 --> end year
+ERROR - 2023-07-26 16:31:23 --> start year
+ERROR - 2023-07-26 16:31:23 --> 2022
+ERROR - 2023-07-26 16:31:23 --> end year
+ERROR - 2023-07-26 16:32:07 --> start year
+ERROR - 2023-07-26 16:32:07 --> 2022
+ERROR - 2023-07-26 16:32:07 --> end year
+ERROR - 2023-07-26 16:32:18 --> start year
+ERROR - 2023-07-26 16:32:18 --> 2022
+ERROR - 2023-07-26 16:32:18 --> end year
+ERROR - 2023-07-26 16:32:21 --> start year
+ERROR - 2023-07-26 16:32:21 --> 2022
+ERROR - 2023-07-26 16:32:21 --> end year
+ERROR - 2023-07-26 16:32:21 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 - Invalid query: SELECT * FROM ms_fppbj WHERE id = 
+ERROR - 2023-07-26 16:32:21 --> Severity: Error --> Call to a member function row_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 184
+ERROR - 2023-07-26 16:33:46 --> start year
+ERROR - 2023-07-26 16:33:46 --> 2022
+ERROR - 2023-07-26 16:33:46 --> end year
+ERROR - 2023-07-26 16:33:46 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 - Invalid query: SELECT * FROM ms_fppbj WHERE id = 
+ERROR - 2023-07-26 16:33:46 --> Severity: Error --> Call to a member function row_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 184
