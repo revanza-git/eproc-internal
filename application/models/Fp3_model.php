@@ -11,7 +11,7 @@ class Fp3_model extends MY_Model
 	{
 		// date('yyyy')
 		// echo date('Y');
-		$year = date('yyyy');
+		$year = 2023;
 		$admin = $this->session->userdata('admin');
 		/*$query = "	SELECT
 						a.*
@@ -31,7 +31,6 @@ class Fp3_model extends MY_Model
             $year_conditional = "";
         }
 
-		$year_anggaran = " AND a.year_anggaran = 2023 ";
 		$query = "	SELECT
 						a.*,
 						b.name division
@@ -40,19 +39,19 @@ class Fp3_model extends MY_Model
 					LEFT JOIN
 						tb_division b ON b.id=a.id_division
 					WHERE 
-						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3) $division $year_conditional $year_anggaran)
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3) $division $year_conditional)
 						OR  
 
-						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  $division $year_conditional $year_anggaran
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000)) $division $year_conditional
 
 						OR
-						(is_status = 2 AND a.del = 0 $division $year_conditional $year_anggaran)
+						(is_status = 2 AND a.del = 0 $division $year_conditional)
 
 						OR
 
-						(is_status = 1 AND a.del = 0 $division $year_conditional $year_anggaran)
+						(is_status = 1 AND a.del = 0 $division $year_conditional)
 						
-						-- AND
+						AND
 
 						";
 						
