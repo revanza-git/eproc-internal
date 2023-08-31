@@ -2177,3 +2177,1185 @@ ERROR - 2023-08-23 13:49:40 -->  	SELECT
 					WHERE
 						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
 ERROR - 2023-08-23 13:49:40 --> end reject fp3
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 13:50:36 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 13:50:36 --> start reject fp3
+ERROR - 2023-08-23 13:50:36 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 13:50:36 --> end reject fp3
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:36 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 13:50:38 --> start reject fp3
+ERROR - 2023-08-23 13:50:38 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 13:50:38 --> end reject fp3
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:49:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:49:53 --> start reject fp3
+ERROR - 2023-08-23 14:49:53 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 14:49:53 --> end reject fp3
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:49:57 --> start reject fp3
+ERROR - 2023-08-23 14:49:57 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 14:49:57 --> end reject fp3
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:59:02 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 14:59:02 --> start reject fp3
+ERROR - 2023-08-23 14:59:02 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 14:59:02 --> end reject fp3
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 14:59:04 --> start reject fp3
+ERROR - 2023-08-23 14:59:04 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 14:59:04 --> end reject fp3
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 14:59:07 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:35 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:35 --> start reject fp3
+ERROR - 2023-08-23 15:53:35 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:53:35 --> end reject fp3
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:35 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:39 --> start reject fp3
+ERROR - 2023-08-23 15:53:39 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:53:39 --> end reject fp3
+ERROR - 2023-08-23 15:53:44 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 15:53:44 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 15:53:44 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 15:53:44 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 15:53:44 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 15:53:44 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 15:53:44 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 15:53:45 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 15:53:45 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 15:53:45 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 15:53:45 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 15:53:45 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:53:50 --> start year
+ERROR - 2023-08-23 15:53:50 --> 2022
+ERROR - 2023-08-23 15:53:50 --> end year
+ERROR - 2023-08-23 15:53:50 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 15:53:50 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:53 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:53:53 --> start reject fp3
+ERROR - 2023-08-23 15:53:53 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:53:53 --> end reject fp3
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:53 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:53:54 --> start reject fp3
+ERROR - 2023-08-23 15:53:54 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:53:54 --> end reject fp3
+ERROR - 2023-08-23 15:53:56 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 15:53:56 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 15:53:56 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 15:53:56 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 15:53:56 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 15:53:56 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 15:53:56 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 15:53:57 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 15:53:57 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 15:53:57 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 15:53:57 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 15:53:57 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:00 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:01 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:02 --> start reject fp3
+ERROR - 2023-08-23 15:54:02 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:54:02 --> end reject fp3
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:02 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:04 --> start reject fp3
+ERROR - 2023-08-23 15:54:04 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:54:04 --> end reject fp3
+ERROR - 2023-08-23 15:54:12 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:54:12 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:54:12 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:54:12 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:54:12 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:54:13 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:13 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:13 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:13 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:13 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:13 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:13 --> start reject fp3
+ERROR - 2023-08-23 15:54:13 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:54:13 --> end reject fp3
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:13 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:14 --> start reject fp3
+ERROR - 2023-08-23 15:54:14 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:54:14 --> end reject fp3
+ERROR - 2023-08-23 15:54:14 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 15:54:14 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 15:54:14 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 15:54:14 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 15:54:14 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 15:54:14 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 15:54:14 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 15:54:17 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 15:54:17 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 15:54:17 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 15:54:17 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 15:54:17 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:54:26 --> start year
+ERROR - 2023-08-23 15:54:26 --> 2022
+ERROR - 2023-08-23 15:54:26 --> end year
+ERROR - 2023-08-23 15:54:26 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 15:54:26 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:29 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:54:29 --> start reject fp3
+ERROR - 2023-08-23 15:54:29 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:54:29 --> end reject fp3
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:29 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:54:31 --> start reject fp3
+ERROR - 2023-08-23 15:54:31 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:54:31 --> end reject fp3
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 15:54:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:17 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:17 --> start reject fp3
+ERROR - 2023-08-23 15:56:17 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:56:17 --> end reject fp3
+ERROR - 2023-08-23 15:56:17 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:17 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:17 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:17 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:17 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:18 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:19 --> start reject fp3
+ERROR - 2023-08-23 15:56:19 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:56:19 --> end reject fp3
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 15:56:20 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:56:22 --> start year
+ERROR - 2023-08-23 15:56:22 --> 2022
+ERROR - 2023-08-23 15:56:22 --> end year
+ERROR - 2023-08-23 15:56:22 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 15:56:22 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59
+ERROR - 2023-08-23 15:56:23 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:56:23 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:56:23 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:56:23 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:56:23 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:56:23 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:25 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:25 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:25 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:25 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:25 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:56:25 --> start reject fp3
+ERROR - 2023-08-23 15:56:25 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:56:25 --> end reject fp3
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:25 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:56:26 --> start reject fp3
+ERROR - 2023-08-23 15:56:26 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:56:26 --> end reject fp3
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 15:56:27 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:56:39 --> start year
+ERROR - 2023-08-23 15:56:39 --> 2022
+ERROR - 2023-08-23 15:56:39 --> end year
+ERROR - 2023-08-23 15:56:39 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 15:56:39 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:22 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:22 --> start reject fp3
+ERROR - 2023-08-23 15:57:22 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:57:22 --> end reject fp3
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:22 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:25 --> start reject fp3
+ERROR - 2023-08-23 15:57:25 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:57:25 --> end reject fp3
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 15:57:25 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:57:25 --> start year
+ERROR - 2023-08-23 15:57:25 --> 2022
+ERROR - 2023-08-23 15:57:25 --> end year
+ERROR - 2023-08-23 15:57:25 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 15:57:25 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:28 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 15:57:28 --> start reject fp3
+ERROR - 2023-08-23 15:57:28 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:57:28 --> end reject fp3
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:28 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 15:57:30 --> start reject fp3
+ERROR - 2023-08-23 15:57:30 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 15:57:30 --> end reject fp3
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 15:57:31 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 15:57:33 --> start year
+ERROR - 2023-08-23 15:57:33 --> 2022
+ERROR - 2023-08-23 15:57:33 --> end year
+ERROR - 2023-08-23 15:57:33 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 15:57:33 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59
+ERROR - 2023-08-23 15:58:18 --> start year
+ERROR - 2023-08-23 15:58:18 --> 2022
+ERROR - 2023-08-23 15:58:18 --> end year
+ERROR - 2023-08-23 15:58:18 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 15:58:18 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59
+ERROR - 2023-08-23 16:01:35 --> start year
+ERROR - 2023-08-23 16:01:35 --> 2022
+ERROR - 2023-08-23 16:01:35 --> end year
+ERROR - 2023-08-23 16:01:35 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 16:01:35 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 16:01:40 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-08-23 16:01:40 --> start reject fp3
+ERROR - 2023-08-23 16:01:40 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 16:01:40 --> end reject fp3
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:40 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\wwwroot\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-08-23 16:01:42 --> start reject fp3
+ERROR - 2023-08-23 16:01:42 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 15 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-08-23 16:01:42 --> end reject fp3
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 995
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1022
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1042
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1068
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1091
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1112
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1155
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1505
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1529
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1548
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1568
+ERROR - 2023-08-23 16:01:42 --> Severity: Warning --> Division by zero C:\inetpub\wwwroot\eproc_nusantararegas\application\controllers\Main.php 1589
+ERROR - 2023-08-23 16:01:44 --> start year
+ERROR - 2023-08-23 16:01:44 --> 2022
+ERROR - 2023-08-23 16:01:44 --> end year
+ERROR - 2023-08-23 16:01:44 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 21 - Invalid query: 	SELECT
+						a.*,
+						b.name division
+					FROM 
+						ms_fppbj a 
+					LEFT JOIN
+						tb_division b ON b.id=a.id_division
+					WHERE 
+						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3)  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						OR  
+
+						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000))  AND id_division = 15  AND a.entry_stamp LIKE '%2023%'
+
+						OR
+						(is_status = 2 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+
+						OR
+
+						(is_status = 1 AND a.del = 0  AND id_division = 15  AND a.entry_stamp LIKE '%2023%')
+						
+						AND
+
+						
+ERROR - 2023-08-23 16:01:44 --> Severity: Error --> Call to a member function result_array() on boolean C:\inetpub\wwwroot\eproc_nusantararegas\application\models\Fp3_model.php 59

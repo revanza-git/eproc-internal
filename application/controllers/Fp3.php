@@ -8,7 +8,7 @@ class Fp3 extends MY_Controller
 	public $alias 		= 'ms_fp3';
 	public $module 		= 'kurs';
 
-	public $current_year = 2022;
+	public $current_year = 2023;
 	
 	public function __construct()
 	{	
@@ -678,6 +678,8 @@ class Fp3 extends MY_Controller
 
 	public function index($id_division = "", $id_fppbj = "", $year = "")
 	{
+		// print_r("tes");
+		// die();
 		$division = $this->mm->getDiv_($id_division);
 		$this->breadcrumb->addlevel(1, array(
 			'url' => site_url('fp3'),
