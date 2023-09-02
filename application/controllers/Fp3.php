@@ -8,7 +8,7 @@ class Fp3 extends MY_Controller
 	public $alias 		= 'ms_fp3';
 	public $module 		= 'kurs';
 
-	public $current_year = 2022;
+	public $current_year = 2023;
 	
 	public function __construct()
 	{	
@@ -343,6 +343,7 @@ class Fp3 extends MY_Controller
         } else {
             $this->form = $this->form;
         }
+
 		foreach ($this->form['form'] as $key => $element) {
 			if ($this->form['form'][$key]['type'] == 'date_range') {
 				$_value = array();
@@ -677,6 +678,8 @@ class Fp3 extends MY_Controller
 
 	public function index($id_division = "", $id_fppbj = "", $year = "")
 	{
+		// print_r("tes");
+		// die();
 		$division = $this->mm->getDiv_($id_division);
 		$this->breadcrumb->addlevel(1, array(
 			'url' => site_url('fp3'),
@@ -883,7 +886,7 @@ class Fp3 extends MY_Controller
 
 		$modelAlias = $this->modelAlias;
 		$data = $this->$modelAlias->selectData($id);
-
+		
 		foreach ($this->form['form'] as $key => $element) {
 			$this->form['form'][$key]['value'] = $data[$element['field']];
 			if ($this->form['form'][$key]['field'] == 'nama_lama') {
@@ -917,9 +920,11 @@ class Fp3 extends MY_Controller
 		echo json_encode($this->form);
 	}
 
+	//dicek approve sudah sampai terakhir belum, jika belum maka tidak boleh edit
 	public function update($id)
 	{
 		$modelAlias = $this->modelAlias;
+		
 		// if ($this->validation()) {
 		$save = $this->input->post();
 		$lastData = $this->$modelAlias->selectData($id);

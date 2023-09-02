@@ -2040,7 +2040,7 @@ $(function(){
 
 
 	var resiko = $('.buttonStep').modal({
-		header: 'Tambah Data FPPBJaaa',
+		header: 'Tambah Data FPPBJ',
 		render : function(el, data){
 
 			var fw = $(el).formWizard({

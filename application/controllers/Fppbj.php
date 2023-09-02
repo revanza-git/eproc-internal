@@ -424,6 +424,8 @@ class Fppbj extends MY_Controller {
 		return $data;
 	}
 
+
+	//cek reject 
 	public function reject($id, $param_)
 	{
 		$id_pic = $this->input->post()['id_pic'];

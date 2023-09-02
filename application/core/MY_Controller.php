@@ -94,11 +94,11 @@ class MY_Controller extends CI_Controller{
 				$url = base_url('pemaketan/division/'.$admin['id_division']);
 			}
 
-			if ($admin['id_division'] != 1) {
-				$fp3 = site_url('fp3/index/'.$admin['id_division']);
-			} else {
+			// if ($admin['id_division'] != 1) {
+			// 	$fp3 = site_url('fp3/index/'.$admin['id_division']);
+			// } else {
 				$fp3 = site_url('pengadaan/fp3');
-			}
+			//}
 
 			$this->_sideMenu = array(
 				array(

@@ -9,6 +9,9 @@ class Fp3_model extends MY_Model
 	}
 	function getFppbj($form = "", $year=null)
 	{
+		// date('yyyy')
+		// echo date('Y');
+		//$year = date('yyyy');
 		$admin = $this->session->userdata('admin');
 		/*$query = "	SELECT
 						a.*
@@ -152,7 +155,7 @@ class Fp3_model extends MY_Model
 						LEFT JOIN ms_fppbj b ON b.id = a.id_fppbj
 						LEFT JOIN tr_note c ON b.id = c.id_fppbj
 						LEFT JOIN tb_proc_method d ON d.id=a.metode_pengadaan
-						LEFT JOIN eproc.ms_admin e ON e.id=b.id_pic
+						LEFT JOIN eproc_vms.ms_admin e ON e.id=b.id_pic
 	
 					WHERE a.id = ? AND a.del = 0";
 		$query = $this->db->query($query, array($id));
