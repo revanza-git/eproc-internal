@@ -11,7 +11,7 @@ class Fp3_model extends MY_Model
 	{
 		// date('yyyy')
 		// echo date('Y');
-		$year = date('yyyy');
+		//$year = date('yyyy');
 		$admin = $this->session->userdata('admin');
 		/*$query = "	SELECT
 						a.*
@@ -49,11 +49,7 @@ class Fp3_model extends MY_Model
 
 						OR
 
-						(is_status = 1 AND a.del = 0 $division $year_conditional)
-						
-						AND
-
-						";
+						(is_status = 1 AND a.del = 0 $division $year_conditional)";
 						
 
 		$query = $this->db->query($query)->result_array();

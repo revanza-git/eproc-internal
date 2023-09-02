@@ -96,95 +96,95 @@
 				];
 
 				if (tipe == 'jasa') {
-					console.log('ke 1');
+					//console.log('ke 1');
 					if (metode == 3) {
-						console.log('ke 2');
+						//console.log('ke 2');
 						if ((was_approved_kadept) || (was_approved_sdm) || (was_approved_dirke) || (was_approved_dirut)) {
-							console.log('ke 3');
+							//console.log('ke 3');
 							return btn;
 						} else {
-							console.log('ke 4');
+							//console.log('ke 4');
 							if (id_division == user_logged) {
-								console.log('ke 5');
+								//console.log('ke 5');
 								if (is_reject == 0) {
 									return btn;
 								} else {
 									return btn.concat(btn_edit);
 								}
 							} else {
-								console.log('ke 6');
+								//console.log('ke 6');
 								return btn;
 							}
 						}
 					} else {
-						console.log('ke 7');
+						//console.log('ke 7');
 						if ((was_approved_kadept) || (was_approved_sdm) || (was_approved_dirke) || (was_approved_dirut)) {
 							console.log('ke 8');
 							if (status_fp3 == 'ubah' && (id_role == 5 || id_role == 6 || id_role == 3)) {
-								console.log('ke 9');
+								//console.log('ke 9');
 								return btn.concat(_btn_fkpbj);
 							} else {
-								console.log('ke 10');
+								//console.log('ke 10');
 								return btn;
 							}
 						} else {
 							if (id_division == user_logged) {
-								console.log('ke 11');
+								//console.log('ke 11');
 								if (is_reject == 0) {
 									return btn;
 								} else {
 									return btn.concat(btn_edit);
 								}
 							} else {
-								console.log('ke 12');
+								//console.log('ke 12');
 								return btn;
 							}
 						}
 					}
 
 				} else {
-					console.log('ke 13');
+					//console.log('ke 13');
 					if (metode == 3) {
 						console.log('ke 14');
 						if ((was_approved_kadept) || (was_approved_sdm) || (was_approved_dirke) || (was_approved_dirut)) {
-							console.log('ke 15');
+							//console.log('ke 15');
 							return btn;
 						} else {
-							console.log('ke 16');
+							//console.log('ke 16');
 							if (id_division == user_logged) {
-								console.log('ke 17');
+								//console.log('ke 17');
 								if (is_reject == 0) {
 									return btn;
 								} else {
 									return btn.concat(btn_edit);
 								}
 							} else {
-								console.log('ke 18');
+								//console.log('ke 18');
 								return btn;
 							}
 						}
 					} else {
-						console.log('ke 19');
+						//console.log('ke 19');
 						if ((was_approved_kadept) || (was_approved_sdm) || (was_approved_dirke) || (was_approved_dirut)) {
-							console.log('ke 20');
+							//console.log('ke 20');
 							if (status_fp3 == 'ubah' && (id_role == 5 || id_role == 6 || id_role == 3)) {
-								console.log('ke 21');
+								//console.log('ke 21');
 								return btn.concat(_btn_fkpbj);
 							} else {
-								console.log('ke 22');
+								//console.log('ke 22');
 								return btn;
 							}
 						} else {
-							console.log('ke 23');
+							//console.log('ke 23');
 							if (id_division == user_logged) {
-								console.log('ke 24');
+								//console.log('ke 24');
 								if (is_reject == 0) {
 									return btn;
 								} else {
 									return btn.concat(btn_edit);
 								}
 							} else {
-								console.log('ke 25');
+								//console.log('ke 25');
 								return btn;
 							}
 						}
@@ -270,12 +270,14 @@
 				var edit = $('.buttonEdit').modal({
 					header: 'Edit',
 					render: function(el, data) {
+						console.log(data);
 						_self = edit;
 
 						data.onSuccess = function() {
-							// $(edit).data('modal').close();
-							// folder.data('plugin_folder').fetchData();
-							location.reload();
+							// console.log("tes");
+							$(edit).data('modal').close();
+							folder.data('plugin_folder').fetchData();
+							//location.reload();
 						};
 						data.isReset = false;
 
