@@ -884,7 +884,6 @@ class Fp3 extends MY_Controller
 			),
 		);
 
-		echo print_r('testst');
 		$modelAlias = $this->modelAlias;
 		$data = $this->$modelAlias->selectData($id);
 		
