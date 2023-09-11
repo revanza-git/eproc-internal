@@ -1284,3 +1284,375 @@ ERROR - 2023-09-11 16:16:40 --> Severity: Warning --> Illegal offset type C:\ine
 ERROR - 2023-09-11 16:16:40 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
 ERROR - 2023-09-11 16:16:40 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
 ERROR - 2023-09-11 16:16:40 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:21:08 --> start year
+ERROR - 2023-09-11 16:21:08 --> 2023
+ERROR - 2023-09-11 16:21:08 --> end year
+ERROR - 2023-09-11 16:21:08 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:21:09 --> start year
+ERROR - 2023-09-11 16:21:09 --> 2023
+ERROR - 2023-09-11 16:21:09 --> end year
+ERROR - 2023-09-11 16:21:10 --> start year
+ERROR - 2023-09-11 16:21:10 --> 2023
+ERROR - 2023-09-11 16:21:10 --> end year
+ERROR - 2023-09-11 16:21:12 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:21:13 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+ERROR - 2023-09-11 16:21:15 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+ERROR - 2023-09-11 16:21:15 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+ERROR - 2023-09-11 16:21:19 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:21:20 --> start year
+ERROR - 2023-09-11 16:21:20 --> 2023
+ERROR - 2023-09-11 16:21:20 --> end year
+ERROR - 2023-09-11 16:21:30 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:21:30 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+ERROR - 2023-09-11 16:21:41 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:21:44 --> start year
+ERROR - 2023-09-11 16:21:44 --> 2023
+ERROR - 2023-09-11 16:21:44 --> end year
+ERROR - 2023-09-11 16:21:52 --> start year
+ERROR - 2023-09-11 16:21:52 --> 2023
+ERROR - 2023-09-11 16:21:52 --> end year
+ERROR - 2023-09-11 16:21:59 --> start year
+ERROR - 2023-09-11 16:21:59 --> 2023
+ERROR - 2023-09-11 16:21:59 --> end year
+ERROR - 2023-09-11 16:21:59 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 744
+ERROR - 2023-09-11 16:22:05 --> Severity: Warning --> stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:SSL3_GET_RECORD:wrong version number C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Email.php 2006
+ERROR - 2023-09-11 16:22:15 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:22:18 --> start year
+ERROR - 2023-09-11 16:22:18 --> 2023
+ERROR - 2023-09-11 16:22:18 --> end year
+ERROR - 2023-09-11 16:22:18 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:22:18 --> start year
+ERROR - 2023-09-11 16:22:18 --> 2023
+ERROR - 2023-09-11 16:22:18 --> end year
+ERROR - 2023-09-11 16:22:19 --> start year
+ERROR - 2023-09-11 16:22:19 --> 2023
+ERROR - 2023-09-11 16:22:19 --> end year
+ERROR - 2023-09-11 16:22:20 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:22:20 --> start year
+ERROR - 2023-09-11 16:22:20 --> 2023
+ERROR - 2023-09-11 16:22:20 --> end year
+ERROR - 2023-09-11 16:22:20 --> start year
+ERROR - 2023-09-11 16:22:20 --> 2023
+ERROR - 2023-09-11 16:22:20 --> end year
+ERROR - 2023-09-11 16:22:25 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:22:25 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+ERROR - 2023-09-11 16:22:28 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+ERROR - 2023-09-11 16:22:28 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+ERROR - 2023-09-11 16:22:30 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:22:32 --> start year
+ERROR - 2023-09-11 16:22:32 --> 2023
+ERROR - 2023-09-11 16:22:32 --> end year
+ERROR - 2023-09-11 16:22:33 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:22:33 --> start year
+ERROR - 2023-09-11 16:22:33 --> 2023
+ERROR - 2023-09-11 16:22:33 --> end year
+ERROR - 2023-09-11 16:22:34 --> start year
+ERROR - 2023-09-11 16:22:34 --> 2023
+ERROR - 2023-09-11 16:22:34 --> end year
+ERROR - 2023-09-11 16:22:34 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:22:35 --> start year
+ERROR - 2023-09-11 16:22:35 --> 2023
+ERROR - 2023-09-11 16:22:35 --> end year
+ERROR - 2023-09-11 16:22:35 --> start year
+ERROR - 2023-09-11 16:22:35 --> 2023
+ERROR - 2023-09-11 16:22:35 --> end year
+ERROR - 2023-09-11 16:22:36 --> start year
+ERROR - 2023-09-11 16:22:36 --> 2023
+ERROR - 2023-09-11 16:22:36 --> end year
+ERROR - 2023-09-11 16:22:50 --> start year
+ERROR - 2023-09-11 16:22:50 --> 2023
+ERROR - 2023-09-11 16:22:50 --> end year
+ERROR - 2023-09-11 16:22:50 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:22:50 --> start year
+ERROR - 2023-09-11 16:22:50 --> 2023
+ERROR - 2023-09-11 16:22:50 --> end year
+ERROR - 2023-09-11 16:22:50 --> start year
+ERROR - 2023-09-11 16:22:50 --> 2023
+ERROR - 2023-09-11 16:22:50 --> end year
+ERROR - 2023-09-11 16:22:53 --> start year
+ERROR - 2023-09-11 16:22:53 --> 2023
+ERROR - 2023-09-11 16:22:53 --> end year
+ERROR - 2023-09-11 16:22:53 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:22:53 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:22:53 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:22:53 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:22:53 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:22:53 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:22:58 --> start year
+ERROR - 2023-09-11 16:22:58 --> 2023
+ERROR - 2023-09-11 16:22:58 --> end year
+ERROR - 2023-09-11 16:23:03 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:24:00 --> start year
+ERROR - 2023-09-11 16:24:00 --> 2023
+ERROR - 2023-09-11 16:24:00 --> end year
+ERROR - 2023-09-11 16:24:00 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:24:01 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:24:01 --> start year
+ERROR - 2023-09-11 16:24:01 --> 2023
+ERROR - 2023-09-11 16:24:01 --> end year
+ERROR - 2023-09-11 16:24:01 --> start year
+ERROR - 2023-09-11 16:24:01 --> 2023
+ERROR - 2023-09-11 16:24:01 --> end year
+ERROR - 2023-09-11 16:24:03 --> start year
+ERROR - 2023-09-11 16:24:03 --> 2023
+ERROR - 2023-09-11 16:24:03 --> end year
+ERROR - 2023-09-11 16:24:03 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:24:03 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:24:03 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:24:03 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:24:03 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:24:03 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:24:05 --> start year
+ERROR - 2023-09-11 16:24:05 --> 2023
+ERROR - 2023-09-11 16:24:05 --> end year
+ERROR - 2023-09-11 16:24:06 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:24:06 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:24:06 --> start year
+ERROR - 2023-09-11 16:24:06 --> 2023
+ERROR - 2023-09-11 16:24:06 --> end year
+ERROR - 2023-09-11 16:24:06 --> start year
+ERROR - 2023-09-11 16:24:06 --> 2023
+ERROR - 2023-09-11 16:24:06 --> end year
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 26 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 369
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 1 for Main_model::get_total_fppbj_semua(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 27 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 429
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_pending(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 28 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 528
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_selesai(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 29 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 394
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 1 for Main_model::get_fppbj_reject(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 30 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Main_model.php 614
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 52 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 53 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 54 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 55 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 56 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-09-11 16:24:08 --> Severity: Warning --> Missing argument 2 for Fkpbj_model::statusApprove(), called in C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Dashboard.php on line 57 and defined C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Fkpbj_model.php 167
+ERROR - 2023-09-11 16:24:08 --> start reject fp3
+ERROR - 2023-09-11 16:24:08 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  del = 0  AND id_division = 6 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-09-11 16:24:08 --> end reject fp3
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> Severity: 4096 --> Object of class CI_DB_mysqli_result could not be converted to string C:\inetpub\eproc\Internal\eproc_nusantararegas\system\libraries\Parser.php 150
+ERROR - 2023-09-11 16:24:08 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:24:09 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:24:10 --> start reject fp3
+ERROR - 2023-09-11 16:24:10 -->  	SELECT
+						*
+					FROM
+						ms_fppbj
+					WHERE
+						  entry_stamp LIKE "%2023%" AND  del = 0  AND id_division = 6 AND is_status = 1 AND is_reject = 0 AND is_approved = 0
+ERROR - 2023-09-11 16:24:10 --> end reject fp3
+ERROR - 2023-09-11 16:24:10 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1506
+ERROR - 2023-09-11 16:24:10 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1530
+ERROR - 2023-09-11 16:24:10 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1549
+ERROR - 2023-09-11 16:24:10 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1569
+ERROR - 2023-09-11 16:24:10 --> Severity: Warning --> Division by zero C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Main.php 1590
+ERROR - 2023-09-11 16:24:12 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:24:12 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:24:14 --> start year
+ERROR - 2023-09-11 16:24:14 --> 2023
+ERROR - 2023-09-11 16:24:14 --> end year
+ERROR - 2023-09-11 16:24:41 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:24:42 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:24:45 --> start year
+ERROR - 2023-09-11 16:24:45 --> 2023
+ERROR - 2023-09-11 16:24:45 --> end year
+ERROR - 2023-09-11 16:24:48 --> start year
+ERROR - 2023-09-11 16:24:48 --> 2023
+ERROR - 2023-09-11 16:24:48 --> end year
+ERROR - 2023-09-11 16:24:54 --> start year
+ERROR - 2023-09-11 16:24:54 --> 2023
+ERROR - 2023-09-11 16:24:54 --> end year
+ERROR - 2023-09-11 16:24:54 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:24:54 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:24:55 --> start year
+ERROR - 2023-09-11 16:24:55 --> 2023
+ERROR - 2023-09-11 16:24:55 --> end year
+ERROR - 2023-09-11 16:24:57 --> start year
+ERROR - 2023-09-11 16:24:57 --> 2023
+ERROR - 2023-09-11 16:24:57 --> end year
+ERROR - 2023-09-11 16:24:57 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:24:58 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:24:58 --> start year
+ERROR - 2023-09-11 16:24:58 --> 2023
+ERROR - 2023-09-11 16:24:58 --> end year
+ERROR - 2023-09-11 16:24:58 --> start year
+ERROR - 2023-09-11 16:24:58 --> 2023
+ERROR - 2023-09-11 16:24:58 --> end year
+ERROR - 2023-09-11 16:25:06 --> start year
+ERROR - 2023-09-11 16:25:06 --> 2023
+ERROR - 2023-09-11 16:25:06 --> end year
+ERROR - 2023-09-11 16:27:38 --> start year
+ERROR - 2023-09-11 16:27:38 --> 2023
+ERROR - 2023-09-11 16:27:38 --> end year
+ERROR - 2023-09-11 16:27:38 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:27:38 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:27:39 --> start year
+ERROR - 2023-09-11 16:27:39 --> 2023
+ERROR - 2023-09-11 16:27:39 --> end year
+ERROR - 2023-09-11 16:27:39 --> start year
+ERROR - 2023-09-11 16:27:39 --> 2023
+ERROR - 2023-09-11 16:27:39 --> end year
+ERROR - 2023-09-11 16:27:40 --> start year
+ERROR - 2023-09-11 16:27:40 --> 2023
+ERROR - 2023-09-11 16:27:40 --> end year
+ERROR - 2023-09-11 16:27:51 --> start year
+ERROR - 2023-09-11 16:27:51 --> 2023
+ERROR - 2023-09-11 16:27:51 --> end year
+ERROR - 2023-09-11 16:27:52 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:27:52 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:27:52 --> start year
+ERROR - 2023-09-11 16:27:52 --> 2023
+ERROR - 2023-09-11 16:27:52 --> end year
+ERROR - 2023-09-11 16:27:52 --> start year
+ERROR - 2023-09-11 16:27:52 --> 2023
+ERROR - 2023-09-11 16:27:52 --> end year
+ERROR - 2023-09-11 16:27:53 --> start year
+ERROR - 2023-09-11 16:27:53 --> 2023
+ERROR - 2023-09-11 16:27:53 --> end year
+ERROR - 2023-09-11 16:28:20 --> start year
+ERROR - 2023-09-11 16:28:20 --> 2023
+ERROR - 2023-09-11 16:28:20 --> end year
+ERROR - 2023-09-11 16:28:21 --> 404 Page Not Found: Assets/js
+ERROR - 2023-09-11 16:28:21 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:28:22 --> start year
+ERROR - 2023-09-11 16:28:22 --> 2023
+ERROR - 2023-09-11 16:28:22 --> end year
+ERROR - 2023-09-11 16:28:27 --> start year
+ERROR - 2023-09-11 16:28:27 --> 2023
+ERROR - 2023-09-11 16:28:27 --> end year
+ERROR - 2023-09-11 16:28:27 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:28:28 --> start year
+ERROR - 2023-09-11 16:28:28 --> 2023
+ERROR - 2023-09-11 16:28:28 --> end year
+ERROR - 2023-09-11 16:28:28 --> start year
+ERROR - 2023-09-11 16:28:28 --> 2023
+ERROR - 2023-09-11 16:28:28 --> end year
+ERROR - 2023-09-11 16:28:33 --> start year
+ERROR - 2023-09-11 16:28:33 --> 2023
+ERROR - 2023-09-11 16:28:33 --> end year
+ERROR - 2023-09-11 16:28:33 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:28:33 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:28:33 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:28:33 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:28:33 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:28:33 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:28:37 --> start year
+ERROR - 2023-09-11 16:28:37 --> 2023
+ERROR - 2023-09-11 16:28:37 --> end year
+ERROR - 2023-09-11 16:28:37 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:28:37 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:28:37 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:28:37 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:28:37 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:28:37 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:28:41 --> start year
+ERROR - 2023-09-11 16:28:41 --> 2023
+ERROR - 2023-09-11 16:28:41 --> end year
+ERROR - 2023-09-11 16:28:52 --> start year
+ERROR - 2023-09-11 16:28:52 --> 2023
+ERROR - 2023-09-11 16:28:52 --> end year
+ERROR - 2023-09-11 16:34:42 --> start year
+ERROR - 2023-09-11 16:34:42 --> 2023
+ERROR - 2023-09-11 16:34:42 --> end year
+ERROR - 2023-09-11 16:34:42 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:34:43 --> start year
+ERROR - 2023-09-11 16:34:43 --> 2023
+ERROR - 2023-09-11 16:34:43 --> end year
+ERROR - 2023-09-11 16:34:43 --> start year
+ERROR - 2023-09-11 16:34:43 --> 2023
+ERROR - 2023-09-11 16:34:43 --> end year
+ERROR - 2023-09-11 16:34:46 --> start year
+ERROR - 2023-09-11 16:34:46 --> 2023
+ERROR - 2023-09-11 16:34:46 --> end year
+ERROR - 2023-09-11 16:36:47 --> start year
+ERROR - 2023-09-11 16:36:47 --> 2023
+ERROR - 2023-09-11 16:36:47 --> end year
+ERROR - 2023-09-11 16:36:47 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:36:47 --> start year
+ERROR - 2023-09-11 16:36:47 --> 2023
+ERROR - 2023-09-11 16:36:47 --> end year
+ERROR - 2023-09-11 16:36:47 --> start year
+ERROR - 2023-09-11 16:36:47 --> 2023
+ERROR - 2023-09-11 16:36:47 --> end year
+ERROR - 2023-09-11 16:36:49 --> start year
+ERROR - 2023-09-11 16:36:49 --> 2023
+ERROR - 2023-09-11 16:36:49 --> end year
+ERROR - 2023-09-11 16:36:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:36:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:36:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:36:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:36:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 16:36:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 16:36:51 --> start year
+ERROR - 2023-09-11 16:36:51 --> 2023
+ERROR - 2023-09-11 16:36:51 --> end year
+ERROR - 2023-09-11 16:37:34 --> start year
+ERROR - 2023-09-11 16:37:34 --> 2023
+ERROR - 2023-09-11 16:37:34 --> end year
+ERROR - 2023-09-11 16:37:34 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:37:34 --> start year
+ERROR - 2023-09-11 16:37:34 --> 2023
+ERROR - 2023-09-11 16:37:34 --> end year
+ERROR - 2023-09-11 16:37:34 --> start year
+ERROR - 2023-09-11 16:37:34 --> 2023
+ERROR - 2023-09-11 16:37:34 --> end year
+ERROR - 2023-09-11 16:37:37 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:37:37 --> Severity: Warning --> in_array() expects parameter 2 to be array, integer given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\models\Pemaketan_model.php 187
+ERROR - 2023-09-11 16:37:41 --> Severity: Warning --> substr() expects at least 2 parameters, 1 given C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1191
+ERROR - 2023-09-11 16:37:41 --> Severity: Warning --> Missing argument 2 for Pemaketan::get_pic() C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Pemaketan.php 1826
+ERROR - 2023-09-11 16:37:44 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:37:47 --> start year
+ERROR - 2023-09-11 16:37:47 --> 2023
+ERROR - 2023-09-11 16:37:47 --> end year
+ERROR - 2023-09-11 16:37:47 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:37:47 --> start year
+ERROR - 2023-09-11 16:37:47 --> 2023
+ERROR - 2023-09-11 16:37:47 --> end year
+ERROR - 2023-09-11 16:37:49 --> start year
+ERROR - 2023-09-11 16:37:49 --> 2023
+ERROR - 2023-09-11 16:37:49 --> end year
+ERROR - 2023-09-11 16:37:49 --> 404 Page Not Found: Assets/lampiran
+ERROR - 2023-09-11 16:37:49 --> start year
+ERROR - 2023-09-11 16:37:49 --> 2023
+ERROR - 2023-09-11 16:37:49 --> end year
+ERROR - 2023-09-11 16:37:49 --> start year
+ERROR - 2023-09-11 16:37:49 --> 2023
+ERROR - 2023-09-11 16:37:49 --> end year

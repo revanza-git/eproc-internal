@@ -815,8 +815,8 @@
 					$('[name="fp3_type"]').val('ubah');
 				});
 
-				$('#btnHapus').click(function() {
-					$('#formHapus').css('display', 'block');
+				$('#btnBatal').click(function() {
+					$('#formBatal').css('display', 'block');
 					$('#tab-intro').css('display', 'none');
 					$('.btn-group').css('display', 'block');
 
@@ -825,12 +825,12 @@
 						$('.form' + i).css('display', 'none');
 					}
 					$('.form15').css('display', 'block');
-					$('[name="fp3_type"]').val('hapus');
+					$('[name="fp3_type"]').val('batal');
 				});
 
-				$('#switchHapus').click(function() {
+				$('#switchBatal').click(function() {
 					$('.btn-group').css('display', 'block');
-					$('#formHapus').css('display', 'block');
+					$('#formBatal').css('display', 'block');
 					$('#formUbah').css('display', 'none');
 
 					$('.form1').css('display', 'block');
@@ -838,13 +838,13 @@
 						$('.form' + i).css('display', 'none');
 					}
 					$('.form15').css('display', 'block');
-					$('[name="fp3_type"]').val('hapus');
+					$('[name="fp3_type"]').val('batal');
 				})
 
 				$('#switchUbah').click(function() {
 					$('.btn-group').css('display', 'block');
 					$('#formUbah').css('display', 'block');
-					$('#formHapus').css('display', 'none');
+					$('#formBatal').css('display', 'none');
 
 					for (let i = 1; i <= 14; i++) {
 						$('.form' + i).css('display', 'block');
@@ -935,7 +935,7 @@
 								}
 							} else {
 								$('.btn-group').css('display', 'block');
-								$('#formHapus').css('display', 'block');
+								$('#formBatal').css('display', 'block');
 								$('#formUbah').css('display', 'none');
 
 								$('.form1').css('display', 'block');

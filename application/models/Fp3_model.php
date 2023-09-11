@@ -39,17 +39,17 @@ class Fp3_model extends MY_Model
 					LEFT JOIN
 						tb_division b ON b.id=a.id_division
 					WHERE 
-						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3) $division $year_conditional)
+						(is_status = 0 AND a.del = 0 AND a.is_cancelled = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3) $division $year_conditional)
 						OR  
 
-						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000)) $division $year_conditional
+						(is_status = 0 AND a.del = 0 AND a.is_cancelled = 0 AND idr_anggaran > 100000000)) $division $year_conditional
 
 						OR
-						(is_status = 2 AND a.del = 0 $division $year_conditional)
+						(is_status = 2 AND a.del = 0 AND a.is_cancelled = 0 $division $year_conditional)
 
 						OR
 
-						(is_status = 1 AND a.del = 0 $division $year_conditional)";
+						(is_status = 1 AND a.del = 0 AND a.is_cancelled = 0 $division $year_conditional)";
 						
 
 		$query = $this->db->query($query)->result_array();
