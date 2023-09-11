@@ -1656,3 +1656,12 @@ ERROR - 2023-09-11 16:37:49 --> end year
 ERROR - 2023-09-11 16:37:49 --> start year
 ERROR - 2023-09-11 16:37:49 --> 2023
 ERROR - 2023-09-11 16:37:49 --> end year
+ERROR - 2023-09-11 17:09:49 --> start year
+ERROR - 2023-09-11 17:09:49 --> 2023
+ERROR - 2023-09-11 17:09:49 --> end year
+ERROR - 2023-09-11 17:09:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 17:09:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 17:09:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654
+ERROR - 2023-09-11 17:09:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 17:09:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 653
+ERROR - 2023-09-11 17:09:49 --> Severity: Warning --> Illegal offset type C:\inetpub\eproc\Internal\eproc_nusantararegas\application\controllers\Fp3.php 654

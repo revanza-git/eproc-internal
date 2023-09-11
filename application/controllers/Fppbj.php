@@ -209,7 +209,6 @@ class Fppbj extends MY_Controller {
 			$save['idr_anggaran'] = str_replace(',', '', $save['idr_anggaran']);
 			$save['id_division'] = $this->session->userdata('admin')['id_division'];
 			$save['entry_stamp'] = timestamp();
-			$save['is_cancelled'] = 0;
 			
 			if ($this->$modelAlias->insert($save)) {
 				$this->session->set_flashdata('msg', $this->successMessage);
