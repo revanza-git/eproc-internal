@@ -248,7 +248,9 @@ class Pemaketan_model extends MY_Model{
 							ms_fppbj.idr_anggaran,
 							tr_note.type,
 							ms_fppbj.del,
-							fp3.nama_pengadaan nama_baru
+							fp3.nama_pengadaan nama_baru,
+							ms_fppbj.is_cancelled,
+							fp3.desc_batal
 					FROM ".$this->fppbj."
 					LEFT JOIN tb_proc_method ON ms_fppbj.metode_pengadaan = tb_proc_method.id
 					LEFT JOIN tr_note ON tr_note.id_fppbj=ms_fppbj.id AND tr_note.type = 'reject'
@@ -512,7 +514,7 @@ class Pemaketan_model extends MY_Model{
 					INNER JOIN
 						tr_analisa_risiko b ON b.id=a.id_analisa_risiko
 					WHERE b.id_fppbj = ".$query1['id'];
-		$sql .= " GROUP BY a.id ASC";
+		$sql .= " GROUP BY a.id ORDER BY a.id ASC";
 		$query = $this->db->query($sql)->result_array();
 		return $query;
 		 // print_r($query);die;

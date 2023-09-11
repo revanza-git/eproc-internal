@@ -595,14 +595,15 @@ class Fp3 extends MY_Controller
 				)
 			);
 			
-			log_message('error', $admin['id_role']);
+			//log_message('error', $admin['id_role']);
+			console.log($dataFP3);
 
-			if ($dataFP3['is_approved'] == 0 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 4) {
+			if ($dataFP3['is_approved'] == 0 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 4) {
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
 				$this->form['form'][16]['value'] = date('Y-m-d');
 				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 1 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 3) {
+			} else if ($dataFP3['is_approved'] == 1 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 3) {
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
 				$this->form['form'][16]['value'] = date('Y-m-d');
@@ -610,23 +611,23 @@ class Fp3 extends MY_Controller
 				$this->form['form'][18]['label'] = 'Pilih Pejabat Pengadaan';
 				$this->form['form'][18]['source'] = $this->pm->pejabatPengadaan();	
 				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 2 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 2) {
+			} else if ($dataFP3['is_approved'] == 2 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 2) {
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
 				$this->form['form'][16]['value'] = date('Y-m-d');
 				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 7) {
+			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 7) {
 				// && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')))
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
 				$this->form['form'][16]['value'] = date('Y-m-d');
 				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 8 && ($dataFP3['idr_anggaran'] > '1000000000' && $dataFP3['idr_anggaran'] <= '10000000000') && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')) {
+			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 8 && ($dataFP3['idr_anggaran'] > '1000000000' && $dataFP3['idr_anggaran'] <= '10000000000') && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')) {
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
 				$this->form['form'][16]['value'] = date('Y-m-d');
 				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $admin['id_role'] == 9 && $dataFP3['idr_anggaran'] >= '10000000000' && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')) {
+			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 9 && $dataFP3['idr_anggaran'] >= '10000000000' && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')) {
 				$this->form['form'][16]['type'] = 'date';
 				$this->form['form'][16]['label'] = 'Tanggal Approval';
 				$this->form['form'][16]['value'] = date('Y-m-d');

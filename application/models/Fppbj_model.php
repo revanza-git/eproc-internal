@@ -71,7 +71,7 @@ class Fppbj_model extends MY_Model{
 					INNER JOIN
 						ms_fppbj c ON c.id=b.id_fppbj
 					WHERE c.tipe_pengadaan != 'barang' AND b.id_fppbj = ".$query1['id'];
-		$sql .= " GROUP BY a.id ASC";
+		$sql .= " GROUP BY a.id ORDER BY a.id ASC";
 		$query = $this->db->query($sql)->result_array();
 		return $query;
 		 // print_r($query);die;

@@ -58,7 +58,7 @@
 			<button type="button" id="nextBtn3">Submit</button>
 			</div>
 		</div>
-		<div class="tab" id="formHapus">
+		<div class="tab" id="formBatal">
 			<div class="tab-form-header" id="switchUbah">
 				Ubah
 			</div>
@@ -85,19 +85,19 @@
   				$('#tab-intro').css('display','none');
   			});
 
-  			$('#btnHapus').click(function() {
-  				$('#formHapus').css('display','block');
+  			$('#btnBatal').click(function() {
+  				$('#formBatal').css('display','block');
   				$('#tab-intro').css('display','none');
   			});
 
-  			$('#switchHapus').click(function() {
-  				$('#formHapus').css('display','block');
+  			$('#switchBatal').click(function() {
+  				$('#formBatal').css('display','block');
   				$('#formUbah').css('display','none');
   			})
 
   			$('#switchUbah').click(function() {
   				$('#formUbah').css('display','block');
-  				$('#formHapus').css('display','none');
+  				$('#formBatal').css('display','none');
   			})
 
   		})

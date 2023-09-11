@@ -174,7 +174,7 @@ $(function(){
 					}
  				<?php }?>
  					else if (is_status == 2) {
- 						console.log('Ke 2');
+ 						//console.log('Ke 2');
 						if (_is_approve == 3) {
 							return btn;
 						} else {
@@ -1784,7 +1784,7 @@ $(function(){
 			});
 		},
 		renderContent: function(el, value, key){
-
+			//console.log(value);
 			html 		= '';
 			var status 	= '';
 			var badge 	= '';
@@ -1803,6 +1803,8 @@ $(function(){
 			var is_planning				= value[14].value;
 			var jenis_pengadaan			= value[15].value;
 			var idr_anggaran			= value[16].value;
+			var is_cancelled			= value[20].value;
+			var desc_batal				= value[21].value;
 			// console.log(value);
 			// console.log(value[1].value)
 			// console.log(metode_pengadaan)
@@ -1828,183 +1830,186 @@ $(function(){
 
 			// STATUS FPPBJ
 			// DATA PEMAKETAN PENGADAAN DALAM STATUS FPPBJ
-			if (is_status == "0" && is_approve == "0" && is_reject == "0") {
+			if (is_status == "0" && is_approve == "0" && is_reject == "0" && is_cancelled == "0") {
 				status = 'FPPBJ (Menunggu persetujuan Kadept.user)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_reject == 1 && is_approved_hse == 0 && is_approve == 0) {
+			else if (is_status == "0" && is_reject == 1 && is_approved_hse == 0 && is_approve == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Direvisi Kadept.user) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && (is_approved_hse == 0 ||is_approved_hse == null) && is_reject == 0 && is_writeoff == 0) {
+			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && (is_approved_hse == 0 ||is_approved_hse == null) && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (FPPBJ belum disetujui oleh HSSE)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == '2' && is_reject == 1 && is_writeoff == 0) {
+			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == '2' && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Direvisi Kadept.HSSE) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == 1 && is_reject == 0 && is_writeoff == 0) {
+			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == 1 && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Menunggu persetujuan admin pengendalian)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan != 'jasa' && is_reject == 0 && is_writeoff == 0) {
+			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan != 'jasa' && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Menunggu persetujuan admin pengendalian)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == 1 && is_reject == 1 && is_writeoff == 0) {
+			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan == 'jasa' && is_approved_hse == 1 && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Direvisi Admin Pengendalian) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan != 'jasa' && is_reject == 1 && is_writeoff == 0) {
+			else if (is_status == "0" && is_approve == "1" && tipe_pengadaan != 'jasa' && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Direvisi Admin Pengendalian) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "2" && is_reject == 0 && is_writeoff == 0) {
+			else if (is_status == "0" && is_approve == "2" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Menunggu persetujuan Kadept.Procurement)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "2" && is_reject == 1 && is_writeoff == 0) {
+			else if (is_status == "0" && is_approve == "2" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Direvisi Kadept.Procurement) <span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "2"  && is_reject == '0' && is_writeoff == '0' && idr_anggaran <= 100000000) {
+			else if (is_status == "0" && is_approve == "2"  && is_reject == '0' && is_writeoff == '0' && is_cancelled == "0" && idr_anggaran <= 100000000) {
 				status = 'FPPBJ (Menunggu persetujuan Kadept.Procurement)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "2" && is_reject == 1 && is_writeoff == 0 && (idr_anggaran <= 100000000)) {
+			else if (is_status == "0" && is_approve == "2" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && (idr_anggaran <= 100000000)) {
 				status = 'FPPBJ (Direvisi Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && idr_anggaran <= 100000000) {
+			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran <= 100000000) {
 				status = 'FPPBJ (Disetujui Kadept.Procurement)';
 				badge = 'success';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
+			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
 				status = 'FPPBJ (Menunggu persetujuan Ka.Div SDM & Umum)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
+			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
 				status = 'FPPBJ telah di setujui Ka.Div SDM & Umum';
 				badge = 'success';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
+			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
 				status = 'FPPBJ (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
+			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
 				status = 'FPPBJ (Menunggu persetujuan Dir.Keuangan & Umum)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
+			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
 				status = 'FPPBJ telah di setujui Dir.Keuangan & Umum';
 				badge = 'success';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
+			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
 				status = 'FPPBJ (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 10000000000) {
+			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 10000000000) {
 				status = 'FPPBJ (Menunggu persetujuan Dir.Utama)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 1000000000) {
+			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
 				status = 'FPPBJ telah di setujui Dir.Utama';
 				badge = 'success';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 1000000000) {
+			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
 				status = 'FPPBJ (Direvisi Dir.Utama)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
 			
 			// FKPBJ
-			else if (is_status == '2' && is_approve == "0" && is_reject == 0 && is_writeoff == 0) {
+			else if (is_status == '2' && is_approve == "0" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FKPBJ (FKPBJ ini dilanjutkan ke ka.Dept user)';
 				badge = 'warning';
 			}
-			else if (is_status == '2' && is_approve == "0" && is_reject == 1 && is_writeoff == 0) {
+			else if (is_status == '2' && is_approve == "0" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FKPBJ (Direvisi ka.Dept user)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "2" && is_approve == "1" && is_reject == 0 && is_writeoff == 0) {
+			else if (is_status == "2" && is_approve == "1" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FKPBJ (FKPBJ ini dilanjutkan ke Admin Procurement)';
 				badge = 'warning';
 			}
-			else if (is_status == "2" && is_approve == "1" && is_reject == 1 && is_writeoff == 0) {
+			else if (is_status == "2" && is_approve == "1" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FKPBJ (Direvisi Admin Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "2" && is_approve == "2" && is_reject == 0 && is_writeoff == 0) {
+			else if (is_status == "2" && is_approve == "2" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FKPBJ (FKPBJ ini dilanjutkan ke Kadept.Procurement)';
 				badge = 'warning';
 			}
-			else if (is_status == "2" && is_approve == "2" && is_reject == 1 && is_writeoff == 0) {
+			else if (is_status == "2" && is_approve == "2" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FKPBJ (Direvisi Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0) {
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FKPBJ';
 				badge = 'success';
 			}	
 			
 			// FP3		
-			else if (is_status == 1 && is_approve == 0 && is_reject == 0) {
+			else if (is_status == 1 && is_approve == 0 && is_reject == 0 && is_cancelled == "0") {
 					status = 'FP3 (Menunggu Ka.Dept User)';
 					badge = 'warning';
 				}
-				else if (is_status == 1 && is_approve == 1 && is_reject == 0) {
+				else if (is_status == 1 && is_approve == 1 && is_reject == 0 && is_cancelled == "0") {
 					status = 'FP3 (Menunggu Admin Pengendalian)';
 					badge = 'warning';
 				}
-				else if (is_status == 1 && is_approve == 2 && is_reject == 0) {
+				else if (is_status == 1 && is_approve == 2 && is_reject == 0 && is_cancelled == "0") {
 					status = 'FP3 (Menunggu Ka.Dept Procurement)';
 					badge = 'warning';
 				}
-				else if (is_status == 1 && is_approve == 1 && is_reject == 1) {
+				else if (is_status == 1 && is_approve == 1 && is_reject == 1 && is_cancelled == "0") {
 					status = 'FP3 (Direvisi Ka.Dept User) <span class="tooltiptext reject">'+keterangan+'</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
-				else if (is_status == 1 && is_approve == 2 && is_reject == 1) {
+				else if (is_status == 1 && is_approve == 2 && is_reject == 1 && is_cancelled == "0") {
 					status = 'FP3 (Direvisi Admin Pengendalian)<span class="tooltiptext reject">'+keterangan+'</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
-				else if (is_status == 1 && is_approve == 3 && is_reject == 1) {
+				else if (is_status == 1 && is_approve == 3 && is_reject == 1 && is_cancelled == "0") {
 					status = 'FP3 (Direvisi Ka.Dept Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
-				else if (is_status == 1 && is_approve == 3 && is_reject == 0 && idr_anggaran < 100000000 ) {
+				else if (is_status == 1 && is_approve == 3 && is_reject == 0 && is_cancelled == "0" && idr_anggaran < 100000000 ) {
 					status = 'FP3 (telah disetujui Kadept.Procurement)';
 					badge = 'success';
 				}
-				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
+				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
 					status = 'FP3 (Menunggu persetujuan Ka.Div SDM & Umum)';
 					badge = 'warning';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
+				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
 					status = 'FP3 telah di setujui Ka.Div SDM & Umum';
 					badge = 'success';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
+				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
 					status = 'FP3 (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
-				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
+				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
 					status = 'FP3 (Menunggu persetujuan Dir.Keuangan & Umum)';
 					badge = 'warning';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
+				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
 					status = 'FP3 telah di setujui Dir.Keuangan & Umum';
 					badge = 'success';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
+				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
 					status = 'FP3 (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
-				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && idr_anggaran >= 10000000000) {
+				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 10000000000) {
 					status = 'FP3 (Menunggu persetujuan Dir.Utama)';
 					badge = 'warning';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && idr_anggaran >= 1000000000) {
+				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
 					console.log('Masuk Ke Kondisi Sukses >10M ');
 					status = 'FP3 telah di setujui Dir.Utama';
 					badge = 'success';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && idr_anggaran >= 1000000000) {
+				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
 					status = 'FP3 (Direvisi Dir.Utama)<span class="tooltiptext reject">' + keterangan + '</span>';
+					badge = 'danger fppbj_reject tooltip';
+				} else if (is_cancelled == "1"){
+					status = 'FP3 (Batal)<span class="tooltiptext reject">' + desc_batal + '</span>';
 					badge = 'danger fppbj_reject tooltip';
 				}
 			else{

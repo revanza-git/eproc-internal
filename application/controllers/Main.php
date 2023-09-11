@@ -19,15 +19,15 @@ class Main extends CI_Controller {
 
 	public function index(){
 		if($this->session->userdata('user')){
-			header("Location: http://10.10.10.3/eproc_pengadaan/dashboard");
+			header("Location: ".$this->config->item("pengadaan_url")."dashboard");
 		}elseif($this->session->userdata('admin')){
 			if ($this->session->userdata('admin')['app_type'] == 1) {
-				header("Location: http://10.10.10.3/eproc_pengadaan/admin");
+				header("Location: ".$this->config->item("pengadaan_url")."admin");
 			}else{
 				redirect('dashboard');				
 			}
 		}else{
-			header("Location:https://eproc.nusantararegas.com/eproc_nusantararegas");
+			header("Location:".$this->config->item("vms_url"));
 		}
 	}
 
@@ -42,7 +42,7 @@ class Main extends CI_Controller {
 		$this->db->insert('tr_log_activity',$activity);
 		
 		$this->session->sess_destroy();
-		header("Location:https://eproc.nusantararegas.com/eproc_nusantararegas/main/logout");
+		header("Location:".$this->config->item("vms_url")."main/logout");
 	}
 
 	public function check()
@@ -63,7 +63,7 @@ class Main extends CI_Controller {
 					$type 			= 'user';
 					$app 			= $user['app'];
 					
-					header("Location:https://eproc.nusantararegas.com/eproc_pengadaan/main/login_user/".$name."/".$id_user."/".$id_sbu."/".$vendor_status."/".$is_active."/".$type."/".$app);
+					header("Location:".$this->config->item("vms_pengadaan_url")."main/login_user/".$name."/".$id_user."/".$id_sbu."/".$vendor_status."/".$is_active."/".$type."/".$app);
 
 				}else if($this->session->userdata('admin')){
 					if ($this->session->userdata('admin')['app_type'] == 1) {
@@ -78,7 +78,7 @@ class Main extends CI_Controller {
 						$app 			= $admin['app'];
 						$type 			= 'admin';
 						
-						header("Location:http://10.10.10.3/eproc_pengadaan/main/login_admin/".$id_user."/".$name."/".$id_role."/".$role_name."/".$type."/".$app."/".$id_sbu."/".$sbu_name);
+						header("Location:".$this->config->item("pengadaan_url")."main/login_admin/".$id_user."/".$name."/".$id_role."/".$role_name."/".$type."/".$app."/".$id_sbu."/".$sbu_name);
 					}else{
 						redirect('dashboard');				
 					}
@@ -98,13 +98,14 @@ class Main extends CI_Controller {
 		$key = $this->input->get('key', TRUE);
 
 		if (!$key) {
-			header("Location:https://eproc.nusantararegas.com/eproc_nusantararegas");
+			header("Location:".$this->config->item("vms_url"));
 		}
 
 		$data = $this->eproc_db->where('key', $key)->where('deleted_at', NULL)->get('ms_key_value')->row_array();
-
+		
 		if (!$data) {
-			header("Location:https://eproc.nusantararegas.com/eproc_nusantararegas");
+			
+			header("Location:".$this->config->item("vms_url"));
 		}
 
 		$value = json_decode($data['value']);

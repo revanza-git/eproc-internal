@@ -39,17 +39,17 @@ class Fp3_model extends MY_Model
 					LEFT JOIN
 						tb_division b ON b.id=a.id_division
 					WHERE 
-						(is_status = 0 AND a.del = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3) $division $year_conditional)
+						(is_status = 0 AND a.del = 0 AND a.is_cancelled = 0 AND (idr_anggaran <= 100000000 OR (idr_anggaran > 100000000 AND metode_pengadaan = 3) $division $year_conditional)
 						OR  
 
-						(is_status = 0 AND a.del = 0 AND idr_anggaran > 100000000)) $division $year_conditional
+						(is_status = 0 AND a.del = 0 AND a.is_cancelled = 0 AND idr_anggaran > 100000000)) $division $year_conditional
 
 						OR
-						(is_status = 2 AND a.del = 0 $division $year_conditional)
+						(is_status = 2 AND a.del = 0 AND a.is_cancelled = 0 $division $year_conditional)
 
 						OR
 
-						(is_status = 1 AND a.del = 0 $division $year_conditional)";
+						(is_status = 1 AND a.del = 0 AND a.is_cancelled = 0 $division $year_conditional)";
 						
 
 		$query = $this->db->query($query)->result_array();
@@ -96,7 +96,9 @@ class Fp3_model extends MY_Model
 						b.id_division,
 						b.tipe_pengadaan,
 						b.idr_anggaran,
-						a.pejabat_pengadaan_id
+						a.pejabat_pengadaan_id,
+						b.is_cancelled,
+						a.desc_batal
 
 						FROM ms_fp3 a
 
@@ -148,6 +150,7 @@ class Fp3_model extends MY_Model
 						a.pr_lampiran,
 						b.pr_lampiran pr_lama,
 						e.name pic_name,
+						b.is_cancelled,
 						a.desc_batal
 
 						FROM ms_fp3 a
@@ -155,7 +158,7 @@ class Fp3_model extends MY_Model
 						LEFT JOIN ms_fppbj b ON b.id = a.id_fppbj
 						LEFT JOIN tr_note c ON b.id = c.id_fppbj
 						LEFT JOIN tb_proc_method d ON d.id=a.metode_pengadaan
-						LEFT JOIN eproc.ms_admin e ON e.id=b.id_pic
+						LEFT JOIN eproc_vms.ms_admin e ON e.id=b.id_pic
 	
 					WHERE a.id = ? AND a.del = 0";
 		$query = $this->db->query($query, array($id));
@@ -244,12 +247,12 @@ class Fp3_model extends MY_Model
 				'is_approved' => $is_approved,
 				'edit_stamp'  => date('Y-m-d H:i:s'),
 				'is_reject'	  => 0,
-				'del'	 	  => 1,
+				'is_cancelled'=> 1,
 			);
 			$this->db->where('id', $data['id_fppbj'])->update('ms_fppbj', $up);
 			$data_fp3 = array(
 				'id_fppbj' => $get_fppbj['id'],
-				'status' => 'hapus',
+				'status' => 'batal',
 				'nama_pengadaan' => $get_fppbj['nama_pengadaan'],
 				'metode_pengadaan' => $get_fppbj['metode_pengadaan'],
 				'jwpp_start' => $get_fppbj['jwpp_start'],
@@ -338,7 +341,7 @@ class Fp3_model extends MY_Model
 
 		$get_data = $this->db->where('id', $id)->get('ms_fppbj')->row_array();
 
-		$activity = $this->session->userdata('admin')['name'] . " menghapus data : " . $get_data['nama_pengadaan'];
+		$activity = $this->session->userdata('admin')['name'] . " membatalkan data : " . $get_data['nama_pengadaan'];
 
 		$this->activity_log($this->session->userdata('admin')['id_user'], $activity, $id);
 

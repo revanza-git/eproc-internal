@@ -24,6 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://10.10.10.3/eproc_nusantararegas/';
+$config['pengadaan_url'] = 'http://10.10.10.3/eproc_pengadaan/';
+$config['vms_url'] = 'https://eproc.nusantararegas.com/eproc_nusantararegas/';
+$config['vms_pengadaan_url'] = 'https://eproc.nusantararegas.com/eproc_pengadaan/';
 
 /*
 |--------------------------------------------------------------------------
@@ -158,7 +161,7 @@ $config['composer_autoload'] = FALSE;
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@\=&,';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-\=';
 
 /*
 |--------------------------------------------------------------------------
