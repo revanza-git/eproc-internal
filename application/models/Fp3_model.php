@@ -96,7 +96,9 @@ class Fp3_model extends MY_Model
 						b.id_division,
 						b.tipe_pengadaan,
 						b.idr_anggaran,
-						a.pejabat_pengadaan_id
+						a.pejabat_pengadaan_id,
+						b.is_cancelled,
+						a.desc_batal
 
 						FROM ms_fp3 a
 
@@ -148,6 +150,7 @@ class Fp3_model extends MY_Model
 						a.pr_lampiran,
 						b.pr_lampiran pr_lama,
 						e.name pic_name,
+						b.is_cancelled,
 						a.desc_batal
 
 						FROM ms_fp3 a
@@ -244,12 +247,12 @@ class Fp3_model extends MY_Model
 				'is_approved' => $is_approved,
 				'edit_stamp'  => date('Y-m-d H:i:s'),
 				'is_reject'	  => 0,
-				'del'	 	  => 1,
+				'is_cancelled'=> 1,
 			);
 			$this->db->where('id', $data['id_fppbj'])->update('ms_fppbj', $up);
 			$data_fp3 = array(
 				'id_fppbj' => $get_fppbj['id'],
-				'status' => 'hapus',
+				'status' => 'batal',
 				'nama_pengadaan' => $get_fppbj['nama_pengadaan'],
 				'metode_pengadaan' => $get_fppbj['metode_pengadaan'],
 				'jwpp_start' => $get_fppbj['jwpp_start'],
@@ -338,7 +341,7 @@ class Fp3_model extends MY_Model
 
 		$get_data = $this->db->where('id', $id)->get('ms_fppbj')->row_array();
 
-		$activity = $this->session->userdata('admin')['name'] . " menghapus data : " . $get_data['nama_pengadaan'];
+		$activity = $this->session->userdata('admin')['name'] . " membatalkan data : " . $get_data['nama_pengadaan'];
 
 		$this->activity_log($this->session->userdata('admin')['id_user'], $activity, $id);
 

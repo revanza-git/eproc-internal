@@ -1587,10 +1587,10 @@ class Pemaketan extends MY_Controller
 											<b>:</b>
 											<span>' . $data['nama_pengadaan'] . '</span>
 										</fieldset>
-										<fieldset class="form-group read_only form2 " for="' . $data['desc_batal'] . '">
-											<label for="' . $data['desc_batal'] . '">Keterangan Batal</label>
+										<fieldset class="form-group read_only form2 " for="' . $dataFP3['desc_batal'] . '">
+											<label for="' . $dataFP3['desc_batal'] . '">Keterangan Batal</label>
 											<b>:</b>
-											<span>' . $data['desc_batal'] . '</span>
+											<span>' . $dataFP3['desc_batal'] . '</span>
 										</fieldset>';
 		
         if ($data['is_status'] != 1 && ($data['tipe_pengadaan'] == 'barang') && $data['metode_pengadaan'] != 3) {
