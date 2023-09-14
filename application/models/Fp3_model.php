@@ -98,13 +98,14 @@ class Fp3_model extends MY_Model
 						b.idr_anggaran,
 						a.pejabat_pengadaan_id,
 						b.is_cancelled,
-						a.desc_batal
+						a.desc_batal,
+						a.del
 
 						FROM ms_fp3 a
 
 						LEFT JOIN ms_fppbj b ON b.id = a.id_fppbj						
 						LEFT JOIN tr_note c ON c.id_fppbj=b.id AND c.type = 'reject'
-					WHERE a.del = 0 AND b.id_division = $id_division $id_fppbj $year_anggaran";
+					WHERE b.id_division = $id_division $id_fppbj $year_anggaran";
 
 		// if ($admin['id_division'] != 1) {
 		// 	$query .= " AND b.id_division = ".$admin['id_division'];
@@ -116,6 +117,8 @@ class Fp3_model extends MY_Model
 		if ($this->input->post('filter')) {
 			$query .= $this->filter($form, $this->input->post('filter'), false);
 		}
+
+		log_message('error', $query);
 		return $query;
 	}
 
@@ -158,9 +161,9 @@ class Fp3_model extends MY_Model
 						LEFT JOIN ms_fppbj b ON b.id = a.id_fppbj
 						LEFT JOIN tr_note c ON b.id = c.id_fppbj
 						LEFT JOIN tb_proc_method d ON d.id=a.metode_pengadaan
-						LEFT JOIN eproc_vms.ms_admin e ON e.id=b.id_pic
+						LEFT JOIN eproc.ms_admin e ON e.id=b.id_pic
 	
-					WHERE a.id = ? AND a.del = 0";
+					WHERE a.id = ?";
 		$query = $this->db->query($query, array($id));
 		return $query->row_array();
 	}

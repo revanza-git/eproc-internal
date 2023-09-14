@@ -643,7 +643,7 @@
 			},
 			renderContent: function(el, value, key) {
 				// console.log(value[16].value);
-				//console.log(value);
+				// console.log(value);
 				var status = '';
 				var badge = '';
 				var is_status = value[5].value;
@@ -655,6 +655,7 @@
 				var pejabat = value[17].value; 
 				var is_cancelled = value[18].value;
 				var desc_batal = value[19].value;
+				var status = value[7].value;
 
 				if (value[2].value == 1) {
 					metode_pengadaan = 'Pelelangan';
@@ -670,31 +671,31 @@
 				// console.log(value)			
 
 				//pending status
-				if (is_approve == 0 && is_reject == 0 && is_cancelled == 0) {
+				if (is_approve == 0 && is_reject == 0 && is_cancelled == 0 && status == "ubah") {
 					status = 'FP3 (Menunggu Ka.Dept User)';
 					badge = 'warning';
-				} else if (is_approve == 1 && is_reject == 0 && is_cancelled == 0) {
+				} else if (is_approve == 1 && is_reject == 0 && is_cancelled == 0 && status == "ubah") {
 					status = 'FP3 (Menunggu Admin Pengendalian)';
 					badge = 'warning';
-				} else if (is_approve == 2 && is_reject == 0 && is_cancelled == 0) {
+				} else if (is_approve == 2 && is_reject == 0 && is_cancelled == 0 && status == "ubah") {
 					status = 'FP3 (Menunggu Ka.Dept Procurement)';
 					badge = 'warning';
 				}
 
 				//reject status
-				else if (is_approve == 1 && is_reject == 1 && is_cancelled == 0) {
+				else if (is_approve == 1 && is_reject == 1 && is_cancelled == 0 && status == "ubah") {
 					status = 'FP3 (Direvisi Ka.Dept User) <span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fp3_reject tooltip';
-				} else if (is_approve == 2 && is_reject == 1 && is_cancelled == 0) {
+				} else if (is_approve == 2 && is_reject == 1 && is_cancelled == 0 && status == "ubah") {
 					status = 'FP3 (Direvisi Admin Pengendalian)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fp3_reject tooltip';
-				} else if (is_approve == 3 && is_reject == 1 && is_cancelled == 0) {
+				} else if (is_approve == 3 && is_reject == 1 && is_cancelled == 0 && status == "ubah") {
 					status = 'FP3 (Direvisi Ka.Dept Procurement)<span class="tooltiptext reject">' + keterangan + '</span>';
 					badge = 'danger fp3_reject tooltip';
 				}
 
 				//cancelled status
-				else if(is_cancelled == 1){
+				else if(is_cancelled == 1 || status == "batal"){
 					status = 'FP3 (Batal) <span class="tooltiptext reject">' + desc_batal + '</span>';
 					badge = 'danger fp3_reject tooltip';
 				}

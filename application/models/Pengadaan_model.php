@@ -66,41 +66,43 @@ class Pengadaan_model extends CI_Model {
 
 	public function getDataFP3()
 	{
-		$query = "	SELECT  nama_pengadaan AS name,
+		$query = "	SELECT  b.nama_pengadaan AS name,
 							count(*) AS total,
 							year_anggaran AS year,
-							ms_fppbj.id
-					FROM ".$this->fppbj."
-					WHERE ms_fppbj.del = 0 AND ms_fppbj.is_status = 1";
+							b.id
+					FROM ms_fp3 a 
+					LEFT JOIN ".$this->fppbj." b ON b.id = a.id_fppbj";
 
-		$query .= " GROUP BY YEAR(entry_stamp)";
+		$query .= " GROUP BY YEAR(b.entry_stamp)";
 
 		if($this->input->post('filter')){
 			$query .= $this->filter($form, $this->input->post('filter'), false);
 		}
 
 		// echo $this->db->last_query();
-
+		log_message('error', $query);
 		return $query;
 	}
 
 	function getDataFP3ByYear($year){
 		$admin = $this->session->userdata('admin');
 
-		$get = "WHERE ms_fppbj.is_status = 1 AND ms_fppbj.del = 0 AND ms_fppbj.entry_stamp LIKE '%".$year."%' ";
+		$get = "WHERE ms_fppbj.entry_stamp LIKE '%".$year."%' ";
 
 		$query = "	SELECT  name,
 							count(*) AS total,
 							ms_fppbj.id,
 							tb_division.id id_division
-					FROM ".$this->fppbj."
-					JOIN tb_division ON ms_fppbj.id_division = tb_division.id 
+					FROM ms_fp3
+					LEFT JOIN ".$this->fppbj." ON ms_fppbj.id = ms_fp3.id_fppbj
+					LEFT JOIN tb_division ON ms_fppbj.id_division = tb_division.id 
 					 ".$get."";
 		if($this->input->post('filter')){
 			$query .= $this->filter($form, $this->input->post('filter'), false);
 		}
 		//echo $query;die;
 		$query .= " GROUP BY id_division ";
+		
 		return $query;
 	}
 }

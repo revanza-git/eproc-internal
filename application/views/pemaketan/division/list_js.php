@@ -1784,7 +1784,7 @@ $(function(){
 			});
 		},
 		renderContent: function(el, value, key){
-			//console.log(value);
+			
 			html 		= '';
 			var status 	= '';
 			var badge 	= '';
