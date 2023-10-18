@@ -774,6 +774,7 @@ class Main_model extends CI_model{
 						(del = 0 AND $q $q2 $perencanaan is_status = 0 AND  is_approved = 2 AND is_reject = 0 AND idr_anggaran > 100000000 AND (metode_pengadaan = 4 OR metode_pengadaan = 2 OR metode_pengadaan = 1 OR metode_pengadaan = 5))
 					OR
 						($q $q2 $perencanaan is_status = 0 AND  is_approved = 2 AND is_reject = 0 AND del = 0 AND idr_anggaran <= 100000000 AND (metode_pengadaan != 4))";
+		
 		return $this->db->query($query);
 	}
 

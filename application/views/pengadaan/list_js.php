@@ -39,6 +39,7 @@ $(function(){
 		},
 
 		renderContent: function(el, value, key){
+	
 			html = '';
 			html += '<div class="caption"><p>'+value[1].value+'</p><p><b>'+value[0].value+'</b> Item(s)</p></div>';
 			return html;

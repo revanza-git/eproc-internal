@@ -32,15 +32,22 @@ class Export_model extends MY_Model{
     public function get_analisa($id_fppbj){
         $data = $this->db->where('id_fppbj', $id_fppbj)->get('tr_analisa_risiko');
         $data = $data->row_array();
+       
         $data['dpt_list_'] = json_decode($data['dpt_list']);
+        
 
         if ($data['dpt_list_'] !== null) {
             unset($data['dpt_list']);
-            foreach ($data['dpt_list_']->dpt as $id_dpt) {
-                $data['dpt_list'][] .= $this->get_dpt($id_dpt);
-            }
+            
+            if($data['dpt_list_']->dpt !== null){
+                foreach ($data['dpt_list_']->dpt as $id_dpt) {
+                    $data['dpt_list'][] .= $this->get_dpt($id_dpt);  
+                }
+            }      
         }
         $data['usulan'] = $data['dpt_list_']->usulan;
+        // var_dump($data);
+        // die();
         return $data;
     }
 

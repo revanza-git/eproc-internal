@@ -442,6 +442,7 @@ class Riwayat extends MY_Controller
 			}
 
 			$get_dpt = $this->ex->get_analisa($id);
+			
 			$dpt = '<table>
 						<thead>
 							<tr>
@@ -473,8 +474,10 @@ class Riwayat extends MY_Controller
 							</tr></tbody>
 						</table><br>';
 			}
-
+			
 			$data .= $dpt;
+
+			
 
 			if ($a['metode_name'] == 'Swakelola') {
 				$swakelola = $this->pm->get_swakelola($id);
@@ -1054,6 +1057,7 @@ class Riwayat extends MY_Controller
 				</tr>
 			</thead>
 			<tbody>';
+		
 		if (count($his_approval) > 0) {
 			// foreach ($his_approval as $keys => $values) {
 			// 	$data .= '<tr><th colspan="4"> Riwayat approval ' . $keys . '</th></tr>';
@@ -1089,9 +1093,13 @@ class Riwayat extends MY_Controller
 		$data .= '</body>
 		</html>';
 
+		
+
 		$dompdf = new DOMPDF();
 		$dompdf->load_html($data);
 		$dompdf->set_paper("A4", "potrait");
+		// var_dump($data);
+		// die();
 		$dompdf->render();
 		$dompdf->stream("Riwayat Pengadaan - " . $a['nama_pengadaan'] . ".pdf", array("Attachment" => 1));
 
