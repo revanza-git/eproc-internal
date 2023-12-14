@@ -702,6 +702,23 @@ class Pemaketan extends MY_Controller
 				$data['is_approved'] = 2;
 			}
 
+            // Get today's date
+            $today = date('Y-m-d H:i:s');
+            // Get December 1st of the current year
+            $currentMonth = date('m');
+
+            // Compare dates to see if we've passed December 1st
+            if ($currentMonth == 12) {
+                // If today is past December 1st, set the date to December 1st of the next year
+                $targetTime = date('Y') . '-01-01';
+                $inputDate = date('Y-m-d H:i:s', strtotime('+1 year', strtotime($targetTime)));
+            } else {
+                // Otherwise, set it to December 1st of this year
+                $inputDate = $today;
+            }
+            $data['entry_stamp'] = $inputDate;
+
+
 			$input = $this->db->insert('ms_fppbj', $data);
 			$this->deleteTemp($data);
 			$input = $this->db->insert_id();
@@ -2230,7 +2247,7 @@ class Pemaketan extends MY_Controller
                 $save['jwpp_end']                 = $fppbj['jwpp_end'];
                 $save['jwp_start']                  = $fppbj['jwp_start'];
                 $save['jwp_end']                  = $fppbj['jwp_end'];
-                $save['entry_stamp']               = timestamp();
+                $save['edit_stamp']               = timestamp();
             } else if ($save['nama_pengadaan'] == '') {
                 $save['is_reject']                  = 0;
                 $save['id_division']              = $fppbj['id_division'];
@@ -2249,7 +2266,7 @@ class Pemaketan extends MY_Controller
                 $save['jwpp_end']                 = $fppbj['jwpp_start'];
                 $save['jwp_start']                  = $fppbj['jwp_start'];
                 $save['jwp_end']                  = $fppbj['jwp_end'];
-                $save['entry_stamp']               = timestamp();
+                $save['edit_stamp']               = timestamp();
             } else {
                 $save['is_reject']                  = 0;
                 $save['id_division']              = $fppbj['id_division'];
@@ -2269,7 +2286,7 @@ class Pemaketan extends MY_Controller
                 $save['jwpp_end']                 = $save['jwpp_end'];
                 $save['jwp_start']                  = $save['jwp_start'];
                 $save['jwp_end']                  = $save['jwp_end'];
-                $save['entry_stamp']               = timestamp();
+                $save['edit_stamp']               = timestamp();
             }
 
             $lastData = $this->$modelAlias->selectData($id);

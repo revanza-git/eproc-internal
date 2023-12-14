@@ -87,49 +87,38 @@ class Riwayat extends MY_Controller
 					<html>
 					<head>			
 					<style type="text/css">
-						thead:before, thead:after { display: none; }
-						tbody:before, tbody:after { display: none; }				
-						@media all{
-							ol{
-								padding-left : 20px;
-								padding-top : -15px;
-								padding-bottom : -15px;
-							}
-							thead { display:table-header-group; }
+						/* Simplified CSS */
+						body {
+							font-family: Arial, sans-serif;
+							font-size: 12px;
 						}
 						table {
-							width: 705px;
-							border : 1px solid #000;
-							border-spacing : 0;
-							align: center;
+							width: 100%;
+							border-collapse: collapse;
 						}
-						.no{
-							vertical-align: top;
-						}
-						td, th {
-							border : 1px solid #000;
-							padding: 3px 5px;
-							word-wrap: break-word;
+						th, td {
+							border: 1px solid #000;
+							padding: 5px;
 							text-align: left;
 						}
-						.desc{
-							margin-top: 50px;
-							margin-bottom: 50px;
+						.header {
+							background-color: #f2f2f2;
 						}
-						.desc, .desc td, .desc th{
-							border: none !important;
+						.no-border {
+							border: none;
 						}
-						span img{
-							width: 15px !important;
-							margin: 0 5px;
+						.text-center {
+							text-align: center;
 						}
-						.ttd{
-							width: 705px;
-							margin-top: 25px;
+						.text-right {
+							text-align: right;
 						}
-						.ttd td, .ttd th{
-							padding: 5px;
+						.catatan {
+							font-weight: bold;
 						}
+						.red { color: red; }
+						.yellow { color: yellow; }
+						.green { color: green; }
 					</style>
 					</head>
 					<body>';
@@ -1098,8 +1087,6 @@ class Riwayat extends MY_Controller
 		$dompdf = new DOMPDF();
 		$dompdf->load_html($data);
 		$dompdf->set_paper("A4", "potrait");
-		// var_dump($data);
-		// die();
 		$dompdf->render();
 		$dompdf->stream("Riwayat Pengadaan - " . $a['nama_pengadaan'] . ".pdf", array("Attachment" => 1));
 
@@ -1112,52 +1099,48 @@ class Riwayat extends MY_Controller
 		<html>
 		<head>			
 		<style type="text/css">
-			thead:before, thead:after { display: none; }
-			tbody:before, tbody:after { display: none; }				
-			@media all{
-				ol{
-					padding-left : 20px;
-					padding-top : -15px;
-					padding-bottom : -15px;
-				}
-				
-				// table { page-break-inside:avoid; }
-				// tr    { page-break-inside: avoid; }
-				thead { display:table-header-group; }
-			}
 			table {
-				width: 705px;
-				border : 1px solid #000;
-				border-spacing : 0;
+				width: 100%;
+				border-collapse: collapse;
 				align: center;
 			}
-			.no{
-				vertical-align: top;
-			}
 			td, th {
-				border : 1px solid #000;
+				border: 1px solid #000;
 				padding: 3px 5px;
-				word-wrap: break-word;
 				text-align: left;
 			}
-			.desc{
-				margin-top: 50px;
-				margin-bottom: 50px;
+			.header {
+				font-weight: bold;
+				background-color: #f2f2f2;
 			}
-			.desc, .desc td, .desc th{
+			.desc, .desc td, .desc th {
 				border: none !important;
 			}
-			span img{
-				width: 15px !important;
-				margin: 0 5px;
-			}
-			.ttd{
-				width: 705px;
+			.ttd {
+				width: 100%;
 				margin-top: 25px;
 			}
-			.ttd td, .ttd th{
+			.ttd td, .ttd th {
 				padding: 5px;
 			}
+			/* Simplified CSS for Risiko table */
+			.penilaian_resiko td, .penilaian_resiko th {
+				text-align: center;
+				padding: 2px;
+			}
+			.catatan {
+				font-weight: bold;
+			}
+			.red {
+				color: red;
+			}
+			.yellow {
+				color: yellow;
+			}
+			.green {
+				color: green;
+			}
+			/* Remove unnecessary styles and keep it simple */
 		</style>
 		</head>
 		<body>';
