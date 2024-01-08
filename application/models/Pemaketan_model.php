@@ -29,7 +29,7 @@ class Pemaketan_model extends MY_Model{
 	}
 	
 	function getData($year){
-		log_message('error', 'start_get_data');
+		
 		$admin = $this->session->userdata('admin');
 
 		$years = explode(',', $year);
@@ -39,6 +39,9 @@ class Pemaketan_model extends MY_Model{
 		} else {
 			$query_year = "ms_fppbj.entry_stamp BETWEEN '".$years[0]."-01-01 00:00:00' AND '".$years[count($years)-1]."-12-31 23:59:59'";
 		}
+		
+		//$query_year = "ms_fppbj.year_anggaran LIKE'%".$years[0]."%'";
+
 		
 		if ($admin['id_role'] != in_array(7,8,9)) {
 			if ($admin['id_role'] == 6) {
@@ -78,6 +81,7 @@ class Pemaketan_model extends MY_Model{
 		log_message('error', 'end_get_data');
 
 		$query .= " GROUP BY id_division ";
+		//log_message('error', var_dump($query));
 		return $query;
 	}
 
@@ -200,6 +204,8 @@ class Pemaketan_model extends MY_Model{
 				} else {
 					$year_anggaran = "ms_fppbj.entry_stamp BETWEEN '".$years[0]."-01-01 00:00:00' AND '".$years[count($years)-1]."-12-31 23:59:59' AND";
 				}
+
+				//$year_anggaran = "ms_fppbj.year_anggaran LIKE'%".$years[0]."%' AND";
 			} else {
 				$year_anggaran = " "; 
 			}
@@ -263,6 +269,8 @@ class Pemaketan_model extends MY_Model{
 
 		$query .= " GROUP BY ms_fppbj.id ";
 		
+		//log_message('error', var_dump($query));
+
 		return $query;
 	}
 

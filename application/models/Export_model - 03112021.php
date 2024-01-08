@@ -157,7 +157,7 @@ class Export_model extends MY_Model
                             (
                                 id_division = " . $division_['id'] . " AND 
                                 ms_fppbj.del = 0 AND 
-                                ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND 
+                                ms_fppbj.year_anggaran LIKE '%" . $year . "%' AND 
                                 ms_fppbj.is_approved = 3 AND 
                                 (ms_fppbj.idr_anggaran <= 100000000 OR 
                                     (
@@ -171,7 +171,7 @@ class Export_model extends MY_Model
                         (
                             id_division = " . $division_['id'] . " AND 
                             ms_fppbj.del = 0 AND 
-                            ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND 
+                            ms_fppbj.year_anggaran LIKE '%" . $year . "%' AND 
                             ms_fppbj.is_approved = 4 AND 
                             ms_fppbj.idr_anggaran > 100000000
                         )
@@ -179,7 +179,7 @@ class Export_model extends MY_Model
                         (
                             id_division = " . $division_['id'] . " AND 
                             ms_fppbj.del = 0 AND 
-                            ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND 
+                            ms_fppbj.year_anggaran LIKE '%" . $year . "%' AND 
                             is_status = 2 AND 
                             is_approved = 3
                         )
@@ -189,7 +189,7 @@ class Export_model extends MY_Model
                                 is_status = 1 AND
                                 id_division = " . $division_['id'] . " AND 
                                 ms_fppbj.del = 0 AND 
-                                ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND 
+                                ms_fppbj.year_anggaran LIKE '%" . $year . "%' AND 
                                 ms_fppbj.is_approved = 3 AND 
                                 (ms_fppbj.idr_anggaran <= 100000000 OR 
                                     (
@@ -203,7 +203,7 @@ class Export_model extends MY_Model
                                 is_status = 1 AND
                                 id_division = " . $division_['id'] . " AND 
                                 ms_fppbj.del = 0 AND 
-                                ms_fppbj.entry_stamp LIKE '%" . $year . "%' AND 
+                                ms_fppbj.year_anggaran LIKE '%" . $year . "%' AND 
                                 ms_fppbj.is_approved = 4 AND 
                                 ms_fppbj.idr_anggaran > 100000000
                             )
