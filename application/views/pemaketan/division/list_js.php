@@ -1941,77 +1941,121 @@ $(function(){
 				badge = 'warning';
 			}
 			else if (is_status == "2" && is_approve == "2" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0") {
+				status = 'FKPBJ (Direvisi Kadept.Procurement) <span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
+			else if (is_status == "2" && is_approve == "2"  && is_reject == '0' && is_writeoff == '0' && is_cancelled == "0" && idr_anggaran <= 100000000) {
+				status = 'FKPBJ (Menunggu persetujuan Kadept.Procurement)';
+				badge = 'warning';
+			}
+			else if (is_status == "2" && is_approve == "2" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && (idr_anggaran <= 100000000)) {
 				status = 'FKPBJ (Direvisi Kadept.Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
-				status = 'FKPBJ';
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran <= 100000000) {
+				status = 'FKPBJ (Disetujui Kadept.Procurement)';
 				badge = 'success';
-			}	
+			}
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
+				status = 'FKPBJ (Menunggu persetujuan Ka.Div SDM & Umum)';
+				badge = 'warning';
+			}
+			else if (is_status == "2" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
+				status = 'FKPBJ telah di setujui Ka.Div SDM & Umum';
+				badge = 'success';
+			}
+			else if (is_status == "2" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
+				status = 'FKPBJ (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
+				status = 'FKPBJ (Menunggu persetujuan Dir.Keuangan & Umum)';
+				badge = 'warning';
+			}
+			else if (is_status == "2" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
+				status = 'FKPBJ telah di setujui Dir.Keuangan & Umum';
+				badge = 'success';
+			}
+			else if (is_status == "2" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
+				status = 'FKPBJ (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 10000000000) {
+				status = 'FKPBJ (Menunggu persetujuan Dir.Utama)';
+				badge = 'warning';
+			}
+			else if (is_status == "2" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
+				status = 'FKPBJ telah di setujui Dir.Utama';
+				badge = 'success';
+			}
+			else if (is_status == "2" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
+				status = 'FKPBJ (Direvisi Dir.Utama)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
 			
 			// FP3		
 			else if (is_status == 1 && is_approve == 0 && is_reject == 0 && is_cancelled == "0") {
 					status = 'FP3 (Menunggu Ka.Dept User)';
 					badge = 'warning';
-				}
-				else if (is_status == 1 && is_approve == 1 && is_reject == 0 && is_cancelled == "0") {
-					status = 'FP3 (Menunggu Admin Pengendalian)';
-					badge = 'warning';
-				}
-				else if (is_status == 1 && is_approve == 2 && is_reject == 0 && is_cancelled == "0") {
-					status = 'FP3 (Menunggu Ka.Dept Procurement)';
-					badge = 'warning';
-				}
-				else if (is_status == 1 && is_approve == 1 && is_reject == 1 && is_cancelled == "0") {
-					status = 'FP3 (Direvisi Ka.Dept User) <span class="tooltiptext reject">'+keterangan+'</span>';
-					badge = 'danger fp3_reject tooltip';
-				}
-				else if (is_status == 1 && is_approve == 2 && is_reject == 1 && is_cancelled == "0") {
-					status = 'FP3 (Direvisi Admin Pengendalian)<span class="tooltiptext reject">'+keterangan+'</span>';
-					badge = 'danger fp3_reject tooltip';
-				}
-				else if (is_status == 1 && is_approve == 3 && is_reject == 1 && is_cancelled == "0") {
-					status = 'FP3 (Direvisi Ka.Dept Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
-					badge = 'danger fp3_reject tooltip';
-				}
-				else if (is_status == 1 && is_approve == 3 && is_reject == 0 && is_cancelled == "0" && idr_anggaran < 100000000 ) {
-					status = 'FP3 (telah disetujui Kadept.Procurement)';
-					badge = 'success';
-				}
-				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
-					status = 'FP3 (Menunggu persetujuan Ka.Div SDM & Umum)';
-					badge = 'warning';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
-					status = 'FP3 telah di setujui Ka.Div SDM & Umum';
-					badge = 'success';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
-					status = 'FP3 (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
-					badge = 'danger fppbj_reject tooltip';
-				}
-				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
-					status = 'FP3 (Menunggu persetujuan Dir.Keuangan & Umum)';
-					badge = 'warning';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
-					status = 'FP3 telah di setujui Dir.Keuangan & Umum';
-					badge = 'success';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
-					status = 'FP3 (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
-					badge = 'danger fppbj_reject tooltip';
-				}
-				else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 10000000000) {
-					status = 'FP3 (Menunggu persetujuan Dir.Utama)';
-					badge = 'warning';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
-					console.log('Masuk Ke Kondisi Sukses >10M ');
-					status = 'FP3 telah di setujui Dir.Utama';
-					badge = 'success';
-				} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
-					status = 'FP3 (Direvisi Dir.Utama)<span class="tooltiptext reject">' + keterangan + '</span>';
-					badge = 'danger fppbj_reject tooltip';
-				} else if (is_cancelled == "1"){
-					status = 'FP3 (Batal)<span class="tooltiptext reject">' + desc_batal + '</span>';
-					badge = 'danger fppbj_reject tooltip';
-				}
+			}
+			else if (is_status == 1 && is_approve == 1 && is_reject == 0 && is_cancelled == "0") {
+				status = 'FP3 (Menunggu Admin Pengendalian)';
+				badge = 'warning';
+			}
+			else if (is_status == 1 && is_approve == 2 && is_reject == 0 && is_cancelled == "0") {
+				status = 'FP3 (Menunggu Ka.Dept Procurement)';
+				badge = 'warning';
+			}
+			else if (is_status == 1 && is_approve == 1 && is_reject == 1 && is_cancelled == "0") {
+				status = 'FP3 (Direvisi Ka.Dept User) <span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fp3_reject tooltip';
+			}
+			else if (is_status == 1 && is_approve == 2 && is_reject == 1 && is_cancelled == "0") {
+				status = 'FP3 (Direvisi Admin Pengendalian)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fp3_reject tooltip';
+			}
+			else if (is_status == 1 && is_approve == 3 && is_reject == 1 && is_cancelled == "0") {
+				status = 'FP3 (Direvisi Ka.Dept Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fp3_reject tooltip';
+			}
+			else if (is_status == 1 && is_approve == 3 && is_reject == 0 && is_cancelled == "0" && idr_anggaran < 100000000 ) {
+				status = 'FP3 (telah disetujui Kadept.Procurement)';
+				badge = 'success';
+			}
+			else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
+				status = 'FP3 (Menunggu persetujuan Ka.Div SDM & Umum)';
+				badge = 'warning';
+			} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
+				status = 'FP3 telah di setujui Ka.Div SDM & Umum';
+				badge = 'success';
+			} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000) {
+				status = 'FP3 (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
+			else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
+				status = 'FP3 (Menunggu persetujuan Dir.Keuangan & Umum)';
+				badge = 'warning';
+			} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
+				status = 'FP3 telah di setujui Dir.Keuangan & Umum';
+				badge = 'success';
+			} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
+				status = 'FP3 (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">' + keterangan + '</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
+			else if (is_status == 1 && is_approve == "3" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 10000000000) {
+				status = 'FP3 (Menunggu persetujuan Dir.Utama)';
+				badge = 'warning';
+			} else if (is_status == 1 && is_approve == "4" && is_reject == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
+				console.log('Masuk Ke Kondisi Sukses >10M ');
+				status = 'FP3 telah di setujui Dir.Utama';
+				badge = 'success';
+			} else if (is_status == 1 && is_approve == "4" && is_reject == 1 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
+				status = 'FP3 (Direvisi Dir.Utama)<span class="tooltiptext reject">' + keterangan + '</span>';
+				badge = 'danger fppbj_reject tooltip';
+			} else if (is_cancelled == "1"){
+				status = 'FP3 (Batal)<span class="tooltiptext reject">' + desc_batal + '</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
 			else{
 				$('.note'+_id).empty();
 			}

@@ -214,4 +214,239 @@ class Fkpbj_model extends MY_Model
 		$query = $this->db->where('del', 0)->where('id_fppbj', $id_fppbj)->order_by('id', 'desc')->get('ms_fp3');
 		return $query->row_array();
 	}
+
+	public function get_fkpbj_pending($year,$is_perencanaan="1"){
+		$id_role = $this->session->userdata('admin')['id_role'];
+		$id_division = $this->session->userdata('admin')['id_division'];
+
+		if ($id_division != 1 && $id_division != 5) {
+			$divisi = "id_division = ".$id_division." AND ";
+		} else{
+			$divisi = " ";
+		}
+		
+		if($year != ''){
+			$q = ' AND entry_stamp LIKE "%'.$year.'%" ';
+		} else{
+			$q = '';
+		}
+
+		if ($is_perencanaan != '1') {
+			$perencanaan = " AND is_perencanaan = ".$is_perencanaan;
+		} else {
+			$perencanaan = " AND is_perencanaan = 1";
+		}
+		
+		$sql = "	SELECT
+						*
+				  	FROM
+				  		ms_fppbj
+				  	WHERE 
+				  		$divisi del = 0 AND is_approved = 0 AND is_status = 2 AND is_reject = 0 ".$q.$perencanaan;
+		
+		$query = $this->db->query($sql);
+
+		
+
+		
+		return $query;
+	}
+
+	public function get_total_fkpbj_semua($year,$is_perencanaan="1"){
+		$id_role = $this->session->userdata('admin')['id_role'];
+		$id_division = $this->session->userdata('admin')['id_division'];
+
+		if($year != ''){
+			$q = ' AND entry_stamp LIKE "%'.$year.'%" ';
+		} else{
+			$q = '';
+		}
+
+		if ($is_perencanaan != '1') {
+			$perencanaan = " AND is_perencanaan = ".$is_perencanaan;
+		} else {
+			$perencanaan = " AND is_perencanaan = 1";
+		}
+
+		$sql = "SELECT
+						*
+				  FROM
+				  		ms_fppbj
+				  WHERE 
+				  		is_status = 2 AND del = 0".$q.$perencanaan;
+
+		if ($id_division != 1 && $id_division != 5) {
+			$sql .= " AND id_division = ".$id_division;
+		}
+		
+		$query = $this->db->query($sql);
+		return $query;
+	}
+
+	public function get_fkpbj_selesai($year,$is_perencanaan='1'){
+		$id_division = $this->session->userdata('admin')['id_division'];
+
+		if ($id_division != 1 && $id_division != 5) {
+			$divisi = "id_division = ".$id_division." AND ";
+		}else{
+			$divisi = '';
+		}
+
+		if($year != ''){
+			$q = ' entry_stamp LIKE "%'.$year.'%" AND ';
+		} else{
+			$q = '';
+		}
+
+        if ($is_perencanaan != '1') {
+            $sql = "SELECT * from ms_fppbj a where a.is_status = 1 AND a.is_perencanaan = 2 AND YEAR(a.entry_stamp) = $year and is_approved = 3";
+        } else {
+            $sql = "SELECT
+					*
+				FROM
+					ms_fppbj
+				WHERE 
+					is_approved_hse < 2
+                        AND (".$divisi." $q is_perencanaan = 1 AND is_status = 2 AND is_reject = 0 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR idr_anggaran > 100000000))
+					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 2 AND is_reject = 0 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000)
+					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 2 AND del = 0)
+					";
+        }
+        
+		$query = $this->db->query($sql);
+		return $query;
+	}
+
+	public function get_fkpbj_reject($year,$is_perencanaan="1"){
+		$id_role = $this->session->userdata('admin')['id_role'];
+		$id_division = $this->session->userdata('admin')['id_division'];
+
+		if ($id_division!= 1 && $id_division != 5) {
+			$divisi = "id_division = ".$id_division." AND ";
+		} else{
+			$divisi = '';
+		}
+
+		if($year != ''){
+			$q = ' AND entry_stamp LIKE "%'.$year.'%" AND ';
+		} else{
+			$q = ' AND ';
+		}
+
+		if ($is_perencanaan != '1') {
+			$perencanaan = " is_perencanaan = ".$is_perencanaan;
+		} else {
+			$perencanaan = " is_perencanaan = 1";
+		}
+		
+		$sql = "SELECT
+						*
+				  FROM
+				  		ms_fppbj
+				  WHERE 
+				  ".$divisi."
+				  		is_writeoff = 0
+						AND 
+						(is_status = 2 $q $perencanaan AND del = 0 AND is_reject = 1 AND idr_anggaran < 100000000)
+                        OR
+						(is_status = 2 $q $perencanaan AND del = 0 AND is_reject = 1 AND idr_anggaran > 100000000)";
+		
+		$query = $this->db->query($sql);
+	
+		return $query;
+	}
+
+	public function get_pending_dirut($year = "", $is_perencanaan = "1")
+	{
+		$admin = $this->session->userdata('admin');
+
+		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
+			$q = "id_division = " . $admin['id_division'] . " AND";
+		}
+
+		if ($year != '') {
+			$q2 = ' entry_stamp LIKE "%' . $year . '%" AND';
+		} else {
+			$q2 = '';
+		}
+
+		if ($is_perencanaan != '1') {
+			$perencanaan = " is_perencanaan = " . $is_perencanaan;
+		} else {
+			$perencanaan = " is_perencanaan = 1";
+		}
+
+		$query = "SELECT 
+						* 
+					FROM 
+						ms_fppbj
+					WHERE
+						$q $q2 $perencanaan AND is_status = 0 AND is_approved = 3 AND is_reject = 0 AND is_writeoff = 0 AND idr_anggaran >= 10000000000";
+		return $this->db->query($query);
+	}
+
+	public function get_pending_dirke($year = "", $is_perencanaan = "1")
+	{
+		$admin = $this->session->userdata('admin');
+
+		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
+			$q = "id_division = " . $admin['id_division'] . " AND";
+		}
+
+		if ($year != '') {
+			$q2 = ' entry_stamp LIKE "%' . $year . '%" AND';
+		} else {
+			$q2 = '';
+		}
+
+		if ($is_perencanaan != '1') {
+			$perencanaan = " is_perencanaan = " . $is_perencanaan;
+		} else {
+			$perencanaan = " is_perencanaan = 1";
+		}
+
+		$query = "SELECT 
+						* 
+					FROM 
+						ms_fppbj
+					WHERE
+						$q $q2 $perencanaan AND del = 0 AND is_status = 0 AND is_approved = 3 AND is_reject = 0 AND is_writeoff = 0 AND (idr_anggaran > 1000000000 AND idr_anggaran <= 10000000000)";
+
+		return $this->db->query($query);
+	}
+
+	public function get_pending_dirsdm($year = "", $is_perencanaan = "1")
+	{
+		$admin = $this->session->userdata('admin');
+
+		if ($admin['id_division'] != 1 && $admin['id_division'] != 5) {
+			$q = "id_division = " . $admin['id_division'] . " AND";
+		}
+
+		if ($year != '') {
+			$q2 = ' entry_stamp LIKE "%' . $year . '%" AND';
+		} else {
+			$q2 = '';
+		}
+
+		if ($is_perencanaan != '1') {
+			$perencanaan = " is_perencanaan = " . $is_perencanaan;
+		} else {
+			$perencanaan = " is_perencanaan = 1";
+		}
+
+		$query = "SELECT 
+						* 
+					FROM 
+						ms_fppbj
+					WHERE
+						$q $q2 $perencanaan AND
+						is_status = 2 AND 
+				        is_approved = 3 AND 
+				        is_reject = 0 AND 
+				        is_writeoff = 0 AND 
+				        ((idr_anggaran > 100000000 AND idr_anggaran <= 1000000000)) AND del = 0";
+
+		return $this->db->query($query);
+	}
 }

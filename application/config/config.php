@@ -23,10 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://10.10.10.3/eproc_nusantararegas/';
-$config['pengadaan_url'] = 'http://10.10.10.3/eproc_pengadaan/';
-$config['vms_url'] = 'https://eproc.nusantararegas.com/eproc_nusantararegas/';
-$config['vms_pengadaan_url'] = 'https://eproc.nusantararegas.com/eproc_pengadaan/';
+$config['base_url'] = 'http://local.eproc.intra.com/eproc_nusantararegas/';
+$config['pengadaan_url'] = 'http://local.eproc.intra.com/eproc_pengadaan/';
+$config['vms_url'] = 'http://local.eproc.vms.com/eproc_nusantararegas/';
+$config['vms_pengadaan_url'] = 'http://local.eproc.vms.com/eproc_pengadaan/';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -216,7 +217,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |/application/logs/application/logs
 */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 2;
 
 /*
 |--------------------------------------------------------------------------

@@ -1290,6 +1290,21 @@ class Pemaketan extends MY_Controller
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
+				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 7 && $data['idr_anggaran'] > 100000000 && $data['idr_anggaran'] <= 1000000000) {
+					$param = 4;
+					$button = $btn_setuju . $btn_reject . $btn_cancel;
+					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
+							</fieldset>';
+				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 8 && $data['idr_anggaran'] > 1000000000 && $data['idr_anggaran'] <= 10000000000) {
+					$param = 4;
+					$button = $btn_setuju . $btn_reject . $btn_cancel;
+					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
+							</fieldset>';
+				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 9 && $data['idr_anggaran'] > 10000000000) {
+					$param = 4;
+					$button = $btn_setuju . $btn_reject . $btn_cancel;
+					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
+							</fieldset>';
 				} else {
 					$button = $btn_cancel;
 				}

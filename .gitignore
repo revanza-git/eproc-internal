@@ -1,16 +1,10 @@
 .DS_Store
 
 application/cache/
-<<<<<<< HEAD
 assets/lampiran/
 application/config/config.php
 application/config/database.php
 application/config/constants.php
 application/logs/
-=======
-application/config/config.php
-application/config/database.php
-application/logs/
-
-assets/lampiran/
->>>>>>> 0aabe59c7924ecd6b432524ec79b2e63bf741fe6
+web.config
+composer.lock
