@@ -1730,32 +1730,83 @@ $(function(){
 			// Data status is now on FKPBJ but not approved yet 
 			else if (is_status == '2' && is_approve == "0" && is_reject == 0 && is_writeoff == 0) {
 					status = 'FKPBJ (FKPBJ ini dilanjutkan ke ka.Dept user)';
-					badge = 'warning';
-				}
-				// FKPBJ waiting to approve by manager user
-				else if (is_status == "2" && is_approve == "1" && is_reject == 0 && is_writeoff == 0) {
-					status = 'FKPBJ (FKPBJ ini dilanjutkan ke Admin Procurement)';
-					badge = 'warning';
-				}
+				badge = 'warning';
+			}
+			// FKPBJ waiting to approve by manager user
+			else if (is_status == "2" && is_approve == "1" && is_reject == 0 && is_writeoff == 0) {
+				status = 'FKPBJ (FKPBJ ini dilanjutkan ke Admin Procurement)';
+				badge = 'warning';
+			}
 
-				else if (is_status == "2" && is_approve == "2" && is_reject == 0 && is_writeoff == 0) {
-					status = 'FKPBJ (FKPBJ ini dilanjutkan ke Ka.dept procurement)';
+			else if (is_status == "2" && is_approve == "2" && is_reject == 0 && is_writeoff == 0) {
+				status = 'FKPBJ (FKPBJ ini dilanjutkan ke Ka.dept procurement)';
+				badge = 'warning';
+			}
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0) {
+				status = 'FKPBJ (Disetujui Ka.Dept Procurement)';
+				badge = 'success';
+			}
+			else if (is_status == "2" && is_reject == "1") {
+				status = 'FKPBJ (Ditolak Ka.Dept Procurement)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger';
+			}
+			// FKPBJ is now active
+
+			// >100Jt < 1M (Pending Status)
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000) && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan'))) {
+					status = 'FKPBJ (Menunggu persetujuan Ka.Div SDM & Umum)';
 					badge = 'warning';
-				}
-				// FKPBJ waiting to approve by admin 
-				// else if (is_status == "2" && is_approve == "2" && is_reject == 0 && is_writeoff == 0) {
-				// 	status = 'FKPBJ (FKPBJ ini dilanjutkan ke admin pengendalian)';
-				// 	badge = 'warning';
-				// }
-				else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0) {
-					status = 'FKPBJ';
-					badge = 'success';
-				}
-				else if (is_status == "2" && is_reject == "1") {
-					status = 'FKPBJ';
-					badge = 'danger';
-				}
-				// FKPBJ is now active
+			}
+			// >100Jt < 1M (Success Status)
+			else if (is_status == "2" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')) {
+				console.log('Masuk Ke Kondisi Sukses >100Jt < 1M ');
+				status = 'FKPBJ telah di setujui Ka.Div SDM & Umum';
+				badge = 'success';
+			}
+			// >100Jt < 1M (Reject Status)
+			else if (is_status == "2" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 100000000 && idr_anggaran <= 1000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')) {
+				status = 'FKPBJ (Di tolak Ka.Div SDM & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
+
+			// >1M < 10M (Pending Status)
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')) {
+				status = 'FKPBJ (Menunggu persetujuan Dir.Keuangan & Umum)';
+				badge = 'warning';
+			}
+			// >1M < 10M (Success Status)
+			else if (is_status == "2" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')) {
+				console.log('Masuk Ke Kondisi Sukses >1M < 10M ');
+				status = 'FKPBJ telah di setujui Dir.Keuangan & Umum';
+				badge = 'success';
+			}
+			// >1M < 10M (Reject Status)
+			else if (is_status == "2" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')) {
+				status = 'FKPBJ (Di tolak Dir.Keuangan & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
+
+			// > 10M (Pending Status)
+			else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 10000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')) {
+				status = 'FKPBJ (Menunggu persetujuan Dir.Utama)';
+				badge = 'warning';
+			}
+			// > 10M (Success Status)
+			else if (is_status == "2" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && idr_anggaran >= 1000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')) {
+				console.log('Masuk Ke Kondisi Sukses >10M ');
+				status = 'FKPBJ telah di setujui Dir.Utama';
+				badge = 'success';
+			}
+			// > 10M (Reject Status)
+			else if (is_status == "2" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && idr_anggaran >= 1000000000 && (metode_pengadaan == 'Penunjukan Langsung' || metode_pengadaan == 'Pemilihan Langsung' || metode_pengadaan === 'Pelelangan')) {
+				status = 'FKPBJ (Di tolak Dir.Utama)<span class="tooltiptext reject">'+keterangan+'</span>';
+				badge = 'danger fppbj_reject tooltip';
+			}
+			// FKPBJ Normal
+			// else if (is_status == "2" && is_approve == "3" && is_reject == 0 && is_writeoff == 0) {
+			// 	status = 'FKPBJ';
+			// 	badge = 'success';
+			// }
 				
 			
 			// FP3		

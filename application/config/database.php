@@ -75,14 +75,20 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.10.11.20',
+	'hostname' => 'localhost',
 	'username' => 'root',
+<<<<<<< HEAD
 	'password' => 'Nusantara1234',
 	'database' => 'eproc_perencanaan_dev',
 	'dbdriver' => 'mysql',
+=======
+	'password' => 'admin123',
+	'database' => 'eproc_perencanaan_vms',
+	'dbdriver' => 'mysqli',
+>>>>>>> f570bbfcfd474a17c8c60fa04b550dcd8ef56317
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => TRUE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -97,14 +103,20 @@ $db['default'] = array(
 
 $db['eproc_'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.10.11.20',
+	'hostname' => 'localhost',
 	'username' => 'root',
+<<<<<<< HEAD
 	'password' => 'Nusantara1234',
 	'database' => 'eproc_dev',
 	'dbdriver' => 'mysql',
+=======
+	'password' => 'admin123',
+	'database' => 'eproc_vms',
+	'dbdriver' => 'mysqli',
+>>>>>>> f570bbfcfd474a17c8c60fa04b550dcd8ef56317
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => TRUE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -119,14 +131,20 @@ $db['eproc_'] = array(
 
 $db['eproc'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.10.11.20',
+	'hostname' => 'localhost',
 	'username' => 'root',
+<<<<<<< HEAD
 	'password' => 'Nusantara1234',
 	'database' => 'eproc_dev',
 	'dbdriver' => 'mysql',
+=======
+	'password' => 'admin123',
+	'database' => 'eproc_vms',
+	'dbdriver' => 'mysqli',
+>>>>>>> f570bbfcfd474a17c8c60fa04b550dcd8ef56317
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => TRUE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -141,14 +159,14 @@ $db['eproc'] = array(
 
 $db['test'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.10.11.20',
+	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'Nusantara1234',
 	'database' => 'eproc_dev',
 	'dbdriver' => 'mysql',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => TRUE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',

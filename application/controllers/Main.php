@@ -664,15 +664,15 @@ class Main extends CI_Controller {
 	public function rekapFKPBJ($year)
 	{
 		$total_pending_dir_fkpbj = $this->mm->total_pending_dir_fkpbj($year);
-		$pending_dirsdm		= $this->fk->statusApprove(7, $year);
-		$fkpbj_pending_dirke 	= $this->fk->statusApprove(8, $year);
-		$fkpbj_pending_dirut 	= $this->fk->statusApprove(9, $year);
-		$total_fkpbj 		= $this->fk->statusApprove(5,$year);
-		$fkpbj_pending 		= $this->fk->statusApprove(0,$year);
+		$pending_dirsdm		= $this->fk->get_pending_dirsdm($year);
+		$fkpbj_pending_dirke 	= $this->fk->get_pending_dirke($year);
+		$fkpbj_pending_dirut 	= $this->fk->get_pending_dirut($year);
+		$total_fkpbj 		= $this->fk->get_total_fkpbj_semua($year);
+		$fkpbj_pending 		= $this->fk->get_fkpbj_pending($year);
 		$fkpbj_pending_ap 	= $this->fk->statusApprove(1,$year);
 		$fkpbj_pending_kp	= $this->fk->statusApprove(2,$year);
-		$fkpbj_success 		= $this->fk->statusApprove(3,$year);
-		$fkpbj_reject 		= $this->fk->statusApprove(4,$year);
+		$fkpbj_success 		= $this->fk->get_fkpbj_selesai($year);
+		$fkpbj_reject 		= $this->fk->get_fkpbj_reject($year);
 
 		$width_fkpbj_success = ($fkpbj_success->num_rows() / $total_fkpbj->num_rows()) * 100;
 
@@ -993,7 +993,7 @@ class Main extends CI_Controller {
 		$total_fppbj_dirsdm = $this->mm->get_total_fppbj_dirsdm($year,2);
 		$total_pending_dir  = $this->mm->total_pending_dir($year,2);
 
-		$width_fppbj_selesai = ($fppbj_selesai->num_rows() / $total_perencanaan) * 100;
+		$width_fppbj_selesai = ($fppbj_selesai->num_rows() / $total_fppbj_semua) * 100;
 
 		$res = '<div class="panel" style="height: 550px">
 
@@ -1488,20 +1488,20 @@ class Main extends CI_Controller {
 
 	public function rekapFKPBJBaru($year)
 	{
-		$total_fkpbj 		= $this->fk->statusApprove(5, $year, 2);
-		$fkpbj_pending 		= $this->fk->statusApprove(0, $year, 2);
-		$fkpbj_pending_ap 	= $this->fk->statusApprove(1, $year, 2);
-		$fkpbj_pending_kp	= $this->fk->statusApprove(2, $year, 2);
-		$fkpbj_success 		= $this->fk->statusApprove(3, $year, 2);
-		$fkpbj_reject 		= $this->fk->statusApprove(4, $year, 2);
+		$total_pending_dir_fkpbj = $this->mm->total_pending_dir_fkpbj($year,2);
+		$pending_dirsdm		= $this->fk->get_pending_dirsdm($year,2);
+		$fkpbj_pending_dirke 	= $this->fk->get_pending_dirke($year,2);
+		$fkpbj_pending_dirut 	= $this->fk->get_pending_dirut($year,2);
+		$total_fkpbj 		= $this->fk->get_total_fkpbj_semua($year,2);
+		$fkpbj_pending 		= $this->fk->get_fkpbj_pending($year,2);
+		$fkpbj_pending_ap 	= $this->fk->statusApprove(1,$year,2);
+		$fkpbj_pending_kp	= $this->fk->statusApprove(2,$year,2);
+		$fkpbj_success 		= $this->fk->get_fkpbj_selesai($year,2);
+		$fkpbj_reject 		= $this->fk->get_fkpbj_reject($year,2);
 
-		if ($year == '2022') {
-			$total_fkpbj_success_rows = 29;
-			$total_fkpbj_rows = 29;
-		} else {
-			$total_fkpbj_success_rows = $fkpbj_success->num_rows();
-			$total_fkpbj_rows = $total_fkpbj->num_rows();
-		}
+		$total_fkpbj_success_rows = $fkpbj_success->num_rows();
+		$total_fkpbj_rows = $total_fkpbj->num_rows();
+	
 		
 		$width_fkpbj_success = ($total_fkpbj_success_rows / $total_fkpbj_rows) * 100;
 
@@ -1588,12 +1588,51 @@ class Main extends CI_Controller {
 			$no++;
 		}
 		$width_fkpbj_reject = ($fkpbj_reject->num_rows() / $total_fkpbj->num_rows()) * 100;
+		//----Pejabat Pengadaan----
+		$width_pending_dir = ($total_pending_dir_fkpbj->num_rows() / $total_fkpbj->num_rows()) * 100;
 		$res .= '</div>
+		  </div>
+		  <div class="summary">
+			<div class="summary-title">
+			  Belum disetujui Pejabat Pengadaan
+			  <span>' . $total_pending_dir_fkpbj->num_rows() . '</span>
+			</div>
+			<div class="summary-bars">
+			  <span class="bar-top is-warning" style="width:' . $width_pending_dir . '%"></span>
+			  <span class="bar-bottom"></span>
+			</div>
+			<button class="accordion-header">Belum di setujui Kadiv SDM umum
+			<span class="badge is-warning">' . $pending_dirsdm->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
+			<div class="accordion-panel">';
+		$no = 1;
+		foreach ($pending_dirsdm->result() as $key) {
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$no++;
+		}
+		$res .= '</div>';
+		$res .= '<button class="accordion-header">Belum disetujui Direktur Keuangan
+                <span class="badge is-warning">' . $fkpbj_pending_dirke->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
+				<div class="accordion-panel">';
+		$no = 1;
+		foreach ($fkpbj_pending_dirke->result() as $key) {
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$no++;
+		}
+		$res .= '</div>';
+		$res .= '<button class="accordion-header">Belum disetujui Direktur Utama
+                <span class="badge is-warning">' . $fkpbj_pending_dirut->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
+				<div class="accordion-panel">';
+		$no = 1;
+		foreach ($fkpbj_pending_dirut->result() as $key) {
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$no++;
+		}
+
+				$width_fkpbj_reject = ($fkpbj_reject->num_rows() / $total_fkpbj->num_rows()) * 100;
+			$res .= '</div>
               </div>
-              
             </div>
 		  </div>';
-
 		echo $res;
 	}
 }
