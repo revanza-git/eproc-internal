@@ -1863,7 +1863,7 @@ class Pemaketan extends MY_Controller
         if (empty($dataFPPBJ->row_array())) {
             $dropdown .= '<fieldset class="form-group form19"><label>Pilih PIC </label><select name="id_pic" class="form-control">';
             foreach ($dataPIC->result() as $key) {
-                $dropdown .= '<option value="' . $key->id . '">' . $key->name . '</option>';
+                $dropdown .= '<option value="' . $key->id . '">' . $key->name . ' - '.$key->email. '</option>';
             }
             $dropdown .= '</select></fieldset>';
         } else {

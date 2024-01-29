@@ -545,7 +545,7 @@ class Pemaketan_model extends MY_Model{
 			$id_pic = " AND id != 110 ";
 		}
 
-		$query = "SELECT id, name FROM ms_admin WHERE id_role_app2 = 6 AND del = 0 ".$id_pic;
+		$query = "SELECT id, name, email FROM ms_admin WHERE id_role_app2 = 6 AND del = 0 ".$id_pic;
 		// }
 		
 		$query = $this->eproc_db->query($query);
