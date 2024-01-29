@@ -307,9 +307,8 @@ class Fkpbj_model extends MY_Model
 					ms_fppbj
 				WHERE 
 					is_approved_hse < 2
-                        AND (".$divisi." $q is_perencanaan = 1 AND is_status = 2 AND is_reject = 0 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000 OR idr_anggaran > 100000000))
+                    AND (".$divisi." $q is_perencanaan = 1 AND is_status = 2 AND is_reject = 0 AND del = 0 AND is_approved = 3 AND (idr_anggaran <= 100000000))
 					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 2 AND is_reject = 0 AND del = 0 AND is_approved = 4 AND idr_anggaran > 100000000)
-					OR  (".$divisi." $q is_perencanaan = 1 AND is_status = 2 AND del = 0)
 					";
         }
         

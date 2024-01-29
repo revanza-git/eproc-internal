@@ -30,23 +30,6 @@ class Pengadaan_model extends CI_Model {
 
 		$query .= " GROUP BY YEAR(entry_stamp)";
 
-		// $query = "	SELECT 
-		// 	count(t.id) AS total, -- or any other columns you want to display
-		// 	SUBSTRING_INDEX(SUBSTRING_INDEX(t.year_anggaran, ',', n.n+1), ',', -1) AS year
-		// 	FROM 
-		// 		ms_fppbj AS t
-		// 	JOIN (
-		// 		SELECT 0 AS n UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
-		// 	) AS n
-		// 	ON 
-		// 		CHAR_LENGTH(t.year_anggaran) - CHAR_LENGTH(REPLACE(t.year_anggaran, ',', '')) >= n.n
-		// 	WHERE
-		// 		SUBSTRING_INDEX(SUBSTRING_INDEX(t.year_anggaran, ',', n.n+1), ',', -1) != ''
-		// 			AND t.del = 0
-		// 	GROUP BY year";
-
-		//var_dump($query);
-
 		if($this->input->post('filter')){
 			$query .= $this->filter($form, $this->input->post('filter'), false);
 		}

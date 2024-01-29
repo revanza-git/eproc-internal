@@ -25,7 +25,6 @@ class Pengadaan extends MY_Controller {
 	{
 		$config['query'] = $this->pm->getData();
 		$return = $this->tablegenerator->initialize($config);
-		// print_r($return);
 		echo json_encode($return);
 	}
 
