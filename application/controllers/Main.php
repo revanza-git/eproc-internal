@@ -694,7 +694,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 			$no = 1; 
 			foreach ($fkpbj_success->result() as $key) {
-                $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+                $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 				$no++;
 			}
 
@@ -715,7 +715,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 				$no = 1; 
 				foreach ($fkpbj_pending->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 					$no++;
 			}			
 			
@@ -778,7 +778,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 		$no = 1;
 		foreach ($pending_dirsdm->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 		$res .= '</div>';
@@ -787,7 +787,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 		$no = 1;
 		foreach ($fkpbj_pending_dirke->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 		$res .= '</div>';
@@ -796,7 +796,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 		$no = 1;
 		foreach ($fkpbj_pending_dirut->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 
@@ -1505,6 +1505,9 @@ class Main extends CI_Controller {
 		
 		$width_fkpbj_success = ($total_fkpbj_success_rows / $total_fkpbj_rows) * 100;
 
+		
+
+
 		$res = '<div class="panel" style="height: 550px">
 		<div class="scrollbar" id="custom-scroll" style="height: 538px">
 		  <div class="container-title">
@@ -1522,7 +1525,10 @@ class Main extends CI_Controller {
 			<button class="accordion-header">Disetujui <span class="badge is-success">' . $total_fkpbj_success_rows . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
 			<div class="accordion-panel">';
 		$no = 1;
+
+		
 		foreach ($fkpbj_success->result() as $key) {
+			
 			$res .= '<p>' . $no . '. <a href="' . site_url('pemaketan/division/' . $key->id_division . '/' . $key->id . '/' . date('Y', strtotime($key->entry_stamp))) . '">' . $key->nama_pengadaan . '</a></p>';
 			$no++;
 		}
@@ -1606,7 +1612,7 @@ class Main extends CI_Controller {
 			<div class="accordion-panel">';
 		$no = 1;
 		foreach ($pending_dirsdm->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 		$res .= '</div>';
@@ -1615,7 +1621,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 		$no = 1;
 		foreach ($fkpbj_pending_dirke->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 		$res .= '</div>';
@@ -1624,7 +1630,7 @@ class Main extends CI_Controller {
 				<div class="accordion-panel">';
 		$no = 1;
 		foreach ($fkpbj_pending_dirut->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
+			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
 			$no++;
 		}
 

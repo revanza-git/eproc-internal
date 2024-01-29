@@ -1805,6 +1805,7 @@ $(function(){
 			var idr_anggaran			= value[16].value;
 			var is_cancelled			= value[20].value;
 			var desc_batal				= value[21].value;
+
 			// console.log(value);
 			// console.log(value[1].value)
 			// console.log(metode_pengadaan)
