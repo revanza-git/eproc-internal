@@ -8,3 +8,4 @@ application/config/constants.php
 application/logs/
 web.config
 composer.lock
+application/config/database.php
