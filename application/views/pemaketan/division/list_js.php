@@ -1895,15 +1895,15 @@ $(function(){
 				status = 'FPPBJ (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
+			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
 				status = 'FPPBJ (Menunggu persetujuan Dir.Keuangan & Umum)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
+			else if (is_status == "0" && is_approve == "5" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran > 1000000000 && idr_anggaran <= 10000000000) {
 				status = 'FPPBJ telah di setujui Dir.Keuangan & Umum';
 				badge = 'success';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
+			else if (is_status == "0" && is_approve == "4" && is_reject == 1 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000 && idr_anggaran <= 10000000000) {
 				status = 'FPPBJ (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}

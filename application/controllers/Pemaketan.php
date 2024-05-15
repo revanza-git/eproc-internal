@@ -1256,23 +1256,23 @@ class Pemaketan extends MY_Controller
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
 				}
-				else if ($data['is_approved'] == 3 && $admin['id_role'] == 4 && $admin['id_division'] == 5 && $data['idr_anggaran'] <= 100000000) {
+				else if ($data['is_approved'] == 3 && $admin['id_role'] == 4 && $admin['id_division'] == 5) {
 					$param = 4;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 7 && $data['idr_anggaran'] > 100000000 && $data['idr_anggaran'] <= 1000000000) {
-					$param = 4;
+				} else if ($data['is_approved'] == 4 && $admin['id_role'] == 7) {
+					$param = 5;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 8 && $data['idr_anggaran'] > 1000000000 && $data['idr_anggaran'] <= 10000000000) {
-					$param = 4;
+				} else if ($data['is_approved'] == 5 && $admin['id_role'] == 8) {
+					$param = 6;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 9 && $data['idr_anggaran'] > 10000000000) {
-					$param = 4;
+				} else if ($data['is_approved'] == 6 && $admin['id_role'] == 9) {
+					$param = 7;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
@@ -1307,18 +1307,18 @@ class Pemaketan extends MY_Controller
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 7 && $data['idr_anggaran'] > 100000000 && $data['idr_anggaran'] <= 1000000000) {
+				} else if ($data['is_approved'] == 4 && $admin['id_role'] == 7) {
 					$param = 4;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 8 && $data['idr_anggaran'] > 1000000000 && $data['idr_anggaran'] <= 10000000000) {
-					$param = 4;
+				} else if ($data['is_approved'] == 4 && $admin['id_role'] == 8) {
+					$param = 5;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 3 && $admin['id_role'] == 9 && $data['idr_anggaran'] > 10000000000) {
-					$param = 4;
+				} else if ($data['is_approved'] == 5 && $admin['id_role'] == 9) {
+					$param = 6;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
@@ -1863,7 +1863,7 @@ class Pemaketan extends MY_Controller
         if (empty($dataFPPBJ->row_array())) {
             $dropdown .= '<fieldset class="form-group form19"><label>Pilih PIC </label><select name="id_pic" class="form-control">';
             foreach ($dataPIC->result() as $key) {
-                $dropdown .= '<option value="' . $key->id . '">' . $key->name . ' - '.$key->email. '</option>';
+                $dropdown .= '<option value="' . $key->id . '">' .$key->email. '</option>';
             }
             $dropdown .= '</select></fieldset>';
         } else {

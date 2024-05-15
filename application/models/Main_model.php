@@ -803,7 +803,7 @@ class Main_model extends CI_model{
 					FROM 
 						ms_fppbj
 					WHERE
-						$q $q2 $perencanaan AND is_status = 0 AND is_approved = 3 AND is_reject = 0 AND is_writeoff = 0 AND idr_anggaran >= 10000000000";
+						$q $q2 $perencanaan AND is_status = 0 AND is_approved = 6 AND is_reject = 0 AND is_writeoff = 0 AND idr_anggaran >= 10000000000";
 		return $this->db->query($query);
 	}
 
@@ -832,7 +832,7 @@ class Main_model extends CI_model{
 					FROM 
 						ms_fppbj
 					WHERE
-						$q $q2 $perencanaan AND del = 0 AND is_status = 0 AND is_approved = 3 AND is_reject = 0 AND is_writeoff = 0 AND (idr_anggaran > 1000000000 AND idr_anggaran <= 10000000000)";
+						$q $q2 $perencanaan AND del = 0 AND is_status = 0 AND is_approved = 5 AND is_reject = 0 AND is_writeoff = 0 AND (idr_anggaran > 1000000000 AND idr_anggaran <= 10000000000)";
 
 		return $this->db->query($query);
 	}
@@ -864,7 +864,7 @@ class Main_model extends CI_model{
 					WHERE
 						$q $q2 $perencanaan AND
 						is_status = 0 AND 
-				        is_approved = 3 AND 
+				        is_approved = 4 AND 
 				        is_reject = 0 AND 
 				        is_writeoff = 0 AND 
 				        ((idr_anggaran > 100000000 AND idr_anggaran <= 1000000000)) AND del = 0";
@@ -893,7 +893,7 @@ class Main_model extends CI_model{
 					WHERE
 						$q $q2 AND
 						is_status = 0 AND 
-				        is_approved = 3 AND 
+				        is_approved = 4 AND 
 				        is_reject = 0 AND 
 				        ((idr_anggaran > 100000000 AND idr_anggaran <= 1000000000)) AND del = 0";
 
