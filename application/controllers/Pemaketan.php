@@ -1256,27 +1256,22 @@ class Pemaketan extends MY_Controller
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
 				}
-				else if ($data['is_approved'] == 3 && $admin['id_role'] == 4 && $admin['id_division'] == 5) {
+				else if ($data['is_approved'] == 3 && (($admin['id_role'] == 4 && $admin['id_division'] == 5) || $admin['id_role'] == 7)) {
 					$param = 4;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 4 && $admin['id_role'] == 7) {
+				} else if ($data['is_approved'] == 4 && $admin['id_role'] == 8) {
 					$param = 5;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 5 && $admin['id_role'] == 8) {
+				} else if ($data['is_approved'] == 5 && $admin['id_role'] == 9) {
 					$param = 6;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
 							</fieldset>';
-				} else if ($data['is_approved'] == 6 && $admin['id_role'] == 9) {
-					$param = 7;
-					$button = $btn_setuju . $btn_reject . $btn_cancel;
-					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>
-							</fieldset>';
-				} elseif ($data['is_approved'] == 0 && $data['id_division'] == 1 && $this->admin['id_division'] == 1 && $this->admin['id_role'] == 2) {
+				} else if ($data['is_approved'] == 0 && $data['id_division'] == 1 && $this->admin['id_division'] == 1 && $this->admin['id_role'] == 2) {
 					$param = 3;
 					$button = $btn_setuju . $btn_reject . $btn_cancel;
 					$tgl_approval = '<fieldset class="form-group read_only form12" for=""><label for="">Tanggal Approval</label><b>:</b><span><input type="date" name="tgl_approval" value="' . date('Y-m-d') . '"></span>

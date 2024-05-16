@@ -157,7 +157,18 @@ $(function(){
 				<?php if ($admin['id_role'] == 5 || $admin['id_division'] == 1){ ?>
 
 					else if (is_status == 0){
-						if (is_status == 0 && is_reject == 0 && del == 0 && is_approved_hse < 2 && ((del == 0 && _is_approve == 3 && (idr_anggaran <= 100000000 || (idr_anggaran > 100000000 && metode_pengadaan == 3)))) ||  (del == 0 && _is_approve == 4 && idr_anggaran > 100000000) && (metode_pengadaan != 3 || metode_pengadaan != 5)) {
+						if (is_status == 0 
+						&& is_reject == 0 
+						&& del == 0 
+						&& is_approved_hse < 2 
+						&& 
+						(
+							(del == 0 && _is_approve == 3 && idr_anggaran <= 100000000)
+							|| (del == 0 && _is_approve == 4 && (idr_anggaran > 100000000 && idr_anggaran <=1000000000))
+							|| (del == 0 && _is_approve == 5 && (idr_anggaran > 1000000000 && idr_anggaran <=10000000000)) 
+							||  (del == 0 && _is_approve == 6 && idr_anggaran > 10000000000)
+						)
+						&& (metode_pengadaan != 3 || metode_pengadaan != 5)) {
 								var _btn = _btn_fkpbj.concat(btn);
 		 						return _btn;
 						} else {
@@ -174,7 +185,6 @@ $(function(){
 					}
  				<?php }?>
  					else if (is_status == 2) {
- 						//console.log('Ke 2');
 						if (_is_approve == 3) {
 							return btn;
 						} else {
@@ -239,7 +249,17 @@ $(function(){
 					}
 	 				<?php if ($admin['id_role'] == 5 || $admin['id_division'] == 1) { ?>
 					else if (is_status == 0){
-						if (is_status == 0 && is_reject == 0 && del == 0 && is_approved_hse < 2 && ((del == 0 && _is_approve == 3 && (idr_anggaran <= 100000000 || (idr_anggaran > 100000000 && metode_pengadaan == 3)))) ||  (del == 0 && _is_approve == 4 && idr_anggaran > 100000000) && (metode_pengadaan != 3 || metode_pengadaan != 5)) {
+						if (is_status == 0 
+						&& is_reject == 0 
+						&& del == 0 && is_approved_hse < 2 
+						&& 
+						(
+							(del == 0 && _is_approve == 3 && idr_anggaran <= 100000000)
+							|| (del == 0 && _is_approve == 4 && (idr_anggaran > 100000000 && idr_anggaran <=1000000000))
+							|| (del == 0 && _is_approve == 5 && (idr_anggaran > 1000000000 && idr_anggaran <=10000000000)) 
+							||  (del == 0 && _is_approve == 6 && idr_anggaran > 10000000000)
+						)
+						&& (metode_pengadaan != 3 || metode_pengadaan != 5)) {
 								var _btn = _btn_fkpbj.concat(btn);
 		 						return _btn;
 						} else {
@@ -1883,7 +1903,7 @@ $(function(){
 				status = 'FPPBJ (Disetujui Kadept.Procurement)';
 				badge = 'success';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && ((idr_anggaran > 100000000 && idr_anggaran <= 1000000000))) {
+			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Menunggu persetujuan Ka.Div SDM & Umum)';
 				badge = 'warning';
 			}
@@ -1895,7 +1915,7 @@ $(function(){
 				status = 'FPPBJ (Direvisi Ka.Div SDM & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && (idr_anggaran > 1000000000 && idr_anggaran <= 10000000000)) {
+			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0") {
 				status = 'FPPBJ (Menunggu persetujuan Dir.Keuangan & Umum)';
 				badge = 'warning';
 			}
@@ -1907,11 +1927,11 @@ $(function(){
 				status = 'FPPBJ (Direvisi Dir.Keuangan & Umum)<span class="tooltiptext reject">'+keterangan+'</span>';
 				badge = 'danger fppbj_reject tooltip';
 			}
-			else if (is_status == "0" && is_approve == "3" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 10000000000) {
+			else if (is_status == "0" && is_approve == "5" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 10000000000) {
 				status = 'FPPBJ (Menunggu persetujuan Dir.Utama)';
 				badge = 'warning';
 			}
-			else if (is_status == "0" && is_approve == "4" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
+			else if (is_status == "0" && is_approve == "6" && is_reject == 0 && is_writeoff == 0 && is_cancelled == "0" && idr_anggaran >= 1000000000) {
 				status = 'FPPBJ telah di setujui Dir.Utama';
 				badge = 'success';
 			}
