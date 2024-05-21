@@ -24,11 +24,47 @@ class Pengadaan_model extends CI_Model {
 
 	public function getData()
 	{
+		$admin = $this->session->userdata('admin');
+		log_message('debug', print_r($admin['id_role'],true));
+
+		if($admin['id_role'] == 7){
+			$approve = " AND is_approved = 3 AND 
+			(ms_fppbj.is_status = 0 OR ms_fppbj.is_status = 2) AND 
+			ms_fppbj.is_reject = 0 AND 
+			ms_fppbj.is_writeoff = 0 AND 
+			((ms_fppbj.idr_anggaran > 100000000) AND 
+			(ms_fppbj.metode_pengadaan = 4 OR 
+			ms_fppbj.metode_pengadaan = 2 OR 
+			ms_fppbj.metode_pengadaan = 1))";
+		}else if($admin['id_role'] == 8){
+			$approve = " AND is_approved = 4 AND 
+			(ms_fppbj.is_status = 0 OR ms_fppbj.is_status = 2) AND 
+			ms_fppbj.is_reject = 0 AND 
+			ms_fppbj.is_writeoff = 0 AND 
+			((ms_fppbj.idr_anggaran > 1000000000) AND 
+			(ms_fppbj.metode_pengadaan = 4 OR 
+			ms_fppbj.metode_pengadaan = 2 OR 
+			ms_fppbj.metode_pengadaan = 1))";
+		}else if($admin['id_role'] == 9){
+			$approve = " AND is_approved = 5 AND 
+			(ms_fppbj.is_status = 0 OR ms_fppbj.is_status = 2) AND 
+			ms_fppbj.is_reject = 0 AND 
+			ms_fppbj.is_writeoff = 0 AND 
+			((ms_fppbj.idr_anggaran > 10000000000) AND 
+			(ms_fppbj.metode_pengadaan = 4 OR 
+			ms_fppbj.metode_pengadaan = 2 OR 
+			ms_fppbj.metode_pengadaan = 1))";
+		}else{
+			$approve= "";
+		}
+
 		$query = "	SELECT count(*) AS total, YEAR(entry_stamp) AS year
 					FROM ".$this->fppbj."
-					WHERE ms_fppbj.del = 0";
+					WHERE ms_fppbj.del = 0".$approve;
 
 		$query .= " GROUP BY YEAR(entry_stamp)";
+
+		log_message('error', $query);	
 
 		if($this->input->post('filter')){
 			$query .= $this->filter($form, $this->input->post('filter'), false);
