@@ -319,7 +319,7 @@ class Fkpbj extends MY_Controller {
 	public function save($id_fppbj){	
 		$modelAlias = $this->modelAlias;
 		$fppbj = $this->fm->selectData($id_fppbj);
-		$fp3 = $this->fkm->getDataFp3($id_fppbj);
+		$fp3 = $this->fkm->getDataFp3($id_fppbj);	
 
 		if ($fppbj['is_status'] != 1) {
 			$nama_pengadaan = $fppbj['nama_pengadaan'];
@@ -334,46 +334,47 @@ class Fkpbj extends MY_Controller {
 			$jwpp_end = $fp3['jwpp_end'];
 			$kak_lampiran = $fp3['kak_lampiran'];
 		}
-
-		// $file_name = $_FILES['kak_lampiran']['name'];
         
-        $config['upload_path'] = './assets/lampiran/pr_lampiran';
-        $config['allowed_types'] = 'pdf|doc|docx|jpeg|jpg|png';
-    	$config['max_size']      = 50000;
+		$pr_lampiran = $this->input->post('pr_lampiran', true); // Get from hidden field
+		if(empty($pr_lampiran)){
+			$config['upload_path'] = './assets/lampiran/pr_lampiran';
+			$config['allowed_types'] = 'pdf|doc|docx|jpeg|jpg|png';
+			$config['max_size']      = 50000;
 
-		$this->load->library('upload',$config,'uploadprlampiran');
-        $this->uploadprlampiran->initialize($config);
+			$this->load->library('upload', $config, 'uploadprlampiran');
+			$this->uploadprlampiran->initialize($config);
 
-		if ( ! $this->uploadprlampiran->do_upload('pr_lampiran'))
-		{
-		    $error = array('error' => $this->upload->display_errors());
-		    print_r($error);
-		} else {
-			$upload_pr = $this->uploadprlampiran->data();
-		    print_r($upload_pr);
-		}
-
-        $config_kak['upload_path'] = './assets/lampiran/kak_lampiran';
-        $config_kak['allowed_types'] = 'pdf|doc|docx|jpeg|jpg|png';
-    	$config_kak['max_size']      = 50000;
-        
-	    $this->load->library('upload',$config_kak,'uploadkaklampiran');
-	    $this->uploadkaklampiran->initialize($config_kak);
-	   
-
-		if ( ! $this->uploadkaklampiran->do_upload('kak_lampiran'))
-		{
-		    $error = array('error' => $this->uploadkaklampiran->display_errors());
-		    print_r($error);
-			
-		} else {
-			$upload_kak = $this->uploadkaklampiran->data();
 		
-		    print_r($upload_kak);
+			if ( ! $this->uploadprlampiran->do_upload('pr_lampiran')) {
+				$error = strip_tags($this->uploadprlampiran->display_errors());
+				echo "<script>alert('Dokumen PR: " . addslashes($error) . "');</script>";
+				redirect($_SERVER['HTTP_REFERER']); // Redirect to the previous URL		
+			} else {
+				$this->uploadprlampiran->data();
+			}
+			$file_name_pr  = $this->uploadprlampiran->data()['file_name'];
 		}
+		
 
-		$file_name_pr  = $this->uploadprlampiran->data()['file_name'];
-		$file_name_kak = $this->uploadkaklampiran->data()['file_name'];
+		$kak_lampiran = $this->input->post('kak_lampiran', true); // Get from hidden field		
+		if(empty($kak_lampiran)){
+			$config_kak['upload_path'] = './assets/lampiran/kak_lampiran';
+			$config_kak['allowed_types'] = 'pdf|doc|docx|jpeg|jpg|png';
+			$config_kak['max_size']      = 50000;
+
+			$this->load->library('upload', $config_kak, 'uploadkaklampiran');
+			$this->uploadkaklampiran->initialize($config_kak);
+
+			if ( ! $this->uploadkaklampiran->do_upload('kak_lampiran')) {
+				$error = strip_tags($this->uploadkaklampiran->display_errors());
+				echo "<script>alert('Dokumen KAK:" . $error . "');</script>";
+				redirect($_SERVER['HTTP_REFERER']); // Redirect to the previous URL
+			} else {
+				$this->uploadkaklampiran->data();
+			}
+			$file_name_kak = $this->uploadkaklampiran->data()['file_name'];
+		}
+		
 		$admin 		   = $this->session->userdata('admin');
 		$param_  	   = ($admin['id_role'] == 4) ? ($param_=1) : (($admin['id_role'] == 6) ? ($param_=2) : (($admin['id_role'] == 2) ? ($param_=3) : ''));
 		
@@ -462,7 +463,17 @@ class Fkpbj extends MY_Controller {
 			$this->session->set_flashdata('msg', $this->successMessage);
 			$this->deleteTemp($save);
 			echo '<script>alert("Berhasil");</script>';
-			redirect($_SERVER['HTTP_REFERER']);
+
+			// Get the HTTP_REFERER
+			$referer = $_SERVER['HTTP_REFERER'];
+			// Parse the URL to get the scheme and host
+			$parsed_url = parse_url($referer);
+			$scheme = $parsed_url['scheme'];
+			$host = $parsed_url['host'];
+			// Get the id from the $by_division array
+			$id = $by_division['id'];
+			$redirect_url = "$scheme://$host/eproc_nusantararegas/pemaketan/division/$id";
+			redirect($redirect_url);
 		}
 	}
 
@@ -485,7 +496,6 @@ class Fkpbj extends MY_Controller {
 			$getPRLampiran	= $this->getPRLampiran($data['pr_lampiran']);
 
 			$jwpp 	= $data['jwpp_start'];
-			// $jwp  	= $data['jwp_start'];
 			if ($jwpp != '' && $data['jwpp_end'] != '' || $jwpp != null && $data['jwpp_end'] != null) {
 				$jwpp	= date('d M Y', strtotime($jwpp)) . " sampai " . date('d M Y', strtotime($data['jwpp_end']));
 			} else {
@@ -794,33 +804,29 @@ class Fkpbj extends MY_Controller {
 					</div>
 					</form>
 				   </div>';
-				   // <fieldset class="form-group form19" for="'.$data['entry_stamp'].'">
-							// 	<label for="'.$data['entry_stamp'].'">Entry Date*</label>
-							// 	<input type="date" name="entry_stamp" class="form-control" value="'.$data['entry_stamp'].'">
-							// </fieldset>
 		echo $tabel;
 	}
 
 	public function getPRLampiran($data)
 	{
-		// if ($data != '') {
-		// 	$pr_lama = '<a href="'.base_url().'/assets/lampiran/pr_lampiran/'.$data.'" target="blank"><i class="fas fa-file"></i></a>';
-		// 	$field_lampiran_pr = '<input type="file" class="form-control closeInput1" id="" name="pr_lampiran" style="display: none;">
-		// 						<input class="closeHidden1" type="hidden" name="pr_lampiran" value="'.$data.'">
-		// 						<div class="fileUploadBlock close1">
-		// 							<i class="fa fa-upload"></i>&nbsp;
-		// 								<a href="'.base_url().'assets/lampiran/pr_lampiran/'.$data.'" target="blank">
-		// 								'.$data.'
-		// 								</a>
-		// 							<div class="deleteFile" data-id="1">
-		// 							<i class="fa fa-trash"></i>
-		// 							</div>
-		// 						</div>';
+		if ($data != '') {
+			$pr_lama = '<a href="'.base_url().'/assets/lampiran/pr_lampiran/'.$data.'" target="blank"><i class="fas fa-file"></i></a>';
+			$field_lampiran_pr = '<input type="file" class="form-control closeInput1" id="" name="pr_lampiran" style="display: none;">
+								<input class="closeHidden1" type="hidden" name="pr_lampiran" value="'.$data.'">
+								<div class="fileUploadBlock close1">
+									<i class="fa fa-upload"></i>&nbsp;
+										<a href="'.base_url().'assets/lampiran/pr_lampiran/'.$data.'" target="blank">
+										'.$data.'
+										</a>
+									<div class="deleteFile" data-id="1">
+									<i class="fa fa-trash"></i>
+									</div>
+								</div>';
 								
-		// } else{
+		} else{
 			$pr_lama = '-';
 			$field_lampiran_pr = '<input type="file" class="form-control" id="" name="pr_lampiran">';
-		// }
+		}
 
 		return $field_lampiran_pr;
 	}

@@ -85,6 +85,6 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // URL App
-define('URL_TO_LOGIN', 'http://local.eproc.vms.com/eproc_nusantararegas/');
-define('URL_TO_VMS', 'http://local.eproc.intra.com/eproc_pengadaan/');
-define('URL_TO_EPROC', 'http://local.eproc.intra.com/eproc_nusantararegas/');
+define('URL_TO_LOGIN', 'http://localhost/eproc/');
+define('URL_TO_VMS', 'http://localhost/eproc/vms/');
+define('URL_TO_EPROC', 'http://localhost/eproc/');

@@ -358,6 +358,7 @@
 						$('.form', el).form(data).data('form');
 					}
 				});
+
 				var fkpbj = $('.buttonFKPBJ').modal({
 					header: 'Tambah Data FKPBJ',
 					dataType: 'html',
@@ -437,7 +438,6 @@
 
 						$('.deleteFile').on('click', function(e) {
 							data = $(this).data('id');
-							//alert(data);
 							$('[type="file"].closeInput' + data + '').css('display', 'block');
 							$('.fileUploadBlock.close' + data + '').empty();
 							$('[type="hidden"].closeHidden' + data + '').val('');
@@ -451,40 +451,14 @@
 						} else {
 							csms = 3;
 						}
-						/*else{
-		  				csms = '';
-		  			}*/
-						// $.ajax({
-						// 	url: '<?php echo site_url('main/get_dpt_csms') ?>/'+csms,
-						// 	// data: category,
-						// 	dataType: 'json',
-						// 	complete : function(){
-						// 	},
-						// 	success: function(dpt){
-						// 		// console.log(dpt);
-						// 		$('#tab2 .checkboxWrapper').empty();
-						// 		$('#tab2 label').css("float", "left");
-
-						// 		$('#tab2 .tab-content').append('<fieldset class="form-group form0 " for=""><label for="">Usulan Non DPT</label><input type="text" class="form-control" name="usulan"></fieldset>');
-
-						// 		$('#tab2 .checkboxWrapper').append('<div class="search-recomendation"><input id="searchDPT" type="text" onkeyup="filterDPTFKPBJ()" class="sc" placeholder="Cari DPT"/><span class="icon"><i class="fas fa-search"></i></span></div>');
-
-						// 		dpt.forEach(function(element) {
-						// 			$('#tab2 .checkboxWrapper').append('<div class="inputGroup" id="inputGroup"> <input id="option'+element.id_vendor+'" name="type[]" type="checkbox" value="'+element.id_vendor+'"/> <label for="option'+element.id_vendor+'">'+element.vendor+'</label> </div>');
-						// 		});
-						// 	}
-						// });
 
 						var val_e = $('[name="jenis_pengadaan"]').val();
 
 						$.ajax({
 							url: '<?php echo site_url('main/get_dpt_type/') ?>/' + val_e,
-							// data: category,
 							dataType: 'json',
 							complete: function() {},
 							success: function(dpt) {
-								// console.log(dpt);
-								// alert('ke sini 1');
 								$('#tab2 .checkboxWrapper').empty();
 								$('#tab2 .tab-content .form1').empty();
 								$('#tab2 label').css("float", "left");
@@ -505,17 +479,13 @@
 						});
 
 						$('[name="jenis_pengadaan"]').on('click', function() {
-							// abcd += '';
-							// alert(id_pengadaan);
 							var dpt_type = $(this).val();
 
 							$.ajax({
 								url: '<?php echo site_url('main/get_dpt_type/') ?>/' + dpt_type,
-								// data: category,
 								dataType: 'json',
 								complete: function() {},
 								success: function(dpt) {
-									// console.log(dpt);
 									$('#tab2 .checkboxWrapper').empty();
 									$('#tab2 .tab-content .form1').empty();
 									$('#tab2 label').css("float", "left");
@@ -538,61 +508,17 @@
 									});
 								}
 							});
-							// alert(abcd);
 						});
 
 						$("#searchDPT").on('keyup', function() {
 							var matcher = new RegExp($(this).val(), 'gi');
-							// console.log(matcher);
-							// console.log($(this).val());
 							$('.checkboxWrapper').css('display', 'block').not(function() {
 								return matcher.test($(this).find('.inputGroup').text())
 							}).css('display', 'none');
 						});
 
-						// tipe = $('.form1 [name="tipe_pr"]').val()
-						// if (tipe == "direct_charge") {
-						// 		$('.modal [name="tipe_pengadaan"]').empty();
-						// 		$('.modal [name="tipe_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='barang'>Pengadaan Barang</option>");
-						// 		$('.modal [name="metode_pengadaan"]').empty();
-						// 		$('.modal [name="metode_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='1'>Pelelangan</option><option value='2'>Pemilihan Langsung</option><option value='4'>Penunjukan Langsung</option><option value='5'>Pengadaan Langsung</option>");
-						// 	}
-						// 	else if(tipe == "services"){
-						// 		$('.modal [name="tipe_pengadaan"]').empty();
-						// 		$('.modal [name="tipe_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='jasa'>Pengadaan Jasa</option>");
-						// 		$('.modal [name="metode_pengadaan"]').empty();
-						// 		$('.modal [name="metode_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='1'>Pelelangan</option><option value='2'>Pemilihan Langsung</option><option value='4'>Penunjukan Langsung</option><option value='5'>Pengadaan Langsung</option>");
-						// 	}
-						// 	else if(tipe == "user_purchase"){
-						// 		$('.modal [name="tipe_pengadaan"]').empty();
-						// 		$('.modal [name="tipe_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='barang'>Pengadaan Barang</option><option value='jasa'>Pengadaan Jasa</option>");
-						// 		$('.modal [name="metode_pengadaan"]').empty();
-						// 		$('.modal [name="metode_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='5'>Pengadaan Langsung</option>");
-						// 	}
-						// 	else if(tipe == "nda"){
-						// 		$('.modal [name="pengadaan"]').empty();
-						// 		$('.modal [name="pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='barang'>Pengadaan Barang</option><option value='jasa'>Pengadaan Jasa</option>");
-						// 		$('.modal [name="metode_pengadaan"]').empty();
-						// 		$('.modal [name="metode_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='3'>Swakelola</option>");
-						// }
-
-						/*jenis_pengadaan = $('.form3 [name="tipe_pengadaan"]').val()
-						if (jenis_pengadaan == "barang") {
-							$('.modal [name="jenis_pengadaan"]').empty();
-							$('.modal [name="jenis_pengadaan"]').append("<option value=''>Pilih Salah Satu</option><option value='stock'>Stock</option><option value='non_stock'>non Stock</option>");
-						}else if(jenis_pengadaan == "jasa"){
-							$('.modal [name="jenis_pengadaan"]').empty();
-							$('.modal [name="jenis_pengadaan"]').append("<option value=''>Pilih Dibawah Ini</option><option value='jasa_konstruksi'>Jasa Konstruksi</option><option value='jasa_konsultasi'>Jasa Konsultasi</option><option value='jasa_lainnya'>Jasa Lainnya</option>");
-
-						}else{
-							$('.modal [name="jenis_pengadaan"]').empty();
-							$('.modal [name="jenis_pengadaan"]').append("<option value=''>Pilih Jenis Pengadaan Diatas</option>");
-						}*/
-
 						$('.modal [name="tipe_pr"]').on('change', function() {
-							// get parent value
 							var tipe_pr = $(this).val();
-							// alert(pengadaan);
 
 							// Change option on select based on parent
 							if (tipe_pr == "direct_charge") {
@@ -622,7 +548,6 @@
 						$('.modal [name="tipe_pengadaan"]').on('change', function() {
 							// get parent value
 							var pengadaan = $(this).val();
-							// alert(pengadaan);
 
 							// Change option on select based on parent
 							if (pengadaan == "barang") {
@@ -640,6 +565,7 @@
 
 					}
 				});
+
 			},
 			renderContent: function(el, value, key) {
 				// console.log(value[16].value);
@@ -745,29 +671,6 @@
 					badge = 'danger fppbj_reject tooltip';
 				}
 
-				//success status
-				// else if (is_approve == "3" && is_reject == 0) {
-				// 	status = 'FP3';
-				// 	badge = 'success';
-				// }
-
-				// else if (is_approve == "1" && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Admin Pengendalian)';
-				// 	badge = 'warning';
-				// }
-				// else if (is_approve == "2" && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Ka.Dept Procurement)';
-				// 	badge = 'warning';
-				// }
-
-				// else if (is_approve == "0" && is_reject == 0) {
-				// 	status = 'FP3 (Menunggu Ka.Dept User)';
-				// 	badge = 'warning';
-				// }else if (is_reject == 1) {
-				// 	status = 'FP3 (FP3 Direvisi)<span class="tooltiptext reject">'+keterangan+'</span>';
-				// 	badge = 'danger fp3_reject tooltip';
-				// }
-
 				html = '';
 				html += '<div class="caption"><p>' + value[0].value + '</p><p><span class="badge is-' + badge + '">' + status + '</p></div>';
 
@@ -862,6 +765,7 @@
 						method: 'post',
 						dataType: 'json',
 						success: function(data) {
+							console.log(data);
 							if (fp3_type == 'ubah') {
 								if (id_division == "1" && data.id_division != "1") {
 									for (let i = 0; i <= 15; i++) {

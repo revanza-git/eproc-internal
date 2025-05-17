@@ -30,7 +30,7 @@
 		</style>
 
 		<!-- MESSAGE SUBJECT -->
-		<title>Aplikasi Sistem Kelogistikan</title>
+		<title>E-Procurement System Notification</title>
 
 	</head>
 
@@ -89,7 +89,7 @@
 					padding-top: 25px;
 					color: #000000;
 					font-family: sans-serif;" class="header">
-						<img src="<?php echo base_url('assets/images/NUSANTARA-REGAS-2.png')?>" alt="" style="height: 35px; float: left;">
+						<img src="<?php echo base_url('assets/images/logo.png')?>" alt="" style="height: 35px; float: left;">
 				</td>
 			</tr>
 
@@ -107,7 +107,7 @@
 					padding-top: 25px; 
 					color: #000000;
 					font-family: sans-serif;" class="paragraph">
-						Dear,&nbsp;
+						Dear User,
 				</td>
 			</tr>
 			<tr>
@@ -115,7 +115,7 @@
 					padding-top: 25px; 
 					color: #000000;
 					font-family: sans-serif;" class="paragraph">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis consequatur quo porro voluptatem facilis nostrum quis corrupti rerum labore.&nbsp;
+						This is an automated notification from the E-Procurement System. Please review the following information and take necessary actions.
 				</td>
 			</tr>
 			<tr>
@@ -159,7 +159,7 @@
 					padding-bottom: 25px;
 					color: #a0a0a0;
 					font-family: sans-serif;" class="paragraph">
-						&#169; 2019 Nusantara Regas
+						&#169; 2024 E-Procurement System
 				</td>
 			</tr>
 
@@ -178,7 +178,7 @@
 					padding-bottom: 20px;
 					color: #999999;
 					font-family: sans-serif;" class="footer">
-						Email ini dikirim secara otomatis oleh Aplikasi Kelogistikan Nusantara Regas
+						Email ini dikirim secara otomatis oleh Aplikasi E-Procurement
 				</td>
 			</tr>
 

@@ -1,4 +1,5 @@
-RewriteEngine on
-RewriteCond $1 !^(index\.php|assets|lampiran|temp_upload)
-RewriteRule ^(.*)$ /eproc_nusantararegas/index.php?/$1 [L]
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?/$1 [L]
 

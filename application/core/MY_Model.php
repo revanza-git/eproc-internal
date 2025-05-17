@@ -124,15 +124,12 @@ class MY_Model extends CI_model{
 				if($keyField>0 && !$empty) $query .= ' OR ';
 				$query.=$res;
 
-				$j++;
-				// echo count($value);
-				
+				$j++;				
 			}
 			$query .= ')';
 
 			$i++;
-			// echo count($filter);
-			// echo count($filter).$i;
+
 			if(count($filter)>$i) $query .= ' AND ';
 		}
 		return $query;

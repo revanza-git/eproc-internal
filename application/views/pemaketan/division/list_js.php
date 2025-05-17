@@ -156,8 +156,8 @@ $(function(){
 				}
 				<?php if ($admin['id_role'] == 5 || $admin['id_division'] == 1){ ?>
 
-					else if (is_status == 0){
-						if (is_status == 0 
+					else if (is_status == 0 || is_status == 1){
+						if ((is_status == 0 || is_status == 1)
 						&& is_reject == 0 
 						&& del == 0 
 						&& is_approved_hse < 2 
@@ -198,9 +198,6 @@ $(function(){
 								return btn;
 							<?php } ?>
 						}
-					}
-					else if (is_status == 1) {
-						return btn;
 					}
 	 				else {
 						<?php if($admin['id_role'] == 2 || $admin['id_role'] == 5 || $admin['id_role'] == 3 || $admin['id_role'] == 4) {

@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+$config['encryption_key'] = 'f93c0a6be1c44c0db2a9d5f08f03e3da';
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,10 +25,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://local.eproc.intra.com/eproc_nusantararegas/';
-$config['pengadaan_url'] = 'http://local.eproc.intra.com/eproc_pengadaan/';
-$config['vms_url'] = 'http://local.eproc.vms.com/eproc_nusantararegas/';
-$config['vms_pengadaan_url'] = 'http://local.eproc.vms.com/eproc_pengadaan/';
+$config['base_url'] = 'http://localhost/eproc/';
+$config['pengadaan_url'] = 'http://localhost/eproc/pengadaan/';
+$config['vms_url'] = 'http://localhost/eproc/vms/';
+$config['vms_pengadaan_url'] = 'http://localhost/eproc/vms/pengadaan/';
 
 /*
 |--------------------------------------------------------------------------
@@ -216,7 +218,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |/application/logs/application/logs
 */
-$config['log_threshold'] = 2;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
@@ -371,9 +373,9 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'perencanaan_internal';
+$config['sess_cookie_name'] = 'eproc_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
+$config['sess_save_path'] = APPPATH.'cache/sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
@@ -398,6 +400,7 @@ $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
+$config['cookie_samesite'] = 'Lax';   // Safe default for intranet apps
 
 /*
 |--------------------------------------------------------------------------

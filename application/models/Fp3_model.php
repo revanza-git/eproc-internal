@@ -107,12 +107,6 @@ class Fp3_model extends MY_Model
 						LEFT JOIN tr_note c ON c.id_fppbj=b.id AND c.type = 'reject'
 					WHERE b.id_division = $id_division $id_fppbj $year_anggaran";
 
-		// if ($admin['id_division'] != 1) {
-		// 	$query .= " AND b.id_division = ".$admin['id_division'];
-		// }
-
-		// echo $this->db->last_query();die;
-
 		$query .= " GROUP BY a.id ";
 		if ($this->input->post('filter')) {
 			$query .= $this->filter($form, $this->input->post('filter'), false);

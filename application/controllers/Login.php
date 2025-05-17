@@ -3,47 +3,66 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login extends CI_Controller
 {
-    public $eproc_db;
+    protected $auth;
+
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('pdf');
-        include_once APPPATH . 'third_party/dompdf2/dompdf_config.inc.php';
+        $this->load->library('auth');
+        $this->auth = $this->auth;
 
-        $this->load->model('Login_model', 'lm');
-        $this->eproc_db = $this->load->database('eproc', true);
+        // Redirect if already logged in
+        if ($this->auth->check()) {
+            $user = $this->auth->user();
+            redirect($user['role_type'] === 'admin' ? 'admin/dashboard' : 'user/dashboard');
+        }
     }
 
+    /**
+     * Show login form
+     */
     public function index()
     {
-        if ($this->session->userdata('user')) {
-        } elseif ($this->session->userdata('admin')) {
-            if ($this->session->userdata('admin')['app_type'] == 1) {
-            } else {
-                redirect('dashboard');
-            }
+        $this->load->view('login');
+    }
+
+    /**
+     * Handle login attempt
+     */
+    public function check()
+    {
+        $this->load->library('form_validation');
+        
+        // Set validation rules
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        
+        if ($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect('login');
+        }
+        
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        
+        // Attempt login
+        $user = $this->auth->attempt($username, $password);
+        
+        if ($user) {
+            // Redirect based on role
+            redirect($user['type'] === 'admin' ? 'admin/dashboard' : 'user/dashboard');
         } else {
-            header("Location: ".URL_TO_LOGIN);
+            $this->session->set_flashdata('error', 'Invalid username or password');
+            redirect('login');
         }
     }
 
-    public function check()
+    /**
+     * Handle logout
+     */
+    public function logout()
     {
-        $data = $this->lm->cek_login();
-        if ($data) {
-            if ($data['type'] == 'user') {
-                header("Location: " . URL_TO_VENDOR . "auth/from_external/" . $data['id_user'] . "/user");
-            } else {
-                if ($data['app'] == 'eproc') {
-                    header("Location: " . URL_TO_EPROC . "auth/from_external/" . $data['id_user']);
-                } else {
-                    header("Location: " . URL_TO_VMS . "auth/from_external/" . $data['id_user'] . "/admin");
-                }
-            }
-        } else {
-            $message = "Username atau Password salah";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            $this->index();
-        }
+        $this->auth->logout();
+        redirect('login');
     }
 }

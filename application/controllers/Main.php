@@ -17,18 +17,36 @@ class Main extends CI_Controller {
 
 	}
 
-	public function index(){
-		if($this->session->userdata('user')){
-			header("Location: ".$this->config->item("pengadaan_url")."dashboard");
-		}elseif($this->session->userdata('admin')){
-			if ($this->session->userdata('admin')['app_type'] == 1) {
-				header("Location: ".$this->config->item("pengadaan_url")."admin");
-			}else{
-				redirect('dashboard');				
-			}
-		}else{
-			header("Location:".$this->config->item("vms_url"));
+	public function index()
+	{
+		// Always load the session library first in the controller ctor or autoload.php
+		// $this->load->library('session');
+
+		if ($this->session->has_userdata('user'))
+		{
+			// User login → external dashboard (pengadaan_url)
+			return redirect(
+				$this->config->item('pengadaan_url') . 'dashboard',
+				'location',   // HTTP 302 by default
+				302
+			);
 		}
+
+		if ($this->session->has_userdata('admin'))
+		{
+			$admin = $this->session->userdata('admin');
+
+			// Admin app_type 1 lives under /admin, others use local /dashboard
+			if (isset($admin['app_type']) && (int) $admin['app_type'] === 1)
+			{
+				return redirect($this->config->item('pengadaan_url') . 'admin');
+			}
+
+			return redirect('dashboard');   // same-host, uses site_url()
+		}
+
+		// Not logged in → go to VMS SSO
+		return redirect($this->config->item('vms_url'));
 	}
 
 	public function logout(){

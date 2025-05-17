@@ -65,16 +65,6 @@ class Fp3 extends MY_Controller
 					'label'	=>	'Metode Pengadaan (Baru)',
 					'source' =>	$this->mm->getProcMethod(),
 				),
-				// array(
-				// 	'field'	=> 	'idr_anggaran_lama',
-				// 	'type'	=>	'currency',
-				// 	'label'	=>	'Anggaran (Lama)',
-				// ),
-				// array(
-				// 	'field'	=> 	'idr_anggaran',
-				// 	'type'	=>	'currency',
-				// 	'label'	=>	'Anggaran (Baru)',
-				// ),
 				array(
 					'field'	=> 	array('jwpp_start_lama', 'jwpp_end_lama'),
 					'type'	=>	'date_range',
@@ -194,7 +184,6 @@ class Fp3 extends MY_Controller
 
 	public function getDataFP3ByYear($year)
 	{
-		// echo "string".$year;
 		$config['query'] = $this->pm->getDataFP3ByYear($year);
 		$return = $this->tablegenerator->initialize($config);
 		// print_r($return);

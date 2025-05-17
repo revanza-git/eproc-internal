@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Aplikasi Sistem Kelogistikan</title>
+    <title>E-Procurement System</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/styles/normalize.css'); ?>" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url('assets/font/font-awesome/css/font-awesome.min.css'); ?>" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url('assets/styles/base.css'); ?>" type="text/css" media="screen" />
@@ -14,7 +14,9 @@
         <div class="row">
             <div class="loginPanel block">
                 <div class="panel">
-                   
+                    <div class="panel-header">
+                        <h2>E-Procurement System</h2>
+                    </div>
                     <div class="panel-content">
                         <div class="contentForm">
                             <div class="form" id="login-form"> </div>
@@ -36,7 +38,7 @@
 <script type="text/javascript">
     $(document).ready(function(e) {
         var data = $('.loginPanel .form').form({
-            url: '<?php echo site_url('main/check'); ?>',
+            url: '<?php echo site_url('login/check'); ?>',
             form: [{
                 field: 'username',
                 type: 'text',

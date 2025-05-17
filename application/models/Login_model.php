@@ -2,8 +2,8 @@
 
 class Login_model extends CI_model
 {
-
     public $eproc_db;
+    
     function __construct()
     {
         parent::__construct();
@@ -15,75 +15,45 @@ class Login_model extends CI_model
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $sql = "SELECT * FROM ms_login WHERE username = ? AND password = ?";
-        $_sql = $this->eproc_db->query($sql, array($username, $password));
-        $sql = $_sql->row_array();
+        // Get user from database
+        $sql = "SELECT * FROM users WHERE username = ? AND is_active = 1 AND deleted = 0";
+        $query = $this->eproc_db->query($sql, array($username));
+        
+        if ($query->num_rows() > 0) {
+            $user = $query->row_array();
+            
+            // Verify password
+            if (password_verify($password, $user['password'])) {
+                // Get user role and permissions
+                $role_sql = "SELECT r.* FROM roles r 
+                            JOIN user_roles ur ON r.id = ur.role_id 
+                            WHERE ur.user_id = ? AND r.is_active = 1";
+                $role_query = $this->eproc_db->query($role_sql, array($user['id']));
+                $role = $role_query->row_array();
 
-        $ct_sql = '';
-        if ($_sql->num_rows() > 0) {
-            if ($sql['type'] == "user") {
-                $ct_sql = "SELECT * FROM ms_vendor WHERE id=? AND is_active =? AND del = 0";
-                $ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'], 1));
-
-                if (count($ct_sql->result_array()) > 0) {
-                    $data = $ct_sql->row_array();
-                    $res = array(
-                        'id_user' => $data['id'],
-                        'type' => 'user',
-                        'app' => 'vms'
-                    );
-                    return $res;
-                } else {
-                    return false;
-                }
-            } else if ($sql['type'] == "admin" && $sql['type_app'] == 1) {
-
-                $ct_sql = "SELECT *,ms_admin.id id, ms_admin.name name, tb_role.name role_name FROM ms_admin JOIN tb_role ON ms_admin.id_role = tb_role.id WHERE ms_admin.id=? AND ms_admin.del=?";
-
-                $ct_sql = $this->eproc_db->query($ct_sql, array($sql['id_user'], 0));
-
-                if (count($ct_sql->result_array()) > 0) {
-                    $data = $ct_sql->row_array();
-
-                    $res = array(
-                        'id_user' => $data['id'],
-                        'type' => 'admin',
-                        'app' => 'vms'
-                    );
-
-                    return $res;
-                } else {
-                    return false;
-                }
-            } else if ($sql['type'] == "admin" && $sql['type_app'] == 2) {
-                $ct_sql = " SELECT 
-								a.id
-							FROM
-								ms_admin a 
-							WHERE
-								a.del = ? AND a.id = ?
-								";
-
-                $ct_sql = $this->eproc_db->query($ct_sql, array(0, $sql['id_user']));
-
-                if (count($ct_sql->result_array()) > 0) {
-
-                    $data = $ct_sql->row_array();
-
-                    $res = array(
-                        'id_user' => $data['id'],
-                        'type' => 'admin',
-                        'app' => 'eproc'
-                    );
-
-                    return $res;
-                } else {
-                    return false;
-                }
+                return array(
+                    'id_user' => $user['id'],
+                    'username' => $user['username'],
+                    'name' => $user['name'],
+                    'email' => $user['email'],
+                    'type' => $role['type'],
+                    'role' => $role['name'],
+                    'permissions' => $role['permissions']
+                );
             }
-        } else {
-
-            return false;
         }
+        
+        return false;
+    }
+
+    public function update_last_login($user_id)
+    {
+        $data = array(
+            'last_login' => date('Y-m-d H:i:s'),
+            'last_ip' => $this->input->ip_address()
+        );
+        
+        $this->eproc_db->where('id', $user_id);
+        return $this->eproc_db->update('users', $data);
     }
 }
