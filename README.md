@@ -4,7 +4,7 @@ A comprehensive e-procurement system built with CodeIgniter framework, designed 
 
 ## System Flow Diagram
 
-![E-Procurement System Flow](eproc_flow.jpg)
+![E-Procurement System Flow](assets/images/eproc_flow.jpg)
 
 ## E-Procurement Ecosystem
 
