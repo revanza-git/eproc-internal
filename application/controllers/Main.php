@@ -2,178 +2,185 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends CI_Controller {
-	public $eproc_db;
-	public function __construct(){
+	protected $rekapService;
+	protected $auth_model;
+	protected $fppbj_model;
+
+	public function __construct() {
 		parent::__construct();
 		$this->load->library('pdf');
 		$this->load->helper('string');
+		$this->load->helper('rekap');
 		include_once APPPATH.'third_party/dompdf2/dompdf_config.inc.php';
 
-		$this->load->model('Main_model', 'mm');
-		$this->load->model('fkpbj_model', 'fk');
-		$this->load->model('fp3_model', 'fp');
-		$this->load->model('Dashboard_model', 'dm');
-		$this->eproc_db = $this->load->database('eproc',true);
-
+		// Load models
+		$this->auth_model = $this->load->model('Auth_model');
+		$this->fppbj_model = $this->load->model('Fppbj_model');
+		
+		// Load RekapService
+		$this->load->service('RekapService');
+		$this->rekapService = new RekapService();
 	}
 
-	public function index()
-	{
-		// Always load the session library first in the controller ctor or autoload.php
-		// $this->load->library('session');
-
-		if ($this->session->has_userdata('user'))
-		{
-			// User login → external dashboard (pengadaan_url)
+	public function index() {
+		if ($this->session->has_userdata('user')) {
 			return redirect(
 				$this->config->item('pengadaan_url') . 'dashboard',
-				'location',   // HTTP 302 by default
+				'location',
 				302
 			);
 		}
 
-		if ($this->session->has_userdata('admin'))
-		{
+		if ($this->session->has_userdata('admin')) {
 			$admin = $this->session->userdata('admin');
 
-			// Admin app_type 1 lives under /admin, others use local /dashboard
-			if (isset($admin['app_type']) && (int) $admin['app_type'] === 1)
-			{
+			if (isset($admin['app_type']) && (int) $admin['app_type'] === 1) {
 				return redirect($this->config->item('pengadaan_url') . 'admin');
 			}
 
-			return redirect('dashboard');   // same-host, uses site_url()
+			return redirect('dashboard');
 		}
 
-		// Not logged in → go to VMS SSO
 		return redirect($this->config->item('vms_url'));
 	}
 
-	public function logout(){
+	public function logout() {
 		$admin = $this->session->userdata('admin');
-		$activity = array(
-			'id_user'		=>	$admin['id_user'],
-			'activity'		=>	$admin['name']." Telah Logout",
-			'activity_date' => date('Y-m-d H:i:s')
-		);
-
-		$this->db->insert('tr_log_activity',$activity);
+		$this->auth_model->log_activity($admin['id_user'], $admin['name'] . " Telah Logout");
 		
 		$this->session->sess_destroy();
-		header("Location:".$this->config->item("vms_url")."main/logout");
+		header("Location:" . $this->config->item("vms_url") . "main/logout");
 	}
 
-	public function check()
-	{
-		if($this->input->post('username') && $this->input->post('password')){
-			$is_logged = $this->mm->cek_login();
+	public function check() {
+		if (!$this->input->post('username') || !$this->input->post('password')) {
+			return;
+		}
 
-			if($is_logged){
+		$is_logged = $this->auth_model->validate_credentials(
+			$this->input->post('username'),
+			$this->input->post('password')
+		);
 
-				if($this->session->userdata('user')){
-
-					$user = $this->session->userdata('user');
-					$name 			= $user['name'];
-					$id_user 		= $user['id_user'];
-					$id_sbu			= $user['id_sbu'];
-					$vendor_status	= $user['vendor_status'];
-					$is_active		= $user['is_active'];
-					$type 			= 'user';
-					$app 			= $user['app'];
-					
-					header("Location:".$this->config->item("vms_pengadaan_url")."main/login_user/".$name."/".$id_user."/".$id_sbu."/".$vendor_status."/".$is_active."/".$type."/".$app);
-
-				}else if($this->session->userdata('admin')){
-					if ($this->session->userdata('admin')['app_type'] == 1) {
-
-						$admin = $this->session->userdata('admin');
-						$name 			= $admin['name'];
-						$id_sbu 		= $admin['id_sbu'];
-						$id_user 		= $admin['id_user'];
-						$id_role 		= $admin['id_role'];
-						$role_name 		= $admin['role_name'];
-						$sbu_name 		= $admin['sbu_name'];
-						$app 			= $admin['app'];
-						$type 			= 'admin';
-						
-						header("Location:".$this->config->item("pengadaan_url")."main/login_admin/".$id_user."/".$name."/".$id_role."/".$role_name."/".$type."/".$app."/".$id_sbu."/".$sbu_name);
-					}else{
-						redirect('dashboard');				
-					}
+		if ($is_logged) {
+			if ($this->session->userdata('user')) {
+				$user = $this->session->userdata('user');
+				$this->redirect_user($user);
+			} else if ($this->session->userdata('admin')) {
+				$admin = $this->session->userdata('admin');
+				if ($admin['app_type'] == 1) {
+					$this->redirect_admin_app1($admin);
+				} else {
+					redirect('dashboard');
 				}
-			}else{
-				$message = "Username atau Password salah";
-
-				echo "<script type='text/javascript'>alert('$message');</script>";
-				
-				$this->load->view('template/layout-login-nr');
 			}
+		} else {
+			$message = "Username atau Password salah";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+			$this->load->view('template/layout-login-nr');
 		}
 	}
 
-	public function from_eks()
-	{		
-		$key = $this->input->get('key', TRUE);
+	private function redirect_user($user) {
+		$params = [
+			$user['name'],
+			$user['id_user'],
+			$user['id_sbu'],
+			$user['vendor_status'],
+			$user['is_active'],
+			$user['type'],
+			$user['app']
+		];
+		
+		header("Location:" . $this->config->item("vms_pengadaan_url") . 
+			   "main/login_user/" . implode('/', $params));
+	}
 
+	private function redirect_admin_app1($admin) {
+		$params = [
+			$admin['id_user'],
+			$admin['name'],
+			$admin['id_role'],
+			$admin['role_name'],
+			$admin['type'],
+			$admin['app'],
+			$admin['id_sbu'],
+			$admin['sbu_name']
+		];
+		
+		header("Location:" . $this->config->item("pengadaan_url") . 
+			   "main/login_admin/" . implode('/', $params));
+	}
+
+	public function from_eks() {        
+		$key = $this->input->get('key', TRUE);
 		if (!$key) {
-			header("Location:".$this->config->item("vms_url"));
+			header("Location:" . $this->config->item("vms_url"));
+			return;
 		}
 
-		$data = $this->eproc_db->where('key', $key)->where('deleted_at', NULL)->get('ms_key_value')->row_array();
-		
+		$data = $this->auth_model->get_key_value($key);
 		if (!$data) {
-			
-			header("Location:".$this->config->item("vms_url"));
+			header("Location:" . $this->config->item("vms_url"));
+			return;
 		}
 
 		$value = json_decode($data['value']);
-
-		$division = $this->db->where('id',$value->id_division)->get('tb_division')->row_array(); 
-		$role = $this->db->where('id',$value->id_role)->get('tb_role')->row_array();
-
-		$set_session = array(
-			'name'			=>	$value->name,
-			'division'		=>	$division['name'],
-			'id_user' 		=> 	$value->id_user,
-			'id_role'		=>	$value->id_role,
-			'id_division'	=>  $value->id_division,
-			'email'			=>  $value->email,
-			'photo_profile' =>  $value->photo_profile,
-			'app_type' 		=>	$value->app_type,
-			'role_name'		=>	$role['name']
-		);
-
-		$this->session->set_userdata('admin',$set_session);
-
-		$this->eproc_db->where('key', $key)->update('ms_key_value', array('deleted_at' => date('Y-m-d H:i:s')));
+		$this->auth_model->set_admin_session($value);
+		$this->auth_model->invalidate_key($key);
 
 		redirect('dashboard');
 	}
 
-	public function custom_query(){
+	public function rekapFPPBJ($year) {
+		$data = $this->rekapService->getFPPBJData($year);
+		echo generate_rekap_html($data, 'fppbj', $year);
+	}
+
+	public function rekapFKPBJ($year) {
+		$data = $this->rekapService->getFKPBJData($year);
+		echo generate_rekap_html($data, 'fkpbj', $year);
+	}
+
+	public function rekapFP3($year) {
+		$data = $this->rekapService->getFP3Data($year);
+		echo generate_rekap_html($data, 'fp3', $year);
+	}
+
+	public function rekapFPPBJBaru($year) {
+		$data = $this->rekapService->getFPPBJData($year, 2);
+		echo generate_rekap_html($data, 'fppbj', $year);
+	}
+
+	public function rekapFKPBJBaru($year) {
+		$data = $this->rekapService->getFKPBJData($year, 2);
+		echo generate_rekap_html($data, 'fkpbj', $year);
+	}
+
+	public function update_status() {
+		$id_fppbj = $this->input->get('id_fppbj');
+		$param = $this->input->get('param_');
+		$this->fppbj_model->update_status($id_fppbj, $param);
+	}
+
+	public function search() {
+		$q = $this->input->get('q');
+		$data = $this->fppbj_model->search($q);
+		echo json_encode($data);
+	}
+
+	// Other utility methods
+	public function custom_query() {
 		$this->mm->custom_query();
 	}
 
-	public function update_status(){
-		$id_fppbj 	= $_GET['id_fppbj'];
-		$param_ 	= $_GET['param_'];
-		print_r($id_fppbj);
-		$this->mm->update_status('ms_fppbj', $id_fppbj, $param_);
-	}
-
-	public function search(){
-		$q = $_GET['q'];
-		$data = $this->mm->search($q);
-		
-	}
-	
-	function get_dpt_csms($csms){
+	public function get_dpt_csms($csms) {
 		$data = $this->eproc_db->select('ms_vendor.name vendor, ms_vendor.id id_vendor, tb_csms_limit.end_score score, tb_csms_limit.value csms')
-						->where('ms_csms.id_csms_limit', $csms)
-						->where('ms_vendor.vendor_status', 2)
-						->join('ms_csms', 'ms_vendor.id = ms_csms.id_vendor')
-						->join('tb_csms_limit', 'tb_csms_limit.id = ms_csms.id_csms_limit')
-						->get('ms_vendor');
+					->where('ms_csms.id_csms_limit', $csms)
+					->where('ms_vendor.vendor_status', 2)
+					->join('ms_csms', 'ms_vendor.id = ms_csms.id_vendor')
+					->join('tb_csms_limit', 'tb_csms_limit.id = ms_csms.id_csms_limit')
+					->get('ms_vendor');
 
 		if (count($data->result_array()) > 0) {
 			$r = $data->result_array();
@@ -187,24 +194,11 @@ class Main extends CI_Controller {
 						->result_array();
 		}
 		
-
-		
 		echo json_encode($r);
 		return json_encode($r);
-		/*$data = $this->db->select('ms_vendor.name vendor, ms_vendor.id id_vendor, ms_score_k3.score, value csms')
-						->where('id_csms_limit', $csms)
-						->where('ms_vendor.vendor_status', 2)
-						->join('ms_vendor', 'ms_vendor.id = ms_score_k3.id_vendor')
-						->join('tb_csms_limit', 'tb_csms_limit.id = ms_score_k3.id_csms_limit')
-						->get('ms_score_k3');
-		
-		echo json_encode($data->result_array());
-		return json_encode($data->result_array());*/
 	}
 
-	public function get_dpt_type($jenis,$id_pengadaan)
-	{
-		// echo "string ".$jenis;
+	public function get_dpt_type($jenis, $id_pengadaan) {
 		if ($jenis == 'jasa_konstruksi') {
 			$q = 'AND c.id = 4';
 		} elseif ($jenis == 'jasa_lainnya') {
@@ -222,1441 +216,51 @@ class Main extends CI_Controller {
 
 		$dpt = [];
 		foreach ($dpt_before as $key => $value) {
-			// print_r($value);die;
 			foreach ($value as $k => $v) {
 				$dpt[$v] = 1;
 			}
-			// $dpt[][$value] = 1;
 		}
 
-		// print_r($dpt);die;
-
-		$query = "	SELECT 
-					    a.no, 
-					    b.name vendor, 
-					    b.id id_vendor,
-					    c.name pengadaan
-					FROM
-					    ms_ijin_usaha a
-					        JOIN
-					    ms_vendor b ON b.id = a.id_vendor
-					        JOIN
-					    tb_dpt_type c ON c.id = a.id_dpt_type
-					WHERE
-					    a.del = 0 AND b.vendor_status = 2 ".$q." 
-					GROUP BY b.id";
+		$query = "SELECT 
+					a.no, 
+					b.name vendor, 
+					b.id id_vendor,
+					c.name pengadaan
+				FROM
+					ms_ijin_usaha a
+						JOIN
+					ms_vendor b ON b.id = a.id_vendor
+						JOIN
+					tb_dpt_type c ON c.id = a.id_dpt_type
+				WHERE
+					a.del = 0 AND b.vendor_status = 2 ".$q." 
+				GROUP BY b.id";
 
 		$r = $this->eproc_db->query($query)->result_array();
-
-		// echo " - ".$this->eproc_db->last_query();
-		// foreach ($r as $key => $value) {
-		// 	$r[$key]
-		// }
-		foreach ($r as $key => $value) {
-			// $r[$key]['value'] = $dpt[$value['id_vendor']]; 
-		}
-
-		// print_r($r);die;
 		echo json_encode($r);
 		return json_encode($r);
 	}
 
-	function get_dpt(){
-
+	public function get_dpt() {
 		$sql = "SELECT 
-						name ,
-						id
-				 FROM 
-				 		ms_vendor 
-				 WHERE 
-				 		del = 0 AND name
-				 LIKE ? ";
-		$query = $this->eproc_db->query($sql,array('%'.$_POST['search'].'%',));
+					name,
+					id
+				FROM 
+					ms_vendor 
+				WHERE 
+					del = 0 AND name
+				LIKE ? ";
+		$query = $this->eproc_db->query($sql, array('%'.$_POST['search'].'%'));
 		echo json_encode($query->result_array());
 		return json_encode($query->result_array());
 	}
 
-	function view_calendar() {
+	public function view_calendar() {
 		$this->load->view('timeline/calendar');
 	}
 	
-	function rekapPerencanaanGraph($year){
-		$data	= $this->dm->rekapPerencanaanGraph($year);
+	public function rekapPerencanaanGraph($year) {
+		$data = $this->dm->rekapPerencanaanGraph($year);
 		echo json_encode($data);
-	}
-
-	public function rekapFPPBJ($year)
-	{
-		$admin = $this->session->userdata('admin');
-		$total_perencanaan	= count($this->dm->rekap_department($year)) + count($this->dm->rekap_department_fkpbj($year)) + count($this->dm->rekap_department_fp3($year));
-		$all_fppbj_finish   = $this->dm->rekapAllFPPBJFinish($year);
-		$total_fppbj_semua	= $this->mm->get_total_fppbj_semua($year);
-		$fppbj_selesai		= $this->mm->get_fppbj_selesai($year);
-		$fppbj_pending		= $this->mm->get_fppbj_pending($year);
-		$pending_admin_hsse = $this->mm->get_pending_admin_hsse($year);
-		$pending_admin_pengendalian = $this->mm->get_pending_admin_pengendalian($year);
-		$pending_kadept_proc = $this->mm->get_pending_kadept_proc($year);
-		$total_pending_dir  = $this->mm->total_pending_dir($year);
-		$fppbj_reject		= $this->mm->get_fppbj_reject($year);
-		//------------------------------------------------------
-		$pending_dirut		= $this->mm->get_pending_dirut($year);
-		$pending_dirke		= $this->mm->get_pending_dirke($year);
-		$pending_dirsdm		= $this->mm->get_pending_dirsdm($year);
-		$done_dirut			= $this->mm->get_done_dirut($year);
-		$done_dirke			= $this->mm->get_done_dirke($year);
-		$done_dirsdm		= $this->mm->get_done_dirsdm($year);
-		$reject_dirut		= $this->mm->get_reject_dirut($year);
-		$reject_dirke		= $this->mm->get_reject_dirke($year);
-		$reject_dirsdm		= $this->mm->get_reject_dirsdm($year);
-		$total_fppbj_direktur = $this->mm->get_total_fppbj_directure($year);
-		$total_fppbj_dirke  = $this->mm->get_total_fppbj_dirke($year);
-		$total_fppbj_dirut  = $this->mm->get_total_fppbj_dirut($year);
-		$total_fppbj_dirsdm = $this->mm->get_total_fppbj_dirsdm($year);
-		$total_pending_dir  = $this->mm->total_pending_dir($year);
-
-		$width_fppbj_selesai = ($fppbj_selesai->num_rows() / count($total_fppbj_semua->result())) * 100;
-
-		$all_fppbj_finish_rows = $all_fppbj_finish->num_rows();
-		
-		$res = '<div class="panel" style="height: 550px">
-
-		<div class="scrollbar" id="custom-scroll" style="height: 538px">
-
-		  <div class="container-title">
-			<h3>Data FPPBJ '.$year.'</h3>
-		  </div>
-
-		  <div class="summary">
-			<div class="summary-title">
-			  FPPBJ Selesai
-			  <span>'.count($fppbj_selesai->result()).'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-success" style="width:'.$width_fppbj_selesai.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Disetujui <span class="badge is-success">'.count($fppbj_selesai->result()).'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no = 1; 
-			foreach ($fppbj_selesai->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				$no++;
-		  	}
-			$width_pending = ($fppbj_pending->num_rows() / $total_perencanaan) * 100;
-			$res .='</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui User
-			  <span>'.$fppbj_pending->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_pending.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum disetujui User<span class="badge is-warning">'.$fppbj_pending->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no = 1; 
-			foreach ($fppbj_pending->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';	
-				  $no++;
-			}
-			$width_admin_hsse = ($pending_admin_hsse->num_rows() / $total_perencanaan) * 100;
-			$res .= '</div>
-		  </div>		  
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui HSSE
-			  <span>'.$pending_admin_hsse->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_admin_hsse.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum disetujui HSSE<span class="badge is-warning">'.$pending_admin_hsse->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1;
-			foreach ($pending_admin_hsse->result() as $key) {
-				$res .= '<p>'. $no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';	
-				$no++;
-			}
-			$width_admin_pengendalian = ($pending_admin_pengendalian->num_rows() / $total_perencanaan) * 100;
-			$res .= '</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui Admin Pengendalian
-			  <span>'.$pending_admin_pengendalian->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_admin_pengendalian.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum disetujui Admin Pengendalian<span class="badge is-warning">'.$pending_admin_pengendalian->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_admin_pengendalian->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				$no++;
-			}
-			$width_kadept_proc = ($pending_kadept_proc->num_rows() / $total_perencanaan) * 100; 
-			$res .='</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui Ka.Dept Procurement
-			  <span>'.$pending_kadept_proc->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_kadept_proc.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum disetujui Ka.Dept Procurement
-			<span class="badge is-warning">'.$pending_kadept_proc->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_kadept_proc->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				$no++;
-			}
-			$width_pending_dir = ($total_pending_dir->num_rows() / $total_perencanaan) * 100;
-			$res .= '</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui Pejabat Pengadaan
-			  <span>'.$total_pending_dir->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_pending_dir.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum di setujui Kadiv SDM umum
-			<span class="badge is-warning">'.$pending_dirsdm->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_dirsdm->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			   $no++;
-			}
-			$width_reject = ($fppbj_reject->num_rows() / $total_perencanaan) * 100;
-			$res .= '</div>
-
-			<button class="accordion-header" style="font-size:16px;">Belum di setujui Direktur Keuangan dan Umum
-			<span class="badge is-warning">'.$pending_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_dirke->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			   $no++;
-			}
-			$width_reject = ($fppbj_reject->num_rows() / $total_perencanaan) * 100;
-			$res .= '</div>
-
-			<button class="accordion-header">Belum di setujui Direktur Utama
-			<span class="badge is-warning">'.$pending_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_dirut->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			   $no++;
-			}
-	
-			$res .= '</div>
-		  </div>';
-		  
-		if($admin['id_division'] == 1 && $admin['id_role'] ==7 ||  $admin['id_role'] ==8 || $admin['id_role'] ==9) {
-			$res .= '<div class="container-title">
-			<h3>Data FPPBJ Otorisasi '.$year.'</h3>
-		  </div>';
-		  	if($admin['id_division'] == 1 && $admin['id_role'] == 9) {
-
-				$width_done_dirut 		= ($done_dirut->num_rows() / $total_fppbj_dirut->num_rows()) * 100;
-				$width_pending_dirut 	= ($pending_dirut->num_rows() / $total_fppbj_dirut->num_rows()) * 100;
-				$width_reject_dirut 	= ($reject_dirut->num_rows() / $total_fppbj_dirut->num_rows()) * 100;
-
-				$res .= '<div class="summary">
-							<div class="summary-title">
-							Sudah disetujui Direktur Utama
-							<span>'.$done_dirut->num_rows().'/'.$total_fppbj_dirut->num_rows().'</span>
-							</div>
-							<div class="summary-bars">
-							<span class="bar-top is-success" style="width:'.width_done_dirut.'%"></span>
-							<span class="bar-bottom"></span>
-							</div>
-						</div>
-						<div class="summary">
-							<div class="summary-title">
-							Belum disetujui Direktur Utama
-							<span>'.$pending_dirut->num_rows().'/'.$total_fppbj_dirut->num_rows().'</span>
-							</div>
-							<div class="summary-bars">
-							<span class="bar-top is-warning" style="width:'.$width_pending_dirut.'%"></span>
-							<span class="bar-bottom"></span>
-							</div>
-						</div>
-						<div class="summary">
-							<div class="summary-title">
-							Direvisi Direktur Utama
-							<span>'.$reject_dirut->num_rows().'/'.$total_fppbj_dirut->num_rows().'</span>
-							</div>
-							<div class="summary-bars">
-							<span class="bar-top is-danger" style="width:'.$width_reject_dirut.'%"></span>
-							<span class="bar-bottom"></span>
-							</div>
-						</div>
-						<div class="container-title">
-							<h3>Tinjauan</h3>
-						</div>
-						<div class="is-block">
-							<button class="accordion-header">Disetujui <span class="badge is-success">'.$done_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-							<div class="accordion-panel">';
-							$no = 1; 
-							foreach ($done_dirut->result() as $key) {
-								$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-								$no++;
-							}
-					$res .= '</div>
-					<button class="accordion-header">Belum disetujui<span class="badge is-warning">'.$pending_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-					<div class="accordion-panel">';
-					$no = 1;
-					foreach ($pending_dirut->result() as $key) {
-						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-						$no++;
-					}
-					$res .= '</div>
-					<button class="accordion-header">Tidak disetujui <span class="badge is-danger">'.$reject_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-					<div class="accordion-panel">';
-					$no = 1;
-					foreach ($reject_dirut->result() as $key) {
-						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-						$no++;
-					}
-					$res .= '</div>
-					</div>';
-			}
-			if($admin['id_division'] == 1 && $admin['id_role'] == 8) {
-				$width_done_dirke 	 = ($done_dirke->num_rows() / $total_fppbj_dirke->num_rows()) * 100;
-				$width_pending_dirke = ($pending_dirke->num_rows() / $total_fppbj_dirke->num_rows()) * 100;
-				$width_reject_dirke  = ($reject_dirke->num_rows() / $total_fppbj_dirke->num_rows()) * 100;
-
-				$res .= '<div class="summary">
-				<div class="summary-title">
-				  Sudah disetujui Direktur Keuangan
-				  <span>'.$done_dirke->num_rows().'/'.$total_fppbj_dirke->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-success" style="width:'.$width_done_dirke.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>
-			  <div class="summary">
-				<div class="summary-title">
-				  Belum disetujui Direktur Keuangan
-				  <span>'.$pending_dirke->num_rows().'/'.$total_fppbj_dirke->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-warning" style="width:'.$width_pending_dirke.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>
-			  <div class="summary">
-				<div class="summary-title">
-				  Direvisi Direktur Keuangan
-				  <span>'.$reject_dirke->num_rows().'/'.$total_fppbj_dirke->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-danger" style="width:'.$width_reject_dirke.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>
-			  <div class="container-title">
-				<h3>Tinjauan</h3>
-			  </div>
-			  <div class="is-block">
-				<button class="accordion-header">Disetujui <span class="badge is-success">'.$done_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($done_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .= '</div>
-				<button class="accordion-header">Belum disetujui<span class="badge is-warning">'.$pending_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$np = 1;
-				foreach ($pending_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				}
-				$res .= '</div>
-				<button class="accordion-header">Tidak disetujui <span class="badge is-danger">'.$reject_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1;
-				foreach ($reject_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .='</div>
-				</div>';
-			}
-			if($admin['id_division'] == 1 && $admin['id_role'] == 7) {
-				$width_done_dirsdm 		= ($done_dirsdm->num_rows() / $total_fppbj_dirsdm->num_rows()) * 100;
-				$width_pending_dirsdm 	= ($pending_dirsdm->num_rows() / $total_fppbj_dirsdm->num_rows()) * 100;
-				$width_reject_dirsdm 	= ($reject_dirsdm->num_rows() / $total_fppbj_dirsdm->num_rows()) * 100;
-
-				$res .= '<div class="summary">
-				<div class="summary-title">
-				  Sudah disetujui Direktur SDM
-				  <span>'.$done_dirsdm->num_rows().'/'.$total_fppbj_dirsdm->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-success" style="width:'.$width_done_dirsdm.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>
-			  <div class="summary">
-				<div class="summary-title">
-				  Belum disetujui Direktur SDM
-				  <span>'.$pending_dirsdm->num_rows().'/'.$total_fppbj_dirsdm->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-warning" style="width:'.$width_pending_dirsdm.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>	
-			  <div class="summary">
-				<div class="summary-title">
-				  Direvisi Direktur SDM
-				  <span>'.$reject_dirsdm->num_rows().'/'.$total_fppbj_dirsdm->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-danger" style="width:'.$width_reject_dirsdm.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>	
-			  <div class="container-title">
-				<h3>Tinjauan</h3>
-			  </div>	
-			  <div class="is-block">	
-				<button class="accordion-header">Disetujui <span class="badge is-success">'.$done_dirsdm->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>	
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($done_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .= '</div>
-				<button class="accordion-header">Belum disetujui<span class="badge is-warning">'.$pending_dirsdm->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1;
-				foreach ($pending_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .= '</div>
-				<button class="accordion-header">Tidak disetujui <span class="badge is-danger">' . $reject_dirsdm->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1;
-				foreach ($reject_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .='</div>
-				</div>';
-			}
-		}
-		$res .= '</div>
-	  </div>';
-
-	  echo $res;
-	}
-
-	public function rekapFKPBJ($year)
-	{
-		$total_pending_dir_fkpbj = $this->mm->total_pending_dir_fkpbj($year);
-		$pending_dirsdm		= $this->fk->get_pending_dirsdm($year);
-		$fkpbj_pending_dirke 	= $this->fk->get_pending_dirke($year);
-		$fkpbj_pending_dirut 	= $this->fk->get_pending_dirut($year);
-		$total_fkpbj 		= $this->fk->get_total_fkpbj_semua($year);
-		$fkpbj_pending 		= $this->fk->get_fkpbj_pending($year);
-		$fkpbj_pending_ap 	= $this->fk->statusApprove(1,$year);
-		$fkpbj_pending_kp	= $this->fk->statusApprove(2,$year);
-		$fkpbj_success 		= $this->fk->get_fkpbj_selesai($year);
-		$fkpbj_reject 		= $this->fk->get_fkpbj_reject($year);
-
-		$width_fkpbj_success = ($fkpbj_success->num_rows() / $total_fkpbj->num_rows()) * 100;
-
-		$res = '<div class="panel" style="height: 550px">
-		<div class="scrollbar" id="custom-scroll" style="height: 538px">
-		  <div class="container-title">
-			<h3>Data FKPBJ '.$year.'</h3>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  FKPBJ Selesai
-			  <span>'.$fkpbj_success->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-success" style="width:'.$width_fkpbj_success.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Disetujui <span class="badge is-success">'.$fkpbj_success->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-			<div class="accordion-panel">';
-			$no = 1; 
-			foreach ($fkpbj_success->result() as $key) {
-                $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				$no++;
-			}
-
-			$width_fkpbj_pending = ($fkpbj_pending->num_rows() / $total_fkpbj->num_rows()) * 100;
-			
-			$res .= '</div>
-				</div>
-				<div class="summary">
-				<div class="summary-title">
-					Belum disetujui User
-					<span>'.$fkpbj_pending->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-					<span class="bar-top is-warning" style="width:'.$width_fkpbj_pending.'%"></span>
-					<span class="bar-bottom"></span>
-				</div>
-				<button class="accordion-header">Belum disetujui User<span class="badge is-warning">'.$fkpbj_pending->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fkpbj_pending->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-			}			
-			
-			$width_fkpbj_pending_ap = ($fkpbj_pending_ap->num_rows() / $total_fkpbj->num_rows()) * 100;
-            $res .= '</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Admin Procurement
-                  <span>'.$fkpbj_pending_ap->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:'.$width_fkpbj_pending_ap.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Admin Procurement<span class="badge is-warning">'.$fkpbj_pending_ap->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-                <div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fkpbj_pending_ap->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-			$width_fkpbj_pending_kp = ($fkpbj_pending_kp->num_rows() / $total_fkpbj->num_rows()) * 100;
-			$res .='</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Ka.Dept Procurement
-                  <span>'.$fkpbj_pending_kp->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:'.$width_fkpbj_pending_kp.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Ka.Dept Procurement
-                <span class="badge is-warning">'.$fkpbj_pending_kp->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fkpbj_pending_kp->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->fppbj_division.'/'.$key->id_fppbj).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-
-				$width_pending_dir = ($total_pending_dir_fkpbj->num_rows() / $total_fkpbj->num_rows()) * 100;
-		$res .= '</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui Pejabat Pengadaan
-			  <span>' . $total_pending_dir_fkpbj->num_rows() . '</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:' . $width_pending_dir . '%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum di setujui Kadiv SDM umum
-			<span class="badge is-warning">' . $pending_dirsdm->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-			<div class="accordion-panel">';
-		$no = 1;
-		foreach ($pending_dirsdm->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			$no++;
-		}
-		$res .= '</div>';
-		$res .= '<button class="accordion-header">Belum disetujui Direktur Keuangan
-                <span class="badge is-warning">' . $fkpbj_pending_dirke->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-		$no = 1;
-		foreach ($fkpbj_pending_dirke->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			$no++;
-		}
-		$res .= '</div>';
-		$res .= '<button class="accordion-header">Belum disetujui Direktur Utama
-                <span class="badge is-warning">' . $fkpbj_pending_dirut->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-		$no = 1;
-		foreach ($fkpbj_pending_dirut->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			$no++;
-		}
-
-				$width_fkpbj_reject = ($fkpbj_reject->num_rows() / $total_fkpbj->num_rows()) * 100;
-			$res .= '</div>
-              </div>
-            </div>
-		  </div>';
-		  
-		  echo $res;
-	}
-
-	public function rekapFP3($year)
-	{
-		$total_fp3 			= $this->fp->getTotalFP3(5,$year);
-		$fp3_pending 		= $this->fp->statusApprove(0,$year);
-		$fp3_pending_ap 	= $this->fp->statusApprove(1,$year);
-		$fp3_pending_kp		= $this->fp->statusApprove(2,$year);
-		$fp3_success 		= $this->fp->statusApprove(3,$year);
-		$fp3_reject 		= $this->fp->statusApprove(4,$year);
-
-		$fp3_pending_sdm 	= $this->fp->statusApprove(7,$year);
-		$fp3_pending_dirke 	= $this->fp->statusApprove(8,$year);
-		$fp3_pending_dirut 	= $this->fp->statusApprove(9,$year);
-		$fp3_pending_aldir 	= $this->fp->statusApprove(10,$year);
-		
-		if ($year == '2022') {
-			$total_fp3_success_rows = 30;
-		} else {
-			$total_fp3_success_rows = $fp3_success->num_rows();
-		}
-		
-		$width_fp3_success = ($total_fp3_success_rows / $total_fp3->num_rows()) * 100;
-
-		$res = '<div class="panel" style="height: 550px">
-		<div class="scrollbar" id="custom-scroll" style="height: 538px">
-		  <div class="container-title">
-			<h3>Data FP3 '.$year.'</h3>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  FP3 Selesai
-			  <span>'.$total_fp3_success_rows.'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-success" style="width:'.$width_fp3_success.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Disetujui <span class="badge is-success">'.$total_fp3_success_rows.'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-			<div class="accordion-panel">';
-			$no = 1; 
-			foreach ($fp3_success->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				$no++;
-			}
-
-			$width_fp3_pending = ($fp3_pending->num_rows() / $total_fp3->num_rows()) * 100;
-
-			$res .= '</div>
-				</div>
-				<div class="summary">
-				<div class="summary-title">
-					Belum disetujui User
-					<span>'.$fp3_pending->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-					<span class="bar-top is-warning" style="width:'.$width_fp3_pending.'%"></span>
-					<span class="bar-bottom"></span>
-				</div>
-				<button class="accordion-header">Belum disetujui User<span class="badge is-warning">'.$fp3_pending->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-
-			$width_fp3_pending_ap = ($fp3_pending_ap->num_rows() / $total_fp3->num_rows()) * 100;
-            $res .= '</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Admin Pengendalian
-                  <span>'.$fp3_pending_ap->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:'.$width_fp3_pending_ap.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Admin Pengendalian<span class="badge is-warning">'.$fp3_pending_ap->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-                <div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending_ap->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-			$width_fp3_pending_kp = ($fp3_pending_kp->num_rows() / $total_fp3->num_rows()) * 100;
-			$res .='</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Ka.Dept Procurement
-                  <span>'.$fp3_pending_kp->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:'.$width_fp3_pending_kp.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Ka.Dept Procurement
-                <span class="badge is-warning">'.$fp3_pending_kp->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending_kp->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-			$width_fp3_pending_aldir = ($fp3_pending_aldir->num_rows() / $total_fp3->num_rows()) * 100;
-			$res .='</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Pejabat Pengadaan
-                  <span>'.$fp3_pending_aldir->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:'.$width_fp3_pending_aldir.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Kadiv SDM dan Umum
-                <span class="badge is-warning">'.$fp3_pending_sdm->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending_sdm->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-			$res .= '</div>';
-			$res .= '<button class="accordion-header">Belum disetujui Direktur Keuangan
-                <span class="badge is-warning">'.$fp3_pending_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending_dirke->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-			$res .= '</div>';
-			$res .= '<button class="accordion-header">Belum disetujui Direktur Utama
-                <span class="badge is-warning">'.$fp3_pending_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending_dirut->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('fp3/index/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$width_fp3_reject = ($fp3_reject->num_rows() / $total_fp3->num_rows()) * 100;
-			$res .= '</div>';
-              $res .='</div>
-              
-            </div>
-		  </div>';
-		  
-		  echo $res;
-	}
-
-	public function rekapFPPBJBaru($year)
-	{
-		$total_perencanaan	= count($this->dm->rekap_department($year, 2)) + count($this->dm->rekap_department_fkpbj($year, 2)) + count($this->dm->rekap_department_fp3($year, 2));
-		$total_fppbj_semua	= $this->mm->get_total_fppbj_semua($year,2);
-		$fppbj_selesai		= $this->mm->get_fppbj_selesai($year,2);
-		$fppbj_pending		= $this->mm->get_fppbj_pending($year,2);
-		$pending_admin_hsse = $this->mm->get_pending_admin_hsse($year,2);
-		$pending_admin_pengendalian = $this->mm->get_pending_admin_pengendalian($year,2);
-		$pending_kadept_proc = $this->mm->get_pending_kadept_proc($year,2);
-		$total_pending_dir  = $this->mm->total_pending_dir($year,2);
-		$fppbj_reject		= $this->mm->get_fppbj_reject($year,2);
-		//------------------------------------------------------
-		$pending_dirut		= $this->mm->get_pending_dirut($year,2);
-		$pending_dirke		= $this->mm->get_pending_dirke($year,2);
-		$pending_dirsdm		= $this->mm->get_pending_dirsdm($year,2);
-		$done_dirut			= $this->mm->get_done_dirut($year,2);
-		$done_dirke			= $this->mm->get_done_dirke($year,2);
-		$done_dirsdm		= $this->mm->get_done_dirsdm($year,2);
-		$reject_dirut		= $this->mm->get_reject_dirut($year,2);
-		$reject_dirke		= $this->mm->get_reject_dirke($year,2);
-		$reject_dirsdm		= $this->mm->get_reject_dirsdm($year,2);
-		$total_fppbj_direktur = $this->mm->get_total_fppbj_directure($year,2);
-		$total_fppbj_dirke  = $this->mm->get_total_fppbj_dirke($year,2);
-		$total_fppbj_dirut  = $this->mm->get_total_fppbj_dirut($year,2);
-		$total_fppbj_dirsdm = $this->mm->get_total_fppbj_dirsdm($year,2);
-		$total_pending_dir  = $this->mm->total_pending_dir($year,2);
-
-		$width_fppbj_selesai = ($fppbj_selesai->num_rows() / $total_fppbj_semua) * 100;
-
-		$res = '<div class="panel" style="height: 550px">
-
-		<div class="scrollbar" id="custom-scroll" style="height: 538px">
-
-		  <div class="container-title">
-			<h3>Data FPPBJ Baru '.$year.'</h3>
-		  </div>
-
-		  <div class="summary">
-			<div class="summary-title">
-			  FPPBJ Selesai
-			  <span>'.$fppbj_selesai->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-success" style="width:'.$width_fppbj_selesai.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Disetujui <span class="badge is-success">'.$fppbj_selesai->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no = 1; 
-			foreach ($fppbj_selesai->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				$no++;
-		  	}
-			$width_pending = ($fppbj_pending->num_rows() / $total_perencanaan) * 100;
-			$res .='</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui User
-			  <span>'.$fppbj_pending->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_pending.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum disetujui User<span class="badge is-warning">'.$fppbj_reject->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no = 1; 
-			foreach ($fppbj_reject->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';	
-				  $no++;
-			}
-			$width_admin_hsse = ($pending_admin_hsse->num_rows() / $total_perencanaan) * 100;
-			$res .= '</div>
-		  </div>		  
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui HSSE
-			  <span>'.$pending_admin_hsse->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_admin_hsse.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum disetujui HSSE<span class="badge is-warning">'.$pending_admin_hsse->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1;
-			foreach ($pending_admin_hsse->result() as $key) {
-				$res .= '<p>'. $no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';	
-				$no++;
-			}
-			if ($year == '2022') {
-				$total_pending_admin_pengendalian_rows = 0;
-			} else {
-				$total_pending_admin_pengendalian_rows = $pending_admin_pengendalian->num_rows();
-			}
-			
-			$width_admin_pengendalian = ($total_pending_admin_pengendalian_rows / $total_perencanaan) * 100;
-			$res .= '</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui Admin Pengendalian
-			  <span>'.$total_pending_admin_pengendalian_rows.'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_admin_pengendalian.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum disetujui Admin Pengendalian<span class="badge is-warning">'.$total_pending_admin_pengendalian_rows.'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			
-			if ($year != '2022') {
-				$no=1; 
-				foreach ($pending_admin_pengendalian->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}	
-			}
-			$width_kadept_proc = ($pending_kadept_proc->num_rows() / $total_perencanaan) * 100; 
-			$res .='</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui Ka.Dept Procurement
-			  <span>'.$pending_kadept_proc->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_kadept_proc.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum disetujui Ka.Dept Procurement
-			<span class="badge is-warning">'.$pending_kadept_proc->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_kadept_proc->result() as $key) {
-				$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				$no++;
-			}
-			$width_pending_dir = ($total_pending_dir->num_rows() / $total_perencanaan) * 100;
-			$res .= '</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui Pejabat Pengadaan
-			  <span>'.$total_pending_dir->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:'.$width_pending_dir.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum di setujui Kadiv SDM umum
-			<span class="badge is-warning">'.$pending_dirsdm->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_dirsdm->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			   $no++;
-			}
-			$res .= '</div>
-
-			<button class="accordion-header" style="font-size:16px;">Belum di setujui Direktur Keuangan dan Umum
-			<span class="badge is-warning">'.$pending_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_dirke->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			   $no++;
-			}
-			$res .= '</div>
-
-			<button class="accordion-header">Belum di setujui Direktur Utama
-			<span class="badge is-warning">'.$pending_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-			<div class="accordion-panel">';
-			$no=1; 
-			foreach ($pending_dirut->result() as $key) {
-			   $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			   $no++;
-			}
-			$width_reject = ($fppbj_reject->num_rows() / $total_perencanaan) * 100;
-			$res .= '</div>
-		  </div>
-		  <div class="summary">
-			
-		  </div>';
-		  
-		if($admin['id_division'] == 1 && $admin['id_role'] ==7 ||  $admin['id_role'] ==8 || $admin['id_role'] ==9) {
-			$res .= '<div class="container-title">
-			<h3>Data FPPBJ Otorisasi '.$year.'</h3>
-		  </div>';
-		  	if($admin['id_division'] == 1 && $admin['id_role'] == 9) {
-
-				$width_done_dirut 		= ($done_dirut->num_rows() / $total_fppbj_dirut->num_rows()) * 100;
-				$width_pending_dirut 	= ($pending_dirut->num_rows() / $total_fppbj_dirut->num_rows()) * 100;
-				$width_reject_dirut 	= ($reject_dirut->num_rows() / $total_fppbj_dirut->num_rows()) * 100;
-
-				$res .= '<div class="summary">
-							<div class="summary-title">
-							Sudah disetujui Direktur Utama
-							<span>'.$done_dirut->num_rows().'/'.$total_fppbj_dirut->num_rows().'</span>
-							</div>
-							<div class="summary-bars">
-							<span class="bar-top is-success" style="width:'.width_done_dirut.'%"></span>
-							<span class="bar-bottom"></span>
-							</div>
-						</div>
-						<div class="summary">
-							<div class="summary-title">
-							Belum disetujui Direktur Utama
-							<span>'.$pending_dirut->num_rows().'/'.$total_fppbj_dirut->num_rows().'</span>
-							</div>
-							<div class="summary-bars">
-							<span class="bar-top is-warning" style="width:'.$width_pending_dirut.'%"></span>
-							<span class="bar-bottom"></span>
-							</div>
-						</div>
-						<div class="summary">
-							<div class="summary-title">
-							Direvisi Direktur Utama
-							<span>'.$reject_dirut->num_rows().'/'.$total_fppbj_dirut->num_rows().'</span>
-							</div>
-							<div class="summary-bars">
-							<span class="bar-top is-danger" style="width:'.$width_reject_dirut.'%"></span>
-							<span class="bar-bottom"></span>
-							</div>
-						</div>
-						<div class="container-title">
-							<h3>Tinjauan</h3>
-						</div>
-						<div class="is-block">
-							<button class="accordion-header">Disetujui <span class="badge is-success">'.$done_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-							<div class="accordion-panel">';
-							$no = 1; 
-							foreach ($done_dirut->result() as $key) {
-								$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-								$no++;
-							}
-					$res .= '</div>
-					<button class="accordion-header">Belum disetujui<span class="badge is-warning">'.$pending_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-					<div class="accordion-panel">';
-					$no = 1;
-					foreach ($pending_dirut->result() as $key) {
-						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-						$no++;
-					}
-					$res .= '</div>
-					<button class="accordion-header">Tidak disetujui <span class="badge is-danger">'.$reject_dirut->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-					<div class="accordion-panel">';
-					$no = 1;
-					foreach ($reject_dirut->result() as $key) {
-						$res .= '<p>'.$no.'<a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-						$no++;
-					}
-					$res .= '</div>
-					</div>';
-			}
-			if($admin['id_division'] == 1 && $admin['id_role'] == 8) {
-				$width_done_dirke 	 = ($done_dirke->num_rows() / $total_fppbj_dirke->num_rows()) * 100;
-				$width_pending_dirke = ($pending_dirke->num_rows() / $total_fppbj_dirke->num_rows()) * 100;
-				$width_reject_dirke  = ($reject_dirke->num_rows() / $total_fppbj_dirke->num_rows()) * 100;
-
-				$res .= '<div class="summary">
-				<div class="summary-title">
-				  Sudah disetujui Direktur Keuangan
-				  <span>'.$done_dirke->num_rows().'/'.$total_fppbj_dirke->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-success" style="width:'.$width_done_dirke.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>
-			  <div class="summary">
-				<div class="summary-title">
-				  Belum disetujui Direktur Keuangan
-				  <span>'.$pending_dirke->num_rows().'/'.$total_fppbj_dirke->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-warning" style="width:'.$width_pending_dirke.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>
-			  <div class="summary">
-				<div class="summary-title">
-				  Direvisi Direktur Keuangan
-				  <span>'.$reject_dirke->num_rows().'/'.$total_fppbj_dirke->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-danger" style="width:'.$width_reject_dirke.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>
-			  <div class="container-title">
-				<h3>Tinjauan</h3>
-			  </div>
-			  <div class="is-block">
-				<button class="accordion-header">Disetujui <span class="badge is-success">'.$done_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($done_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .= '</div>
-				<button class="accordion-header">Belum disetujui<span class="badge is-warning">'.$pending_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$np = 1;
-				foreach ($pending_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				}
-				$res .= '</div>
-				<button class="accordion-header">Tidak disetujui <span class="badge is-danger">'.$reject_dirke->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1;
-				foreach ($reject_dirke->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .='</div>
-				</div>';
-			}
-			if($admin['id_division'] == 1 && $admin['id_role'] == 7) {
-				$width_done_dirsdm 		= ($done_dirsdm->num_rows() / $total_fppbj_dirsdm->num_rows()) * 100;
-				$width_pending_dirsdm 	= ($pending_dirsdm->num_rows() / $total_fppbj_dirsdm->num_rows()) * 100;
-				$width_reject_dirsdm 	= ($reject_dirsdm->num_rows() / $total_fppbj_dirsdm->num_rows()) * 100;
-
-				$res .= '<div class="summary">
-				<div class="summary-title">
-				  Sudah disetujui Direktur SDM
-				  <span>'.$done_dirsdm->num_rows().'/'.$total_fppbj_dirsdm->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-success" style="width:'.$width_done_dirsdm.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>
-			  <div class="summary">
-				<div class="summary-title">
-				  Belum disetujui Direktur SDM
-				  <span>'.$pending_dirsdm->num_rows().'/'.$total_fppbj_dirsdm->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-warning" style="width:'.$width_pending_dirsdm.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>	
-			  <div class="summary">
-				<div class="summary-title">
-				  Direvisi Direktur SDM
-				  <span>'.$reject_dirsdm->num_rows().'/'.$total_fppbj_dirsdm->num_rows().'</span>
-				</div>
-				<div class="summary-bars">
-				  <span class="bar-top is-danger" style="width:'.$width_reject_dirsdm.'%"></span>
-				  <span class="bar-bottom"></span>
-				</div>
-			  </div>	
-			  <div class="container-title">
-				<h3>Tinjauan</h3>
-			  </div>	
-			  <div class="is-block">	
-				<button class="accordion-header">Disetujui <span class="badge is-success">'.$done_dirsdm->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>	
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($done_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .= '</div>
-				<button class="accordion-header">Belum disetujui<span class="badge is-warning">'.$pending_dirsdm->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1;
-				foreach ($pending_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .= '</div>
-				<button class="accordion-header">Tidak disetujui <span class="badge is-danger">' . $reject_dirsdm->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1;
-				foreach ($reject_dirsdm->result() as $key) {
-					$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$res .='</div>
-				</div>';
-			}
-		}
-		$res .= '</div>
-	  </div>';
-
-	  echo $res;
-	}
-
-	public function rekapFP3_($year)
-	{
-		$total_fp3 			= $this->fp->statusApprove(5,$year);
-		$fp3_pending 		= $this->fp->statusApprove(0,$year);
-		$fp3_pending_ap 	= $this->fp->statusApprove(1,$year);
-		$fp3_pending_kp		= $this->fp->statusApprove(2,$year);
-		$fp3_success 		= $this->fp->statusApprove(3,$year);
-		$fp3_reject 		= $this->fp->statusApprove(4,$year);
-
-		$width_fp3_success = ($fp3_success->num_rows() / $total_fp3->num_rows()) * 100;
-
-		$res = '<div class="panel" style="height: 550px">
-		<div class="scrollbar" id="custom-scroll" style="height: 538px">
-		  <div class="container-title">
-			<h3>Data FP3 '.$year.'</h3>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  FP3 Selesai
-			  <span>'.$fp3_success->num_rows().'/'.$total_fp3->num_rows().'</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-success" style="width:'.$width_fp3_success.'%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Disetujui <span class="badge is-success">'.$fp3_success->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-			<div class="accordion-panel">';
-			$no = 1; 
-			foreach ($fp3_success->result() as $key) {
-                $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-				$no++;
-			}
-
-			$width_fp3_pending = ($fp3_pending->num_rows() / $total_fp3->num_rows()) * 100;
-            $res .= '</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui User
-                  <span>'.$fp3_pending->num_rows().'/'.$total_fp3->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:'.$width_fp3_pending.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui User<span class="badge is-warning">'.$fp3_pending->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$width_fp3_pending_ap = ($fp3_pending_ap->num_rows() / $total_fp3->num_rows()) * 100;
-            $res .= '</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Admin Procurement
-                  <span>'.$fp3_pending_ap->num_rows().'/'.$total_fp3->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:'.$width_fp3_pending_ap.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Admin Procurement<span class="badge is-warning">'.$fp3_pending_ap->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-                <div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending_ap->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-			$width_fp3_pending_kp = ($fp3_pending_kp->num_rows() / $total_fp3->num_rows()) * 100;
-			$res .='</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Ka.Dept Procurement
-                  <span>'.$fp3_pending_kp->num_rows().'/'.$total_fp3->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:'.$width_fp3_pending_kp.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Ka.Dept Procurement
-                <span class="badge is-warning">'.$fp3_pending_kp->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_pending_kp->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-				$width_fp3_reject = ($fp3_reject->num_rows() / $total_fp3->num_rows()) * 100;
-			$res .= '</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Tidak Disetujui
-                  <span>'.$fp3_reject->num_rows().'/'.$total_fp3->num_rows().'</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-danger" style="width:'.$width_fp3_reject.'%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Tidak disetujui <span class="badge is-danger">'.$fp3_reject->num_rows().'</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-				$no = 1; 
-				foreach ($fp3_reject->result() as $key) {
-                    $res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-					$no++;
-				}
-            $res .= '</div>
-              </div>
-            </div>
-		  </div>';
-		  
-		  echo $res;
-	}
-
-	public function rekapFKPBJBaru($year)
-	{
-		$total_pending_dir_fkpbj = $this->mm->total_pending_dir_fkpbj($year,2);
-		$pending_dirsdm		= $this->fk->get_pending_dirsdm($year,2);
-		$fkpbj_pending_dirke 	= $this->fk->get_pending_dirke($year,2);
-		$fkpbj_pending_dirut 	= $this->fk->get_pending_dirut($year,2);
-		$total_fkpbj 		= $this->fk->get_total_fkpbj_semua($year,2);
-		$fkpbj_pending 		= $this->fk->get_fkpbj_pending($year,2);
-		$fkpbj_pending_ap 	= $this->fk->statusApprove(1,$year,2);
-		$fkpbj_pending_kp	= $this->fk->statusApprove(2,$year,2);
-		$fkpbj_success 		= $this->fk->get_fkpbj_selesai($year,2);
-		$fkpbj_reject 		= $this->fk->get_fkpbj_reject($year,2);
-
-		$total_fkpbj_success_rows = $fkpbj_success->num_rows();
-		$total_fkpbj_rows = $total_fkpbj->num_rows();
-	
-		
-		$width_fkpbj_success = ($total_fkpbj_success_rows / $total_fkpbj_rows) * 100;
-
-		
-
-
-		$res = '<div class="panel" style="height: 550px">
-		<div class="scrollbar" id="custom-scroll" style="height: 538px">
-		  <div class="container-title">
-			<h3>Data FKPBJ Baru ' . $year . '</h3>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  FKPBJ Selesai
-			  <span>' . $total_fkpbj_success_rows . '</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-success" style="width:' . $width_fkpbj_success . '%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Disetujui <span class="badge is-success">' . $total_fkpbj_success_rows . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-			<div class="accordion-panel">';
-		$no = 1;
-
-		
-		foreach ($fkpbj_success->result() as $key) {
-			
-			$res .= '<p>' . $no . '. <a href="' . site_url('pemaketan/division/' . $key->id_division . '/' . $key->id . '/' . date('Y', strtotime($key->entry_stamp))) . '">' . $key->nama_pengadaan . '</a></p>';
-			$no++;
-		}
-
-		$width_fkpbj_pending = ($fkpbj_pending->num_rows() / $total_fkpbj->num_rows()) * 100;
-		$res .= '</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui User
-                  <span>' . $fkpbj_pending->num_rows() . '</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:' . $width_fkpbj_pending . '%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui User<span class="badge is-warning">' . $fkpbj_pending->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-		$no = 1;
-		foreach ($fkpbj_pending->result() as $key) {
-			$res .= '<p>' . $no . '. <a href="' . site_url('pemaketan/division/' . $key->id_division . '/' . $key->id . '/' . date('Y', strtotime($key->entry_stamp))) . '">' . $key->nama_pengadaan . '</a></p>';
-			$no++;
-		}
-		$width_fkpbj_pending_ap = ($fkpbj_pending_ap->num_rows() / $total_fkpbj->num_rows()) * 100;
-		$res .= '</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Admin Procurement
-                  <span>' . $fkpbj_pending_ap->num_rows() . '</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:' . $width_fkpbj_pending_ap . '%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Admin Procurement<span class="badge is-warning">' . $fkpbj_pending_ap->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-                <div class="accordion-panel">';
-		$no = 1;
-		foreach ($fkpbj_pending_ap->result() as $key) {
-			$res .= '<p>' . $no . '. <a href="' . site_url('pemaketan/division/' . $key->id_division . '/' . $key->id . '/' . date('Y', strtotime($key->entry_stamp))) . '">' . $key->nama_pengadaan . '</a></p>';
-			$no++;
-		}
-		$width_fkpbj_pending_kp = ($fkpbj_pending_kp->num_rows() / $total_fkpbj->num_rows()) * 100;
-		$res .= '</div>
-              </div>
-              <div class="summary">
-                <div class="summary-title">
-                  Belum disetujui Ka.Dept Procurement
-                  <span>' . $fkpbj_pending_kp->num_rows() . '</span>
-                </div>
-                <div class="summary-bars">
-                  <span class="bar-top is-warning" style="width:' . $width_fkpbj_pending_kp . '%"></span>
-                  <span class="bar-bottom"></span>
-                </div>
-                <button class="accordion-header">Belum disetujui Ka.Dept Procurement
-                <span class="badge is-warning">' . $fkpbj_pending_kp->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-
-				<div class="accordion-panel">';
-		$no = 1;
-		foreach ($fkpbj_pending_kp->result() as $key) {
-			$res .= '<p>' . $no . '. <a href="' . site_url('pemaketan/division/' . $key->id_division . '/' . $key->id . '/' . date('Y', strtotime($key->entry_stamp))) . '">' . $key->nama_pengadaan . '</a></p>';
-			$no++;
-		}
-		$width_fkpbj_reject = ($fkpbj_reject->num_rows() / $total_fkpbj->num_rows()) * 100;
-		//----Pejabat Pengadaan----
-		$width_pending_dir = ($total_pending_dir_fkpbj->num_rows() / $total_fkpbj->num_rows()) * 100;
-		$res .= '</div>
-		  </div>
-		  <div class="summary">
-			<div class="summary-title">
-			  Belum disetujui Pejabat Pengadaan
-			  <span>' . $total_pending_dir_fkpbj->num_rows() . '</span>
-			</div>
-			<div class="summary-bars">
-			  <span class="bar-top is-warning" style="width:' . $width_pending_dir . '%"></span>
-			  <span class="bar-bottom"></span>
-			</div>
-			<button class="accordion-header">Belum di setujui Kadiv SDM umum
-			<span class="badge is-warning">' . $pending_dirsdm->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-			<div class="accordion-panel">';
-		$no = 1;
-		foreach ($pending_dirsdm->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			$no++;
-		}
-		$res .= '</div>';
-		$res .= '<button class="accordion-header">Belum disetujui Direktur Keuangan
-                <span class="badge is-warning">' . $fkpbj_pending_dirke->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-		$no = 1;
-		foreach ($fkpbj_pending_dirke->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			$no++;
-		}
-		$res .= '</div>';
-		$res .= '<button class="accordion-header">Belum disetujui Direktur Utama
-                <span class="badge is-warning">' . $fkpbj_pending_dirut->num_rows() . '</span><span class="icon"><i class="fas fa-angle-down"></i></span></button>
-				<div class="accordion-panel">';
-		$no = 1;
-		foreach ($fkpbj_pending_dirut->result() as $key) {
-			$res .= '<p>'.$no.'. <a href="'.site_url('pemaketan/division/'.$key->id_division.'/'.$key->id).'">'.$key->nama_pengadaan.'</a></p>';
-			$no++;
-		}
-
-				$width_fkpbj_reject = ($fkpbj_reject->num_rows() / $total_fkpbj->num_rows()) * 100;
-			$res .= '</div>
-              </div>
-            </div>
-		  </div>';
-		echo $res;
 	}
 }

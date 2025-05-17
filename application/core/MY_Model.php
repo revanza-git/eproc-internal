@@ -1,6 +1,93 @@
 <?php
-class MY_Model extends CI_model{
-	public $table;
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class MY_Model extends CI_Model {
+	protected $table;
+	protected $primary_key = 'id';
+	protected $db_group = 'default';
+	protected $db;
+
+	public function __construct() {
+		parent::__construct();
+		$this->db = $this->load->database($this->db_group, TRUE);
+	}
+
+	protected function build_where_clause($conditions = []) {
+		$where = [];
+		$params = [];
+
+		foreach ($conditions as $key => $value) {
+			if (is_array($value)) {
+				$where[] = $key . ' ' . $value[0] . ' ?';
+				$params[] = $value[1];
+			} else {
+				$where[] = $key . ' = ?';
+				$params[] = $value;
+			}
+		}
+
+		return [
+			'clause' => implode(' AND ', $where),
+			'params' => $params
+		];
+	}
+
+	protected function build_year_filter($year, $field = 'entry_stamp') {
+		if (!empty($year)) {
+			return " AND $field LIKE '%$year%'";
+		}
+		return '';
+	}
+
+	protected function build_division_filter($division_id) {
+		if ($division_id != 1 && $division_id != 5) {
+			return " AND id_division = $division_id";
+		}
+		return '';
+	}
+
+	protected function build_perencanaan_filter($is_perencanaan) {
+		if ($is_perencanaan != '1') {
+			return " AND is_perencanaan = $is_perencanaan";
+		}
+		return " AND is_perencanaan = 1";
+	}
+
+	public function get_by_id($id) {
+		return $this->db->where($this->primary_key, $id)
+					   ->get($this->table)
+					   ->row_array();
+	}
+
+	public function get_all($conditions = [], $order_by = null) {
+		$where = $this->build_where_clause($conditions);
+		
+		$query = $this->db->where($where['clause'], $where['params']);
+		
+		if ($order_by) {
+			$query = $query->order_by($order_by);
+		}
+		
+		return $query->get($this->table);
+	}
+
+	public function update($id, $data) {
+		return $this->db->where($this->primary_key, $id)
+					   ->update($this->table, $data);
+	}
+
+	public function delete($id) {
+		return $this->db->where($this->primary_key, $id)
+					   ->update($this->table, ['del' => 1]);
+	}
+
+	public function count($conditions = []) {
+		$where = $this->build_where_clause($conditions);
+		return $this->db->where($where['clause'], $where['params'])
+					   ->from($this->table)
+					   ->count_all_results();
+	}
+
 	function getData($form){
 		$query = "SELECT * FROM ".$this->table." WHERE del = 0";
 		if($this->input->post('filter')){
@@ -27,31 +114,6 @@ class MY_Model extends CI_model{
 		return $a;
 	}
 
-	function update($id, $data){
-		// unset($data['pengadaan']);
-		foreach ($data as $key => $value) {
-			foreach ($value as $keys => $values) {
-					if($values=='') unset($value[$keys]);
-				}
-			if(is_array($value)){
-				$data[$key] = implode(',',$value);
-			}
-		}
-		$a = $this->db->
-				where('id', $id)->
-				update($this->table, $data);
-
-		return $a;
-	}
-	function delete($id){
-
-		return $this->db->where('id', $id)
-					->update($this->table, array(
-											'del' => 1,
-											'edit_stamp' => timestamp()
-											)
-					);
-	}
 	function remove($id){
 		return $this->db->where('id', $id)
 						->delete($this->table);

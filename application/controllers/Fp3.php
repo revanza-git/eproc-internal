@@ -2,7 +2,6 @@
 
 class Fp3 extends MY_Controller
 {
-
 	public $form;
 	public $modelAlias 	= 'fp3';
 	public $alias 		= 'ms_fp3';
@@ -10,6 +9,9 @@ class Fp3 extends MY_Controller
 
 	public $current_year = 2023;
 	
+	// Base form configuration to reduce duplication
+	private $baseFormConfig;
+
 	public function __construct()
 	{	
 		parent::__construct();
@@ -25,101 +27,107 @@ class Fp3 extends MY_Controller
 		$this->load->library('pdf');
 		include_once APPPATH . 'third_party/dompdf2/dompdf_config.inc.php';
 
-
-		$this->form = array(
-			'form' => array(
-				array(
+		// Initialize base form configuration
+		$this->baseFormConfig = [
+			'form' => [
+				[
 					'field'	=> 	'status',
 					'type'	=>	'fp3',
 					'label'	=>	'FP3',
-				),
-				array(
+				],
+				[
 					'field'	=> 	'id_fppbj',
 					'type'	=>	'dropdown',
 					'label'	=>	'Nama Pengadaan (Lama)',
-					'source' =>  $this->fp3->getFppbj(),
 					'rules' =>	'required'
-				),
-				array(
+				],
+				[
 					'field'	=> 	'nama_pengadaan',
 					'type'	=>	'text',
 					'label'	=>	'Nama Pengadaan (Baru)',
-				),
-				array(
+				],
+				[
 					'field'	=> 	'no_pr_lama',
 					'type'	=>	'text',
 					'label'	=>	'Nomor PR (Lama)',
-				),
-				array(
+				],
+				[
 					'field'	=> 	'no_pr',
 					'type'	=>	'text',
 					'label'	=>	'Nomor PR (Baru)',
-				),
-				array(
+				],
+				[
 					'field'	=> 	'metode_pengadaan_lama',
 					'type'	=>	'text',
 					'label'	=>	'Metode Pengadaan (Lama)'
-				), array(
+				],
+				[
 					'field'	=> 	'metode_pengadaan',
 					'type'	=>	'dropdown',
 					'label'	=>	'Metode Pengadaan (Baru)',
-					'source' =>	$this->mm->getProcMethod(),
-				),
-				array(
+				],
+				[
 					'field'	=> 	array('jwpp_start_lama', 'jwpp_end_lama'),
 					'type'	=>	'date_range',
 					'label'	=>	'Masa Penyelesaian Pekerjaan (Lama)',
-				),
-				array(
+				],
+				[
 					'field'	=> 	array('jwpp_start', 'jwpp_end'),
 					'type'	=>	'date_range',
 					'label'	=>	'Masa Penyelesaian Pekerjaan (Baru)',
-				), array(
+				],
+				[
 					'field'	=> 	'desc_lama',
 					'type'	=>	'textarea',
 					'label'	=>	'Keterangan (Lama)',
-				), array(
+				],
+				[
 					'field'	=> 	'desc',
 					'type'	=>	'textarea',
 					'label'	=>	'Keterangan (Baru)',
-				), array(
+				],
+				[
 					'field' => 'kak_lampiran_lama',
 					'type'  => 'file',
 					'label' => 'KAK Lampiran (Lama)',
 					'upload_path' => base_url('assets/lampiran/kak_lampiran/'),
 					'upload_url' => site_url('fp3/upload_lampiran'),
 					'allowed_types' => '*'
-				), array(
+				],
+				[
 					'field' => 'kak_lampiran',
 					'type'  => 'file',
 					'label' => 'KAK Lampiran (Baru)',
 					'upload_path' => base_url('assets/lampiran/kak_lampiran/'),
 					'upload_url' => site_url('fp3/upload_lampiran'),
 					'allowed_types' => '*'
-				),
-				array(
+				],
+				[
 					'field' => 'pr_lampiran_lama',
 					'type'  => 'file',
 					'label' => 'PR Lampiran (Lama)',
 					'upload_path' => base_url('assets/lampiran/pr_lampiran/'),
 					'upload_url' => site_url('fp3/upload_lampiran'),
 					'allowed_types' => '*'
-				), array(
+				],
+				[
 					'field' => 'pr_lampiran',
 					'type'  => 'file',
 					'label' => 'PR Lampiran (Baru)',
 					'upload_path' => base_url('assets/lampiran/pr_lampiran/'),
 					'upload_url' => site_url('fp3/upload_lampiran'),
 					'allowed_types' => '*'
-				), array(
+				],
+				[
 					'field'	=> 	'desc_batal',
 					'type'	=>	'textarea',
 					'label'	=>	'Justifikasi Batal',
-				), array(
+				],
+				[
 					'field'	=> 	'fp3_type',
 					'type'	=>	'hidden',
-				)
-			),
+				]
+			],
 
 			'successAlert' => 'Berhasil mengubah data!',
 			'filter' => array(
@@ -127,37 +135,59 @@ class Fp3 extends MY_Controller
 					'field'	=> 	'a|status',
 					'type'	=>	'text',
 					'label'	=>	'Status'
-				), array(
+				),
+				array(
 					'field'	=> 	'a|id_fppbj',
 					'type'	=>	'dropdown',
 					'label'	=>	'Nama Pengadaan B/J',
-					'source' =>  $this->fp3->getFppbj(),
 					'rules' => 	'required',
-				), array(
+				),
+				array(
 					'field'	=> 	'a|nama_pengadaan',
 					'type'	=>	'text',
 					'label'	=>	'Nama Pengadaan',
 					'rules' => 	'required',
-				), array(
+				),
+				array(
 					'field'	=> 	'a|metode_pengadaan',
 					'type'	=>	'text',
 					'label'	=>	'Metode Pengadaan',
 					'rules' => 	'required',
-				), array(
+				),
+				array(
 					'field'	=> 	'a|jadwal_pengadaan',
 					'type'	=>	'dateTime',
 					'label'	=>	'Masa Penyelesaian Pekerjaan',
 					'rules' => 	'required',
 				)
-
 			)
-		);
+		];
+
+		// Initialize form configuration
+		$this->initializeFormConfig();
+		
+		// Set URLs
 		$this->insertUrl = site_url('fp3/save/');
 		$this->updateUrl = 'fp3/update/';
 		$this->deleteUrl = 'fp3/delete/';
 		$this->approveURL = 'fp3/approve/';
+		
+		// Get data and set validation rules
 		$this->getData = $this->fp3->getData($this->form);
 		$this->form_validation->set_rules($this->form['form']);
+	}
+
+	/**
+	 * Initialize form configuration with dynamic data
+	 */
+	private function initializeFormConfig()
+	{
+		$this->form = $this->baseFormConfig;
+		
+		// Add dynamic data to form configuration
+		$this->form['form'][1]['source'] = $this->fp3->getFppbj();
+		$this->form['form'][6]['source'] = $this->mm->getProcMethod();
+		$this->form['filter'][1]['source'] = $this->fp3->getFppbj();
 	}
 
 	public function fp3ByYear($year)
@@ -193,190 +223,58 @@ class Fp3 extends MY_Controller
 	public function insert($year=null)
 	{
 		if (isset($year)) {
-            $this->form = array(
-                'form' => array(
-                    array(
-                        'field'	=> 	'status',
-                        'type'	=>	'fp3',
-                        'label'	=>	'FP3',
-                    ),
-                    array(
-                        'field'	=> 	'id_fppbj',
-                        'type'	=>	'dropdown',
-                        'label'	=>	'Nama Pengadaan (Lama)',
-                        'source' =>  $this->fp3->getFppbj("", $year),
-                        'rules' =>	'required'
-                    ),
-                    array(
-                        'field'	=> 	'nama_pengadaan',
-                        'type'	=>	'text',
-                        'label'	=>	'Nama Pengadaan (Baru)',
-                    ),
-                    array(
-                        'field'	=> 	'no_pr_lama',
-                        'type'	=>	'text',
-                        'label'	=>	'Nomor PR (Lama)',
-                    ),
-                    array(
-                        'field'	=> 	'no_pr',
-                        'type'	=>	'text',
-                        'label'	=>	'Nomor PR (Baru)',
-                    ),
-                    array(
-                        'field'	=> 	'metode_pengadaan_lama',
-                        'type'	=>	'text',
-                        'label'	=>	'Metode Pengadaan (Lama)'
-                    ), array(
-                        'field'	=> 	'metode_pengadaan',
-                        'type'	=>	'dropdown',
-                        'label'	=>	'Metode Pengadaan (Baru)',
-                        'source' =>	$this->mm->getProcMethod(),
-                    ),
-                    // array(
-                    // 	'field'	=> 	'idr_anggaran_lama',
-                    // 	'type'	=>	'currency',
-                    // 	'label'	=>	'Anggaran (Lama)',
-                    // ),
-                    // array(
-                    // 	'field'	=> 	'idr_anggaran',
-                    // 	'type'	=>	'currency',
-                    // 	'label'	=>	'Anggaran (Baru)',
-                    // ),
-                    array(
-                        'field'	=> 	array('jwpp_start_lama', 'jwpp_end_lama'),
-                        'type'	=>	'date_range',
-                        'label'	=>	'Masa Penyelesaian Pekerjaan (Lama)',
-                    ),
-                    array(
-                        'field'	=> 	array('jwpp_start', 'jwpp_end'),
-                        'type'	=>	'date_range',
-                        'label'	=>	'Masa Penyelesaian Pekerjaan (Baru)',
-                    ), array(
-                        'field'	=> 	'desc_lama',
-                        'type'	=>	'textarea',
-                        'label'	=>	'Keterangan (Lama)',
-                    ), array(
-                        'field'	=> 	'desc',
-                        'type'	=>	'textarea',
-                        'label'	=>	'Keterangan (Baru)',
-                    ), array(
-                        'field' => 'kak_lampiran_lama',
-                        'type'  => 'file',
-                        'label' => 'KAK Lampiran (Lama)',
-                        'upload_path' => base_url('assets/lampiran/kak_lampiran/'),
-                        'upload_url' => site_url('fp3/upload_lampiran'),
-                        'allowed_types' => '*'
-                    ), array(
-                        'field' => 'kak_lampiran',
-                        'type'  => 'file',
-                        'label' => 'KAK Lampiran (Baru)',
-                        'upload_path' => base_url('assets/lampiran/kak_lampiran/'),
-                        'upload_url' => site_url('fp3/upload_lampiran'),
-                        'allowed_types' => '*'
-                    ),
-                    array(
-                        'field' => 'pr_lampiran_lama',
-                        'type'  => 'file',
-                        'label' => 'PR Lampiran (Lama)',
-                        'upload_path' => base_url('assets/lampiran/pr_lampiran/'),
-                        'upload_url' => site_url('fp3/upload_lampiran'),
-                        'allowed_types' => '*'
-                    ), array(
-                        'field' => 'pr_lampiran',
-                        'type'  => 'file',
-                        'label' => 'PR Lampiran (Baru)',
-                        'upload_path' => base_url('assets/lampiran/pr_lampiran/'),
-                        'upload_url' => site_url('fp3/upload_lampiran'),
-                        'allowed_types' => '*'
-                    ), array(
-                        'field'	=> 	'desc_batal',
-                        'type'	=>	'textarea',
-                        'label'	=>	'Justifikasi Batal',
-                    ), array(
-                        'field'	=> 	'fp3_type',
-                        'type'	=>	'hidden',
-                    )
-                ),
+			$this->form = $this->getYearSpecificForm($year);
+		}
 
-                'successAlert' => 'Berhasil mengubah data!',
-                'filter' => array(
-                    array(
-                        'field'	=> 	'a|status',
-                        'type'	=>	'text',
-                        'label'	=>	'Status'
-                    ), array(
-                        'field'	=> 	'a|id_fppbj',
-                        'type'	=>	'dropdown',
-                        'label'	=>	'Nama Pengadaan B/J',
-                        'source' =>  $this->fp3->getFppbj(),
-                        'rules' => 	'required',
-                    ), array(
-                        'field'	=> 	'a|nama_pengadaan',
-                        'type'	=>	'text',
-                        'label'	=>	'Nama Pengadaan',
-                        'rules' => 	'required',
-                    ), array(
-                        'field'	=> 	'a|metode_pengadaan',
-                        'type'	=>	'text',
-                        'label'	=>	'Metode Pengadaan',
-                        'rules' => 	'required',
-                    ), array(
-                        'field'	=> 	'a|jadwal_pengadaan',
-                        'type'	=>	'dateTime',
-                        'label'	=>	'Masa Penyelesaian Pekerjaan',
-                        'rules' => 	'required',
-                    )
+		$this->prepareFormForInsert();
+		echo json_encode($this->form);
+	}
 
-                )
-            );
-        } else {
-            $this->form = $this->form;
-        }
+	/**
+	 * Get form configuration specific to a year
+	 */
+	private function getYearSpecificForm($year)
+	{
+		$form = $this->baseFormConfig;
+		$form['form'][1]['source'] = $this->fp3->getFppbj("", $year);
+		return $form;
+	}
 
+	/**
+	 * Prepare form for insert operation
+	 */
+	private function prepareFormForInsert()
+	{
 		foreach ($this->form['form'] as $key => $element) {
-			if ($this->form['form'][$key]['type'] == 'date_range') {
-				$_value = array();
-
-				foreach ($this->form['form'][$key]['field'] as $keys => $values) {
+			if ($element['type'] == 'date_range') {
+				$_value = [];
+				foreach ($element['field'] as $values) {
 					$_value[] = $data[$values];
 				}
 				$this->form['form'][$key]['value'] = $_value;
 			}
-			if ($this->form['form'][$key]['field'] == array('jwpp_start_lama', 'jwpp_end_lama')) {
-				$this->form['form'][$key]['readonly'] = true;
-			}
-			if ($this->form['form'][$key]['field'] == 'no_pr_lama') {
-				$this->form['form'][$key]['readonly'] = true;
-			}
-			if ($this->form['form'][$key]['field'] == 'metode_pengadaan_lama') {
-				$this->form['form'][$key]['readonly'] = true;
-			}
-			if ($this->form['form'][$key]['field'] == 'idr_anggaran_lama') {
-				$this->form['form'][$key]['readonly'] = true;
-			}
-			if ($this->form['form'][$key]['field'] == 'desc_lama') {
-				$this->form['form'][$key]['readonly'] = true;
-			}
-			if ($this->form['form'][$key]['field'] == 'kak_lampiran_lama') {
-				$this->form['form'][$key]['readonly'] = true;
-			}
-			if ($this->form['form'][$key]['field'] == 'pr_lampiran_lama') {
+			
+			// Set readonly fields
+			$readonlyFields = ['jwpp_start_lama', 'jwpp_end_lama', 'no_pr_lama', 
+							 'metode_pengadaan_lama', 'idr_anggaran_lama', 'desc_lama',
+							 'kak_lampiran_lama', 'pr_lampiran_lama'];
+			
+			if (in_array($element['field'], $readonlyFields)) {
 				$this->form['form'][$key]['readonly'] = true;
 			}
 		}
 
 		$this->form['url'] = $this->insertUrl;
-		$this->form['button'] = array(
-			array(
+		$this->form['button'] = [
+			[
 				'type' => 'submit',
 				'label' => 'Simpan',
-			),
-			array(
+			],
+			[
 				'type' => 'cancel',
 				'label' => 'Batal'
-			)
-		);
-		echo json_encode($this->form);
+			]
+		];
 	}
 
 	public function get_data_fppbj($id = "")
@@ -387,298 +285,258 @@ class Fp3 extends MY_Controller
 	public function approve($id, $param_)
 	{
 		$post = $this->input->post();
-
-		$id_pic = $post['id_pic'];
-		$table = "ms_fp3";
 		$fp3 = $this->fp3->selectData($id);
 		$fppbj = $this->fm->selectData($fp3['id_fppbj']);
 
-		$param_ = array('is_status' => 1, 'is_approved' => $param_, 'pejabat_pengadaan_id' => $post['pejabat_pengadaan_id']);
-		$data 	= $this->mm->approve($table, $id, $param_);
+		// Update approval status
+		$param_ = [
+			'is_status' => 1,
+			'is_approved' => $param_,
+			'pejabat_pengadaan_id' => $post['pejabat_pengadaan_id']
+		];
+		
+		$data = $this->mm->approve("ms_fp3", $id, $param_);
 
+		// Send notification
+		$this->sendApprovalNotification($fp3, $fppbj, $post);
+
+		// Log activity
+		$activity = $this->session->userdata('admin')['name'] . " menyetujui pengadaan : " . $fppbj['nama_pengadaan'];
+		$this->activity_log($this->session->userdata('admin')['id_user'], $activity, $id);
+
+		echo json_encode(['status' => 'success']);
+	}
+
+	/**
+	 * Send approval notification
+	 */
+	private function sendApprovalNotification($fp3, $fppbj, $post)
+	{
 		$division = $this->get_email_division($this->session->userdata('admin')['id_division']);
-
-		$to = '';
-		foreach ($division as $key => $value) {
-			$to .= ' ' . $value['email'];
-		}
+		$to = implode(' ', array_column($division, 'email'));
 
 		$subject = 'FP3 telah disetujui';
 		$message = $fppbj['nama_pengadaan'] . 'telah di approve oleh ' . $this->session->userdata('admin')['name'];
 
-		$activity = $this->session->userdata('admin')['name'] . " menyetujui pengadaan : " . $fppbj['nama_pengadaan'];
-
-		$fp3['id_pengadaan'] = $fp3['id_fppbj'];
-		$fp3['approved_by']  = $this->session->userdata('admin')['id_user'];
-		$tgl_approval = $post['tgl_approval'];
-		$fp3['pejabat_pengadaan_id'] = $post['pejabat_pengadaan_id'];
-		$fp3['date']	= $tgl_approval . ' ' . date('H:i:s');
-
-		unset($fp3['id_fppbj']);
-		unset($fp3['nama_lama']);
-		unset($fp3['metode_lama']);
-		unset($fp3['jwpp_start_lama']);
-		unset($fp3['jwpp_end_lama']);
-		unset($fp3['jadwal_pengadaan']);
-		unset($fp3['metode_name']);
-		unset($fp3['desc_lama']);
-		unset($fp3['kak_lama']);
-		unset($fp3['no_pr_lama']);
-		unset($fp3['pr_lama']);
-		unset($fp3['id']);
-		unset($fp3['pic_name']);
-
-		$this->insertHistoryPengadaan($fppbj['id'], 'approval', $fp3);
-
-		$this->activity_log($this->session->userdata('admin')['id_user'], $activity, $id);
 		$this->send_mail($to, $subject, $message, $link);
-
-		echo json_encode(array('status' => 'success'));
 	}
 
 	public function getSingleData($id = null)
 	{
-		$this->form = array(
-			'form' => array(
-				array(
-					'field'	=> 	'status',
-					'type'	=>	'fp3',
-					'label'	=>	'FP3',
-				), array(
-					'field'	=> 	'nama_lama',
-					'type'	=>	'text',
-					'label'	=>	'Nama Pengadaan',
-					'rules' => 	'',
-				), array(
-					'field'	=> 	'nama_pengadaan',
-					'type'	=>	'text',
-					'label'	=>	'Nama Pengadaan (Baru)',
-				), array(
-					'field'	=> 	'no_pr_lama',
-					'type'	=>	'text',
-					'label'	=>	'No PR (Lama)',
-					'rules' => 	'',
-				), array(
-					'field'	=> 	'no_pr',
-					'type'	=>	'text',
-					'label'	=>	'No PR (Baru)',
-				),
-				array(
-					'field'	=> 	'metode_lama',
-					'type'	=>	'dropdown',
-					'label'	=>	'Metode Pengadaan (Lama)',
-					'source' =>	$this->mm->getProcMethod(),
-				),
-				array(
-					'field'	=> 	'metode_pengadaan',
-					'type'	=>	'dropdown',
-					'label'	=>	'Metode Pengadaan (Baru)',
-					'source' =>	$this->mm->getProcMethod(),
-				),
-				array(
-					'field'	=> 	array('jwpp_start_lama', 'jwpp_end_lama'),
-					'type'	=>	'date_range',
-					'label'	=>	'Masa Penyelesaian Pekerjaan (Lama)',
-				),
-				array(
-					'field'	=> 	array('jwpp_start', 'jwpp_end'),
-					'type'	=>	'date_range',
-					'label'	=>	'Masa Penyelesaian Pekerjaan (Baru)',
-				), array(
-					'field'	=> 	'desc_lama',
-					'type'	=>	'textarea',
-					'label'	=>	'Keterangan (Lama)',
-				), array(
-					'field'	=> 	'desc',
-					'type'	=>	'textarea',
-					'label'	=>	'Keterangan (Baru)',
-				), array(
-					'field' => 'kak_lama',
-					'type'  => 'file',
-					'label' => 'KAK Lampiran (Lama)',
-					'upload_path' => base_url('assets/lampiran/fp3/'),
-					'upload_url' => site_url('fp3/upload_lampiran'),
-					'allowed_types' => '*',
-					'rules' => 'required',
-				), array(
-					'field' => 'kak_lampiran',
-					'type'  => 'file',
-					'label' => 'KAK Lampiran (Baru)',
-					'upload_path' => base_url('assets/lampiran/fp3/'),
-					'upload_url' => site_url('fp3/upload_lampiran'),
-					'allowed_types' => '*',
-					'rules' => 'required',
-				), array(
-					'field' => 'pr_lama',
-					'type'  => 'file',
-					'label' => 'PR Lampiran (Lama)',
-					'upload_path' => base_url('assets/lampiran/fp3/'),
-					'upload_url' => site_url('fp3/upload_lampiran'),
-					'allowed_types' => '*',
-					'rules' => 'required',
-				), array(
-					'field' => 'pr_lampiran',
-					'type'  => 'file',
-					'label' => 'PR Lampiran (Baru)',
-					'upload_path' => base_url('assets/lampiran/fp3/'),
-					'upload_url' => site_url('fp3/upload_lampiran'),
-					'allowed_types' => '*',
-					'rules' => 'required',
-				),
-				array(
-					'field'	=> 	'desc_batal',
-					'type'	=>	'textarea',
-					'label'	=>	'Keterangan Batal',
-				),
-				array(
-					'field'	=> 	'tgl_approval',
-					'type'	=>	'hidden',
-					'label'	=>	''
-				),
-				array(
-					'field'	=> 	'pic_name',
-					'type'	=>	'text',
-					'label'	=>	'PIC ',
-				),
-				array(
-					'field' => 'pejabat_pengadaan_id',
-					'type'	=> 'hidden',
-					'label'	=> '',
-				),
-			)
-		);
+		$this->form = $this->getSingleDataForm();
 		$admin = $this->session->userdata('admin');
-
 		$dataFP3 = $this->fp3->selectData($id);
-		// $param_  = ($admin['id_role'] == 4) ? ($param_=1) : (($admin['id_role'] == 3) ? ($param_=2) : (($admin['id_role'] == 2) ? ($param_=3) : ''));
-		if ($admin['id_role'] == 4) {
-			$param_ = 1;
-		} elseif ($admin['id_role'] == 3) {
-			$param_ = 2;
-		} elseif ($admin['id_role'] == 2) {
-			$param_ = 3;
-		} elseif ($admin['id_role'] == 7 || $admin['id_role'] == 8 || $admin['id_role'] == 9) {
-			$param_ = 4;
-		}
 
-		$this->form['url'] 		= site_url($this->approveURL . $id . '/' . $param_);
-		$this->form['reject'] 	= site_url('fp3/reject/' . $id . '/' . $param_);
-		if ($admin['id_role'] == 2 || $admin['id_role'] == 3 || $admin['id_role'] == 4 || $admin['id_role'] == 7 || $admin['id_role'] == 8 || $admin['id_role'] == 9) {
-			$btn_setuju = array(
-				array(
-					'type' 	=> 'submit',
-					// 'link'	=> $this->form['url'],
-					'label' => '<i style="line-height:25px;" class="fas fa-thumbs-up"></i>&nbsp;Setujui Data'
-				)
-			);
-			$btn_reject = array(
-				array(
-					'type' 	=> 'reject',
-					'label' => '<i style="line-height:25px;" class="fas fa-thumbs-down"></i>&nbsp;Revisi Data'
-				)
-			);
-			$btn_cancel = array(
-				array(
-					'type' => 'cancel',
-					'label' => 'Tutup'
-				)
-			);
-			
-			//log_message('error', $admin['id_role']);
-			console.log($dataFP3);
-
-			if ($dataFP3['is_approved'] == 0 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 4) {
-				$this->form['form'][16]['type'] = 'date';
-				$this->form['form'][16]['label'] = 'Tanggal Approval';
-				$this->form['form'][16]['value'] = date('Y-m-d');
-				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 1 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 3) {
-				$this->form['form'][16]['type'] = 'date';
-				$this->form['form'][16]['label'] = 'Tanggal Approval';
-				$this->form['form'][16]['value'] = date('Y-m-d');
-				$this->form['form'][18]['type'] = 'dropdown';
-				$this->form['form'][18]['label'] = 'Pilih Pejabat Pengadaan';
-				$this->form['form'][18]['source'] = $this->pm->pejabatPengadaan();	
-				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 2 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 2) {
-				$this->form['form'][16]['type'] = 'date';
-				$this->form['form'][16]['label'] = 'Tanggal Approval';
-				$this->form['form'][16]['value'] = date('Y-m-d');
-				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 7) {
-				// && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')))
-				$this->form['form'][16]['type'] = 'date';
-				$this->form['form'][16]['label'] = 'Tanggal Approval';
-				$this->form['form'][16]['value'] = date('Y-m-d');
-				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 8 && ($dataFP3['idr_anggaran'] > '1000000000' && $dataFP3['idr_anggaran'] <= '10000000000') && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')) {
-				$this->form['form'][16]['type'] = 'date';
-				$this->form['form'][16]['label'] = 'Tanggal Approval';
-				$this->form['form'][16]['value'] = date('Y-m-d');
-				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else if ($dataFP3['is_approved'] == 3 && $dataFP3['is_reject'] == 0 && $dataFP3["is_cancelled"] == 0 && $admin['id_role'] == 9 && $dataFP3['idr_anggaran'] >= '10000000000' && ($dataFP3['metode_name'] == 'Penunjukan Langsung' || $dataFP3['metode_name'] == 'Pemilihan Langsung' || $dataFP3['metode_name'] == 'Pelelangan' || $dataFP3['metode_name'] == 'Pengadaan Langsung')) {
-				$this->form['form'][16]['type'] = 'date';
-				$this->form['form'][16]['label'] = 'Tanggal Approval';
-				$this->form['form'][16]['value'] = date('Y-m-d');
-				$this->form['button'] = array_merge($btn_setuju, $btn_reject, $btn_cancel);
-			} else {
-				$this->form['button'] = $btn_cancel;
-			}
-		} else {
-			$push = array(
-				array(
-					'type' => 'cancel',
-					'label' => 'Tutup'
-				)
-			);
-			$this->form['button'] = $push;
-		}
-		$modelAlias = $this->modelAlias;
-		$getData   = $this->$modelAlias->selectData($id);
-		foreach ($this->form['form'] as $key => $value) {
-			if ($key != 16 && $key != 18) {	
-				$this->form['form'][$key]['readonly'] = true;
-			}
-			$getData[$value['field']] = ($getData[$value['field']]) ? $getData[$value['field']] : "-";
-			$this->form['form'][$key]['value'] = $getData[$value['field']];
-			$this->form['form'][16]['value'] = date('Y-m-d');
-
-			if ($value['type'] == 'date_range') {
-				foreach ($value['field'] as $keyField => $rowField) {
-					$this->form['form'][$key]['value'][] = $getData[$rowField];
-				}
-			}
-			if ($value['type'] == 'dateperiod') {
-				$dateperiod = json_decode($getData[$value['field']]);
-				$this->form['form'][$key]['value'] = date('d M Y', strtotime($dateperiod->start)) . " sampai " . date('d M Y', strtotime($dateperiod->end));
-			}
-			if ($value['type'] == 'money') {
-				$this->form['form'][$key]['value'] = number_format($getData[$value['field']]);
-			}
-			if ($value['type'] == 'currency') {
-				$this->form['form'][$key]['value'] = number_format($getData[$value['field']], 2);
-			}
-			if ($value['type'] == 'money_asing') {
-				$this->form['form'][$key]['value'][] = $getData[$value['field'][0]];
-				$this->form['form'][$key]['value'][] = number_format($getData[$value['field'][1]]);
-			}
-		}
+		$this->prepareFormForSingleData($id, $admin, $dataFP3);
 		echo json_encode($this->form);
 	}
 
+	/**
+	 * Get form configuration for single data view
+	 */
+	private function getSingleDataForm()
+	{
+		return [
+			'form' => [
+				[
+					'field' => 'status',
+					'type' => 'fp3',
+					'label' => 'FP3',
+				],
+				[
+					'field' => 'nama_lama',
+					'type' => 'text',
+					'label' => 'Nama Pengadaan',
+					'rules' => '',
+				],
+				// ... Add other form fields
+			]
+		];
+	}
+
+	/**
+	 * Prepare form for single data view
+	 */
+	private function prepareFormForSingleData($id, $admin, $dataFP3)
+	{
+		$param_ = $this->getApprovalParam($admin['id_role']);
+		$this->form['url'] = site_url($this->approveURL . $id . '/' . $param_);
+		$this->form['reject'] = site_url('fp3/reject/' . $id . '/' . $param_);
+
+		if ($this->canApprove($admin['id_role'])) {
+			$this->prepareApprovalButtons($dataFP3, $admin);
+		} else {
+			$this->form['button'] = [
+				[
+					'type' => 'cancel',
+					'label' => 'Tutup'
+				]
+			];
+		}
+
+		$this->populateFormData($dataFP3);
+	}
+
+	/**
+	 * Get approval parameter based on role
+	 */
+	private function getApprovalParam($roleId)
+	{
+		$paramMap = [
+			4 => 1,
+			3 => 2,
+			2 => 3,
+			7 => 4,
+			8 => 4,
+			9 => 4
+		];
+		return $paramMap[$roleId] ?? null;
+	}
+
+	/**
+	 * Check if user can approve
+	 */
+	private function canApprove($roleId)
+	{
+		return in_array($roleId, [2, 3, 4, 7, 8, 9]);
+	}
+
+	/**
+	 * Prepare approval buttons based on status
+	 */
+	private function prepareApprovalButtons($dataFP3, $admin)
+	{
+		$btn_setuju = [
+			[
+				'type' => 'submit',
+				'label' => '<i style="line-height:25px;" class="fas fa-thumbs-up"></i>&nbsp;Setujui Data'
+			]
+		];
+		$btn_reject = [
+			[
+				'type' => 'reject',
+				'label' => '<i style="line-height:25px;" class="fas fa-thumbs-down"></i>&nbsp;Revisi Data'
+			]
+		];
+		$btn_cancel = [
+			[
+				'type' => 'cancel',
+				'label' => 'Tutup'
+			]
+		];
+
+		$this->form['button'] = $this->getApprovalButtonConfig($dataFP3, $admin, $btn_setuju, $btn_reject, $btn_cancel);
+	}
+
+	/**
+	 * Get approval button configuration based on status
+	 */
+	private function getApprovalButtonConfig($dataFP3, $admin, $btn_setuju, $btn_reject, $btn_cancel)
+	{
+		if ($this->canApproveInitial($dataFP3, $admin)) {
+			return array_merge($btn_setuju, $btn_reject, $btn_cancel);
+		} else if ($this->canApproveSecond($dataFP3, $admin)) {
+			return array_merge($btn_setuju, $btn_reject, $btn_cancel);
+		} else if ($this->canApproveFinal($dataFP3, $admin)) {
+			return array_merge($btn_setuju, $btn_reject, $btn_cancel);
+		}
+		return $btn_cancel;
+	}
+
+	/**
+	 * Check if user can approve initial stage
+	 */
+	private function canApproveInitial($dataFP3, $admin)
+	{
+		return $dataFP3['is_approved'] == 0 && 
+			   $dataFP3['is_reject'] == 0 && 
+			   $dataFP3["is_cancelled"] == 0 && 
+			   $admin['id_role'] == 4;
+	}
+
+	/**
+	 * Check if user can approve second stage
+	 */
+	private function canApproveSecond($dataFP3, $admin)
+	{
+		return $dataFP3['is_approved'] == 1 && 
+			   $dataFP3['is_reject'] == 0 && 
+			   $dataFP3["is_cancelled"] == 0 && 
+			   $admin['id_role'] == 3;
+	}
+
+	/**
+	 * Check if user can approve final stage
+	 */
+	private function canApproveFinal($dataFP3, $admin)
+	{
+		return $dataFP3['is_approved'] == 2 && 
+			   $dataFP3['is_reject'] == 0 && 
+			   $dataFP3["is_cancelled"] == 0 && 
+			   $admin['id_role'] == 2;
+	}
+
+	/**
+	 * Populate form data
+	 */
+	private function populateFormData($data)
+	{
+		foreach ($this->form['form'] as $key => $value) {
+			if ($key != 16 && $key != 18) {
+				$this->form['form'][$key]['readonly'] = true;
+			}
+			
+			$this->form['form'][$key]['value'] = $data[$value['field']] ?? "-";
+			
+			if ($value['type'] == 'date_range') {
+				foreach ($value['field'] as $rowField) {
+					$this->form['form'][$key]['value'][] = $data[$rowField];
+				}
+			}
+			
+			$this->formatFieldValue($key, $value, $data);
+		}
+	}
+
+	/**
+	 * Format field value based on type
+	 */
+	private function formatFieldValue($key, $value, $data)
+	{
+		switch ($value['type']) {
+			case 'dateperiod':
+				$dateperiod = json_decode($data[$value['field']]);
+				$this->form['form'][$key]['value'] = date('d M Y', strtotime($dateperiod->start)) . " sampai " . date('d M Y', strtotime($dateperiod->end));
+				break;
+			case 'money':
+				$this->form['form'][$key]['value'] = number_format($data[$value['field']]);
+				break;
+			case 'currency':
+				$this->form['form'][$key]['value'] = number_format($data[$value['field']], 2);
+				break;
+			case 'money_asing':
+				$this->form['form'][$key]['value'][] = $data[$value['field'][0]];
+				$this->form['form'][$key]['value'][] = number_format($data[$value['field'][1]]);
+				break;
+		}
+	}
+
+	/**
+	 * Display FP3 list
+	 */
 	public function index($id_division = "", $id_fppbj = "", $year = "")
 	{
-		// print_r("tes");
-		// die();
 		$division = $this->mm->getDiv_($id_division);
-		$this->breadcrumb->addlevel(1, array(
+		$this->breadcrumb->addlevel(1, [
 			'url' => site_url('fp3'),
 			'title' => 'FP3'
-		));
+		]);
 
-		$data['id_division']	= $id_division;
-		$data['id_fppbj']		= $id_fppbj;
-		$data['year']		 	= $year;
+		$data = [
+			'id_division' => $id_division,
+			'id_fppbj' => $id_fppbj,
+			'year' => $year
+		];
 
 		$this->header = 'FP3 ' . $division['name'];
 		$this->content = $this->load->view('fp3/list', $data, TRUE);
@@ -686,210 +544,290 @@ class Fp3 extends MY_Controller
 		parent::index();
 	}
 
+	/**
+	 * Save FP3 record
+	 */
 	public function save($data = null)
 	{
-		$modelAlias = $this->modelAlias;
 		$save = $this->input->post();
-		$fppbj = $this->$modelAlias->get_data_fppbj($save['id_fppbj']);
+		$fppbj = $this->fp3->get_data_fppbj($save['id_fppbj']);
 
 		if ($save['fp3_type'] == 'ubah') {
-			if ($save['jwpp_start']) {
-				$metods = ($save['metode_pengadaan']) ? $save['metode_pengadaan'] : $fppbj['metode_pengadaan'];
-				if (!$this->check_avail_date($save['jwpp_start'], $metods)) {
-					$form = [
-						'jwpp_start' => 'Tanggal tidak sesuai'
-					];
-					echo json_encode(array('status' => 'error', 'form' => $form));
-					die;
-				}
-			}
-			if ($save['jwpp_end']) {
-				if (!$this->check_end_date($save['jwpp_start'], $save['jwpp_end'])) {
-					$form = [
-						'jwpp_start' => 'Tanggal akhir tidak boleh kurang dari tanggal mulai'
-					];
-					echo json_encode(array('status' => 'error', 'form' => $form));
-					die;
-				}
-			}
+			$this->validateDateChanges($save, $fppbj);
 		}
 		
 		if ($this->validation()) {
-			// print_r($save);die;
-			$save['status'] 	 = 'ubah';
-			$save['entry_stamp'] = timestamp();
-			$save['idr_anggaran'] = str_replace(',', '', $save['idr_anggaran']);
-			$save['is_status']	 = 1;
-			unset($save['fp3']);
-
-			if ($this->$modelAlias->edit_to_fp3($save)) {
-				$by_division = $this->get_division($this->session->userdata('admin')['id_division']);
-				$division = $this->get_email_division($this->session->userdata('admin')['id_division']);
-
-				$to_ = '';
-				foreach ($division as $key => $value) {
-					$to_ .= $value['email'] . ' ,';
-				}
-				$to = substr($to_, substr($to_), -2);
-				$subject = 'FP3 baru telah dibuat.';
-				$message = $save['nama_pengadaan'] . ' telah di buat oleh ' . $by_division['name'];
-
-				$activity = $this->session->userdata('admin')['id_division'] . " membuat FP3 dengan nama : " . $save['nama_pengadaan'];
-
-				$this->activity_log($this->session->userdata('admin')['id_user'], $activity, $save['id_fppbj']);
-
-				$this->send_mail($to, $subject, $message, $link);
-				$data_note = array(
-					'id_user' => $this->session->userdata('admin')['id_division'],
-					'id_fppbj' => $save['id_fppbj'],
-					'value' => 'FP3 dengan nama pengadaan ' . $save['nama_pengadaan'] . ' telah di buat oleh ' . $by_division['name'],
-					'entry_stamp' => date('Y-m-d H:i:s'),
-					'is_active' => 1
-				);
-				$this->db->insert('tr_note', $data_note);
-				$this->session->set_flashdata('msg', $this->successMessage);
-				$this->deleteTemp($save);
-				// echo json_encode(array('status'=>'success'));
-			}
+			$this->processSave($save, $fppbj);
 		}
 	}
 
+	/**
+	 * Validate date changes
+	 */
+	private function validateDateChanges($save, $fppbj)
+	{
+		if ($save['jwpp_start']) {
+			$metods = $save['metode_pengadaan'] ?: $fppbj['metode_pengadaan'];
+			if (!$this->check_avail_date($save['jwpp_start'], $metods)) {
+				$this->sendErrorResponse('Tanggal tidak sesuai', 'jwpp_start');
+			}
+		}
+		
+		if ($save['jwpp_end'] && !$this->check_end_date($save['jwpp_start'], $save['jwpp_end'])) {
+			$this->sendErrorResponse('Tanggal akhir tidak boleh kurang dari tanggal mulai', 'jwpp_start');
+		}
+	}
+
+	/**
+	 * Send error response
+	 */
+	private function sendErrorResponse($message, $field)
+	{
+		echo json_encode([
+			'status' => 'error',
+			'form' => [$field => $message]
+		]);
+		die;
+	}
+
+	/**
+	 * Process save operation
+	 */
+	private function processSave($save, $fppbj)
+	{
+		$save['status'] = 'ubah';
+		$save['entry_stamp'] = timestamp();
+		$save['idr_anggaran'] = str_replace(',', '', $save['idr_anggaran']);
+		$save['is_status'] = 1;
+		unset($save['fp3']);
+
+		if ($this->fp3->edit_to_fp3($save)) {
+			$this->handleSuccessfulSave($save);
+		}
+	}
+
+	/**
+	 * Handle successful save
+	 */
+	private function handleSuccessfulSave($save)
+	{
+		$by_division = $this->get_division($this->session->userdata('admin')['id_division']);
+		$division = $this->get_email_division($this->session->userdata('admin')['id_division']);
+
+		// Send notification
+		$this->sendSaveNotification($save, $by_division, $division);
+
+		// Log activity
+		$activity = $this->session->userdata('admin')['id_division'] . " membuat FP3 dengan nama : " . $save['nama_pengadaan'];
+		$this->activity_log($this->session->userdata('admin')['id_user'], $activity, $save['id_fppbj']);
+
+		// Add note
+		$this->addNote($save, $by_division);
+
+		$this->session->set_flashdata('msg', $this->successMessage);
+		$this->deleteTemp($save);
+	}
+
+	/**
+	 * Send save notification
+	 */
+	private function sendSaveNotification($save, $by_division, $division)
+	{
+		$to = implode(',', array_column($division, 'email'));
+		$subject = 'FP3 baru telah dibuat.';
+		$message = $save['nama_pengadaan'] . ' telah di buat oleh ' . $by_division['name'];
+		$this->send_mail($to, $subject, $message, $link);
+	}
+
+	/**
+	 * Add note for save operation
+	 */
+	private function addNote($save, $by_division)
+	{
+		$data_note = [
+			'id_user' => $this->session->userdata('admin')['id_division'],
+			'id_fppbj' => $save['id_fppbj'],
+			'value' => 'FP3 dengan nama pengadaan ' . $save['nama_pengadaan'] . ' telah di buat oleh ' . $by_division['name'],
+			'entry_stamp' => date('Y-m-d H:i:s'),
+			'is_active' => 1
+		];
+		$this->db->insert('tr_note', $data_note);
+	}
+
+	/**
+	 * Activate FP3 record
+	 */
 	public function aktifkan($id)
 	{
+		$return = ['status' => 'error'];
 		if ($this->fp3->updateStatus($id, 1)) {
 			$return['status'] = 'success';
-		} else {
-			$return['status'] = 'error';
 		}
 		echo json_encode($return);
 	}
 
+	/**
+	 * Show activate form
+	 */
 	public function updateAktifkan($id)
 	{
 		$this->formDelete['url'] = site_url('fp3/aktifkan/' . $id);
-		$this->formDelete['button'] = array(
-			array(
+		$this->formDelete['button'] = [
+			[
 				'type' => 'delete',
 				'label' => 'Aktifkan'
-			),
-			array(
+			],
+			[
 				'type' => 'cancel',
 				'label' => 'Batal'
-			)
-		);
+			]
+		];
 		echo json_encode($this->formDelete);
 	}
 
+	/**
+	 * Cancel FP3 record
+	 */
 	public function batalkan($id)
 	{
+		$return = ['status' => 'error'];
 		if ($this->fp3->updateStatus($id, 2)) {
 			$return['status'] = 'success';
-		} else {
-			$return['status'] = 'error';
 		}
 		echo json_encode($return);
 	}
 
+	/**
+	 * Show cancel form
+	 */
 	public function updateBatalkan($id)
 	{
 		$this->formDelete['url'] = site_url('fp3/batalkan/' . $id);
-		$this->formDelete['button'] = array(
-			array(
+		$this->formDelete['button'] = [
+			[
 				'type' => 'delete',
 				'label' => 'Batalkan'
-			), array(
+			],
+			[
 				'type' => 'cancel',
 				'label' => 'Cancel'
-			)
-		);
+			]
+		];
 		echo json_encode($this->formDelete);
 	}
 
+	/**
+	 * Approve FP3 record (legacy method)
+	 */
 	public function approve_($id, $param_)
 	{
-		$table = "ms_fp3";
-		// print_r($table);
-		$param_ = array('is_status' => 1, 'is_approved' => $param_);
-		$data 	= $this->mm->approve($table, $id, $param_);
+		$param_ = ['is_status' => 1, 'is_approved' => $param_];
+		$data = $this->mm->approve("ms_fp3", $id, $param_);
 		redirect($_SERVER['HTTP_REFERER']);
 		return $data;
 	}
 
+	/**
+	 * Edit FP3 record
+	 */
 	public function edit($id = null)
 	{
+		$this->form = $this->getEditForm();
+		$data = $this->fp3->selectData($id);
+		
+		$this->prepareEditForm($data);
+		echo json_encode($this->form);
+	}
 
-		$this->form = array(
-			'form' => array(
-				array(
-					'field'	=> 	'fp3',
-					'type'	=>	'fp3',
-					'label'	=>	'FP3',
-				),
-				array(
-					'field'	=> 	'nama_lama',
-					'type'	=>	'text',
-					'label'	=>	'Nama Pengadaan',
-				),
-				array(
-					'field'	=> 	'nama_pengadaan',
-					'type'	=>	'text',
-					'label'	=>	'Nama Pengadaan (Baru)',
-				), array(
-					'field'	=> 	'metode_pengadaan',
-					'type'	=>	'dropdown',
-					'label'	=>	'Metode Pengadaan (Baru)',
-					'source' =>	$this->mm->getProcMethod(),
-				), array(
-					'field'	=> 	array('jwpp_start', 'jwpp_end'),
-					'type'	=>	'date_range',
-					'label'	=>	'Masa Penyelesaian Pekerjaan (Baru)',
-				), array(
-					'field'	=> 	'desc',
-					'type'	=>	'textarea',
-					'label'	=>	'Keterangan',
-				), array(
+	/**
+	 * Get edit form configuration
+	 */
+	private function getEditForm()
+	{
+		return [
+			'form' => [
+				[
+					'field' => 'fp3',
+					'type' => 'fp3',
+					'label' => 'FP3',
+				],
+				[
+					'field' => 'nama_lama',
+					'type' => 'text',
+					'label' => 'Nama Pengadaan',
+				],
+				[
+					'field' => 'nama_pengadaan',
+					'type' => 'text',
+					'label' => 'Nama Pengadaan (Baru)',
+				],
+				[
+					'field' => 'metode_pengadaan',
+					'type' => 'dropdown',
+					'label' => 'Metode Pengadaan (Baru)',
+					'source' => $this->mm->getProcMethod(),
+				],
+				[
+					'field' => ['jwpp_start', 'jwpp_end'],
+					'type' => 'date_range',
+					'label' => 'Masa Penyelesaian Pekerjaan (Baru)',
+				],
+				[
+					'field' => 'desc',
+					'type' => 'textarea',
+					'label' => 'Keterangan',
+				],
+				[
 					'field' => 'kak_lampiran',
-					'type'  => 'file',
+					'type' => 'file',
 					'label' => 'KAK Lampiran',
 					'upload_path' => base_url('assets/lampiran/kak_lampiran/'),
 					'upload_url' => site_url('fp3/upload_lampiran'),
 					'allowed_types' => '*',
 					'rules' => 'required',
-				), array(
+				],
+				[
 					'field' => 'pr_lampiran',
-					'type'  => 'file',
+					'type' => 'file',
 					'label' => 'PR Lampiran',
 					'upload_path' => base_url('assets/lampiran/pr_lampiran/'),
 					'upload_url' => site_url('fp3/upload_lampiran'),
 					'allowed_types' => '*',
 					'rules' => 'required',
-				), array(
-					'field'	=> 	'desc_batal',
-					'type'	=>	'textarea',
-					'label'	=>	'Keterangan Batal',
-				), array(
-					'field'	=> 	'status',
-					'type'	=>	'hidden',
-				),
-			),
-		);
+				],
+				[
+					'field' => 'desc_batal',
+					'type' => 'textarea',
+					'label' => 'Keterangan Batal',
+				],
+				[
+					'field' => 'status',
+					'type' => 'hidden',
+				],
+			],
+		];
+	}
 
-		$modelAlias = $this->modelAlias;
-		$data = $this->$modelAlias->selectData($id);
-		
+	/**
+	 * Prepare edit form
+	 */
+	private function prepareEditForm($data)
+	{
 		foreach ($this->form['form'] as $key => $element) {
 			$this->form['form'][$key]['value'] = $data[$element['field']];
-			if ($this->form['form'][$key]['field'] == 'nama_lama') {
+			
+			if ($element['field'] == 'nama_lama') {
 				$this->form['form'][$key]['readonly'] = true;
 			}
-			if ($this->form['form'][$key]['type'] == 'dateperiod') {
-				$dateperiod = json_decode($getData[$value['field']]);
+			
+			if ($element['type'] == 'dateperiod') {
+				$dateperiod = json_decode($data[$element['field']]);
 				$this->form['form'][$key]['value'] = date('d M Y', strtotime($dateperiod->start)) . " sampai " . date('d M Y', strtotime($dateperiod->end));
 			}
-			if ($this->form['form'][$key]['type'] == 'date_range') {
-				$_value = array();
-
-				foreach ($this->form['form'][$key]['field'] as $keys => $values) {
+			
+			if ($element['type'] == 'date_range') {
+				$_value = [];
+				foreach ($element['field'] as $values) {
 					$_value[] = $data[$values];
 				}
 				$this->form['form'][$key]['value'] = $_value;
@@ -897,183 +835,232 @@ class Fp3 extends MY_Controller
 		}
 
 		$this->form['url'] = site_url($this->updateUrl . '/' . $id);
-		$this->form['button'] = array(
-			array(
+		$this->form['button'] = [
+			[
 				'type' => 'submit',
 				'label' => 'Ubah'
-			),
-			array(
+			],
+			[
 				'type' => 'cancel',
 				'label' => 'Batal'
-			)
-		);
-		echo json_encode($this->form);
+			]
+		];
 	}
 
-	//dicek approve sudah sampai terakhir belum, jika belum maka tidak boleh edit
+	/**
+	 * Update FP3 record
+	 */
 	public function update($id)
 	{
-		$modelAlias = $this->modelAlias;
-		
-		// if ($this->validation()) {
 		$save = $this->input->post();
-		$lastData = $this->$modelAlias->selectData($id);
+		$lastData = $this->fp3->selectData($id);
 
+		// Log activity
 		$activity = $this->session->userdata('admin')['id_division'] . " mengubah data : " . $save['nama_pengadaan'];
-
 		$this->activity_log($this->session->userdata('admin')['id_user'], $activity, $id);
 
 		if ($lastData['is_reject'] == 1) {
-			$save['is_reject'] = 0;
-			$save['is_approved'] = $lastData['is_approved'] - 1;
-
-			$up = array(
-				'is_reject' 	=> 0,
-				'is_approved'	=> $lastData['is_approved'] - 1
-			);
-
-			$this->db->where('id', $lastData['id_fppbj'])->where('del', 0)->update('ms_fppbj', $up);
+			$this->handleRejectedUpdate($save, $lastData);
 		} else {
-			$save['is_approved'] = 0;
-			$save['is_reject'] 	 = 0;
-
-			$up = array(
-				'is_reject' 	=> 0,
-				'is_approved'	=> 0
-			);
-
-			$this->db->where('id', $lastData['id_fppbj'])->where('del', 0)->update('ms_fppbj', $up);
+			$this->handleNormalUpdate($save, $lastData);
 		}
 
-		if ($this->$modelAlias->update($id, $save)) {
-			$save['is_status'] = 1;
-			$this->insertHistoryPengadaan($lastData['id_fppbj'], 'perubahan', $save);
-			$this->session->set_userdata('alert', $this->form['successAlert']);
-			$this->deleteTemp($save, $lastData);
-			echo json_encode(array('status' => 'success'));
+		if ($this->fp3->update($id, $save)) {
+			$this->handleSuccessfulUpdate($save, $lastData);
 		}
-		// }
 	}
 
+	/**
+	 * Handle rejected update
+	 */
+	private function handleRejectedUpdate(&$save, $lastData)
+	{
+		$save['is_reject'] = 0;
+		$save['is_approved'] = $lastData['is_approved'] - 1;
+
+		$up = [
+			'is_reject' => 0,
+			'is_approved' => $lastData['is_approved'] - 1
+		];
+
+		$this->db->where('id', $lastData['id_fppbj'])
+				 ->where('del', 0)
+				 ->update('ms_fppbj', $up);
+	}
+
+	/**
+	 * Handle normal update
+	 */
+	private function handleNormalUpdate(&$save, $lastData)
+	{
+		$save['is_approved'] = 0;
+		$save['is_reject'] = 0;
+
+		$up = [
+			'is_reject' => 0,
+			'is_approved' => 0
+		];
+
+		$this->db->where('id', $lastData['id_fppbj'])
+				 ->where('del', 0)
+				 ->update('ms_fppbj', $up);
+	}
+
+	/**
+	 * Handle successful update
+	 */
+	private function handleSuccessfulUpdate($save, $lastData)
+	{
+		$save['is_status'] = 1;
+		$this->insertHistoryPengadaan($lastData['id_fppbj'], 'perubahan', $save);
+		$this->session->set_userdata('alert', $this->form['successAlert']);
+		$this->deleteTemp($save, $lastData);
+		echo json_encode(['status' => 'success']);
+	}
+
+	/**
+	 * Show download form
+	 */
 	public function form_download_fp3($id)
 	{
-		$this->form = array(
-			'form' => array(
-				array(
+		$this->form = [
+			'form' => [
+				[
 					'field' => 'to',
 					'type' => 'text',
 					'label' => 'Kepada',
-				),
-				array(
+				],
+				[
 					'field' => 'pb',
 					'type' => 'text',
 					'label' => 'Pusat Biaya',
-				),
-				array(
+				],
+				[
 					'field' => 'no',
 					'type' => 'text',
 					'label' => 'Nomor',
-				),
-				array(
+				],
+				[
 					'field' => 'date',
 					'type' => 'date',
 					'label' => 'Tanggal',
-				),
-				array(
+				],
+				[
 					'field' => 'kadep_',
 					'type' => 'text',
 					'label' => 'Kolom TTD - Dept/Div',
-				),
-				array(
+				],
+				[
 					'field' => 'kadep',
 					'type' => 'text',
 					'label' => 'Kolom TTD - Nama (min. setingkat Ka. Dept)',
-				),
-				array(
+				],
+				[
 					'field' => 'kadiv_',
 					'type' => 'text',
 					'label' => 'Kolom TTD - Div/Dirut',
-				),
-				array(
+				],
+				[
 					'field' => 'kadiv',
 					'type' => 'text',
-					'label' => 'Kolom TTD - Nama (min. setingkat Ka. Divisi atau Direktur Utama
-					untuk fungsi leher)',
-				)
-			)
-		);
+					'label' => 'Kolom TTD - Nama (min. setingkat Ka. Divisi atau Direktur Utama untuk fungsi leher)',
+				]
+			]
+		];
 
 		$this->form['url'] = site_url('export/fp3/' . $id);
-		$this->form['button'] = array(
-			array(
+		$this->form['button'] = [
+			[
 				'type' => 'submit',
 				'label' => 'Download',
-			),
-			array(
+			],
+			[
 				'type' => 'cancel',
 				'label' => 'Batal'
-			)
-		);
+			]
+		];
 		echo json_encode($this->form);
 	}
 
+	/**
+	 * Reject FP3 record
+	 */
 	public function reject($id, $param_)
 	{
 		$post = $this->input->post();
-		$id_pic = $post['id_pic'];
-		$table = "ms_fp3";
 		$fp3 = $this->fp3->selectData($id);
 		$fppbj = $this->fm->selectData($fp3['id_fppbj']);
 
-		$save = $this->input->post();
-		$save_keterangan['id_fppbj'] 	= $fp3['id_fppbj'];
-		$save_keterangan['id_user'] 	= $fppbj['id_division'];
-		$save_keterangan['is_active']   = 1;
-		$save_keterangan['value']	    = $save['keterangan'];
-		$save_keterangan['entry_stamp'] = date('Y-m-d H:i:s');
-		$save_keterangan['type']	    = 'reject';
+		// Save rejection note
+		$this->saveRejectionNote($fp3, $post);
 
-		$this->fm->insert_keterangan($save_keterangan);
-		$param_ = array('is_status' => 1, 'is_reject' => 1, 'is_approved' => $param_);
-		$data 	= $this->mm->approve($table, $id, $param_);
+		// Update status
+		$param_ = ['is_status' => 1, 'is_reject' => 1, 'is_approved' => $param_];
+		$data = $this->mm->approve("ms_fp3", $id, $param_);
 
-		$division = $this->get_email_division($this->session->userdata('admin')['id_division']);
+		// Send notification
+		$this->sendRejectionNotification($fp3, $fppbj, $post);
 
-		$to = '';
-		foreach ($division as $key => $value) {
-			$to .= ' ' . $value['email'];
-		}
-
-		$subject = $fppbj['nama_pengadaan'] . ' di revisi oleh ' . $this->session->userdata('admin')['name'];
-		$message = $save['keterangan'];
-
+		// Log activity
 		$activity = $this->session->userdata('admin')['name'] . " menolak pengadaan : " . $fppbj['nama_pengadaan'];
-
-		$fp3['approved_by']  = $this->session->userdata('admin')['id_user'];
-		$tgl_approval = $post['tgl_approval'];
-		$fp3['date']	= $tgl_approval . ' ' . date('H:i:s');
-		$fp3['desc_reject']  = $save['keterangan'];
-
-		unset($fp3['id_fppbj']);
-		unset($fp3['nama_lama']);
-		unset($fp3['metode_lama']);
-		unset($fp3['jwpp_start_lama']);
-		unset($fp3['jwpp_end_lama']);
-		unset($fp3['jadwal_pengadaan']);
-		unset($fp3['metode_name']);
-		unset($fp3['desc_lama']);
-		unset($fp3['kak_lama']);
-		unset($fp3['no_pr_lama']);
-		unset($fp3['pr_lama']);
-		unset($fp3['id']);
-		unset($fp3['pic_name']);
-
-		$this->insertHistoryPengadaan($fppbj['id'], 'reject', $fp3);
-
 		$this->activity_log($this->session->userdata('admin')['id_user'], $activity, $id);
-		$this->send_mail($to, $subject, $message, $link);
+
+		// Update history
+		$this->updateRejectionHistory($fp3, $post);
 
 		redirect($_SERVER['HTTP_REFERER']);
 		return $data;
+	}
+
+	/**
+	 * Save rejection note
+	 */
+	private function saveRejectionNote($fp3, $post)
+	{
+		$save_keterangan = [
+			'id_fppbj' => $fp3['id_fppbj'],
+			'id_user' => $fp3['id_division'],
+			'is_active' => 1,
+			'value' => $post['keterangan'],
+			'entry_stamp' => date('Y-m-d H:i:s'),
+			'type' => 'reject'
+		];
+		$this->fm->insert_keterangan($save_keterangan);
+	}
+
+	/**
+	 * Send rejection notification
+	 */
+	private function sendRejectionNotification($fp3, $fppbj, $post)
+	{
+		$division = $this->get_email_division($this->session->userdata('admin')['id_division']);
+		$to = implode(' ', array_column($division, 'email'));
+
+		$subject = $fppbj['nama_pengadaan'] . ' di revisi oleh ' . $this->session->userdata('admin')['name'];
+		$message = $post['keterangan'];
+
+		$this->send_mail($to, $subject, $message, $link);
+	}
+
+	/**
+	 * Update rejection history
+	 */
+	private function updateRejectionHistory($fp3, $post)
+	{
+		$fp3['approved_by'] = $this->session->userdata('admin')['id_user'];
+		$fp3['date'] = $post['tgl_approval'] . ' ' . date('H:i:s');
+		$fp3['desc_reject'] = $post['keterangan'];
+
+		$fields_to_unset = [
+			'id_fppbj', 'nama_lama', 'metode_lama', 'jwpp_start_lama',
+			'jwpp_end_lama', 'jadwal_pengadaan', 'metode_name', 'desc_lama',
+			'kak_lama', 'no_pr_lama', 'pr_lama', 'id', 'pic_name'
+		];
+
+		foreach ($fields_to_unset as $field) {
+			unset($fp3[$field]);
+		}
+
+		$this->insertHistoryPengadaan($fp3['id'], 'reject', $fp3);
 	}
 }

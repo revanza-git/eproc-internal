@@ -6,55 +6,64 @@ A comprehensive e-procurement system built with CodeIgniter framework, designed 
 
 1. **User Management**
    - Secure authentication system
-   - Role-based access control
-   - Password management
+   - Role-based access control (Admin, User, Approver)
+   - Password management and reset functionality
 
 2. **Procurement Management**
    - Purchase Request (PR) creation and management
    - Purchase Order (PO) processing
-   - Vendor management
-   - Contract management
+   - Vendor management and registration
+   - Contract management and tracking
+   - Budget control and monitoring
 
 3. **Document Management**
    - Document upload and storage
    - Document version control
    - Attachment management for approvals
+   - File type validation and security
 
 4. **Workflow Management**
    - Multi-level approval process
-   - Status tracking
+   - Status tracking and notifications
    - Timeline visualization
-   - Email notifications
+   - Email notifications for status changes
+   - Approval delegation
 
 5. **Reporting & Analytics**
    - Custom report generation
-   - Data export functionality
+   - Data export functionality (PDF, Excel)
    - Timeline exports
    - Backup management
+   - Dashboard analytics
 
 ## Technical Stack
 
 - **Framework**: CodeIgniter 3.x
-- **PHP Version**: >= 5.2.4
-- **Database**: MySQL
+- **PHP Version**: >= 7.4
+- **Database**: MySQL 5.7+
 - **Web Server**: Apache/IIS
 - **Additional Libraries**:
-  - Paragonie Random Compat (for better randomness in PHP 5.x)
-  - VFSStream (for development testing)
+  - TCPDF (for PDF generation)
+  - PHPSpreadsheet (for Excel export)
+  - PHPMailer (for email notifications)
+  - jQuery (for frontend interactions)
+  - Bootstrap 4 (for UI components)
 
 ## Prerequisites
 
-- PHP >= 5.2.4
-- MySQL Database
+- PHP >= 7.4
+- MySQL 5.7+
 - Apache/IIS Web Server
 - Composer (for dependency management)
+- SSL Certificate (for production)
+- SMTP Server (for email notifications)
 
 ## Installation Steps
 
 1. **Clone the Repository**
    ```bash
    git clone [repository-url]
-   cd eproc
+   cd eproc_nusantararegas
    ```
 
 2. **Install Dependencies**
@@ -64,67 +73,84 @@ A comprehensive e-procurement system built with CodeIgniter framework, designed 
 
 3. **Database Setup**
    - Create a new MySQL database
-   - Import the database schema (located in `application/database/`)
+   - Import the database schema from `application/database/`
    - Configure database connection in `application/config/database.php`
+   - Set up initial admin user
 
 4. **Configuration**
    - Copy `application/config/config.example.php` to `application/config/config.php`
    - Update the base URL and other configurations
    - Configure email settings in `application/config/email.php`
+   - Set up SMTP credentials
+   - Configure file upload settings
 
 5. **Web Server Configuration**
-   - For Apache: Ensure mod_rewrite is enabled
+   - For Apache: Enable mod_rewrite and configure .htaccess
    - For IIS: Use the provided `web.config`
-   - Point your web server to the project's root directory
+   - Point web server to the project's root directory
+   - Configure SSL/TLS
 
 6. **Permissions**
    - Set write permissions for:
      - `application/cache/`
      - `application/logs/`
      - `application/uploads/`
+     - `application/backups/`
 
 7. **Initial Setup**
    - Access the application through your web browser
-   - Log in with default credentials (if any)
-   - Change default passwords immediately
+   - Log in with default admin credentials
+   - Change default passwords
+   - Configure system settings
+   - Set up email templates
 
 ## Usage
 
 1. **Login**
    - Access the system through your web browser
    - Use your credentials to log in
+   - Reset password if needed
 
 2. **Creating a Purchase Request**
    - Navigate to the PR creation section
    - Fill in required details
    - Upload necessary documents
+   - Add line items and quantities
    - Submit for approval
 
 3. **Approval Process**
-   - Approvers will receive email notifications
+   - Approvers receive email notifications
    - Review and approve/reject requests
-   - Track status through the dashboard
+   - Add comments if needed
+   - Track status through dashboard
+   - Delegate approvals if necessary
 
 4. **Generating Reports**
    - Access the reporting section
    - Select report type
    - Configure parameters
-   - Export in desired format
+   - Export in desired format (PDF/Excel)
+   - Schedule automated reports
 
 ## Security Considerations
 
-- Remove any company-specific branding before deployment
-- Update all default credentials
-- Configure proper access controls
-- Enable SSL/TLS for secure communication
+- Enable SSL/TLS for all communications
+- Implement strong password policies
 - Regular security updates and patches
+- Configure proper access controls
+- Enable audit logging
+- Implement rate limiting
+- Regular security scanning
 
 ## Maintenance
 
-- Regular database backups
-- Log rotation
+- Regular database backups (daily)
+- Log rotation and monitoring
 - Cache clearing
 - System updates
+- Performance monitoring
+- Security patches
+- Backup verification
 
 ## Support
 
@@ -146,4 +172,7 @@ Please read CONTRIBUTING.md for details on our code of conduct and the process f
 1. Remove all company-specific branding and trademarks
 2. Update all configuration files with your specific settings
 3. Perform thorough security testing
-4. Set up proper backup procedures 
+4. Set up proper backup procedures
+5. Configure monitoring and alerting
+6. Test email notifications
+7. Verify database backups 

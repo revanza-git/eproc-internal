@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Fppbj_model extends MY_Model{
-	public $table = 'ms_fppbj';
+	protected $table = 'ms_fppbj';
 	function __construct(){
 		parent::__construct();
 
@@ -365,5 +365,116 @@ class Fppbj_model extends MY_Model{
 			);
 			$this->db->insert('tr_email_blast',$data);
 		}
+	}
+
+	public function get_pending_items($year = '', $is_perencanaan = '1') {
+		$year_filter = $this->build_year_filter($year);
+		$perencanaan_filter = $this->build_perencanaan_filter($is_perencanaan);
+		$division_filter = $this->build_division_filter($this->session->userdata('admin')['id_division']);
+
+		$sql = "SELECT * FROM {$this->table} 
+				WHERE del = 0 
+				AND is_approved = 0 
+				AND is_status = 0 
+				AND is_reject = 0 
+				{$year_filter} 
+				{$perencanaan_filter} 
+				{$division_filter}";
+
+		return $this->db->query($sql);
+	}
+
+	public function get_completed_items($year = '', $is_perencanaan = '1') {
+		$year_filter = $this->build_year_filter($year);
+		$perencanaan_filter = $this->build_perencanaan_filter($is_perencanaan);
+		$division_filter = $this->build_division_filter($this->session->userdata('admin')['id_division']);
+
+		$sql = "SELECT * FROM {$this->table} 
+				WHERE is_approved_hse < 2
+				AND ({$division_filter} {$year_filter} is_perencanaan = 1 
+				AND is_status = 0 
+				AND is_reject = 0 
+				AND del = 0 
+				AND is_approved = 3 
+				AND (idr_anggaran <= 100000000 
+				OR (idr_anggaran > 100000000 
+				AND metode_pengadaan = 3)))
+				OR ({$division_filter} {$year_filter} is_perencanaan = 1 
+				AND is_status = 0 
+				AND is_reject = 0 
+				AND del = 0 
+				AND is_approved = 4 
+				AND idr_anggaran > 100000000)
+				OR ({$division_filter} {$year_filter} is_perencanaan = 1 
+				AND is_status = 1 
+				AND del = 0)
+				OR ({$division_filter} {$year_filter} is_perencanaan = 1 
+				AND is_status = 2 
+				AND del = 0)";
+
+		return $this->db->query($sql);
+	}
+
+	public function get_rejected_items($year = '', $is_perencanaan = '1') {
+		$year_filter = $this->build_year_filter($year);
+		$perencanaan_filter = $this->build_perencanaan_filter($is_perencanaan);
+		$division_filter = $this->build_division_filter($this->session->userdata('admin')['id_division']);
+
+		$sql = "SELECT * FROM {$this->table} 
+				WHERE {$division_filter}
+				is_writeoff = 0
+				AND ((is_status = 0 {$year_filter} {$perencanaan_filter} 
+				AND del = 0 
+				AND is_reject = 1 
+				AND idr_anggaran < 100000000)
+				OR (is_status = 0 {$year_filter} {$perencanaan_filter} 
+				AND del = 0 
+				AND is_reject = 1 
+				AND idr_anggaran > 100000000))";
+
+		return $this->db->query($sql);
+	}
+
+	public function get_pending_by_director($year = '', $is_perencanaan = '1', $director_type) {
+		$year_filter = $this->build_year_filter($year);
+		$perencanaan_filter = $this->build_perencanaan_filter($is_perencanaan);
+		$division_filter = $this->build_division_filter($this->session->userdata('admin')['id_division']);
+
+		$conditions = [
+			'is_status' => 0,
+			'is_approved' => $this->get_approval_level($director_type),
+			'is_reject' => 0,
+			'is_writeoff' => 0,
+			'del' => 0
+		];
+
+		$amount_condition = $this->get_amount_condition($director_type);
+		
+		$sql = "SELECT * FROM {$this->table} 
+				WHERE {$division_filter} 
+				{$year_filter} 
+				{$perencanaan_filter} 
+				AND " . $this->build_where_clause($conditions)['clause'] . "
+				AND {$amount_condition}";
+
+		return $this->db->query($sql, $this->build_where_clause($conditions)['params']);
+	}
+
+	private function get_approval_level($director_type) {
+		$levels = [
+			'dirut' => 6,
+			'dirke' => 5,
+			'dirsdm' => 4
+		];
+		return $levels[$director_type] ?? 0;
+	}
+
+	private function get_amount_condition($director_type) {
+		$conditions = [
+			'dirut' => 'idr_anggaran >= 10000000000',
+			'dirke' => 'idr_anggaran > 1000000000 AND idr_anggaran <= 10000000000',
+			'dirsdm' => 'idr_anggaran > 100000000 AND idr_anggaran <= 1000000000'
+		];
+		return $conditions[$director_type] ?? '1=1';
 	}
 }
